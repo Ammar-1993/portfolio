@@ -3,830 +3,634 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>هندسة البرمجيات</title>
-    <meta name="description" content="هندسة البرمجيات - م.عمار النجار" />
-    <meta
-      name="keywords"
-      content="هندسة البرمجيات, م.عمار النجار, برمجة, تطوير, مواقع, تطبيقات, سطح المكتب"
-    />
-    <!--===== Font Awesome =====-->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <!--===== Main CSS =====-->
-    <link rel="stylesheet" href="css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>م. عمار النجار — مهندس برمجيات | مواقع، موبايل، وسطح المكتب</title>
+    <meta name="description" content="تطوير مواقع وتطبيقات مع تسليم دقيق ودعم ما بعد الإطلاق. استعرض أعمالي وراسلني الآن." />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="canonical" href="https://ammar-1993.github.io/portfolio/" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="م. عمار النجار — مهندس برمجيات" />
+    <meta property="og:description" content="حلول برمجية متكاملة: ويب، موبايل، وسطح مكتب." />
+    <meta property="og:url" content="https://ammar-1993.github.io/portfolio/" />
+    <!-- استبدل og-cover.jpg بصورة غلاف موجودة لديك -->
+    <meta property="og:image" content="images/og-cover.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Icons (استخدم نسخة واحدة حديثة) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/J6MdXf2B7LQe9v7EV+6ZrP6tPZ6Yf0hYv7K5jQ5mS2x0lQX8G5Y4o1cnZ6+Q5X5a7+Z3hZ+Mw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Styles -->
     <link rel="stylesheet" href="css/bootstrap-rtl.min.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "م. عمار النجار",
+      "jobTitle": "مهندس برمجيات",
+      "url": "https://ammar-1993.github.io/portfolio/",
+      "email": "mailto:ammaralnggar@gmail.com",
+      "telephone": "+967774344625"
+    }
+    </script>
+
+    <!-- ملاحظات تنفيذية:
+      1) تَذكّر إعادة تسمية مجلد "vedio/" إلى "video/" داخل المشروع ثم تحدَّث المسارات أدناه.
+      2) ضع صورة og-cover.jpg أو غيّر المسار في og:image.
+      3) يُفضّل إضافة sitemap.xml و robots.txt في جذر المشروع.
+    -->
   </head>
   <body>
+    <a class="skip-link" href="#home" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">تخطي إلى المحتوى</a>
+
     <!--===== Navbar Start =====-->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="الرئيسية">
       <div class="container">
-        <div class="row justify-content-between">
+        <div class="row justify-content-between align-items-center">
           <div class="logo">
-            <a href="index.html">هندسة<span>البرمجيات</span></a>
+            <a href="#home" aria-label="الانتقال إلى الرئيسية">هندسة<span>البرمجيات</span></a>
           </div>
-          <div class="links">
+          <div class="links" role="menubar" aria-label="روابط الموقع">
             <ul class="menu">
-              <li class="nav-item">
-                <a href="#home" class="nav-link active"
-                  >الرئيسية <span></span
-                ></a>
-              </li>
-              <li class="nav-item">
-                <a href="#about" class="nav-link">نبذة عنا <span></span></a>
-              </li>
-              <li class="nav-item">
-                <a href="#services" class="nav-link">الخدمات <span></span></a>
-              </li>
-              <li class="nav-item">
-                <a href="#portfolio" class="nav-link"
-                  >معرض أعمالنا <span></span
-                ></a>
-              </li>
-              <li class="nav-item">
-                <a href="#technologies" class="nav-link"
-                  >التقنيات <span></span
-                ></a>
-              </li>
-              <li class="nav-item">
-                <a href="#contact" class="nav-link">اتصل بنا <span></span></a>
-              </li>
+              <li class="nav-item"><a href="#home" class="nav-link active">الرئيسية</a></li>
+              <li class="nav-item"><a href="#about" class="nav-link">نبذة</a></li>
+              <li class="nav-item"><a href="#services" class="nav-link">الخدمات</a></li>
+              <li class="nav-item"><a href="#portfolio" class="nav-link">الأعمال</a></li>
+              <li class="nav-item"><a href="#technologies" class="nav-link">التقنيات</a></li>
+              <li class="nav-item"><a href="#contact" class="nav-link">اتصل بنا</a></li>
             </ul>
           </div>
-          <div class="menu-btn">
-            <i class="fas fa-bars"></i>
-          </div>
+          <button class="menu-btn" aria-label="فتح القائمة" aria-expanded="false">
+            <i class="fas fa-bars" aria-hidden="true"></i>
+          </button>
         </div>
       </div>
     </nav>
     <!--===== Navbar End =====-->
+
     <!--===== Home Section Start =====-->
-    <!--===== Header Social =====-->
     <section class="home-section" id="home">
-      <!--            <ul class="header-social">
-              <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-              <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-          </ul> -->
       <div class="container">
         <div class="row align-items-center">
           <div class="home-text">
             <h1>مرحباً بكم</h1>
-            <h4>م.عمار النجار</h4>
-            <span>مهندس برمجيات محترف</span>
-            <p>
-              نقوم بتجهيز المشاريع بدقة عالية وموعد محدد حيث اننا نعمل المشاريع
-              والمواقع والتطبيقات في كلً من مسار الويب ومسار الموبايل ومسار سطح
-              المكتب.
-            </p>
-            <a
-              href="https://wa.me/967714294340"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn-1"
-              >احجز الآن</a
-            >
+            <h2>م. عمار النجار</h2>
+            <p class="lead">مهندس برمجيات — تنفيذ مواقع وتطبيقات ويب/موبايل/سطح مكتب بدقة وفي المواعيد.</p>
+            <p>نجهّز المشاريع بدقة عالية ضمن موعد محدد، ونقدّم دعم ما بعد التسليم. تخصّصنا يشمل الويب، الموبايل، وسطح المكتب.</p>
+            <a href="https://wa.me/967714294340" target="_blank" rel="noopener noreferrer" class="btn btn-1" aria-label="تواصل عبر واتساب">احجز الآن</a>
           </div>
           <div class="home-image">
             <div class="img-box">
-              <img src="images/hero2.png" alt="هنا صورة للباش مهندس" loading="lazy" />
+              <img src="images/hero2.png" alt="صورة تعبيرية للمهندس وواجهة برمجية" loading="eager" fetchpriority="high" />
             </div>
           </div>
         </div>
       </div>
-      <div class="header-hero-shape"></div>
-      <!--===== Hero Shape =====-->
+      <div class="header-hero-shape" aria-hidden="true"></div>
     </section>
     <!--===== Home Section End =====-->
+
     <!--===== About Section Start =====-->
     <section class="about-section section-padding" id="about">
       <div class="container">
         <div class="row align-items-center justify-content-center">
           <div class="about-image">
             <div class="img-box">
-              <img src="images/about_hero.png" alt="نبذة تعريفية عنا" loading="lazy"/>
-              <div class="about-shape"></div>
+              <img src="images/about_hero.png" alt="نبذة تعريفية عن الفريق والخدمات" loading="lazy" decoding="async" />
+              <div class="about-shape" aria-hidden="true"></div>
             </div>
           </div>
           <div class="about-content">
             <div class="section-title">
-              <h5 class="sub-title">نبذة عنا</h5>
-              <h3 class="main-title">من نحن ؟ وبماذا توظفني؟</h3>
-              <ul class="line">
-                <li></li>
-                <li></li>
-                <li></li>
-              </ul>
+              <h5 class="sub-title">نبذة</h5>
+              <h3 class="main-title">من نحن؟ ولِماذا توظّفنا؟</h3>
+              <ul class="line" aria-hidden="true"><li></li><li></li><li></li></ul>
             </div>
-            <!--===== Section Title =====-->
             <p>
-              هندسة البرمجيات هي فرقة صغيرة تتكون من محترفين متخصصين في العديد
-              من المجالات التقنية. نحن نلتزم بتوفير خدمات تقنية مختلفة تشمل
-              صناعة مواقع ويب ، تطبيقات موبايل ، تطبيقات سطح المكتب وغيرها.
-              هدفنا الأول هو رضا عملائنا. نميل دائما الى ارضاء عملائنا بجميع
-              احتياجاتهم. نحن أيضا واثقون ان جميع خدماتنا التي نقدمها سوف تتم
-              بأعلى المعايير. تعدد خدماتنا التقنية وخدمات ما بعد البيع تتطلب منا
-              ان نكون في تواجد دائم لأي تساؤل أو استفسار من قبل العملاء. نحن
-              نؤمن أننا نستطيع أن نوفر لكم افضل الحلول الممكنة لأننا نحرص على
-              رضا العملاء بما نعد بتوفيره لهم.
+              هندسة البرمجيات فريق صغير من محترفين في مجالات تقنية متعددة. نقدّم حلولاً تشمل مواقع الويب، تطبيقات الموبايل، وتطبيقات سطح المكتب مع توثيق كامل ودعم مستمر. هدفنا الأول هو رضا العملاء عبر جودة التنفيذ والالتزام بالمواعيد.
             </p>
-            <div class="about-skills">
+
+            <div class="about-skills" aria-label="نِسَب المهارات (تقديرية)">
               <div class="skill-item">
                 <div class="skill-header">
-                  <h6 class="skill-title">تحاليل المشاريع</h6>
-                  <div class="skill-percentage">
-                    <p><span class="counter">90</span>%</p>
-                  </div>
+                  <h6 class="skill-title">تحليل المشاريع</h6>
+                  <div class="skill-percentage" aria-hidden="true"><p><span class="counter">90</span>%</p></div>
                 </div>
-                <div class="skill-bar">
-                  <div class="bar-inner">
-                    <div class="bar progress-line" data-progress="90%"></div>
-                  </div>
+                <div class="skill-bar" aria-label="90%">
+                  <div class="bar-inner"><div class="bar progress-line" data-progress="90%"></div></div>
                 </div>
               </div>
-              <!--===== Skill Item =====-->
               <div class="skill-item">
                 <div class="skill-header">
-                  <h6 class="skill-title">تصاميم المشاريع</h6>
-                  <div class="skill-percentage">
-                    <p><span class="counter">95</span>%</p>
-                  </div>
+                  <h6 class="skill-title">تصميم المشاريع</h6>
+                  <div class="skill-percentage" aria-hidden="true"><p><span class="counter">95</span>%</p></div>
                 </div>
-                <div class="skill-bar">
-                  <div class="bar-inner">
-                    <div class="bar progress-line" data-progress="95%"></div>
-                  </div>
+                <div class="skill-bar" aria-label="95%">
+                  <div class="bar-inner"><div class="bar progress-line" data-progress="95%"></div></div>
                 </div>
               </div>
-              <!--===== Skill Item =====-->
               <div class="skill-item">
                 <div class="skill-header">
-                  <h6 class="skill-title">تنفيذ وبرمجة المشاريع</h6>
-                  <div class="skill-percentage">
-                    <p><span class="counter">90</span>%</p>
-                  </div>
+                  <h6 class="skill-title">البرمجة والتنفيذ</h6>
+                  <div class="skill-percentage" aria-hidden="true"><p><span class="counter">90</span>%</p></div>
                 </div>
-                <div class="skill-bar">
-                  <div class="bar-inner">
-                    <div class="bar progress-line" data-progress="90%"></div>
-                  </div>
+                <div class="skill-bar" aria-label="90%">
+                  <div class="bar-inner"><div class="bar progress-line" data-progress="90%"></div></div>
                 </div>
               </div>
-              <!--===== Skill Item =====-->
               <div class="skill-item">
                 <div class="skill-header">
-                  <h6 class="skill-title">اختبار المشاريع</h6>
-                  <div class="skill-percentage">
-                    <p><span class="counter">95</span>%</p>
-                  </div>
+                  <h6 class="skill-title">اختبار وضمان الجودة</h6>
+                  <div class="skill-percentage" aria-hidden="true"><p><span class="counter">95</span>%</p></div>
                 </div>
-                <div class="skill-bar">
-                  <div class="bar-inner">
-                    <div class="bar progress-line" data-progress="95%"></div>
-                  </div>
+                <div class="skill-bar" aria-label="95%">
+                  <div class="bar-inner"><div class="bar progress-line" data-progress="95%"></div></div>
                 </div>
               </div>
-              <!--===== Skill Item =====-->
             </div>
+
           </div>
         </div>
       </div>
     </section>
     <!--===== About Section End =====-->
+
     <!--===== Services Section Start =====-->
     <section class="service-section section-padding" id="services">
       <div class="container">
         <div class="row">
           <div class="section-title text-align">
             <h5 class="sub-title">الخدمات</h5>
-            <h3 class="main-title">الخدمات التي نقدمها</h3>
-            <ul class="line">
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
+            <h3 class="main-title">ما الذي نقدّمه؟</h3>
+            <ul class="line" aria-hidden="true"><li></li><li></li><li></li></ul>
           </div>
-          <!--===== Section Title =====-->
         </div>
         <div class="row">
-          <!--===== Service Item Start =====-->
           <div class="service-item">
             <div class="service-item-inner">
-              <div class="icon">
-                <i class="fas fa-mobile-alt"></i>
-              </div>
+              <div class="icon" aria-hidden="true"><i class="fas fa-mobile-alt"></i></div>
               <h3>تطبيقات موبايل</h3>
-              <p>تطبيقات اندرويد و IOS سلسة وأنيقة وسهلة الاستخدام!</p>
+              <p>تطبيقات أندرويد و iOS سلسة وأنيقة وسهلة الاستخدام.</p>
             </div>
           </div>
-          <!--===== Service Item End =====-->
-          <!--===== Service Item Start =====-->
           <div class="service-item">
             <div class="service-item-inner">
-              <div class="icon">
-                <i class="fas fa-laptop-code"></i>
-              </div>
+              <div class="icon" aria-hidden="true"><i class="fas fa-laptop-code"></i></div>
               <h3>مواقع ويب</h3>
-              <p>
-                مواقع وتطبيقات و أنظمة أنترنت راقية و متوافقة مع جميع أجهزة
-                العرض والمتصفحات الحديثة!
-              </p>
+              <p>مواقع وتطبيقات وأنظمة إنترنت راقية ومتوافقة مع الشاشات والمتصفحات الحديثة.</p>
             </div>
           </div>
-          <!--===== Service Item End =====-->
-          <!--===== Service Item Start =====-->
           <div class="service-item">
             <div class="service-item-inner">
-              <div class="icon">
-                <i class="fas fa-desktop"></i>
-              </div>
+              <div class="icon" aria-hidden="true"><i class="fas fa-desktop"></i></div>
               <h3>تطبيقات سطح المكتب</h3>
-              <p>تطبيقات خاصة بسطح المكتب سلسة وأنيقة وسهلة الاستخدام!</p>
+              <p>تطبيقات مخصّصة لسطح المكتب مع تجربة استخدام مريحة وسريعة.</p>
             </div>
           </div>
-          <!--===== Service Item End =====-->
-          <!--===== Service Item Start =====-->
           <div class="service-item">
             <div class="service-item-inner">
-              <div class="icon">
-                <i class="fas fa-file-powerpoint"></i>
-              </div>
-              <h3>عروض المشاريع</h3>
-              <p>
-                نقوم بعمل عروضات للمشاريع بشكل راقي وممتاز باستخدام برنامج
-                البوربوينت!
-              </p>
+              <div class="icon" aria-hidden="true"><i class="fas fa-file-powerpoint"></i></div>
+              <h3>عروض تقديمية</h3>
+              <p>تصميم عروض مشاريع احترافية عبر PowerPoint.</p>
             </div>
           </div>
-          <!--===== Service Item End =====-->
-          <!--===== Service Item Start =====-->
           <div class="service-item">
             <div class="service-item-inner">
-              <div class="icon">
-                <i class="fas fa-file-pdf"></i>
-              </div>
+              <div class="icon" aria-hidden="true"><i class="fas fa-file-pdf"></i></div>
               <h3>واجبات وأبحاث</h3>
-              <p>نقوم بحل الواجبات وكتابة البحوثات بطريقة راقية ومميزة!</p>
+              <p>حل الواجبات وكتابة الأبحاث بطريقة منهجية ومرتّبة.</p>
             </div>
           </div>
-          <!--===== Service Item End =====-->
-          <!--===== Service Item Start =====-->
           <div class="service-item">
             <div class="service-item-inner">
-              <div class="icon">
-                <i class="fas fa-file-word"></i>
-              </div>
+              <div class="icon" aria-hidden="true"><i class="fas fa-file-word"></i></div>
               <h3>توثيق المشاريع</h3>
-              <p>
-                توثيق المشاريع باستخدام برنامج الورد من ذو مرحلة دراسة الجدوى
-                ومن ثم مرحلة التحليل و... الى أن نصل الى مرحلة التسليم!
-              </p>
+              <p>توثيق كامل من دراسة الجدوى مرورًا بالتحليل والتصميم وحتى التسليم.</p>
             </div>
           </div>
-          <!--===== Service Item End =====-->
         </div>
       </div>
     </section>
     <!--===== Services Section End =====-->
+
     <!--===== Portfolio Section Start =====-->
     <section class="portfolio section-padding" id="portfolio">
       <div class="container">
         <div class="row">
           <div class="section-title text-align">
             <h5 class="sub-title">المعرض</h5>
-            <h3 class="main-title">بعض المشاريع التي عملنا عليها</h3>
-            <ul class="line">
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-          </div>
-          <!--===== Section Title =====-->
-        </div>
-        <div class="row">
-          <div class="portfolio-filter">
-            <button type="button" class="active" data-filter="all">
-              كل المشاريع
-            </button>
-            <button type="button" data-filter="web-project">
-              مشاريع الويب
-            </button>
-            <button type="button" data-filter="mobile-project">
-              مشاريع الموبايل
-            </button>
-            <button type="button" data-filter="desktop-project">
-              مشاريع سطح المكتب
-            </button>
+            <h3 class="main-title">نماذج من الأعمال</h3>
+            <ul class="line" aria-hidden="true"><li></li><li></li><li></li></ul>
           </div>
         </div>
         <div class="row">
-          <!--===== portfolio-item start =====-->
+          <div class="portfolio-filter" role="tablist" aria-label="تصفية المشاريع">
+            <button type="button" class="active" data-filter="all" role="tab" aria-selected="true">كل المشاريع</button>
+            <button type="button" data-filter="web-project" role="tab">مشاريع الويب</button>
+            <button type="button" data-filter="mobile-project" role="tab">مشاريع الموبايل</button>
+            <button type="button" data-filter="desktop-project" role="tab">مشاريع سطح المكتب</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- مثال بطاقة مشروع (استبدل العناوين العامة بأسماء حقيقية وروابط ديمو/كود إن وُجدت) -->
           <div class="portfolio-item" data-category="web-project">
             <div class="portfolio-item-inner">
               <div class="portfolio-img">
-                <img src="images/portfolio/portfolio-1.png" alt="" loading="lazy" />
+                <img src="images/portfolio/portfolio-1.png" alt="موقع إدارة مهام — واجهة لوحة تحكم" loading="lazy" decoding="async" />
               </div>
               <div class="portfolio-info">
-                <h4>web-project</h4>
-                <div class="icon">
-                  <i class="fa fa-search"></i>
-                </div>
+                <h4>نظام إدارة مهام</h4>
+                <div class="icon" aria-hidden="true"><i class="fa fa-search"></i></div>
               </div>
             </div>
           </div>
-          <!--===== portfolio-item end =====-->
-          <!--===== portfolio-item start =====-->
+
           <div class="portfolio-item" data-category="web-project">
             <div class="portfolio-item-inner">
               <div class="portfolio-img">
-                <img src="images/portfolio/portfolio-2.png" alt="" loading="lazy" />
+                <img src="images/portfolio/portfolio-2.png" alt="موقع تعليمي — صفحة الدروس" loading="lazy" decoding="async" />
               </div>
               <div class="portfolio-info">
-                <h4>web-project</h4>
-                <div class="icon">
-                  <i class="fa fa-search"></i>
-                </div>
+                <h4>منصّة تعليمية</h4>
+                <div class="icon" aria-hidden="true"><i class="fa fa-search"></i></div>
               </div>
             </div>
           </div>
-          <!--===== portfolio-item end =====-->
-          <!--===== portfolio-item start =====-->
+
           <div class="portfolio-item" data-category="web-project">
             <div class="portfolio-item-inner">
               <div class="portfolio-img">
-                <img src="images/portfolio/portfolio-3.png" alt="" loading="lazy" />
+                <img src="images/portfolio/portfolio-3.png" alt="متجر إلكتروني — صفحة المنتجات" loading="lazy" decoding="async" />
               </div>
               <div class="portfolio-info">
-                <h4>web-project</h4>
-                <div class="icon">
-                  <i class="fa fa-search"></i>
-                </div>
+                <h4>متجر إلكتروني</h4>
+                <div class="icon" aria-hidden="true"><i class="fa fa-search"></i></div>
               </div>
             </div>
           </div>
-          <!--===== portfolio-item end =====-->
-          <!--===== portfolio-item start =====-->
+
           <div class="portfolio-item" data-category="web-project">
             <div class="portfolio-item-inner">
               <div class="portfolio-img">
-                <img src="images/portfolio/portfolio-4.png" alt="" loading="lazy" />
+                <img src="images/portfolio/portfolio-4.png" alt="موقع شركة — الصفحة الرئيسية" loading="lazy" decoding="async" />
               </div>
               <div class="portfolio-info">
-                <h4>web-project</h4>
-                <div class="icon">
-                  <i class="fa fa-search"></i>
-                </div>
+                <h4>موقع شركة</h4>
+                <div class="icon" aria-hidden="true"><i class="fa fa-search"></i></div>
               </div>
             </div>
           </div>
-          <!--===== portfolio-item end =====-->
-          <!--===== portfolio-item start =====-->
+
           <div class="portfolio-item" data-category="web-project">
             <div class="portfolio-item-inner">
               <div class="portfolio-img">
-                <img src="images/portfolio/portfolio-5.png" alt="" loading="lazy" />
+                <img src="images/portfolio/portfolio-5.png" alt="مدوّنة تقنية — صفحة مقالة" loading="lazy" decoding="async" />
               </div>
               <div class="portfolio-info">
-                <h4>web-project</h4>
-                <div class="icon">
-                  <i class="fa fa-search"></i>
-                </div>
+                <h4>مدوّنة تقنية</h4>
+                <div class="icon" aria-hidden="true"><i class="fa fa-search"></i></div>
               </div>
             </div>
           </div>
-          <!--===== portfolio-item end =====-->
-          <!--===== portfolio-item start =====-->
+
           <div class="portfolio-item" data-category="desktop-project">
             <div class="portfolio-item-inner">
               <div class="portfolio-img">
-                <img src="images/portfolio/portfolio-6.png" alt="" loading="lazy" />
+                <img src="images/portfolio/portfolio-6.png" alt="تطبيق سطح مكتب — شاشة تسجيل الدخول" loading="lazy" decoding="async" />
               </div>
               <div class="portfolio-info">
-                <h4>desktop-project</h4>
-                <div class="icon">
-                  <i class="fa fa-search"></i>
-                </div>
+                <h4>تطبيق سطح مكتب</h4>
+                <div class="icon" aria-hidden="true"><i class="fa fa-search"></i></div>
               </div>
             </div>
           </div>
-          <!--===== portfolio-item end =====-->
-          <!--===== portfolio-item start =====-->
+
           <div class="portfolio-item" data-category="desktop-project">
             <div class="portfolio-item-inner">
               <div class="portfolio-img">
-                <img src="images/portfolio/portfolio-7.png" alt="" loading="lazy" />
+                <img src="images/portfolio/portfolio-7.png" alt="نظام نقاط بيع — واجهة الكاشير" loading="lazy" decoding="async" />
               </div>
               <div class="portfolio-info">
-                <h4>desktop-project</h4>
-                <div class="icon">
-                  <i class="fa fa-search"></i>
-                </div>
+                <h4>نقاط بيع (POS)</h4>
+                <div class="icon" aria-hidden="true"><i class="fa fa-search"></i></div>
               </div>
             </div>
           </div>
-          <!--===== portfolio-item end =====-->
-          <!--===== portfolio-item start =====-->
+
           <div class="portfolio-item" data-category="desktop-project">
             <div class="portfolio-item-inner">
               <div class="portfolio-img">
-                <img src="images/portfolio/portfolio-8.png" alt="" loading="lazy" />
+                <img src="images/portfolio/portfolio-8.png" alt="برنامج محاسبة — تقارير مالية" loading="lazy" decoding="async" />
               </div>
               <div class="portfolio-info">
-                <h4>desktop-project</h4>
-                <div class="icon">
-                  <i class="fa fa-search"></i>
-                </div>
+                <h4>برنامج محاسبة</h4>
+                <div class="icon" aria-hidden="true"><i class="fa fa-search"></i></div>
               </div>
             </div>
           </div>
-          <!--===== portfolio-item end =====-->
-          <!--===== portfolio-item start =====-->
+
           <div class="portfolio-item" data-category="desktop-project">
             <div class="portfolio-item-inner">
               <div class="portfolio-img">
-                <img src="images/portfolio/portfolio-9.png" alt="" loading="lazy" />
+                <img src="images/portfolio/portfolio-9.png" alt="إدارة مخزون — شاشة المنتجات" loading="lazy" decoding="async" />
               </div>
               <div class="portfolio-info">
-                <h4>desktop-project</h4>
-                <div class="icon">
-                  <i class="fa fa-search"></i>
-                </div>
+                <h4>إدارة مخزون</h4>
+                <div class="icon" aria-hidden="true"><i class="fa fa-search"></i></div>
               </div>
             </div>
           </div>
-          <!--===== portfolio-item end =====-->
-          <!--===== portfolio-item start =====-->
+
           <div class="portfolio-item" data-category="mobile-project">
             <div class="portfolio-item-inner">
               <div class="portfolio-img">
-                <img src="images/portfolio/mobile1.png" alt="" loading="lazy" />
+                <img src="images/portfolio/mobile1.png" alt="تطبيق موبايل — شاشة رئيسية" loading="lazy" decoding="async" />
               </div>
               <div class="portfolio-info">
-                <h4>mobile-project</h4>
-                <div class="icon">
-                  <i class="fa fa-search"></i>
-                </div>
+                <h4>تطبيق تعلُّم</h4>
+                <div class="icon" aria-hidden="true"><i class="fa fa-search"></i></div>
               </div>
             </div>
           </div>
-          <!--===== portfolio-item end =====-->
-          <!--===== portfolio-item start =====-->
+
           <div class="portfolio-item" data-category="mobile-project">
             <div class="portfolio-item-inner">
               <div class="portfolio-img">
-                <img src="images/portfolio/mobile2.png" alt="" loading="lazy" />
+                <img src="images/portfolio/mobile2.png" alt="تطبيق موبايل — شاشة تسجيل" loading="lazy" decoding="async" />
               </div>
               <div class="portfolio-info">
-                <h4>mobile-project</h4>
-                <div class="icon">
-                  <i class="fa fa-search"></i>
-                </div>
+                <h4>تطبيق عضويات</h4>
+                <div class="icon" aria-hidden="true"><i class="fa fa-search"></i></div>
               </div>
             </div>
           </div>
-          <!--===== portfolio-item end =====-->
-          <!--===== portfolio-item start =====-->
+
           <div class="portfolio-item" data-category="mobile-project">
             <div class="portfolio-item-inner">
               <div class="portfolio-img">
-                <img src="images/portfolio/mobile3.png" alt="" loading="lazy" />
+                <img src="images/portfolio/mobile3.png" alt="تطبيق موبايل — شاشة محتوى" loading="lazy" decoding="async" />
               </div>
               <div class="portfolio-info">
-                <h4>mobile-project</h4>
-                <div class="icon">
-                  <i class="fa fa-search"></i>
-                </div>
+                <h4>تطبيق محتوى</h4>
+                <div class="icon" aria-hidden="true"><i class="fa fa-search"></i></div>
               </div>
             </div>
           </div>
-          <!--===== portfolio-item end =====-->
-          <!--===== portfolio-item start =====-->
+
           <div class="portfolio-item" data-category="mobile-project">
             <div class="portfolio-item-inner">
               <div class="portfolio-img">
-                <img src="images/portfolio/mobile4.png" alt="" loading="lazy" />
+                <img src="images/portfolio/mobile4.png" alt="تطبيق موبايل — صفحة إعدادات" loading="lazy" decoding="async" />
               </div>
               <div class="portfolio-info">
-                <h4>mobile-project</h4>
-                <div class="icon">
-                  <i class="fa fa-search"></i>
-                </div>
+                <h4>تطبيق إعدادات</h4>
+                <div class="icon" aria-hidden="true"><i class="fa fa-search"></i></div>
               </div>
             </div>
           </div>
-          <!--===== portfolio-item end =====-->
-          <!--===== portfolio-item start =====-->
+
           <div class="portfolio-item" data-category="mobile-project">
             <div class="portfolio-item-inner">
               <div class="portfolio-img">
-                <img src="images/portfolio/mobile5.png" alt="" loading="lazy" />
+                <img src="images/portfolio/mobile5.png" alt="تطبيق موبايل — شاشة قوائم" loading="lazy" decoding="async" />
               </div>
               <div class="portfolio-info">
-                <h4>mobile-project</h4>
-                <div class="icon">
-                  <i class="fa fa-search"></i>
-                </div>
+                <h4>تطبيق قوائم</h4>
+                <div class="icon" aria-hidden="true"><i class="fa fa-search"></i></div>
               </div>
             </div>
           </div>
-          <!--===== portfolio-item end =====-->
-          <!--===== portfolio-item start =====-->
+
           <div class="portfolio-item" data-category="mobile-project">
             <div class="portfolio-item-inner">
               <div class="portfolio-img">
-                <img src="images/portfolio/mobile6.png" alt="" loading="lazy" />
+                <img src="images/portfolio/mobile6.png" alt="تطبيق موبايل — شاشة ملفات شخصية" loading="lazy" decoding="async" />
               </div>
               <div class="portfolio-info">
-                <h4>mobile-project</h4>
-                <div class="icon">
-                  <i class="fa fa-search"></i>
-                </div>
+                <h4>تطبيق ملفات</h4>
+                <div class="icon" aria-hidden="true"><i class="fa fa-search"></i></div>
               </div>
             </div>
           </div>
-          <!--===== portfolio-item end =====-->
-          <!--===== portfolio-item start =====-->
+
           <div class="portfolio-item" data-category="mobile-project">
             <div class="portfolio-item-inner">
               <div class="portfolio-img">
-                <img src="images/portfolio/mobile7.png" alt="" loading="lazy" />
+                <img src="images/portfolio/mobile7.png" alt="تطبيق موبايل — شاشة متجر" loading="lazy" decoding="async" />
               </div>
               <div class="portfolio-info">
-                <h4>mobile-project</h4>
-                <div class="icon">
-                  <i class="fa fa-search"></i>
-                </div>
+                <h4>تطبيق متجر</h4>
+                <div class="icon" aria-hidden="true"><i class="fa fa-search"></i></div>
               </div>
             </div>
           </div>
-          <!--===== portfolio-item end =====-->
-          <!--===== portfolio-item start =====-->
+
           <div class="portfolio-item" data-category="mobile-project">
             <div class="portfolio-item-inner">
               <div class="portfolio-img">
-                <img src="images/portfolio/mobile8.png" alt="" loading="lazy" />
+                <img src="images/portfolio/mobile8.png" alt="تطبيق موبايل — شاشة تواصل" loading="lazy" decoding="async" />
               </div>
               <div class="portfolio-info">
-                <h4>mobile-project</h4>
-                <div class="icon">
-                  <i class="fa fa-search"></i>
-                </div>
+                <h4>تطبيق تواصل</h4>
+                <div class="icon" aria-hidden="true"><i class="fa fa-search"></i></div>
               </div>
             </div>
           </div>
-          <!--===== portfolio-item end =====-->
-          <!--===== portfolio-item start =====-->
+
           <div class="portfolio-item" data-category="mobile-project">
             <div class="portfolio-item-inner">
               <div class="portfolio-img">
-                <img src="images/portfolio/mobile9.png" alt="" loading="lazy" />
+                <img src="images/portfolio/mobile9.png" alt="تطبيق موبايل — شاشة تفاصيل" loading="lazy" decoding="async" />
               </div>
               <div class="portfolio-info">
-                <h4>mobile-project</h4>
-                <div class="icon">
-                  <i class="fa fa-search"></i>
-                </div>
+                <h4>تطبيق تفاصيل</h4>
+                <div class="icon" aria-hidden="true"><i class="fa fa-search"></i></div>
               </div>
             </div>
           </div>
-          <!--===== portfolio-item end =====-->
+
+          <!-- عناصر فيديو (تذكير: أعِد تسمية المجلد إلى video/) -->
           <div class="portfolio-item" data-category="power-point">
             <div class="portfolio-item-inner-video">
-              <video width="350" height="300" controls>
-                <source
-                  src="vedio/Kindergarten-Education-System.mp4"
-                  type="video/mp4"
-                />
-              </video>
-              
+              <figure>
+                <video width="350" height="300" controls preload="metadata" playsinline>
+                  <source src="video/Kindergarten-Education-System.mp4" type="video/mp4" />
+                </video>
+                <figcaption>عرض مشروع: نظام التعليم التمهيدي</figcaption>
+              </figure>
             </div>
           </div>
+
           <div class="portfolio-item" data-category="word-doc">
-            <video width="350" height="300" controls>
-              <source
-                src="vedio/Online-OpenSooq-Application.mp4"
-                type="video/mp4"
-              />
-            </video>
+            <div class="portfolio-item-inner-video">
+              <figure>
+                <video width="350" height="300" controls preload="metadata" playsinline>
+                  <source src="video/Online-OpenSooq-Application.mp4" type="video/mp4" />
+                </video>
+                <figcaption>عرض مشروع: تطبيق سوق إلكتروني</figcaption>
+              </figure>
+            </div>
           </div>
+
           <div class="portfolio-item" data-category="power-point">
-            <video width="350" height="300" controls>
-              <source src="vedio/عرض-مشروع-صالون-الرجال.mp4" type="video/mp4" />
-            </video>
+            <div class="portfolio-item-inner-video">
+              <figure>
+                <video width="350" height="300" controls preload="metadata" playsinline>
+                  <source src="video/عرض-مشروع-صالون-الرجال.mp4" type="video/mp4" />
+                </video>
+                <figcaption>عرض مشروع: صالون الرجال</figcaption>
+              </figure>
+            </div>
           </div>
+
         </div>
       </div>
     </section>
     <!--===== Portfolio Section End =====-->
+
     <!--===== Technologies Section Start =====-->
     <section class="technologies section-padding" id="technologies">
       <div class="container">
         <div class="row">
           <div class="section-title text-align">
             <h5 class="sub-title">التقنيات</h5>
-            <h3 class="main-title">خطط التقنيات المستخدمة</h3>
-            <ul class="line">
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
+            <h3 class="main-title">التقنيات المستخدمة</h3>
+            <ul class="line" aria-hidden="true"><li></li><li></li><li></li></ul>
           </div>
-          <!--===== Section Title =====-->
         </div>
         <div class="row justify-content-center">
           <div class="technologies-item">
             <div class="technologies-plan">
-              <div class="technologies-header">
-                <h3>مسار الويب</h3>
-              </div>
-              <div class="technologies-price">
-                <span class="currency">st</span>
-                <span class="price">1</span>
-                <span class="period">/Web</span>
-              </div>
+              <div class="technologies-header"><h3>مسار الويب</h3></div>
+              <div class="technologies-price"><span class="currency">st</span><span class="price">1</span><span class="period">/Web</span></div>
               <div class="technologies-body">
                 <ul>
-                  <li><i class="fa fa-check"></i> HTML</li>
-                  <li><i class="fa fa-check"></i> CSS</li>
-                  <li><i class="fa fa-check"></i> JAVA SCRIPT</li>
-                  <li><i class="fa fa-check"></i> PHP</li>
-                  <li><i class="fa fa-check"></i> MYSQL DB</li>
-                  <li><i class="fa fa-check"></i> MERN Stack</li>
+                  <li><i class="fa fa-check" aria-hidden="true"></i> HTML</li>
+                  <li><i class="fa fa-check" aria-hidden="true"></i> CSS</li>
+                  <li><i class="fa fa-check" aria-hidden="true"></i> JavaScript</li>
+                  <li><i class="fa fa-check" aria-hidden="true"></i> PHP</li>
+                  <li><i class="fa fa-check" aria-hidden="true"></i> MySQL</li>
+                  <li><i class="fa fa-check" aria-hidden="true"></i> MERN Stack</li>
                 </ul>
               </div>
-              <div class="technologies-footer">
-                <a href="#contact" class="btn-2">المزيد</a>
-              </div>
+              <div class="technologies-footer"><a href="#contact" class="btn-2">المزيد</a></div>
             </div>
           </div>
+
           <div class="technologies-item">
             <div class="technologies-plan">
-              <div class="technologies-header">
-                <h3>مسار الموبايل</h3>
-                <!-- <h2 class="best-value">best value</h2> -->
-              </div>
-              <div class="technologies-price">
-                <span class="currency">nd</span>
-                <span class="price">2</span>
-                <span class="period">/Mobile</span>
-              </div>
+              <div class="technologies-header"><h3>مسار الموبايل</h3></div>
+              <div class="technologies-price"><span class="currency">nd</span><span class="price">2</span><span class="period">/Mobile</span></div>
               <div class="technologies-body">
                 <ul>
-                  <li><i class="fa fa-check"></i> JAVA / KOTLIN</li>
-                  <li><i class="fa fa-check"></i> DART</li>
-                  <li><i class="fa fa-check"></i> XML</li>
-                  <li><i class="fa fa-check"></i> FIREBASE</li>
-                  <li><i class="fa fa-check"></i> MYSQL</li>
+                  <li><i class="fa fa-check" aria-hidden="true"></i> Java / Kotlin</li>
+                  <li><i class="fa fa-check" aria-hidden="true"></i> Dart (Flutter)</li>
+                  <li><i class="fa fa-check" aria-hidden="true"></i> XML</li>
+                  <li><i class="fa fa-check" aria-hidden="true"></i> Firebase</li>
+                  <li><i class="fa fa-check" aria-hidden="true"></i> MySQL</li>
                 </ul>
               </div>
-              <div class="technologies-footer">
-                <a href="#contact" class="btn-1">المزيد</a>
-              </div>
+              <div class="technologies-footer"><a href="#contact" class="btn-1">المزيد</a></div>
             </div>
           </div>
+
           <div class="technologies-item">
             <div class="technologies-plan">
-              <div class="technologies-header">
-                <h3>مسار سطح المكتب</h3>
-              </div>
-              <div class="technologies-price">
-                <span class="currency">ed</span>
-                <span class="price">3</span>
-                <span class="period">/Desktop</span>
-              </div>
+              <div class="technologies-header"><h3>مسار سطح المكتب</h3></div>
+              <div class="technologies-price"><span class="currency">ed</span><span class="price">3</span><span class="period">/Desktop</span></div>
               <div class="technologies-body">
                 <ul>
-                  <li><i class="fa fa-check"></i>#C</li>
-                  <li><i class="fa fa-check"></i> JAVA SCRIPT</li>
-                  <li><i class="fa fa-check"></i> Angular</li>
-                  <li><i class="fa fa-check"></i> MYSQL</li>
-                  <li><i class="fa fa-check"></i> JSON</li>
-                  <li><i class="fa fa-check"></i> ++C</li>
-                  <li><i class="fa fa-check"></i> Another Great Technology</li>
+                  <li><i class="fa fa-check" aria-hidden="true"></i> C#</li>
+                  <li><i class="fa fa-check" aria-hidden="true"></i> JavaScript</li>
+                  <li><i class="fa fa-check" aria-hidden="true"></i> Angular</li>
+                  <li><i class="fa fa-check" aria-hidden="true"></i> MySQL</li>
+                  <li><i class="fa fa-check" aria-hidden="true"></i> JSON</li>
+                  <li><i class="fa fa-check" aria-hidden="true"></i> C++</li>
+                  <!-- حُذِفَت عبارة "Another Great Technology" -->
                 </ul>
               </div>
-              <div class="technologies-footer">
-                <a href="#contact" class="btn-2">المزيد</a>
-              </div>
+              <div class="technologies-footer"><a href="#contact" class="btn-2">المزيد</a></div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
-    <!--===== technologies Section End =====-->
+    <!--===== Technologies Section End =====-->
+
     <!--===== Contact Section Start =====-->
     <section class="contact-section section-padding" id="contact">
       <div class="container">
         <div class="row">
           <div class="section-title text-align">
             <h5 class="sub-title">اتصل بنا</h5>
-            <h3 class="main-title">ابقى على تواصل</h3>
-            <ul class="line">
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
+            <h3 class="main-title">ابقَ على تواصل</h3>
+            <ul class="line" aria-hidden="true"><li></li><li></li><li></li></ul>
           </div>
-          <!--===== Section Title =====-->
         </div>
         <div class="row">
-          <!--===== contact item start =====-->
           <div class="contact-item">
             <div class="contact-item-inner">
-              <i class="fab fa-whatsapp"></i> <span>الواتس</span>
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> <span>الواتساب</span>
               <p>
-                <a
-                  href="https://wa.me/967714294340"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >انقر هنا</a
-                >
+                <a href="https://wa.me/967714294340" target="_blank" rel="noopener noreferrer">967714294340</a>
               </p>
             </div>
           </div>
-          <!--===== contact item end =====-->
-          <!--===== contact item start =====-->
           <div class="contact-item">
             <div class="contact-item-inner">
-              <i class="fas fa-envelope"></i>
+              <i class="fas fa-envelope" aria-hidden="true"></i>
               <span>البريد الإلكتروني</span>
               <p>
-                <a
-                  href="mailto:ammaralnggar@gmail.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >انقر هنا</a
-                >
+                <a href="mailto:ammaralnggar@gmail.com">ammaralnggar@gmail.com</a>
               </p>
             </div>
           </div>
-          <!--===== contact item end =====-->
-          <!--===== contact item start =====-->
           <div class="contact-item">
             <div class="contact-item-inner">
-              <i class="fas fa-phone"></i>
+              <i class="fas fa-phone" aria-hidden="true"></i>
               <span>الهاتف</span>
               <p>
-                <a
-                  href="tel:+967774344625"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >انقر هنا</a
-                >
+                <a href="tel:+967774344625">+967 774 344 625</a>
               </p>
             </div>
           </div>
-          <!--===== contact item end =====-->
         </div>
-        <!--===== Contact Form =====-->
+
         <div class="row">
           <div class="contact-form">
-            <form action="">
+            <form action="#" method="post" novalidate>
               <div class="row">
                 <div class="w-50">
                   <div class="input-group">
-                    <input
-                      type="text"
-                      placeholder="الإسم:"
-                      class="input-control"
-                    />
+                    <label for="name" class="sr-only">الإسم</label>
+                    <input id="name" name="name" type="text" placeholder="الإسم" class="input-control" autocomplete="name" />
                   </div>
                   <div class="input-group">
-                    <input
-                      type="email"
-                      placeholder="البريد الإلكتروني:"
-                      class="input-control"
-                    />
+                    <label for="email" class="sr-only">البريد الإلكتروني</label>
+                    <input id="email" name="email" type="email" placeholder="البريد الإلكتروني" class="input-control" autocomplete="email" />
                   </div>
                   <div class="input-group">
-                    <input
-                      type="text"
-                      placeholder="الموضوع:"
-                      class="input-control"
-                    />
+                    <label for="subject" class="sr-only">الموضوع</label>
+                    <input id="subject" name="subject" type="text" placeholder="الموضوع" class="input-control" />
                   </div>
                 </div>
                 <div class="w-50">
                   <div class="input-group">
-                    <textarea
-                      name=""
-                      class="input-control"
-                      placeholder="الرسالة"
-                      id=""
-                      cols="30"
-                      rows="10"
-                    ></textarea>
+                    <label for="message" class="sr-only">الرسالة</label>
+                    <textarea id="message" name="message" class="input-control" placeholder="الرسالة" rows="10"></textarea>
                   </div>
                 </div>
               </div>
@@ -841,43 +645,35 @@
       </div>
     </section>
     <!--===== Contact Section End =====-->
+
     <!--===== Footer Section Start =====-->
     <footer class="footer">
       <div class="container">
         <div class="row justify-content-center">
-          <p class="copyright-text">
-            تم تصميم هذا الموقع بواسطة م.عمار النجار @ 2020-2025
-          </p>
+          <p class="copyright-text">تم تصميم هذا الموقع بواسطة م. عمار النجار © 2020–2025</p>
         </div>
       </div>
     </footer>
     <!--===== Footer Section End =====-->
+
     <!--===== Lightbox Start =====-->
-    <div class="lightbox">
+    <div class="lightbox" role="dialog" aria-modal="true" aria-label="عارض الصور">
       <div class="lightbox-content">
-        <div class="lightbox-close">&times;</div>
-        <img
-          src="images/portfolio/portfolio-2.jpg"
-          onclick="nextItem()"
-          class="lightbox-img"
-          alt="" loading="lazy"
-        />
+        <button class="lightbox-close" aria-label="إغلاق">&times;</button>
+        <img src="images/portfolio/portfolio-2.jpg" onclick="nextItem()" class="lightbox-img" alt="صورة من المعرض" loading="lazy" />
         <div class="lightbox-caption">
-          <div class="caption-text"></div>
+          <div class="caption-text" aria-live="polite"></div>
           <div class="caption-counter"></div>
         </div>
       </div>
       <div class="lightbox-controls">
-        <div class="prev-item" onclick="prevItem()">
-          <i class="fa fa-angle-left"></i>
-        </div>
-        <div class="next-item" onclick="nextItem()">
-          <i class="fa fa-angle-right"></i>
-        </div>
+        <button class="prev-item" onclick="prevItem()" aria-label="السابق"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+        <button class="next-item" onclick="nextItem()" aria-label="التالي"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
       </div>
     </div>
     <!--===== Lightbox End =====-->
-    <!--===== Main JS =====-->
-    <script src="js/main.js"></script>
+
+    <!--===== Scripts =====-->
+    <script src="js/main.js" defer></script>
   </body>
 </html>

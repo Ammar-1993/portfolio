@@ -1,6 +1,5 @@
 # Portfolio — Eng. Ammar Al‑Najjar
 
-> A professional README in English for your portfolio repository. Includes live links, GitHub Pages deployment steps, SEO/Accessibility/Performance checklists, and quick customization notes (dark theme + unified card ratio).
 
 [![Status](https://img.shields.io/badge/status-live-brightgreen.svg)](https://ammar-1993.github.io/portfolio/)
 ![Made with](https://img.shields.io/badge/Made%20with-HTML5%20%7C%20CSS3%20%7C%20JS-1f6feb)

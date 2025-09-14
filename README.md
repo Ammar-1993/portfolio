@@ -1,218 +1,166 @@
-# Portfolio Website
+# Portfolio — Eng. Ammar Al‑Najjar
 
-![Static Site](https://img.shields.io/badge/type-static_site-informational)
-![Made with HTML/CSS/JS](https://img.shields.io/badge/made%20with-HTML%2C%20CSS%2C%20JS-blue)
-![RTL](https://img.shields.io/badge/support-RTL%20%26%20Arabic-success)
-[![Pages](https://img.shields.io/github/deployments/Ammar-1993/portfolio/github-pages?label=GitHub%20Pages\&logo=github)](https://ammar-1993.github.io/portfolio/)
-[![License: MIT](https://img.shields.io/badge/license-MIT-yellow)](#-license)
+> A professional README in English for your portfolio repository. Includes live links, GitHub Pages deployment steps, SEO/Accessibility/Performance checklists, and quick customization notes (dark theme + unified card ratio).
 
-> **Languages:** 🇸🇦 العربية | 🇬🇧 English (scroll down)
+[![Status](https://img.shields.io/badge/status-live-brightgreen.svg)](https://ammar-1993.github.io/portfolio/)
+![Made with](https://img.shields.io/badge/Made%20with-HTML5%20%7C%20CSS3%20%7C%20JS-1f6feb)
+![RTL](https://img.shields.io/badge/Language-AR%20%7C%20RTL-0ea5e9)
+![Theme](https://img.shields.io/badge/Theme-Dark-0b1220)
+
+## 🔗 Links
+- **Live site:** https://ammar-1993.github.io/portfolio/
+- **Repository:** https://github.com/Ammar-1993/portfolio
 
 ---
 
-## 🇸🇦 نظرة عامة
+## 📌 Overview
+An Arabic (RTL) portfolio website showcasing services, selected projects (Web / Mobile / Desktop), technology stacks, and contact options. Optimized for **speed**, **accessibility**, and **SEO** with a **dark theme** by default.
 
-موقع بورتفوليو شخصي بسيط وسريع مبني بتقنيات **HTML/CSS/JavaScript** ويستهدف متحدثي العربية (اتجاه **RTL**). يحتوي على أقسام: **الرئيسية، من أنا، الخدمات، الأعمال، التقنيات، تواصل** مع أزرار دعوة لاتخاذ إجراء (CTA) وروابط واتساب/بريد.
+## ✨ Highlights
+- 🎨 **Dark theme** with clear brand color.
+- 🧭 **Sticky navbar** + active section highlight on scroll.
+- 🗂️ **Filterable portfolio** (web/mobile/desktop) with a **Lightbox** viewer.
+- 🖼️ **Unified card ratio** via CSS `aspect-ratio` (easily switchable).
+- ♿ **Accessibility:** semantic HTML, alt text, keyboard support, Escape to close Lightbox.
+- ⚡ **Performance:** lazy images, deferred JS, minimal scroll work.
+- 🌐 **SEO/Social:** title/description, Open Graph/Twitter cards, and JSON‑LD (Person).
 
-### ✨ المزايا
+## 🧱 Tech Stack
+- **Frontend:** HTML5, CSS3 (Bootstrap RTL), Font Awesome
+- **JavaScript:** Vanilla JS (no heavy libs)
+- **Hosting:** GitHub Pages
 
-* تصميم متجاوب يعمل جيدًا على الموبايل والكمبيوتر.
-* دعم اللغة العربية واتجاه **rtl**.
-* أقسام واضحة مع روابط تنقل (Navbar) وثابتة.
-* وسوم وصفية لتحسين محركات البحث (SEO) وقابلة للتخصيص.
-* إمكانية النشر التلقائي عبر **GitHub Pages**.
+---
 
-### 🗂️ هيكل المشروع
-
-```
+## 🗂️ Project Structure
+```text
 portfolio/
-├── index.html
-├── css/
-├── js/
-├── images/
-├── video/           # إن وُجد: اسم المجلد الموصى به
-└── assets/          # اختياري: خطوط/أيقونات
+├─ css/
+│  ├─ bootstrap-rtl.min.css
+│  └─ style.css              # Dark theme + accessibility/performance tweaks
+├─ images/                   # Prefer WebP/AVIF
+│  └─ og-cover.jpg           # Social sharing image
+├─ js/
+│  └─ main.js                # Nav, filters, lightbox, skills
+├─ video/                    # ← renamed from vedio/
+│  └─ *.mp4
+└─ index.html
 ```
-
-> **ملاحظة:** إذا كان اسم المجلد الحالي `vedio/` فالأفضل إعادة تسميته إلى `video/` لتجنّب الأخطاء:
->
-> ```bash
-> git mv vedio video
-> git commit -m "chore: rename vedio -> video"
-> ```
-
-### 🧑‍💻 تشغيل محليًا
-
-> يتطلّب أي خادم محلي بسيط (لتفادي قيود المتصفح على الملفات المحلية)
-
-**الخيار 1 — Python**
-
-```bash
-# داخل مجلد المشروع
-python3 -m http.server 8000
-# افتح http://localhost:8000
-```
-
-**الخيار 2 — Node (http-server)**
-
-```bash
-npm i -g http-server
-http-server -p 8000
-```
-
-**الخيار 3 — VS Code Live Server**
-
-* افتح المشروع في VS Code
-* ثبّت إضافة *Live Server*
-* اضغط "Go Live"
-
-### ☁️ النشر على GitHub Pages
-
-1. ادفع (push) التعديلات إلى فرع `main`.
-2. من إعدادات المستودع → **Pages** → اختر المصدر `Deploy from a branch` → الفرع `main` ومسار `/root`.
-3. بعد دقائق سيتوفّر الموقع على: `https://<username>.github.io/portfolio/`.
-
-### 🧩 التخصيص السريع
-
-* **عنوان الصفحة والوصف:** داخل `<head>` في `index.html`.
-* **اللغة والاتجاه:** تأكد من السطر:
-
-  ```html
-  <html lang="ar" dir="rtl">
-  ```
-* **الصور:** أضف نصًا بديلاً (alt) وصِف الصورة بدقة.
-* **الروابط:** حدّث روابط واتساب/بريد/هاتف.
-* **الأقسام:** عدّل النصوص والقوائم حسب خدماتك.
-
-### 🚀 تحسين الأداء وSEO
-
-أضف داخل `<head>`:
-
-```html
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>محفظة أعمال — اسمك</title>
-<meta name="description" content="خدمات تطوير مواقع الويب والتطبيقات مع تسليم احترافي." />
-
-<!-- Open Graph / Twitter -->
-<meta property="og:type" content="website" />
-<meta property="og:title" content="محفظة أعمال — اسمك" />
-<meta property="og:description" content="نماذج أعمالي وخدماتي التقنية." />
-<meta property="og:image" content="https://your-domain/images/og-cover.jpg" />
-<meta property="og:url" content="https://your-domain/" />
-<meta name="twitter:card" content="summary_large_image" />
-```
-
-تحميل كسول للصور والفيديو:
-
-```html
-<img src="images/work1.jpg" alt="مشروع: متجر إلكتروني" loading="lazy" decoding="async" width="640" height="428">
-<video src="video/demo.mp4" preload="metadata" controls></video>
-```
-
-### 🧪 فحوصات يدوية سريعة (QA)
-
-* [ ] يعمل شريط التنقل ويؤدي إلى الأقسام الصحيحة.
-* [ ] لا توجد صور مكسورة أو روابط غير صالحة.
-* [ ] الخطوط قابلة للقراءة على الموبايل (اختبر 320px فما فوق).
-* [ ] التباين اللوني مناسب (تحقق من **contrast**).
-* [ ] عناصر تفاعلية قابلة للوصول بلوحة المفاتيح (**Tab/Enter**).
-
-### 🗺️ خارطة الطريق (اقتراحات)
-
-* تبديل اللغة (AR/EN) بزر في الترويسة.
-* إضافة دراسات حالة (Problem → Solution → Stack → Link).
-* صفحة "مدونة" خفيفة للمقالات القصيرة.
-* ملفات `sitemap.xml` و `robots.txt`.
-* ربط تحليلات (Plausible/GA4).
-
-### 🤝 المساهمة
-
-الطلبات مرحّب بها! افتح **Issue** أو **Pull Request** مع وصف واضح.
-
-### 📄 الترخيص
-
-مشروع مفتوح المصدر تحت رخصة **MIT**. راجع ملف [`LICENSE`](./LICENSE).
-
-### 📬 تواصل
-
-* البريد: `<your-email@example.com>`
-* واتساب: `https://wa.me/<your-number>`
-* لينكدإن: `https://www.linkedin.com/in/<your-handle>/`
+> **Important:** If your folder is still named `vedio/`, rename it to **`video/`** and update paths in `index.html`.
 
 ---
 
-## 🇬🇧 Overview (English)
-
-A fast, static **HTML/CSS/JavaScript** personal portfolio tailored for **Arabic/RTL**.
-
-### Features
-
-* Responsive layout (mobile‑first).
-* Arabic language & RTL direction.
-* Clean sections: Home, About, Services, Work, Tech, Contact.
-* SEO‑ready `<head>` and social tags.
-* Easy **GitHub Pages** deployment.
-
-### Project Structure
-
-```
-portfolio/
-├── index.html
-├── css/
-├── js/
-├── images/
-├── video/
-└── assets/
-```
-
-### Run Locally
-
+## 🚀 Quick Start (Local)
+1) **Clone:**
 ```bash
-python3 -m http.server 8000   # or: http-server -p 8000
+git clone https://github.com/Ammar-1993/portfolio.git
+cd portfolio
 ```
-
-Open `http://localhost:8000`.
-
-### Deploy (GitHub Pages)
-
-Push to `main`, enable **Pages** from repository Settings → Pages → Deploy from a branch → `main` /root.
-
-### SEO & Performance Snippets
-
-See the Arabic section for `<head>` tags, lazy‑loading images, and video tips.
-
-### Roadmap
-
-* Language toggle (AR/EN)
-* Case studies with live demos
-* Sitemap & robots
-
-### License
-
-Released under the **MIT License** — see [`LICENSE`](./LICENSE).
-
-### Contact
-
-* Email: `<your-email@example.com>`
-* WhatsApp: `https://wa.me/<your-number>`
-* LinkedIn: `https://www.linkedin.com/in/<your-handle>/`
+2) **Open** `index.html` in the browser, or use VS Code **Live Server** extension.
 
 ---
 
-## 📸 لقطات (Screenshots)
-
-ضع لقطات في `docs/` ثم اربطها هنا:
-
-```markdown
-![Homepage](docs/screenshot-home.jpg)
-![Services](docs/screenshot-services.jpg)
+## 🌍 Deploy on GitHub Pages
+If not already live:
+1) Go to **Settings → Pages**.
+2) **Source:** *Deploy from a branch*.
+3) **Branch:** `main` & **Folder:** `/ (root)`, then **Save**.
+4) Your site will be available at:
+```
+https://ammar-1993.github.io/portfolio/
 ```
 
-## 🔗 روابط مفيدة (Optional)
+---
 
-* أيقونات: [https://icons.getbootstrap.com/](https://icons.getbootstrap.com/) | [https://fontawesome.com/](https://fontawesome.com/)
-* مولد شارات: [https://shields.io](https://shields.io)
-* فحص التباين: [https://webaim.org/resources/contrastchecker/](https://webaim.org/resources/contrastchecker/)
+## 🛠️ Customization
+### Brand color & fonts
+- Change the primary color in `style.css`:
+```css
+:root{ --main-color:#00a78e; /* brand color */ }
+```
+- Default font: **Cairo** (you can adjust weights or swap if needed).
 
+### Unified card ratio (Portfolio grid)
+Set once via CSS variable (default **16:9** if you added it inline on `<html>`):
+```css
+:root{
+  --tile-ratio: 16/9; /* switch to 4/3 or 1/1 as you prefer */
+  --tile-min-h: 220px;
+}
+/* media box */
+.portfolio .portfolio-item-inner .portfolio-img,
+.portfolio .portfolio-item-inner-video{
+  aspect-ratio: var(--tile-ratio);
+  min-height: var(--tile-min-h);
+  display: grid; place-items: center;
+  background:#0e1626;
+}
+/* media fit */
+.portfolio .portfolio-item-inner .portfolio-img img,
+.portfolio .portfolio-item-inner-video video{
+  width:100%; height:100%; object-fit: cover; /* or 'contain' to avoid any crop */
+}
+```
 
+### Contact links
+Update WhatsApp/Mail/Tel in the **Contact** section of `index.html`.
+
+---
+
+## 🔍 SEO (already in `index.html`)
+- `<title>` and `<meta name="description">`
+- Open Graph + Twitter Card (ensure `images/og-cover.jpg` exists)
+- JSON‑LD **Person** (name/phone/email)
+- `lang="ar" dir="rtl"` on `<html>`
+
+### Quick checklist
+- [ ] Accurate Arabic title and description
+- [ ] OG image ≥ 1200×630
+- [ ] Valid contact/social links
+
+---
+
+## ♿ Accessibility
+- Descriptive `alt` attributes for images
+- Keyboard navigation (Tab, Enter/Space to open Lightbox)
+- Close Lightbox via **Esc**
+- Sufficient contrast in dark theme
+
+---
+
+## ⚡ Performance
+- Use **WebP/AVIF** when possible
+- Add `loading="lazy"` to non-critical images
+- Provide `width`/`height` to images to prevent CLS
+- Keep `main.js` with `defer`
+
+---
+
+## 🧪 Lighthouse targets
+- Performance ≥ 90
+- Accessibility ≥ 90
+- Best Practices ≥ 90
+- SEO ≥ 90
+
+> Tip: Chrome DevTools → Lighthouse → Generate report.
+
+---
+
+## 🧾 License
+No explicit license yet. **Recommended:** add MIT license:
+1) Create `LICENSE` file
+2) Paste MIT text (with year & your name) or use GitHub template
+
+---
+
+## 🤝 Contributing
+Personal project, but small PRs for fixes or a11y/perf improvements are welcome.
+
+---
+
+## 📬 Contact
+- WhatsApp: `+967714294340`
+- Email: `ammaralnggar@gmail.com`
+- Phone: `+967774344625`
+
+> Need this README in Arabic too? You already have it! Want badges/screenshots added automatically? Let me know.

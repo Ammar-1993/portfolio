@@ -246,3 +246,66 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
   :root{ --tile-min-h: 180px; }
 }
 
+
+
+/* افتراضي: فاتح */
+:root {
+  --bg: #ffffff;
+  --fg: #0f172a;
+  --muted: #475569;
+  --card: #f8fafc;
+  --border: #e2e8f0;
+  --link: #1d4ed8;
+}
+
+/* إذا لم يحدَّد ثيم يدويًا، اتبع تفضيل النظام */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #0b0f19;
+    --fg: #e5e7eb;
+    --muted: #94a3b8;
+    --card: #0f172a;
+    --border: #1f2937;
+    --link: #60a5fa;
+  }
+}
+
+/* فرض الثيم الداكن عندما يكون محددًا يدويًا */
+:root[data-theme="dark"] {
+  --bg: #0b0f19;
+  --fg: #e5e7eb;
+  --muted: #94a3b8;
+  --card: #0f172a;
+  --border: #1f2937;
+  --link: #60a5fa;
+}
+
+/* طبّق المتغيرات */
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* أمثلة تعيين */
+a { color: var(--link); }
+.section, .card { background: var(--card); border: 1px solid var(--border); }
+
+/* سلاسة انتقال بسيطة (مع احترام تقليل الحركة) */
+@media (prefers-reduced-motion: no-preference) {
+  html, body, .card, a, header, footer {
+    transition: background-color 150ms linear, color 150ms linear, border-color 150ms linear;
+  }
+}
+
+.theme-toggle {
+  background: var(--card);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  padding: .5rem .75rem;
+  border-radius: .75rem;
+  cursor: pointer;
+}
+.theme-toggle:focus { outline: 2px solid var(--link); outline-offset: 2px; }
+
+
+

@@ -1,88 +1,67 @@
 // =====================================================
-// main.js — v3 (Theme + Nav + Filters + Lightbox A11y)
-// متوافق مع هيكلة المشروع الحاليّة دون كسر سلوك HTML/CSS/JS
+// main.js — v4 (Theme + Nav + Filters + Lightbox A11y)
 // =====================================================
-
 
 // ===== Theme (light/dark) =====
 (function () {
   const html = document.documentElement;
   const themeMeta =
     document.querySelector('meta[name="theme-color"]') ||
-    document.getElementById('theme-color'); // توافق مع الإصدارات السابقة
+    document.getElementById('theme-color');
   const themeBtnId = 'theme-toggle';
 
   const mqDark = window.matchMedia
     ? window.matchMedia('(prefers-color-scheme: dark)')
     : null;
 
-  function prefersDark() {
-    return mqDark ? mqDark.matches : false;
-  }
+  const prefersDark = () => (mqDark ? mqDark.matches : false);
 
-  function computeIsDark() {
-    return (
-      html.getAttribute('data-theme') === 'dark' ||
-      (!html.hasAttribute('data-theme') && prefersDark())
-    );
-  }
+  const computeIsDark = () =>
+    html.getAttribute('data-theme') === 'dark' ||
+    (!html.hasAttribute('data-theme') && prefersDark());
 
   function setColorSchemeCSS(isDark) {
-    // يساعد المتصفح على تلوين عناصر النماذج والـscrollbars تلقائياً
     html.style.colorScheme = isDark ? 'dark' : 'light';
-    if (themeMeta)
-      themeMeta.setAttribute('content', isDark ? '#0b0f19' : '#ffffff');
+    if (themeMeta) themeMeta.setAttribute('content', isDark ? '#0b0f19' : '#ffffff');
   }
 
   function applyTheme(themeOrNull) {
     if (themeOrNull === 'light' || themeOrNull === 'dark') {
       html.setAttribute('data-theme', themeOrNull);
-      try {
-        localStorage.setItem('theme', themeOrNull);
-      } catch (_) {}
+      try { localStorage.setItem('theme', themeOrNull); } catch (_) {}
     } else {
       html.removeAttribute('data-theme');
-      try {
-        localStorage.removeItem('theme');
-      } catch (_) {}
+      try { localStorage.removeItem('theme'); } catch (_) {}
     }
-    setColorSchemeCSS(computeIsDark());
-    // تحديث حالة زر التبديل (إن وُجد)
+    const isDark = computeIsDark();
+    setColorSchemeCSS(isDark);
     const btn = document.getElementById(themeBtnId);
-    if (btn) btn.setAttribute('aria-pressed', String(computeIsDark()));
+    if (btn) btn.setAttribute('aria-pressed', String(isDark));
   }
 
   function toggleTheme() {
-    const current = html.getAttribute('data-theme'); // قد تكون null
-    const next =
-      current === 'dark' || (current === null && prefersDark())
-        ? 'light'
-        : 'dark';
+    const current = html.getAttribute('data-theme'); // null | 'light' | 'dark'
+    const next = current === 'dark' || (current === null && prefersDark()) ? 'light' : 'dark';
     applyTheme(next);
   }
 
-  // Initialize from localStorage, else follow system
+  // init from storage (else follow system)
   (function initTheme() {
     let stored = null;
-    try {
-      stored = localStorage.getItem('theme');
-    } catch (_) {}
+    try { stored = localStorage.getItem('theme'); } catch (_) {}
     applyTheme(stored === 'light' || stored === 'dark' ? stored : null);
   })();
 
-  // React to system changes only when user didn't choose explicitly
+  // react to system changes when user didn't choose explicitly
   if (mqDark) {
     const onChange = () => {
-      try {
-        if (!localStorage.getItem('theme')) applyTheme(null);
-      } catch (_) {}
+      try { if (!localStorage.getItem('theme')) applyTheme(null); } catch (_) {}
     };
-    // دعم Safari القديم
     if ('addEventListener' in mqDark) mqDark.addEventListener('change', onChange);
     else if ('addListener' in mqDark) mqDark.addListener(onChange);
   }
 
-  // Sync across tabs/windows
+  // sync across tabs
   window.addEventListener('storage', (e) => {
     if (e.key === 'theme') {
       const v = e.newValue;
@@ -90,7 +69,7 @@
     }
   });
 
-  // Bind button
+  // bind button
   document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById(themeBtnId);
     if (btn) {
@@ -104,44 +83,41 @@
 (() => {
   'use strict';
 
-  // ===== أدوات مساعدة سريعة =====
+  // ===== Helpers =====
   const qs = (sel, scope = document) => scope.querySelector(sel);
   const qsa = (sel, scope = document) => Array.from(scope.querySelectorAll(sel));
 
-  // ===== شريط التنقّل (Sticky) + تمييز الرابط النشِط أثناء التمرير =====
+  // ===== Navbar sticky + active link on scroll =====
   const navbar = qs('.navbar');
   const linksContainer = qs('.links');
   const sections = qsa('section[id]');
-  let HEADER_OFFSET = (navbar ? navbar.offsetHeight : 60);
-window.addEventListener('resize', () => {
-  HEADER_OFFSET = (navbar ? navbar.offsetHeight : 60);
-});
+  let HEADER_OFFSET = navbar ? navbar.offsetHeight : 60;
 
+  function recalcHeaderOffset() {
+    HEADER_OFFSET = navbar ? navbar.getBoundingClientRect().height : 60;
+  }
+  window.addEventListener('resize', recalcHeaderOffset);
 
   const setSticky = () => {
     if (!navbar) return;
     if (window.scrollY > 20) navbar.classList.add('sticky');
     else navbar.classList.remove('sticky');
+    recalcHeaderOffset();
   };
 
   function setActiveLink() {
     if (!sections.length || !linksContainer) return;
-    const scrollPos = window.scrollY + HEADER_OFFSET;
+    const scrollPos = window.scrollY + HEADER_OFFSET + 1; // +1 لتفادي الحدود
     let currentId = null;
     for (const section of sections) {
       const top = section.offsetTop;
       const bottom = top + section.offsetHeight;
-      if (scrollPos >= top && scrollPos < bottom) {
-        currentId = section.id;
-        break;
-      }
+      if (scrollPos >= top && scrollPos < bottom) { currentId = section.id; break; }
     }
     qsa('.links a').forEach((a) => a.classList.remove('active'));
     if (currentId) {
       try {
-        const activeLink = qs(
-          `.links a[href*="#${CSS.escape(currentId)}"]`
-        );
+        const activeLink = qs(`.links a[href*="#${CSS.escape(currentId)}"]`);
         if (activeLink) activeLink.classList.add('active');
       } catch (_) {
         const activeLink = qsa('.links a').find((a) =>
@@ -152,66 +128,63 @@ window.addEventListener('resize', () => {
     }
   }
 
-  // تفعيل تمرير سلس يحترم شريط التنقّل اللاصق
+  // smooth internal anchors (respects reduced-motion)
   function bindSmartAnchors() {
-    qsa('.links a[href^="#"]').forEach((a) => {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    qsa('a[href^="#"]:not([href="#"])').forEach((a) => {
       a.addEventListener('click', (e) => {
         const hash = a.getAttribute('href');
         const id = hash && hash.slice(1);
         const target = id ? document.getElementById(id) : null;
-        if (target) {
-          e.preventDefault();
-          const top = Math.max(0, target.offsetTop - HEADER_OFFSET);
-          window.scrollTo({ top, behavior: 'smooth' });
-          history.replaceState(null, '', hash);
-        }
+        if (!target) return;
+        e.preventDefault();
+        const top = Math.max(0, window.pageYOffset + target.getBoundingClientRect().top - HEADER_OFFSET);
+        window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
+        history.replaceState(null, '', hash);
       });
     });
   }
 
+  // scroll loop (rAF-throttled)
   let ticking = false;
-  window.addEventListener(
-    'scroll',
-    () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setSticky();
-          setActiveLink();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    },
-    { passive: true }
-  );
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => { setSticky(); setActiveLink(); ticking = false; });
+      ticking = true;
+    }
+  }, { passive: true });
 
   window.addEventListener('resize', setActiveLink, { passive: true });
   window.addEventListener('hashchange', setActiveLink, { passive: true });
   document.addEventListener('DOMContentLoaded', () => {
-    setSticky();
-    setActiveLink();
-    bindSmartAnchors();
+    setSticky(); setActiveLink(); bindSmartAnchors();
   });
 
-  // ===== قائمة الهاتف (Burger) =====
+  // ===== Mobile menu (burger) =====
   const menu = qs('.menu');
   const menuBtn = qs('.menu-btn');
   if (menu && menuBtn) {
+    const openMenu = () => {
+      menu.classList.add('active');
+      menuBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden'; // منع تمرير الخلفية
+    };
     const closeMenu = () => {
       menu.classList.remove('active');
       menuBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = ''; // استرجاع التمرير
     };
 
-    menuBtn.setAttribute('aria-controls', 'main-menu');
-    menu.setAttribute('id', 'main-menu');
+    // ensure attributes (id may already exist في HTML)
+    if (!menu.id) menu.setAttribute('id', 'main-menu');
+    menuBtn.setAttribute('aria-controls', menu.id);
 
     menuBtn.addEventListener('click', () => {
-      const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
-      menuBtn.setAttribute('aria-expanded', String(!expanded));
-      menu.classList.toggle('active');
+      if (menu.classList.contains('active')) closeMenu();
+      else openMenu();
     });
 
-    // إغلاق القائمة عند الضغط على رابط
+    // إغلاق عند الضغط على رابط داخل القائمة
     qsa('.nav-link', menu).forEach((link) => link.addEventListener('click', closeMenu));
 
     // إغلاق عند الضغط خارجها
@@ -220,18 +193,16 @@ window.addEventListener('resize', () => {
       if (!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu();
     });
 
-    // إغلاق عبر زر Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeMenu();
-    });
+    // إغلاق عبر Escape
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
   }
 
-  // ===== تأثير تعبئة أشرطة المهارات =====
+  // ===== Skills progress fill =====
   const skillsWrap = qs('.about-skills');
   const skillBars = qsa('.progress-line');
   if (skillsWrap && skillBars.length) {
-    const observer = new IntersectionObserver(
-      (entries, obs) => {
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             skillBars.forEach((bar) => {
@@ -241,13 +212,15 @@ window.addEventListener('resize', () => {
             obs.disconnect();
           }
         });
-      },
-      { threshold: 0.3 }
-    );
-    observer.observe(skillsWrap);
+      }, { threshold: 0.3 });
+      observer.observe(skillsWrap);
+    } else {
+      // متصفح قديم: املأها مباشرة
+      skillBars.forEach((bar) => { const v = bar.dataset.progress; if (v) bar.style.width = v; });
+    }
   }
 
-  // ===== مرشّح المعرض =====
+  // ===== Portfolio filter =====
   const filterContainer = qs('.portfolio-filter');
   const portfolioItems = qsa('.portfolio-item');
 
@@ -261,20 +234,24 @@ window.addEventListener('resize', () => {
     });
   }
 
-  // تفعيل الحالة الافتراضية
+  // default state
   updateVisibleItems('all');
 
   if (filterContainer) {
     filterContainer.addEventListener('click', (e) => {
       const btn = e.target.closest('button[data-filter]');
       if (!btn) return;
-      qsa('button', filterContainer).forEach((b) => b.classList.remove('active'));
+      qsa('button[data-filter]', filterContainer).forEach((b) => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
       updateVisibleItems(btn.getAttribute('data-filter'));
     });
   }
 
-  // ===== عارض الصور (Lightbox) — وصول + تحسينات =====
+  // ===== Lightbox (images only) =====
   const lightbox = qs('.lightbox');
   const lightboxImg = lightbox ? qs('.lightbox-img', lightbox) : null;
   const lightboxClose = lightbox ? qs('.lightbox-close', lightbox) : null;
@@ -287,9 +264,8 @@ window.addEventListener('resize', () => {
   let hiddenForA11y = [];
 
   function computeVisibleList() {
-    // العناصر الظاهرة فقط (تتوافق مع الفلتر الحالي)
     visibleList = portfolioItems.filter((item) => item.classList.contains('show'));
-    if (!visibleList.length) visibleList = portfolioItems.slice(); // احتياطي
+    if (!visibleList.length) visibleList = portfolioItems.slice();
   }
 
   function preloadAround(idx) {
@@ -298,10 +274,7 @@ window.addEventListener('resize', () => {
     const prev = visibleList[(idx - 1 + visibleList.length) % visibleList.length];
     [next, prev].forEach((item) => {
       const imgEl = item && qs('.portfolio-img img', item);
-      if (imgEl) {
-        const pre = new Image();
-        pre.src = imgEl.currentSrc || imgEl.src;
-      }
+      if (imgEl) { const pre = new Image(); pre.src = imgEl.currentSrc || imgEl.src; }
     });
   }
 
@@ -322,7 +295,6 @@ window.addEventListener('resize', () => {
   }
 
   function hideBackgroundForA11y(hide) {
-    // إخفاء بقية الصفحة عن قارئات الشاشة أثناء فتح العارض
     if (!lightbox) return;
     if (hide) {
       hiddenForA11y = Array.from(document.body.children).filter((el) => el !== lightbox);
@@ -353,58 +325,45 @@ window.addEventListener('resize', () => {
     if (lastFocused) lastFocused.focus();
   }
 
-  function nextItem() {
-    computeVisibleList();
-    currentIndex = (currentIndex + 1) % visibleList.length;
-    updateLightbox();
-  }
+  function nextItem() { computeVisibleList(); currentIndex = (currentIndex + 1) % visibleList.length; updateLightbox(); }
+  function prevItem() { computeVisibleList(); currentIndex = (currentIndex - 1 + visibleList.length) % visibleList.length; updateLightbox(); }
 
-  function prevItem() {
-    computeVisibleList();
-    currentIndex = (currentIndex - 1 + visibleList.length) % visibleList.length;
-    updateLightbox();
-  }
-
-  // إتاحة الدوال لعناصر HTML التي تستخدم onclick (توافق قديم)
+  // expose for control buttons bound later
   window.nextItem = nextItem;
   window.prevItem = prevItem;
 
-  // فتح العارض عند الضغط على بطاقة
+  // open only when clicking image cards (not videos)
   qsa('.portfolio-item').forEach((item, i) => {
     const clickable = qs('.portfolio-item-inner', item) || item;
     clickable.setAttribute('tabindex', '0');
 
-    clickable.addEventListener('click', (ev) => {
+    const openIfImageCard = (ev) => {
       if (ev.target.tagName.toLowerCase() === 'video' || ev.target.closest('video')) return;
+      if (!qs('.portfolio-img img', item)) return; // تجاهل بطاقات الفيديو
       computeVisibleList();
       const idxVisible = visibleList.indexOf(item);
       openLightbox(idxVisible !== -1 ? idxVisible : i);
-    });
+    };
 
+    clickable.addEventListener('click', openIfImageCard);
     clickable.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        computeVisibleList();
-        const idxVisible = visibleList.indexOf(item);
-        openLightbox(idxVisible !== -1 ? idxVisible : i);
-      }
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openIfImageCard(e); }
     });
   });
 
   if (lightbox) {
-    // إغلاق بالنقر على الخلفية أو زر الإغلاق
+    // close by clicking backdrop or close button
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox || e.target === lightboxClose) closeLightbox();
     });
 
-    // مفاتيح لوحة المفاتيح
+    // keyboard controls + focus trap
     document.addEventListener('keydown', (e) => {
       if (!lightbox.classList.contains('open')) return;
       if (e.key === 'Escape') closeLightbox();
       else if (e.key === 'ArrowRight') nextItem();
       else if (e.key === 'ArrowLeft') prevItem();
 
-      // Trap Focus داخل العارض
       if (e.key === 'Tab') {
         const focusables = qsa(
           'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
@@ -413,19 +372,14 @@ window.addEventListener('resize', () => {
         if (!focusables.length) return;
         const first = focusables[0];
         const last = focusables[focusables.length - 1];
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       }
     });
   }
 })();
 
-// ===== Lightbox control bindings (no inline onclick) =====
+// ===== Bind lightbox control buttons (no inline onclick) =====
 document.addEventListener('DOMContentLoaded', () => {
   const lb = document.querySelector('.lightbox');
   if (!lb) return;

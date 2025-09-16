@@ -92,6 +92,11 @@
   --media-bg:#0e1626;
 }
 
+/* Anchor offset for fixed header */
+section[id]{scroll-margin-top:90px}
+@media (max-width:991px){section[id]{scroll-margin-top:100px}}
+
+
 /* ========== إعدادات عامة ========== */
 html{scroll-behavior:smooth}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -115,7 +120,9 @@ img,video{max-width:100%;height:auto;display:block}
 }
 
 /* حاويات */
-.container{max-width:1140px;margin-inline:auto}
+.container{max-width:1140px;margin-inline:auto;padding-inline:20px}
+@media (max-width:480px){.container{padding-inline:16px}}
+
 .row{display:flex;flex-wrap:wrap}
 .justify-content-center{justify-content:center}
 .justify-content-between{justify-content:space-between}
@@ -146,10 +153,12 @@ img,video{max-width:100%;height:auto;display:block}
 
 /* شريط التنقل */
 .navbar{
+    padding-block-start: calc(22px + env(safe-area-inset-top));
   position:fixed;inset:0 0 auto 0;z-index:999;width:100%;
   padding:22px 25px;backdrop-filter:saturate(160%) blur(8px)
 }
-.navbar.sticky{padding:12px 25px;background:var(--navbar-bg);box-shadow:var(--shadow-black-100)}
+.navbar.sticky{  padding-block-start: calc(12px + env(safe-area-inset-top));
+padding:12px 25px;background:var(--navbar-bg);box-shadow:var(--shadow-black-100) }
 .logo a{font-size:24px;color:var(--ink);font-weight:700}
 .logo a span{color:var(--main-color)}
 .links .menu{list-style:none}
@@ -159,10 +168,29 @@ img,video{max-width:100%;height:auto;display:block}
 .navbar .menu .nav-item .nav-link.active{color:var(--main-color)}
 .navbar .menu .nav-item .nav-link:focus-visible{outline:2px solid var(--link);outline-offset:2px}
 .navbar .menu .nav-item .nav-link span{display:none}
+/* === Mobile menu button === */
 .menu-btn{
-  height:38px;width:46px;padding:0;border-radius:8px;line-height:38px;text-align:center;
-  color:#fff;background:var(--main-color);font-size:18px;display:none;box-shadow:var(--shadow-black-100)
+  display:none;                 /* مخفي على الدِسك توب */
+  width:46px; min-width:44px;   /* 44px لمعيار لمس مريح */
+  height:44px; padding:0; border-radius:8px;
+  line-height:44px; text-align:center; font-size:18px;
+  color:#fff; background:var(--main-color);
+  box-shadow:var(--shadow-black-100);
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
 }
+
+@media (max-width:991px){
+  .menu-btn{
+    display:inline-flex;        /* يظهر على الشاشات الصغيرة */
+    align-items:center; justify-content:center;
+    z-index:1000;
+  }
+  /* اختيارياً: أخفي القائمة الأفقية على الموبايل إن لم تكن مخفية */
+  .navbar .menu{ display:none; }
+  .navbar .menu.active{ display:block; }
+}
+
 
 /* موبايل — قائمة */
 @media (max-width:991px){
@@ -410,6 +438,8 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
   padding:.5rem .75rem;border-radius:.75rem;cursor:pointer
 }
 .theme-toggle:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+img, video { max-width:100%; height:auto; }
+
 
 
 

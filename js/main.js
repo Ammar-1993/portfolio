@@ -111,7 +111,11 @@
   const navbar = qs('.navbar');
   const linksContainer = qs('.links');
   const sections = qsa('section[id]');
-  const HEADER_OFFSET = 55; // إزاحة لحساب ارتفاع الهيدر
+  let HEADER_OFFSET = (navbar ? navbar.offsetHeight : 60);
+window.addEventListener('resize', () => {
+  HEADER_OFFSET = (navbar ? navbar.offsetHeight : 60);
+});
+
 
   const setSticky = () => {
     if (!navbar) return;

@@ -4,19 +4,6 @@
 // =====================================================
 
 
-(function(){
-  const badge = document.createElement('div');
-  badge.style.cssText = 'position:fixed;right:8px;bottom:8px;padding:6px 10px;border-radius:8px;background:#0008;color:#fff;font:12px/1.4 system-ui;z-index:99999;backdrop-filter:blur(2px)';
-  const calc = () => {
-    const w = window.innerWidth;
-    const bp = w >= 1140 ? 'desktop ≥1140' : w >= 992 ? 'laptop 992–1139' : w >= 768 ? 'tablet 768–991' : w >= 480 ? 'mobile 480–767' : 'small <480';
-    badge.textContent = `${w}px • ${bp}`;
-  };
-  calc(); window.addEventListener('resize', calc);
-  document.body.appendChild(badge);
-})();
-
-
 // ===== Theme (light/dark) =====
 (function () {
   const html = document.documentElement;

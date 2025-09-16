@@ -1,53 +1,102 @@
+// =====================================================
+// main.js — v3 (Theme + Nav + Filters + Lightbox A11y)
+// متوافق مع هيكلة المشروع الحاليّة دون كسر سلوك HTML/CSS/JS
+// =====================================================
+
 // ===== Theme (light/dark) =====
-(function() {
+(function () {
   const html = document.documentElement;
-  const themeMeta = document.getElementById('theme-color');
+  const themeMeta =
+    document.querySelector('meta[name="theme-color"]') ||
+    document.getElementById('theme-color'); // توافق مع الإصدارات السابقة
+  const themeBtnId = 'theme-toggle';
+
+  const mqDark = window.matchMedia
+    ? window.matchMedia('(prefers-color-scheme: dark)')
+    : null;
+
+  function prefersDark() {
+    return mqDark ? mqDark.matches : false;
+  }
 
   function computeIsDark() {
-    return html.getAttribute('data-theme') === 'dark' ||
-      (!html.hasAttribute('data-theme') &&
-        window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    return (
+      html.getAttribute('data-theme') === 'dark' ||
+      (!html.hasAttribute('data-theme') && prefersDark())
+    );
+  }
+
+  function setColorSchemeCSS(isDark) {
+    // يساعد المتصفح على تلوين عناصر النماذج والـscrollbars تلقائياً
+    html.style.colorScheme = isDark ? 'dark' : 'light';
+    if (themeMeta)
+      themeMeta.setAttribute('content', isDark ? '#0b0f19' : '#ffffff');
   }
 
   function applyTheme(themeOrNull) {
     if (themeOrNull === 'light' || themeOrNull === 'dark') {
       html.setAttribute('data-theme', themeOrNull);
-      try { localStorage.setItem('theme', themeOrNull); } catch (_) {}
+      try {
+        localStorage.setItem('theme', themeOrNull);
+      } catch (_) {}
     } else {
       html.removeAttribute('data-theme');
-      try { localStorage.removeItem('theme'); } catch (_) {}
+      try {
+        localStorage.removeItem('theme');
+      } catch (_) {}
     }
-    if (themeMeta) themeMeta.setAttribute('content', computeIsDark() ? '#0b0f19' : '#ffffff');
+    setColorSchemeCSS(computeIsDark());
+    // تحديث حالة زر التبديل (إن وُجد)
+    const btn = document.getElementById(themeBtnId);
+    if (btn) btn.setAttribute('aria-pressed', String(computeIsDark()));
   }
 
   function toggleTheme() {
-    const current = html.getAttribute('data-theme');
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const next = (current === 'dark' || (current === null && prefersDark)) ? 'light' : 'dark';
+    const current = html.getAttribute('data-theme'); // قد تكون null
+    const next =
+      current === 'dark' || (current === null && prefersDark())
+        ? 'light'
+        : 'dark';
     applyTheme(next);
   }
 
   // Initialize from localStorage, else follow system
   (function initTheme() {
     let stored = null;
-    try { stored = localStorage.getItem('theme'); } catch (_) {}
+    try {
+      stored = localStorage.getItem('theme');
+    } catch (_) {}
     applyTheme(stored === 'light' || stored === 'dark' ? stored : null);
   })();
 
   // React to system changes only when user didn't choose explicitly
-  if (window.matchMedia) {
-    const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    mq.addEventListener('change', () => {
+  if (mqDark) {
+    const onChange = () => {
       try {
         if (!localStorage.getItem('theme')) applyTheme(null);
       } catch (_) {}
-    });
+    };
+    // دعم Safari القديم
+    if ('addEventListener' in mqDark) mqDark.addEventListener('change', onChange);
+    else if ('addListener' in mqDark) mqDark.addListener(onChange);
   }
+
+  // Sync across tabs/windows
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'theme') {
+      const v = e.newValue;
+      applyTheme(v === 'light' || v === 'dark' ? v : null);
+    }
+  });
 
   // Bind button
   document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('theme-toggle');
-    if (btn) btn.addEventListener('click', toggleTheme);
+    const btn = document.getElementById(themeBtnId);
+    if (btn) {
+      btn.setAttribute('role', 'button');
+      btn.setAttribute('aria-pressed', String(computeIsDark()));
+      btn.addEventListener('click', toggleTheme);
+    }
   });
 })();
 
@@ -62,6 +111,7 @@
   const navbar = qs('.navbar');
   const linksContainer = qs('.links');
   const sections = qsa('section[id]');
+  const HEADER_OFFSET = 55; // إزاحة لحساب ارتفاع الهيدر
 
   const setSticky = () => {
     if (!navbar) return;
@@ -71,7 +121,7 @@
 
   function setActiveLink() {
     if (!sections.length || !linksContainer) return;
-    const scrollPos = window.scrollY + 55; // إزاحة بسيطة لحساب ارتفاع الهيدر
+    const scrollPos = window.scrollY + HEADER_OFFSET;
     let currentId = null;
     for (const section of sections) {
       const top = section.offsetTop;
@@ -81,35 +131,61 @@
         break;
       }
     }
-    qsa('.links a').forEach(a => a.classList.remove('active'));
+    qsa('.links a').forEach((a) => a.classList.remove('active'));
     if (currentId) {
       try {
-        const activeLink = qs(`.links a[href*="#${CSS.escape(currentId)}"]`);
+        const activeLink = qs(
+          `.links a[href*="#${CSS.escape(currentId)}"]`
+        );
         if (activeLink) activeLink.classList.add('active');
       } catch (_) {
-        // متصفح قديم لا يدعم CSS.escape
-        const activeLink = qsa('.links a').find(a => (a.getAttribute('href') || '').includes(`#${currentId}`));
+        const activeLink = qsa('.links a').find((a) =>
+          (a.getAttribute('href') || '').includes(`#${currentId}`)
+        );
         if (activeLink) activeLink.classList.add('active');
       }
     }
   }
 
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        setSticky();
-        setActiveLink();
-        ticking = false;
+  // تفعيل تمرير سلس يحترم شريط التنقّل اللاصق
+  function bindSmartAnchors() {
+    qsa('.links a[href^="#"]').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        const hash = a.getAttribute('href');
+        const id = hash && hash.slice(1);
+        const target = id ? document.getElementById(id) : null;
+        if (target) {
+          e.preventDefault();
+          const top = Math.max(0, target.offsetTop - HEADER_OFFSET);
+          window.scrollTo({ top, behavior: 'smooth' });
+          history.replaceState(null, '', hash);
+        }
       });
-      ticking = true;
-    }
-  }, { passive: true });
+    });
+  }
+
+  let ticking = false;
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setSticky();
+          setActiveLink();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    },
+    { passive: true }
+  );
 
   window.addEventListener('resize', setActiveLink, { passive: true });
+  window.addEventListener('hashchange', setActiveLink, { passive: true });
   document.addEventListener('DOMContentLoaded', () => {
     setSticky();
     setActiveLink();
+    bindSmartAnchors();
   });
 
   // ===== قائمة الهاتف (Burger) =====
@@ -121,6 +197,9 @@
       menuBtn.setAttribute('aria-expanded', 'false');
     };
 
+    menuBtn.setAttribute('aria-controls', 'main-menu');
+    menu.setAttribute('id', 'main-menu');
+
     menuBtn.addEventListener('click', () => {
       const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
       menuBtn.setAttribute('aria-expanded', String(!expanded));
@@ -128,10 +207,11 @@
     });
 
     // إغلاق القائمة عند الضغط على رابط
-    qsa('.nav-link', menu).forEach(link => link.addEventListener('click', closeMenu));
+    qsa('.nav-link', menu).forEach((link) => link.addEventListener('click', closeMenu));
 
     // إغلاق عند الضغط خارجها
     document.addEventListener('click', (e) => {
+      if (!menu.classList.contains('active')) return;
       if (!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu();
     });
 
@@ -141,22 +221,24 @@
     });
   }
 
-  // ===== تأثير تعبئة أشرطة المهارات باستخدام IntersectionObserver =====
+  // ===== تأثير تعبئة أشرطة المهارات =====
   const skillsWrap = qs('.about-skills');
   const skillBars = qsa('.progress-line');
   if (skillsWrap && skillBars.length) {
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          skillBars.forEach(bar => {
-            const val = bar.dataset.progress;
-            if (val) bar.style.width = val;
-          });
-          obs.disconnect();
-        }
-      });
-    }, { threshold: 0.3 });
-
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            skillBars.forEach((bar) => {
+              const val = bar.dataset.progress;
+              if (val) bar.style.width = val;
+            });
+            obs.disconnect();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
     observer.observe(skillsWrap);
   }
 
@@ -166,9 +248,9 @@
 
   function updateVisibleItems(filter) {
     const f = filter || 'all';
-    portfolioItems.forEach(item => {
+    portfolioItems.forEach((item) => {
       const cat = item.getAttribute('data-category');
-      const shouldShow = (f === 'all') || (f === cat);
+      const shouldShow = f === 'all' || f === cat;
       item.classList.toggle('show', shouldShow);
       item.classList.toggle('hide', !shouldShow);
     });
@@ -181,13 +263,13 @@
     filterContainer.addEventListener('click', (e) => {
       const btn = e.target.closest('button[data-filter]');
       if (!btn) return;
-      qsa('button', filterContainer).forEach(b => b.classList.remove('active'));
+      qsa('button', filterContainer).forEach((b) => b.classList.remove('active'));
       btn.classList.add('active');
       updateVisibleItems(btn.getAttribute('data-filter'));
     });
   }
 
-  // ===== عارض الصور (Lightbox) مع دعم لوحة المفاتيح وتركيز الوصول =====
+  // ===== عارض الصور (Lightbox) — وصول + تحسينات =====
   const lightbox = qs('.lightbox');
   const lightboxImg = lightbox ? qs('.lightbox-img', lightbox) : null;
   const lightboxClose = lightbox ? qs('.lightbox-close', lightbox) : null;
@@ -197,11 +279,25 @@
   let visibleList = [];
   let currentIndex = 0;
   let lastFocused = null;
+  let hiddenForA11y = [];
 
   function computeVisibleList() {
     // العناصر الظاهرة فقط (تتوافق مع الفلتر الحالي)
-    visibleList = portfolioItems.filter(item => item.classList.contains('show'));
+    visibleList = portfolioItems.filter((item) => item.classList.contains('show'));
     if (!visibleList.length) visibleList = portfolioItems.slice(); // احتياطي
+  }
+
+  function preloadAround(idx) {
+    if (!visibleList.length) return;
+    const next = visibleList[(idx + 1) % visibleList.length];
+    const prev = visibleList[(idx - 1 + visibleList.length) % visibleList.length];
+    [next, prev].forEach((item) => {
+      const imgEl = item && qs('.portfolio-img img', item);
+      if (imgEl) {
+        const pre = new Image();
+        pre.src = imgEl.currentSrc || imgEl.src;
+      }
+    });
   }
 
   function updateLightbox() {
@@ -209,14 +305,27 @@
     if (!item || !lightboxImg) return;
     const imgEl = qs('.portfolio-img img', item);
     const titleEl = qs('h4', item);
-    const src = imgEl ? imgEl.getAttribute('src') : '';
-    const alt = imgEl ? (imgEl.getAttribute('alt') || '') : '';
+    const src = imgEl ? (imgEl.currentSrc || imgEl.getAttribute('src')) : '';
+    const alt = imgEl ? imgEl.getAttribute('alt') || '' : '';
     if (src) {
       lightboxImg.src = src;
       lightboxImg.alt = alt || (titleEl ? titleEl.textContent.trim() : 'صورة من المعرض');
     }
     if (lightboxText) lightboxText.textContent = titleEl ? titleEl.textContent.trim() : '';
     if (lightboxCounter) lightboxCounter.textContent = `${currentIndex + 1} / ${visibleList.length}`;
+    preloadAround(currentIndex);
+  }
+
+  function hideBackgroundForA11y(hide) {
+    // إخفاء بقية الصفحة عن قارئات الشاشة أثناء فتح العارض
+    if (!lightbox) return;
+    if (hide) {
+      hiddenForA11y = Array.from(document.body.children).filter((el) => el !== lightbox);
+      hiddenForA11y.forEach((el) => el.setAttribute('aria-hidden', 'true'));
+    } else {
+      hiddenForA11y.forEach((el) => el.removeAttribute('aria-hidden'));
+      hiddenForA11y = [];
+    }
   }
 
   function openLightbox(idx) {
@@ -227,6 +336,7 @@
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
     lastFocused = document.activeElement;
+    hideBackgroundForA11y(true);
     if (lightboxClose) lightboxClose.focus();
   }
 
@@ -234,6 +344,7 @@
     if (!lightbox) return;
     lightbox.classList.remove('open');
     document.body.style.overflow = '';
+    hideBackgroundForA11y(false);
     if (lastFocused) lastFocused.focus();
   }
 
@@ -249,18 +360,16 @@
     updateLightbox();
   }
 
-  // إتاحة الدوال لعناصر HTML التي تستخدم onclick
+  // إتاحة الدوال لعناصر HTML التي تستخدم onclick (توافق قديم)
   window.nextItem = nextItem;
   window.prevItem = prevItem;
 
   // فتح العارض عند الضغط على بطاقة
-  portfolioItems.forEach((item, i) => {
+  qsa('.portfolio-item').forEach((item, i) => {
     const clickable = qs('.portfolio-item-inner', item) || item;
-    // اجعل البطاقة قابلة للتركيز عبر لوحة المفاتيح
     clickable.setAttribute('tabindex', '0');
 
     clickable.addEventListener('click', (ev) => {
-      // تجاهل إن كان الهدف فيديو (لا نفتحه داخل العارض)
       if (ev.target.tagName.toLowerCase() === 'video' || ev.target.closest('video')) return;
       computeVisibleList();
       const idxVisible = visibleList.indexOf(item);
@@ -290,10 +399,12 @@
       else if (e.key === 'ArrowRight') nextItem();
       else if (e.key === 'ArrowLeft') prevItem();
 
-      // حصر التنقّل داخل العارض (Trap Focus)
+      // Trap Focus داخل العارض
       if (e.key === 'Tab') {
-        const focusables = qsa('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])', lightbox)
-          .filter(el => !el.hasAttribute('disabled'));
+        const focusables = qsa(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+          lightbox
+        ).filter((el) => !el.hasAttribute('disabled'));
         if (!focusables.length) return;
         const first = focusables[0];
         const last = focusables[focusables.length - 1];
@@ -309,7 +420,6 @@
   }
 })();
 
-
 // ===== Lightbox control bindings (no inline onclick) =====
 document.addEventListener('DOMContentLoaded', () => {
   const lb = document.querySelector('.lightbox');
@@ -318,14 +428,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnPrev = lb.querySelector('.prev-item');
   const btnNext = lb.querySelector('.next-item');
 
-  // These are defined below in the lightbox module and exposed on window for compatibility
   function bind() {
     if (typeof window.prevItem === 'function' && typeof window.nextItem === 'function') {
       if (btnPrev) btnPrev.addEventListener('click', (e) => { e.stopPropagation(); window.prevItem(); });
       if (btnNext) btnNext.addEventListener('click', (e) => { e.stopPropagation(); window.nextItem(); });
       if (img) img.addEventListener('click', (e) => { e.stopPropagation(); window.nextItem(); });
     } else {
-      // Try again shortly if the lightbox module hasn't been initialized yet
       setTimeout(bind, 50);
     }
   }

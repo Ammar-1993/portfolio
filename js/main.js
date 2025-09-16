@@ -1,3 +1,56 @@
+// ===== Theme (light/dark) =====
+(function() {
+  const html = document.documentElement;
+  const themeMeta = document.getElementById('theme-color');
+
+  function computeIsDark() {
+    return html.getAttribute('data-theme') === 'dark' ||
+      (!html.hasAttribute('data-theme') &&
+        window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }
+
+  function applyTheme(themeOrNull) {
+    if (themeOrNull === 'light' || themeOrNull === 'dark') {
+      html.setAttribute('data-theme', themeOrNull);
+      try { localStorage.setItem('theme', themeOrNull); } catch (_) {}
+    } else {
+      html.removeAttribute('data-theme');
+      try { localStorage.removeItem('theme'); } catch (_) {}
+    }
+    if (themeMeta) themeMeta.setAttribute('content', computeIsDark() ? '#0b0f19' : '#ffffff');
+  }
+
+  function toggleTheme() {
+    const current = html.getAttribute('data-theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const next = (current === 'dark' || (current === null && prefersDark)) ? 'light' : 'dark';
+    applyTheme(next);
+  }
+
+  // Initialize from localStorage, else follow system
+  (function initTheme() {
+    let stored = null;
+    try { stored = localStorage.getItem('theme'); } catch (_) {}
+    applyTheme(stored === 'light' || stored === 'dark' ? stored : null);
+  })();
+
+  // React to system changes only when user didn't choose explicitly
+  if (window.matchMedia) {
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    mq.addEventListener('change', () => {
+      try {
+        if (!localStorage.getItem('theme')) applyTheme(null);
+      } catch (_) {}
+    });
+  }
+
+  // Bind button
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('theme-toggle');
+    if (btn) btn.addEventListener('click', toggleTheme);
+  });
+})();
+
 (() => {
   'use strict';
 
@@ -255,3 +308,26 @@
     });
   }
 })();
+
+
+// ===== Lightbox control bindings (no inline onclick) =====
+document.addEventListener('DOMContentLoaded', () => {
+  const lb = document.querySelector('.lightbox');
+  if (!lb) return;
+  const img = lb.querySelector('.lightbox-img');
+  const btnPrev = lb.querySelector('.prev-item');
+  const btnNext = lb.querySelector('.next-item');
+
+  // These are defined below in the lightbox module and exposed on window for compatibility
+  function bind() {
+    if (typeof window.prevItem === 'function' && typeof window.nextItem === 'function') {
+      if (btnPrev) btnPrev.addEventListener('click', (e) => { e.stopPropagation(); window.prevItem(); });
+      if (btnNext) btnNext.addEventListener('click', (e) => { e.stopPropagation(); window.nextItem(); });
+      if (img) img.addEventListener('click', (e) => { e.stopPropagation(); window.nextItem(); });
+    } else {
+      // Try again shortly if the lightbox module hasn't been initialized yet
+      setTimeout(bind, 50);
+    }
+  }
+  bind();
+});

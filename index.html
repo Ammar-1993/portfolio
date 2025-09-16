@@ -10,7 +10,7 @@
   <meta name="description"
     content="تطوير مواقع وتطبيقات مع تسليم دقيق ودعم ما بعد الإطلاق. استعرض أعمالي وراسلني الآن." />
   <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://ammar-1993.github.io/portfolio/" />
+<link rel="canonical" href="https://ammar-1993.github.io/portfolio/" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
@@ -22,9 +22,27 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#ffffff" id="theme-color"> <!-- سيتم تحديثه لاحقًا بالجاڤاسكربت -->
+<meta name="theme-color" content="#ffffff" id="theme-color"> <!-- سيتم تحديثه لاحقًا بالجاڤاسكربت -->
 
-
+<script>
+  (function() {
+    try {
+      const stored = localStorage.getItem('theme'); // "light" أو "dark" أو null
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.setAttribute('data-theme', stored);
+      } else {
+        // لا نخزن شيء: نترك CSS يطبق تفضيل النظام عبر media query
+        document.documentElement.removeAttribute('data-theme');
+      }
+      // مزامنة theme-color مع الخلفية لتلوين شريط العنوان في الجوال
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+        || (!document.documentElement.hasAttribute('data-theme')
+            && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      const meta = document.getElementById('theme-color');
+      if (meta) meta.setAttribute('content', isDark ? '#0b0f19' : '#ffffff');
+    } catch (e) {}
+  })();
+</script>
 
 
   <!-- Fonts -->
@@ -41,17 +59,6 @@
   <link rel="stylesheet" href="css/style.css" />
 
   <!-- Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "م. عمار النجار",
-      "jobTitle": "مهندس برمجيات",
-      "url": "https://ammar-1993.github.io/portfolio/",
-      "email": "mailto:ammaralnggar@gmail.com",
-      "telephone": "+967774344625"
-    }
-    </script>
 
   <!-- ملاحظات تنفيذية:
       1) تَذكّر إعادة تسمية مجلد "vedio/" إلى "video/" داخل المشروع ثم تحدَّث المسارات أدناه.
@@ -60,7 +67,65 @@
     -->
 </head>
 
+<!-- Beautiful social styles -->
+<style>
+  .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px
+  }
 
+  .btn-social {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: .6rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-weight: 600;
+    line-height: 1.1;
+    transition: transform .15s ease, box-shadow .2s ease
+  }
+
+  .btn-social:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .08)
+  }
+
+  .btn-social i {
+    font-size: 1rem
+  }
+
+  .footer .social-icons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 8px
+  }
+
+  .footer .social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #334155;
+    text-decoration: none;
+    transition: transform .15s ease, box-shadow .2s ease
+  }
+
+  .footer .social-icons a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .12)
+  }
+
+  .footer .social-icons i {
+    font-size: 1rem
+  }
+</style>
 
 <!-- Structured Data (JSON-LD) -->
 <script type="application/ld+json">
@@ -83,8 +148,7 @@
 
 
 <body>
-  <a class="skip-link" href="#home"
-    style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">تخطي إلى المحتوى</a>
+  <a class="skip-link" href="#home">تخطي إلى المحتوى</a>
 
   <!--===== Navbar Start =====-->
   <nav class="navbar" role="navigation" aria-label="الرئيسية">
@@ -102,9 +166,9 @@
             <li class="nav-item"><a href="#technologies" class="nav-link">التقنيات</a></li>
             <li class="nav-item"><a href="#contact" class="nav-link">اتصل بنا</a></li>
             <button id="theme-toggle" class="theme-toggle" aria-label="تبديل الثيم" title="تبديل الثيم">
-              <!-- أيقونتان SVG: الشمس/القمر، أو حتى نص -->
-              <span aria-hidden="true">🌞/🌙</span>
-            </button>
+  <!-- أيقونتان SVG: الشمس/القمر، أو حتى نص -->
+  <span aria-hidden="true">🌞/🌙</span>
+</button>
 
           </ul>
         </div>
@@ -784,15 +848,18 @@
   <div class="lightbox" role="dialog" aria-modal="true" aria-label="عارض الصور">
     <div class="lightbox-content">
       <button class="lightbox-close" aria-label="إغلاق">&times;</button>
-      <img src="images/portfolio/portfolio-2.jpg" class="lightbox-img" alt="صورة من المعرض" loading="lazy" />
+      <img src="images/portfolio/portfolio-2.jpg" onclick="nextItem()" class="lightbox-img" alt="صورة من المعرض"
+        loading="lazy" />
       <div class="lightbox-caption">
         <div class="caption-text" aria-live="polite"></div>
         <div class="caption-counter"></div>
       </div>
     </div>
     <div class="lightbox-controls">
-      <button class="prev-item" aria-label="السابق">السابق<i class="fa fa-angle-left" aria-hidden="true"></i></button>
-      <button class="next-item" aria-label="التالي">التالي<i class="fa fa-angle-right" aria-hidden="true"></i></button>
+      <button class="prev-item" onclick="prevItem()" aria-label="السابق">السابق<i class="fa fa-angle-left"
+          aria-hidden="true"></i></button>
+      <button class="next-item" onclick="nextItem()" aria-label="التالي">التالي<i class="fa fa-angle-right"
+          aria-hidden="true"></i></button>
     </div>
   </div>
   <!--===== Lightbox End =====-->
@@ -800,7 +867,49 @@
   <!--===== Scripts =====-->
   <script src="js/main.js" defer></script>
 
+  <script>
+  (function() {
+    const html = document.documentElement;
+    const btn = document.getElementById('theme-toggle');
+    if (!btn) return;
 
+    function applyTheme(themeOrNull) {
+      // themeOrNull: "light" | "dark" | null (لـ "اتّبع النظام")
+      if (themeOrNull === 'light' || themeOrNull === 'dark') {
+        html.setAttribute('data-theme', themeOrNull);
+        localStorage.setItem('theme', themeOrNull);
+      } else {
+        html.removeAttribute('data-theme');
+        localStorage.removeItem('theme');
+      }
+      // حدّث theme-color
+      const isDark = html.getAttribute('data-theme') === 'dark'
+        || (!html.hasAttribute('data-theme')
+            && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      const meta = document.getElementById('theme-color');
+      if (meta) meta.setAttribute('content', isDark ? '#0b0f19' : '#ffffff');
+    }
+
+    // تبديل ثنائي (فاتح/داكن). إذا تبغى "اتباع النظام"، شوف القسم المتقدم أدناه.
+    function toggleTheme() {
+      const current = html.getAttribute('data-theme'); // قد تكون null
+      const next = (current === 'dark' || (current === null && window.matchMedia('(prefers-color-scheme: dark)').matches))
+        ? 'light'
+        : 'dark';
+      applyTheme(next);
+    }
+
+    // لو تغيّر تفضيل النظام ولم يحدد المستخدم خيارًا يدويًا
+    if (window.matchMedia) {
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      mq.addEventListener('change', () => {
+        if (!localStorage.getItem('theme')) applyTheme(null);
+      });
+    }
+
+    btn.addEventListener('click', toggleTheme);
+  })();
+</script>
 
 </body>
 

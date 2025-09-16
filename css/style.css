@@ -5,6 +5,8 @@
    - وإلا يتبع تفضيل النظام (prefers-color-scheme)
    ===================================================== */
 
+   
+
 /* ========== متغيرات أساسية غير مرتبطة بالثيم ========== */
 :root{
   --main-color:#00a78e;                 /* Accent */
@@ -408,3 +410,6 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
   padding:.5rem .75rem;border-radius:.75rem;cursor:pointer
 }
 .theme-toggle:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+
+
+

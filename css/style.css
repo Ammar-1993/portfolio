@@ -451,7 +451,22 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
   padding:.5rem .75rem;border-radius:.75rem;cursor:pointer
 }
 .theme-toggle:focus-visible{outline:2px solid var(--link);outline-offset:2px}
-img, video { max-width:100%; height:auto; }
+
+
+/* اجعل أقسام الهيرو تتكدّس عمودياً على الأجهزة الصغيرة */
+@media (max-width: 991px){
+  .home-text, .home-image{
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 16px;            /* حواف مريحة على الموبايل */
+  }
+  .header-hero-shape{ display: none; } /* اخفِ الشكل المائل الذي يغطي 55% */
+  .home-section{ padding-top: 84px; }  /* تعويض الهيدر المثبّت */
+}
+
+/* تأكيد عدم خروج المحتوى أفقياً (حالات نادرة) */
+img, video{ max-width:100%; height:auto; }
+html, body{ overscroll-behavior-y: none; }
 
 
 

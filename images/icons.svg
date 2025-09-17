@@ -1,0 +1,107 @@
+<!-- images/icons.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <!-- كل الأيقونات ترث الألوان من currentColor -->
+
+  <!-- Bars (menu) -->
+  <symbol id="bars" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M3 6h18M3 12h18M3 18h18"/>
+    </g>
+  </symbol>
+
+  <!-- Search -->
+  <symbol id="search" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </g>
+  </symbol>
+
+  <!-- Chevrons -->
+  <symbol id="chevron-left" viewBox="0 0 24 24">
+    <polyline points="15 6 9 12 15 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="chevron-right" viewBox="0 0 24 24">
+    <polyline points="9 6 15 12 9 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <!-- UI/Services -->
+  <symbol id="check" viewBox="0 0 24 24">
+    <polyline points="20 6 9 17 4 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="mobile" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="7" y="2" width="10" height="20" rx="2"/><circle cx="12" cy="18" r="1"/>
+    </g>
+  </symbol>
+  <symbol id="laptop" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/>
+    </g>
+  </symbol>
+  <symbol id="laptop-code" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/>
+      <polyline points="10 9 8 12 10 15"/><polyline points="14 9 16 12 14 15"/>
+    </g>
+  </symbol>
+  <symbol id="desktop" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M7 20h10"/>
+    </g>
+  </symbol>
+  <symbol id="briefcase" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2"/>
+    </g>
+  </symbol>
+  <symbol id="file" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+      <polyline points="14 2 14 8 20 8"/>
+    </g>
+  </symbol>
+  <symbol id="file-text" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+      <polyline points="14 2 14 8 20 8"/>
+      <line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/>
+    </g>
+  </symbol>
+  <symbol id="mail" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/>
+    </g>
+  </symbol>
+  <symbol id="link" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1"/>
+      <path d="M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/>
+    </g>
+  </symbol>
+
+  <!-- ===== Brand (خفيفة جداً) ===== -->
+  <!-- GitHub: دائرة وبداخلها GH -->
+  <symbol id="brand-github" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+    <text x="12" y="12" font-size="9" font-weight="800" text-anchor="middle" dominant-baseline="central" fill="currentColor">GH</text>
+  </symbol>
+
+  <!-- LinkedIn: مربع بحواف دائرية وبداخله in -->
+  <symbol id="brand-linkedin" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+    <text x="12" y="13" font-size="10" font-weight="800" text-anchor="middle" dominant-baseline="central" fill="currentColor">in</text>
+  </symbol>
+
+  <!-- WhatsApp: دائرة وبداخلها WA -->
+  <symbol id="brand-whatsapp" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+    <text x="12" y="12" font-size="9" font-weight="800" text-anchor="middle" dominant-baseline="central" fill="currentColor">WA</text>
+  </symbol>
+
+  <!-- Mostaql (مستقل): مربع مستدير وبداخله حرف "م" -->
+  <symbol id="brand-mostaql" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+    <text x="12" y="13" font-size="12" font-weight="800" text-anchor="middle" dominant-baseline="central" fill="currentColor">م</text>
+  </symbol>
+</svg>
+

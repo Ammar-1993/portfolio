@@ -429,6 +429,15 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
 .footer .social-icons a:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
 .footer .social-icons i{font-size:1rem}
 
+/* SVG icons */
+.ico{width:1em;height:1em;display:inline-block;vertical-align:-.125em}
+.icon svg{width:28px;height:28px;display:block}                 /* كروت الخدمات */
+.portfolio .portfolio-item .portfolio-info .icon svg{width:20px;height:20px}
+.lightbox .lightbox-controls .prev-item svg,
+.lightbox .lightbox-controls .next-item svg{width:24px;height:24px}
+.menu-btn .ico{width:22px;height:22px}                          /* زر الموبايل */
+
+
 /* زر تبديل الثيم */
 .theme-toggle{
   background:var(--surface);color:var(--ink);border:1px solid var(--border);

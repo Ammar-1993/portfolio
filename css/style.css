@@ -158,7 +158,8 @@ img,video{max-width:100%;height:auto;display:block}
   padding:12px 25px;
   background:var(--navbar-bg);
   box-shadow:var(--shadow-black-100) */
-
+  padding-block-start:calc(22px + env(safe-area-inset-top));
+padding:12px 25px;
   background: var(--navbar-bg); 
   box-shadow: var(--shadow-black-100);
 }

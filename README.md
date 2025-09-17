@@ -139,9 +139,10 @@ Update WhatsApp/Mail/Tel in the **Contact** section of `index.html`.
 - Performance ≥ 90
 - Accessibility ≥ 90
 - Best Practices ≥ 90
-- SEO ≥ 90
+- SEO ≥ 90        
 
 > Tip: Chrome DevTools → Lighthouse → Generate report.
+> ![alt text](image.png)
 
 ---
 

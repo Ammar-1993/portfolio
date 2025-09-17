@@ -491,3 +491,71 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
 
 
 
+
+
+
+
+/* ====== Mobile fix for About section (≤991px) ====== */
+@media (max-width:991px){
+  /* أخفينا الصورة سابقًا؛ خَلّ المحتوى بعرض كامل */
+  .about-section .about-image{ display:none; }
+  .about-section .about-content{
+    flex:0 0 100%;
+    max-width:100%;
+    padding:0 16px;               /* حواف مريحة */
+  }
+
+  /* العناوين */
+  .about-section .about-content .section-title{ 
+    text-align:center; 
+    margin-bottom:18px; 
+  }
+  .about-section .about-content .section-title .sub-title{
+    font-size:18px;
+  }
+  .about-section .about-content .section-title .main-title{
+    font-size:clamp(24px, 8vw, 32px);
+    line-height:1.25;
+  }
+
+  /* الفقرة */
+  .about-section .about-content p{
+    font-size:16px;
+    line-height:1.9;
+    margin-bottom:14px;
+    text-align:justify;
+  }
+
+  /* شريط المهارات بعرض مريح */
+  .about-section .about-skills{ margin-top:12px; }
+  .skill-item{ margin-bottom:14px; }
+  .skill-item .skill-header{
+    display:flex; 
+    align-items:center; 
+    justify-content:space-between;
+  }
+  .skill-item .skill-header .skill-title{
+    font-size:14px; 
+    margin-top:0;
+  }
+  .skill-item .skill-header .skill-percentage{
+    position:static;              /* بدلاً من absolute */
+    color:var(--muted);
+    font-size:14px;
+  }
+  .skill-item .skill-bar .bar-inner{
+    height:10px;                  /* أعلى قليلًا للمس */
+  }
+  .skill-item .skill-bar .bar-inner .progress-line{
+    height:10px;
+  }
+}
+
+/* في حال ظهرت أيقونة خارج الوسط داخل بطاقة الخدمة */
+.service-section .service-item-inner .icon{
+  display:grid; place-items:center;
+}
+
+
+
+

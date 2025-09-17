@@ -144,13 +144,23 @@ img,video{max-width:100%;height:auto;display:block}
 
 /* شريط التنقل */
 .navbar{
-  position:fixed;inset:0 0 auto 0;z-index:999;width:100%;
+  /* position:fixed;inset:0 0 auto 0;z-index:999;width:100%;
   padding-block-start:calc(22px + env(safe-area-inset-top));
-  padding:22px 25px;backdrop-filter:saturate(160%) blur(8px)
+  padding:22px 25px;backdrop-filter:saturate(160%) blur(8px) */
+
+  padding-block-start: calc(var(--nav-pad-y) + env(safe-area-inset-top));
+  padding: var(--nav-pad-y) 25px;
+  position: fixed; inset: 0 0 auto 0; width: 100%; z-index: 999;
+  backdrop-filter: saturate(160%) blur(8px)
 }
 .navbar.sticky{
-  padding-block-start:calc(12px + env(safe-area-inset-top));
-  padding:12px 25px;background:var(--navbar-bg);box-shadow:var(--shadow-black-100)
+  /* padding-block-start:calc(12px + env(safe-area-inset-top));
+  padding:12px 25px;
+  background:var(--navbar-bg);
+  box-shadow:var(--shadow-black-100) */
+
+  background: var(--navbar-bg); 
+  box-shadow: var(--shadow-black-100);
 }
 .logo a{font-size:24px;color:var(--ink);font-weight:700}
 .logo a span{color:var(--main-color)}
@@ -445,9 +455,6 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
 }
 .theme-toggle:focus-visible{outline:2px solid var(--link);outline-offset:2px}
 
-/* احجز نسبة أبعاد تقريبية إلى أن تضبط width/height بالـHTML */
-.home-image .img-box{ aspect-ratio: 1 / 1; }         /* مربع للهيرو */
-.about-section .about-image .img-box{ aspect-ratio: 4 / 5; } /* قرّب للنسبة الحقيقية */
 
 
 /* عرض كسول للأقسام البعيدة */

@@ -459,4 +459,27 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
   contain-intrinsic-size: 1000px; /* تقدير ارتفاع مبدئي لمنع القفز */
 }
 
+/* وسّط أي SVG داخل شارة الأيقونة الخضراء في بطاقات الخدمات */
+.service-section .service-item-inner .icon{
+  display:flex;                 /* فلكس كفallback لكل المتصفحات */
+  align-items:center;
+  justify-content:center;
+}
+@supports (place-items: center){
+  .service-section .service-item-inner .icon{
+    display:grid;               /* Grid + place-items أبسط */
+    place-items:center;
+  }
+}
+/* حجم الـSVG داخل الشارة */
+.service-section .service-item-inner .icon .ico,
+.service-section .service-item-inner .icon svg{
+  width: 30px;
+  height: 30px;
+}
+
+/* (نظافة) كنا نوسّط <i> سابقًا—لم نعد نحتاجها */
+.service-section .service-item-inner .icon i{ line-height: 0; }
+
+
 

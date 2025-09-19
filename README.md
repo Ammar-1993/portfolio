@@ -163,4 +163,4 @@ Personal project, but small PRs for fixes or a11y/perf improvements are welcome.
 - Email: `ammaralnggar@gmail.com`
 - Phone: `+967774344625`
 
-> Need this README in Arabic too? You already have it! Want badges/screenshots added automatically? Let me know.
+

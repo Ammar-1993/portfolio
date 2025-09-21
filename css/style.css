@@ -613,3 +613,60 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
 
 /* مسافة بسيطة إذا كان ملاصق لزر آخر */
 .btn-install + .btn-1, .btn-1 + .btn-install{ margin-inline-start: .6rem; }
+
+
+
+
+
+
+
+/* === تحسينات زر التثبيت (تباين + أيقونة + لمسة جمالية) === */
+
+/* 1) تباين: اجعل النص والأيقونة دائمًا بلون أبيض صافي */
+.btn-install,
+.btn-install .btn-install__label { color:#fff !important; }
+
+/* 2) الأيقونة تتبع لون النص */
+.btn-install svg,
+.btn-install svg path { fill: currentColor; color: currentColor; }
+
+/* 3) خلفية كبسولة أغمق قليلًا وتدرّج أنعم */
+.btn-install{
+  background:
+    radial-gradient(140% 180% at 100% 0%,
+        color-mix(in oklab, var(--install-brand, #10b981), transparent 82%) 0%,
+        transparent 60%),
+    linear-gradient(180deg, #1a2130 0%, #121926 100%) !important;
+  border: 1px solid color-mix(in oklab, var(--install-brand, #10b981), transparent 70%) !important;
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.06),
+    inset 0 -1px 0 rgba(0,0,0,.22);
+}
+
+/* 4) لمعة أنظف وتوهج خفيف عند التحويم */
+.btn-install__shine{
+  background: linear-gradient(115deg, rgba(255,255,255,.18), rgba(255,255,255,0) 44%);
+  opacity:.7;
+}
+.btn-install:hover{
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--install-brand, #10b981), white 12%) !important;
+  box-shadow:
+    0 16px 36px rgba(0,0,0,.22),
+    0 0 0 3px color-mix(in oklab, var(--install-brand, #10b981), transparent 85%);
+}
+.btn-install:hover .btn-install__icon{ transform: translateY(-1px); }
+
+/* 5) وصولية: تركيز أوضح */
+.btn-install:focus-visible{
+  outline: 3px solid color-mix(in oklab, var(--install-brand, #10b981), white 10%);
+  outline-offset: 3px;
+}
+
+/* 6) تقليل الحركة لمن يفضل ذلك */
+@media (prefers-reduced-motion: reduce){
+  .btn-install, .btn-install:hover{ transform:none; transition:none; }
+  .btn-install__icon{ transition:none; }
+}
+

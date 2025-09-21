@@ -15,12 +15,12 @@
 
   <link rel="manifest" href="/portfolio/manifest.json">
 
-<!-- iOS / iPadOS -->
-<link rel="apple-touch-icon" href="/portfolio/icons/apple-touch-icon-180.png">
+  <!-- iOS / iPadOS -->
+  <link rel="apple-touch-icon" href="/portfolio/icons/apple-touch-icon-180.png">
 
-<!-- تلوين شريط الحالة حسب الثيم -->
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-<meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#0b0f19">
+  <!-- تلوين شريط الحالة حسب الثيم -->
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b0f19">
 
 
 
@@ -127,9 +127,31 @@
           <p>نجهّز المشاريع بدقة عالية ضمن موعد محدد، ونقدّم دعم ما بعد التسليم. تخصّصنا يشمل الويب، الموبايل، وسطح
             المكتب.</p>
 
-
           <a href="https://wa.me/967714294340" target="_blank" rel="noopener noreferrer" class="btn btn-1"
             aria-label="تواصل عبر واتساب">احجز الآن</a>
+
+          <!-- زر التثبيت داخل أزرار قسم الهيرو -->
+          <button id="installBtn" class="btn-install" hidden aria-label="ثبّت كتطبيق">
+            <!-- أيقونة SVG خفيفة -->
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 3a1 1 0 0 1 1 1v8.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.42L11 12.6V4a1 1 0 0 1 1-1zM5 20a2 2 0 0 1-2-2v-2a1 1 0 1 1 2 0v2h14v-2a1 1 0 1 1 2 0v2a2 2 0 0 1-2 2H5z" />
+            </svg>
+            <span>ثبّت كتطبيق</span>
+          </button>
+
+          <!-- كارت تنبيه صغير للجوال (يُنشّطه السكربت) -->
+          <div id="installToast" class="install-toast" hidden>
+            <div class="toast-body">
+              <strong>ثبّت التطبيق</strong>
+              <p>احفظ البورتفوليو كتطبيق للوصول السريع.</p>
+              <div class="toast-actions">
+                <button class="toast-install btn-1">تثبيت</button>
+                <button class="toast-dismiss" type="button">لاحقًا</button>
+              </div>
+            </div>
+          </div>
+
 
           <div class="social-links" aria-label="روابط شخصية">
             <a class="btn-social" href="https://github.com/Ammar-1993" target="_blank" rel="me noopener noreferrer"
@@ -161,11 +183,7 @@
               </svg>
               <span>Resume</span>
             </a>
-            <!-- داخل مجموعة الأزرار في قسم #home -->
-<button id="installBtn" class="btn-1" hidden>ثبّت التطبيق</button>
-
           </div>
-
         </div>
 
         <div class="home-image">
@@ -824,7 +842,8 @@
               <use href="images/icons.svg#brand-whatsapp" />
             </svg>
             <span>الواتساب</span>
-            <p><a href="https://wa.me/967714294340" target="_blank" rel="noopener noreferrer"><bdi dir="ltr">+967714294340</bdi></a></p>
+            <p><a href="https://wa.me/967714294340" target="_blank" rel="noopener noreferrer"><bdi
+                  dir="ltr">+967714294340</bdi></a></p>
           </div>
         </div>
         <div class="contact-item">

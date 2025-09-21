@@ -557,5 +557,48 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
 }
 
 
+/* زر التثبيت: كبسولة زجاجية مع توهج لطيف */
+.btn-install{
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.75rem 1rem; border-radius:9999px;
+  border:1px solid color-mix(in oklab, var(--link), transparent 70%);
+  background: color-mix(in oklab, var(--card-bg, #0b0f19), transparent 20%);
+  box-shadow: 0 6px 18px rgba(0,0,0,.15);
+  transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.btn-install svg { opacity:.9; }
+.btn-install:hover{
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--link), white 10%);
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+}
+.btn-install:focus-visible{ outline:2px solid var(--link); outline-offset:2px; }
+
+/* كارت التنبيه للهواتف */
+.install-toast{
+  position: fixed; inset-inline: 1rem; inset-block-end: 1rem;
+  z-index: 1000; max-inline-size: 22rem;
+}
+.install-toast .toast-body{
+  border-radius: 1rem; padding: 1rem;
+  background: color-mix(in oklab, var(--card-bg, #0b0f19), transparent 10%);
+  border:1px solid color-mix(in oklab, var(--link), transparent 75%);
+  box-shadow: 0 12px 32px rgba(0,0,0,.25);
+  backdrop-filter: blur(8px);
+}
+.install-toast p{ margin:.25rem 0 .75rem; opacity:.9; }
+.install-toast .toast-actions{ display:flex; gap:.5rem; }
+.install-toast .toast-dismiss{
+  padding:.6rem 1rem; border-radius:.6rem; border:1px solid transparent;
+  background: color-mix(in oklab, var(--button-bg, #111), transparent 60%);
+  color: inherit;
+}
+@media (min-width: 992px){
+  /* على الديسكتوب نُخفي التوست غالبًا، ونكتفي بزر الهيرو */
+  .install-toast{ display:none !important; }
+}
+
+
+
 
 

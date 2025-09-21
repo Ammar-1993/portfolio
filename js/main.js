@@ -441,4 +441,74 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 
 
+// تشغيل زر التثبيت + تنبيه الجوال
+(() => {
+  const installBtn = document.getElementById('installBtn');
+  const toast = document.getElementById('installToast');
+  const toastInstall = toast?.querySelector('.toast-install');
+  const toastDismiss = toast?.querySelector('.toast-dismiss');
+
+  // لا نعرض شيئًا لو التطبيق مثبت بالفعل
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+  if (isStandalone) { installBtn?.setAttribute('hidden',''); toast?.setAttribute('hidden',''); return; }
+
+  // لا نكرّر إظهار التوست إن تم تجاهله سابقًا
+  const TOAST_KEY = 'a2hs-toast-dismissed';
+
+  let deferredPrompt;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+
+    // أظهر زر الهيرو
+    installBtn?.removeAttribute('hidden');
+
+    // على الجوال فقط، أظهر توست مرة واحدة
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobile && !localStorage.getItem(TOAST_KEY)) {
+      toast?.removeAttribute('hidden');
+    }
+  });
+
+  async function doPrompt() {
+    if (!deferredPrompt) return;
+    // أخفِ التوست إن كان ظاهرًا
+    toast?.setAttribute('hidden','');
+    installBtn?.setAttribute('disabled','true');
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice; // { outcome }
+    deferredPrompt = null;
+    installBtn?.setAttribute('hidden',''); // نخفي الزر بعد المحاولة
+  }
+
+  installBtn?.addEventListener('click', doPrompt);
+  toastInstall?.addEventListener('click', doPrompt);
+  toastDismiss?.addEventListener('click', () => {
+    toast?.setAttribute('hidden','');
+    localStorage.setItem(TOAST_KEY, '1');
+  });
+
+  // iOS: لا يوجد beforeinstallprompt — نعرض إرشادًا بسيطًا
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) && !window.MSStream;
+  if (isIOS && !isStandalone) {
+    // نُظهر توست يشرح: مشاركة → إضافة إلى الشاشة الرئيسية
+    if (toast) {
+      toast.querySelector('strong').textContent = 'أضِف للشاشة الرئيسية';
+      toast.querySelector('p').textContent = 'افتح قائمة المشاركة في سفاري ثم اختر \"إضافة إلى الشاشة الرئيسية\".';
+      toast.removeAttribute('hidden');
+    }
+    // نُخفي زر الهيرو لعدم وجود prompt على iOS
+    installBtn?.setAttribute('hidden','');
+  }
+
+  // عند التثبيت
+  window.addEventListener('appinstalled', () => {
+    installBtn?.setAttribute('hidden','');
+    toast?.setAttribute('hidden','');
+  });
+})();
+
+
+
 

@@ -413,102 +413,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// زر تثبيت التطبيق (PWA)
-(() => {
-  let deferredPrompt;
-  const installBtn = document.getElementById('installBtn');
-
-  // يُستدعى عندما يرى المتصفح أن موقعك قابل للتثبيت
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();            // منع البانر الافتراضي
-    deferredPrompt = e;            // خزّن الحدث لوقت لاحق
-    if (installBtn) installBtn.hidden = false; // أظهر الزر
-  });
-
-  // عند الضغط على الزر نُظهر حوار التثبيت
-  installBtn?.addEventListener('click', async () => {
-    installBtn.hidden = true;
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    await deferredPrompt.userChoice; // { outcome: 'accepted' | 'dismissed', platform: ... }
-    deferredPrompt = null;
-  });
-
-  // عند اكتمال التثبيت أخفِ الزر (اختياري)
-  window.addEventListener('appinstalled', () => {
-    if (installBtn) installBtn.hidden = true;
-  });
-})();
-
-
-// تشغيل زر التثبيت + تنبيه الجوال
+// زر تثبيت تطبيق أنيق + تبديل النص بعد التثبيت
 (() => {
   const installBtn = document.getElementById('installBtn');
-  const toast = document.getElementById('installToast');
-  const toastInstall = toast?.querySelector('.toast-install');
-  const toastDismiss = toast?.querySelector('.toast-dismiss');
+  if (!installBtn) return;
 
-  // لا نعرض شيئًا لو التطبيق مثبت بالفعل
+  // إن كان التطبيق يعمل بوضع مستقل (مثبّت)، أخفِ الزر
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-  if (isStandalone) { installBtn?.setAttribute('hidden',''); toast?.setAttribute('hidden',''); return; }
+  if (isStandalone) { installBtn.hidden = true; return; }
 
-  // لا نكرّر إظهار التوست إن تم تجاهله سابقًا
-  const TOAST_KEY = 'a2hs-toast-dismissed';
-
-  let deferredPrompt;
+  let deferredPrompt = null;
 
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-
-    // أظهر زر الهيرو
-    installBtn?.removeAttribute('hidden');
-
-    // على الجوال فقط، أظهر توست مرة واحدة
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    if (isMobile && !localStorage.getItem(TOAST_KEY)) {
-      toast?.removeAttribute('hidden');
-    }
+    installBtn.hidden = false;    // أظهر الزر فقط عندما يسمح المتصفح
   });
 
-  async function doPrompt() {
+  installBtn.addEventListener('click', async () => {
     if (!deferredPrompt) return;
-    // أخفِ التوست إن كان ظاهرًا
-    toast?.setAttribute('hidden','');
-    installBtn?.setAttribute('disabled','true');
-    deferredPrompt.prompt();
-    await deferredPrompt.userChoice; // { outcome }
-    deferredPrompt = null;
-    installBtn?.setAttribute('hidden',''); // نخفي الزر بعد المحاولة
-  }
-
-  installBtn?.addEventListener('click', doPrompt);
-  toastInstall?.addEventListener('click', doPrompt);
-  toastDismiss?.addEventListener('click', () => {
-    toast?.setAttribute('hidden','');
-    localStorage.setItem(TOAST_KEY, '1');
+    installBtn.disabled = true;
+    try{
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        installBtn.querySelector('.btn-install__label').textContent = 'تم التثبيت ✅';
+        // خيار: بعد ثانيتين أخفِ الزر
+        setTimeout(() => installBtn.hidden = true, 1600);
+      } else {
+        installBtn.disabled = false;
+      }
+    } finally {
+      deferredPrompt = null;
+    }
   });
 
-  // iOS: لا يوجد beforeinstallprompt — نعرض إرشادًا بسيطًا
-  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) && !window.MSStream;
-  if (isIOS && !isStandalone) {
-    // نُظهر توست يشرح: مشاركة → إضافة إلى الشاشة الرئيسية
-    if (toast) {
-      toast.querySelector('strong').textContent = 'أضِف للشاشة الرئيسية';
-      toast.querySelector('p').textContent = 'افتح قائمة المشاركة في سفاري ثم اختر \"إضافة إلى الشاشة الرئيسية\".';
-      toast.removeAttribute('hidden');
-    }
-    // نُخفي زر الهيرو لعدم وجود prompt على iOS
-    installBtn?.setAttribute('hidden','');
-  }
-
-  // عند التثبيت
   window.addEventListener('appinstalled', () => {
-    installBtn?.setAttribute('hidden','');
-    toast?.setAttribute('hidden','');
+    installBtn.querySelector('.btn-install__label').textContent = 'تم التثبيت ✅';
+    setTimeout(() => installBtn.hidden = true, 1200);
   });
 })();
-
-
-
-

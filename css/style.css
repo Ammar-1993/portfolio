@@ -558,47 +558,58 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
 
 
 /* زر التثبيت: كبسولة زجاجية مع توهج لطيف */
-.btn-install{
-  display:inline-flex; align-items:center; gap:.5rem;
-  padding:.75rem 1rem; border-radius:9999px;
-  border:1px solid color-mix(in oklab, var(--link), transparent 70%);
-  background: color-mix(in oklab, var(--card-bg, #0b0f19), transparent 20%);
-  box-shadow: 0 6px 18px rgba(0,0,0,.15);
-  transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+/* ألوان متناسقة مع متغيّراتك الحالية */
+:root{
+  --install-brand: var(--link, #10b981);        /* لون العلامة الأساسي لديك */
+  --install-bg: color-mix(in oklab, var(--card-bg, #0b0f19), white 6%);
+  --install-border: color-mix(in oklab, var(--install-brand), transparent 72%);
+  --install-text: var(--text, #e7ecef);
 }
-.btn-install svg { opacity:.9; }
+@media (prefers-color-scheme: light){
+  :root{
+    --install-bg: color-mix(in oklab, #ffffff, var(--install-brand) 6%);
+    --install-text: #0b1220;
+  }
+}
+
+/* كبسولة زجاجية بلمعة خفيفة */
+.btn-install{
+  position: relative;
+  display: inline-flex; align-items: center; gap: .6rem;
+  padding: .85rem 1.15rem;
+  border-radius: 9999px;
+  border: 1px solid var(--install-border);
+  background:
+    radial-gradient(120% 180% at 100% 0%, color-mix(in oklab, var(--install-brand), transparent 80%) 0%, transparent 60%),
+    linear-gradient(180deg, color-mix(in oklab, var(--install-bg), transparent 0%) 0%, color-mix(in oklab, var(--install-bg), transparent 0%) 100%);
+  color: var(--install-text);
+  box-shadow: 0 10px 28px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.06);
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+  will-change: transform;
+}
+.btn-install__icon{ opacity:.92; transition: transform .25s ease, opacity .2s ease; }
+.btn-install__label{ font-weight:700; letter-spacing:.2px; }
+
+/* لمعة متحركة */
+.btn-install__shine{
+  content:""; position:absolute; inset:0; border-radius: inherit; pointer-events:none;
+  background: linear-gradient(120deg, rgba(255,255,255,.16), rgba(255,255,255,0) 40%);
+  mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000); 
+  -webkit-mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+  padding: 1px; opacity:.6;
+}
 .btn-install:hover{
   transform: translateY(-2px);
-  border-color: color-mix(in oklab, var(--link), white 10%);
-  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  border-color: color-mix(in oklab, var(--install-brand), white 12%);
+  box-shadow: 0 14px 34px rgba(0,0,0,.22), 0 0 0 3px color-mix(in oklab, var(--install-brand), transparent 85%);
 }
-.btn-install:focus-visible{ outline:2px solid var(--link); outline-offset:2px; }
+.btn-install:hover .btn-install__icon{ transform: translateY(-1px); }
+.btn-install:active{ transform: translateY(0); filter: brightness(.98); }
 
-/* كارت التنبيه للهواتف */
-.install-toast{
-  position: fixed; inset-inline: 1rem; inset-block-end: 1rem;
-  z-index: 1000; max-inline-size: 22rem;
-}
-.install-toast .toast-body{
-  border-radius: 1rem; padding: 1rem;
-  background: color-mix(in oklab, var(--card-bg, #0b0f19), transparent 10%);
-  border:1px solid color-mix(in oklab, var(--link), transparent 75%);
-  box-shadow: 0 12px 32px rgba(0,0,0,.25);
-  backdrop-filter: blur(8px);
-}
-.install-toast p{ margin:.25rem 0 .75rem; opacity:.9; }
-.install-toast .toast-actions{ display:flex; gap:.5rem; }
-.install-toast .toast-dismiss{
-  padding:.6rem 1rem; border-radius:.6rem; border:1px solid transparent;
-  background: color-mix(in oklab, var(--button-bg, #111), transparent 60%);
-  color: inherit;
-}
-@media (min-width: 992px){
-  /* على الديسكتوب نُخفي التوست غالبًا، ونكتفي بزر الهيرو */
-  .install-toast{ display:none !important; }
-}
+/* وصولية */
+.btn-install:focus-visible{ outline: 3px solid color-mix(in oklab, var(--install-brand), white 10%); outline-offset: 3px; }
 
-
-
-
-
+/* مسافة بسيطة إذا كان ملاصق لزر آخر */
+.btn-install + .btn-1, .btn-1 + .btn-install{ margin-inline-start: .6rem; }

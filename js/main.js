@@ -398,3 +398,47 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   bind();
 });
+
+
+
+// مثال تسجيل SW (تأكد من المسار)
+(() => {
+  const BASE = '/portfolio/';
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register(`${BASE}sw.js`).catch(console.error);
+    });
+  }
+})();
+
+
+
+// زر تثبيت التطبيق (PWA)
+(() => {
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
+
+  // يُستدعى عندما يرى المتصفح أن موقعك قابل للتثبيت
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();            // منع البانر الافتراضي
+    deferredPrompt = e;            // خزّن الحدث لوقت لاحق
+    if (installBtn) installBtn.hidden = false; // أظهر الزر
+  });
+
+  // عند الضغط على الزر نُظهر حوار التثبيت
+  installBtn?.addEventListener('click', async () => {
+    installBtn.hidden = true;
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice; // { outcome: 'accepted' | 'dismissed', platform: ... }
+    deferredPrompt = null;
+  });
+
+  // عند اكتمال التثبيت أخفِ الزر (اختياري)
+  window.addEventListener('appinstalled', () => {
+    if (installBtn) installBtn.hidden = true;
+  });
+})();
+
+
+

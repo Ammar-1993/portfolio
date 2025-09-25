@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ammar-1993.github.io/portfolio/sitemap.xml

@@ -3,7 +3,8 @@
   <url>
     <loc>https://ammar-1993.github.io/portfolio/</loc>
     <priority>1.0</priority>
-  </url>
+       <lastmod>2025-09-25</lastmod>
+    <changefreq>weekly</changefreq>
   <url>
     <loc>https://ammar-1993.github.io/portfolio/offline.html</loc>
     <priority>0.3</priority>
@@ -23,3 +24,5 @@
   </url>
   <!-- Add more URLs as needed for other portfolio items or pages -->
 </urlset>
+
+

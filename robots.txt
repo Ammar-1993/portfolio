@@ -1,4 +1,6 @@
+# robots.txt for https://ammar-1993.github.io/portfolio/
 User-agent: *
 Allow: /
 
+# Explicitly allow all bots and reference sitemap
 Sitemap: https://ammar-1993.github.io/portfolio/sitemap.xml

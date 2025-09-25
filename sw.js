@@ -1,9 +1,8 @@
 /* /portfolio/sw.js */
 const BASE = '/portfolio/';
-const VERSION = 'v1.0.0';
+const VERSION = 'v1.0.1'; // bump version for cache updates
 const STATIC_CACHE = `static-${VERSION}`;
 const RUNTIME_CACHE = `runtime-${VERSION}`;
-
 const PRECACHE_URLS = [
   `${BASE}`,
   `${BASE}index.html`,
@@ -16,8 +15,9 @@ const PRECACHE_URLS = [
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(STATIC_CACHE).then((cache) => cache.addAll(PRECACHE_URLS))
-      .then(self.skipWaiting())
+    caches.open(STATIC_CACHE)
+      .then((cache) => cache.addAll(PRECACHE_URLS))
+      .then(() => self.skipWaiting())
   );
 });
 
@@ -36,6 +36,7 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(req.url);
   if (!url.pathname.startsWith(BASE)) return;
 
+  // Navigation requests: network first, fallback to offline page
   if (req.mode === 'navigate') {
     event.respondWith((async () => {
       try {
@@ -51,6 +52,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // Assets: stale-while-revalidate
   event.respondWith((async () => {
     const cache = await caches.open(RUNTIME_CACHE);
     const cached = await cache.match(req);

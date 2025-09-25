@@ -1,7 +1,8 @@
 {
   "id": "/portfolio/",
   "name": "عمار النجار — مهندس برمجيات",
-  "short_name": "النجار",
+  "short_name": "عمار النجار",
+  "description": "م. عمار النجار: مهندس برمجيات يقدم حلول مواقع، موبايل، وسطح المكتب باحترافية ودعم مستمر.",
   "lang": "ar",
   "dir": "rtl",
   "start_url": "/portfolio/?source=a2hs",
@@ -10,6 +11,13 @@
   "background_color": "#0b0f19",
   "theme_color": "#0b0f19",
   "orientation": "portrait-primary",
+  "categories": ["productivity", "portfolio", "business", "utilities"],
+  "screenshots": [
+    { "src": "/portfolio/images/hero4.png", "sizes": "420x420", "type": "image/png", "label": "الصفحة الرئيسية" },
+    { "src": "/portfolio/images/about_hero.png", "sizes": "520x650", "type": "image/png", "label": "نبذة عن الفريق" }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
   "icons": [
     { "src": "/portfolio/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "/portfolio/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },

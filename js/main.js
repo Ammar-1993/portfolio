@@ -4,27 +4,17 @@
 
 // ===== Theme (light/dark) =====
 (function () {
+  'use strict';
   const html = document.documentElement;
-  const themeMeta =
-    document.querySelector('meta[name="theme-color"]') ||
-    document.getElementById('theme-color');
+  const themeMeta = document.querySelector('meta[name="theme-color"]') || document.getElementById('theme-color');
   const themeBtnId = 'theme-toggle';
-
-  const mqDark = window.matchMedia
-    ? window.matchMedia('(prefers-color-scheme: dark)')
-    : null;
-
+  const mqDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
   const prefersDark = () => (mqDark ? mqDark.matches : false);
-
-  const computeIsDark = () =>
-    html.getAttribute('data-theme') === 'dark' ||
-    (!html.hasAttribute('data-theme') && prefersDark());
-
+  const computeIsDark = () => html.getAttribute('data-theme') === 'dark' || (!html.hasAttribute('data-theme') && prefersDark());
   function setColorSchemeCSS(isDark) {
     html.style.colorScheme = isDark ? 'dark' : 'light';
     if (themeMeta) themeMeta.setAttribute('content', isDark ? '#0b0f19' : '#ffffff');
   }
-
   function applyTheme(themeOrNull) {
     if (themeOrNull === 'light' || themeOrNull === 'dark') {
       html.setAttribute('data-theme', themeOrNull);
@@ -38,21 +28,18 @@
     const btn = document.getElementById(themeBtnId);
     if (btn) btn.setAttribute('aria-pressed', String(isDark));
   }
-
   function toggleTheme() {
-    const current = html.getAttribute('data-theme'); // null | 'light' | 'dark'
+    const current = html.getAttribute('data-theme');
     const next = current === 'dark' || (current === null && prefersDark()) ? 'light' : 'dark';
     applyTheme(next);
   }
-
-  // init from storage (else follow system)
+  // Initialize theme from storage or system
   (function initTheme() {
     let stored = null;
     try { stored = localStorage.getItem('theme'); } catch (_) {}
     applyTheme(stored === 'light' || stored === 'dark' ? stored : null);
   })();
-
-  // react to system changes when user didn't choose explicitly
+  // React to system changes if user didn't choose explicitly
   if (mqDark) {
     const onChange = () => {
       try { if (!localStorage.getItem('theme')) applyTheme(null); } catch (_) {}
@@ -60,16 +47,14 @@
     if ('addEventListener' in mqDark) mqDark.addEventListener('change', onChange);
     else if ('addListener' in mqDark) mqDark.addListener(onChange);
   }
-
-  // sync across tabs
+  // Sync theme across tabs
   window.addEventListener('storage', (e) => {
     if (e.key === 'theme') {
       const v = e.newValue;
       applyTheme(v === 'light' || v === 'dark' ? v : null);
     }
   });
-
-  // bind button
+  // Bind theme toggle button
   document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById(themeBtnId);
     if (btn) {
@@ -82,7 +67,6 @@
 
 (() => {
   'use strict';
-
   // ===== Helpers =====
   const qs = (sel, scope = document) => scope.querySelector(sel);
   const qsa = (sel, scope = document) => Array.from(scope.querySelectorAll(sel));
@@ -92,11 +76,10 @@
   const linksContainer = qs('.links');
   const sections = qsa('section[id]');
   let HEADER_OFFSET = navbar ? navbar.offsetHeight : 60;
-
   function recalcHeaderOffset() {
     HEADER_OFFSET = navbar ? navbar.getBoundingClientRect().height : 60;
   }
-  window.addEventListener('resize', recalcHeaderOffset);
+  window.addEventListener('resize', recalcHeaderOffset, { passive: true });
 
   const setSticky = () => {
     if (!navbar) return;
@@ -131,17 +114,17 @@
   // smooth internal anchors (respects reduced-motion)
   function bindSmartAnchors() {
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    qsa('a[href^="#"]:not([href="#"])').forEach((a) => {
-      a.addEventListener('click', (e) => {
-        const hash = a.getAttribute('href');
-        const id = hash && hash.slice(1);
-        const target = id ? document.getElementById(id) : null;
-        if (!target) return;
-        e.preventDefault();
-        const top = Math.max(0, window.pageYOffset + target.getBoundingClientRect().top - HEADER_OFFSET);
-        window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
-        history.replaceState(null, '', hash);
-      });
+    document.body.addEventListener('click', function(e) {
+      const a = e.target.closest('a[href^="#"]:not([href="#"])');
+      if (!a) return;
+      const hash = a.getAttribute('href');
+      const id = hash && hash.slice(1);
+      const target = id ? document.getElementById(id) : null;
+      if (!target) return;
+      e.preventDefault();
+      const top = Math.max(0, window.pageYOffset + target.getBoundingClientRect().top - HEADER_OFFSET);
+      window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
+      history.replaceState(null, '', hash);
     });
   }
 
@@ -167,33 +150,29 @@
     const openMenu = () => {
       menu.classList.add('active');
       menuBtn.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden'; // منع تمرير الخلفية
+      document.body.style.overflow = 'hidden';
     };
     const closeMenu = () => {
       menu.classList.remove('active');
       menuBtn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = ''; // استرجاع التمرير
+      document.body.style.overflow = '';
     };
-
-    // ensure attributes (id may already exist في HTML)
     if (!menu.id) menu.setAttribute('id', 'main-menu');
     menuBtn.setAttribute('aria-controls', menu.id);
-
     menuBtn.addEventListener('click', () => {
       if (menu.classList.contains('active')) closeMenu();
       else openMenu();
     });
-
-    // إغلاق عند الضغط على رابط داخل القائمة
-    qsa('.nav-link', menu).forEach((link) => link.addEventListener('click', closeMenu));
-
-    // إغلاق عند الضغط خارجها
+    // Close on nav link click (event delegation)
+    menu.addEventListener('click', (e) => {
+      if (e.target.classList.contains('nav-link')) closeMenu();
+    });
+    // Close on outside click
     document.addEventListener('click', (e) => {
       if (!menu.classList.contains('active')) return;
       if (!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu();
     });
-
-    // إغلاق عبر Escape
+    // Close on Escape
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
   }
 

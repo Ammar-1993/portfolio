@@ -61,7 +61,6 @@ portfolio/
 │  └─ *.mp4
 └─ index.html
 ```
-> **Note:** If your folder is still named `vedio/`, rename it to `video/` and update paths in `index.html`.
 
 ---
 

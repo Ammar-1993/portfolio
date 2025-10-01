@@ -51,7 +51,7 @@ Arabic (RTL) portfolio website for Ammar Al-Najjar, showcasing services, selecte
 ```text
 portfolio/
 ├─ css/
-│  ├─ bootstrap-rtl.min.css
+│  ├
 │  └─ style.css              # Dark theme + accessibility/performance tweaks
 ├─ images/                   # Prefer WebP/AVIF
 │  └─ og-cover.jpg           # Social sharing image

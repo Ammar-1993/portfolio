@@ -23,7 +23,6 @@
 - [Performance](#performance)
 - [Lighthouse Targets](#lighthouse-targets)
 - [License](#license)
-- [Contributing](#contributing)
 - [Contact](#contact)
 
 ---
@@ -181,8 +180,6 @@ SOFTWARE.
 
 ---
 
-## Contributing
-Personal project, but small PRs for fixes or a11y/perf improvements are welcome.
 
 ---
 

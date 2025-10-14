@@ -156,7 +156,6 @@ Update WhatsApp/Mail/Tel in the **Contact** section of `index.html`.
 ---
 
 ## License
-MIT License
 
 Copyright (c) 2025 Ammar Al-Najjar
 

@@ -14,7 +14,6 @@
 - [Overview](#overview)
 - [Highlights](#highlights)
 - [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
 - [Quick Start](#quick-start-local)
 - [Deploy](#deploy-on-github-pages)
 - [Customization](#customization)
@@ -44,22 +43,7 @@ Arabic (RTL) portfolio website for Ammar Al-Najjar, showcasing services, selecte
 - **JavaScript:** Vanilla JS (no heavy libs)
 - **Hosting:** GitHub Pages
 
----
 
-## Project Structure
-```text
-portfolio/
-├─ css/
-│  ├
-│  └─ style.css              # Dark theme + accessibility/performance tweaks
-├─ images/                   # Prefer WebP/AVIF
-│  └─ og-cover.jpg           # Social sharing image
-├─ js/
-│  └─ main.js                # Nav, filters, lightbox, skills
-├─ video/                    # ← renamed from vedio/
-│  └─ *.mp4
-└─ index.html
-```
 
 ---
 

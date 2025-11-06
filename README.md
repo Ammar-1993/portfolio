@@ -167,8 +167,8 @@ SOFTWARE.
 ---
 
 ## Contact
-- WhatsApp: `+967714294340`
+- Phone/WhatsApp: `+967714294340`
 - Email: `ammaralnggar@gmail.com`
-- Phone: `+967774344625`
+<!-- - Phone: `+967774344625` -->
 
 

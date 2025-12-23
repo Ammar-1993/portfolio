@@ -442,10 +442,10 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
 }
 .lightbox .lightbox-controls .next-item .ico,
 .lightbox .lightbox-controls .prev-item .ico{
-  width:24px; height:24px; fill:#0f172a; transition:fill .3s ease
+  width:24px; height:24px; color:#0f172a; transition:color .3s ease
 }
 .lightbox .lightbox-controls .next-item:hover .ico,
-.lightbox .lightbox-controls .prev-item:hover .ico{fill:#fff}
+.lightbox .lightbox-controls .prev-item:hover .ico{color:#fff}
 
 /* وسائل التواصل في الهيدر (اختياري) */
 .header-social{position:absolute;top:53%;inset-inline-start:50px;transform:translateY(-53%);border:1px solid color-mix(in oklab,var(--main-color),#000 75%);border-radius:50px}

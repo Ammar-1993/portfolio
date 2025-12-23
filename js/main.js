@@ -239,46 +239,64 @@ const Utils = {
     });
   }
 
-  // ===== Lightbox (images only) =====
+  // ===== Lightbox (Project Gallery Mode) =====
   const lightbox = qs('.lightbox');
   const lightboxImg = lightbox ? qs('.lightbox-img', lightbox) : null;
   const lightboxClose = lightbox ? qs('.lightbox-close', lightbox) : null;
   const lightboxText = lightbox ? qs('.caption-text', lightbox) : null;
   const lightboxCounter = lightbox ? qs('.caption-counter', lightbox) : null;
 
-  let visibleList = [];
+  let galleryImages = []; // Stores {src, alt} for the current project
   let currentIndex = 0;
   let lastFocused = null;
   let hiddenForA11y = [];
 
-  function computeVisibleList() {
-    visibleList = portfolioItems.filter((item) => item.classList.contains('show'));
-    if (!visibleList.length) visibleList = portfolioItems.slice();
+  // Helper to extract images from a project item
+  function getProjectImages(item) {
+    const images = [];
+    
+    // 1. Main Cover Image
+    const coverImg = qs('.portfolio-img img', item);
+    if (coverImg) {
+      images.push({
+        src: coverImg.currentSrc || coverImg.getAttribute('src'),
+        alt: coverImg.getAttribute('alt') || ''
+      });
+    }
+
+    // 2. Hidden Gallery Images
+    const hiddenGallery = qs('.project-gallery', item);
+    if (hiddenGallery) {
+      const hiddenImgs = qsa('img', hiddenGallery);
+      hiddenImgs.forEach(img => {
+        images.push({
+          src: img.getAttribute('src'), // Use getAttribute for lazy-loaded/hidden images
+          alt: img.getAttribute('alt') || ''
+        });
+      });
+    }
+
+    return images;
   }
 
   function preloadAround(idx) {
-    if (!visibleList.length) return;
-    const next = visibleList[(idx + 1) % visibleList.length];
-    const prev = visibleList[(idx - 1 + visibleList.length) % visibleList.length];
-    [next, prev].forEach((item) => {
-      const imgEl = item && qs('.portfolio-img img', item);
-      if (imgEl) { const pre = new Image(); pre.src = imgEl.currentSrc || imgEl.src; }
+    if (!galleryImages.length) return;
+    const next = galleryImages[(idx + 1) % galleryImages.length];
+    const prev = galleryImages[(idx - 1 + galleryImages.length) % galleryImages.length];
+    [next, prev].forEach((imgObj) => {
+      if (imgObj && imgObj.src) { const pre = new Image(); pre.src = imgObj.src; }
     });
   }
 
   function updateLightbox() {
-    const item = visibleList[currentIndex];
-    if (!item || !lightboxImg) return;
-    const imgEl = qs('.portfolio-img img', item);
-    const titleEl = qs('h4', item);
-    const src = imgEl ? (imgEl.currentSrc || imgEl.getAttribute('src')) : '';
-    const alt = imgEl ? imgEl.getAttribute('alt') || '' : '';
-    if (src) {
-      lightboxImg.src = src;
-      lightboxImg.alt = alt || (titleEl ? titleEl.textContent.trim() : 'صورة من المعرض');
-    }
-    if (lightboxText) lightboxText.textContent = titleEl ? titleEl.textContent.trim() : '';
-    if (lightboxCounter) lightboxCounter.textContent = `${currentIndex + 1} / ${visibleList.length}`;
+    const imgObj = galleryImages[currentIndex];
+    if (!imgObj || !lightboxImg) return;
+    
+    lightboxImg.src = imgObj.src;
+    lightboxImg.alt = imgObj.alt || 'صورة من المعرض';
+    
+    if (lightboxText) lightboxText.textContent = imgObj.alt;
+    if (lightboxCounter) lightboxCounter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
     preloadAround(currentIndex);
   }
 
@@ -293,11 +311,15 @@ const Utils = {
     }
   }
 
-  function openLightbox(idx) {
+  function openLightbox(item) {
     if (!lightbox) return;
-    computeVisibleList();
-    currentIndex = Math.max(0, Math.min(idx, visibleList.length - 1));
+    
+    galleryImages = getProjectImages(item);
+    if (galleryImages.length === 0) return;
+
+    currentIndex = 0; // Always start from the first image (cover)
     updateLightbox();
+    
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
     lastFocused = document.activeElement;
@@ -313,8 +335,17 @@ const Utils = {
     if (lastFocused) lastFocused.focus();
   }
 
-  function nextItem() { computeVisibleList(); currentIndex = (currentIndex + 1) % visibleList.length; updateLightbox(); }
-  function prevItem() { computeVisibleList(); currentIndex = (currentIndex - 1 + visibleList.length) % visibleList.length; updateLightbox(); }
+  function nextItem() { 
+    if (!galleryImages.length) return;
+    currentIndex = (currentIndex + 1) % galleryImages.length; 
+    updateLightbox(); 
+  }
+  
+  function prevItem() { 
+    if (!galleryImages.length) return;
+    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length; 
+    updateLightbox(); 
+  }
 
   // expose for control buttons bound later
   window.nextItem = nextItem;
@@ -332,9 +363,7 @@ const Utils = {
       if (e.target.tagName.toLowerCase() === 'video' || e.target.closest('video')) return;
       if (!qs('.portfolio-img img', item)) return;
 
-      computeVisibleList();
-      const idxVisible = visibleList.indexOf(item);
-      if (idxVisible !== -1) openLightbox(idxVisible);
+      openLightbox(item);
     });
 
     // Keyboard support for items (Enter/Space)
@@ -348,9 +377,7 @@ const Utils = {
       if (e.target.tagName.toLowerCase() === 'video' || e.target.closest('video')) return;
       if (!qs('.portfolio-img img', item)) return;
 
-      computeVisibleList();
-      const idxVisible = visibleList.indexOf(item);
-      if (idxVisible !== -1) openLightbox(idxVisible);
+      openLightbox(item);
     });
   }
 

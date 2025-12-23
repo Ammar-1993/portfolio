@@ -5,6 +5,9 @@
    - وإلا يتبع تفضيل النظام (prefers-color-scheme)
    ===================================================== */
 
+/* Google Fonts: Poppins (English) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
 /* Cairo — أوزان مختارة وسريعة (WOFF2 فقط) */
 @font-face{font-family:"Cairo";src:url("../assets/fonts/cairo/Cairo-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:"Cairo";src:url("../assets/fonts/cairo/Cairo-SemiBold.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
@@ -12,7 +15,14 @@
 @font-face{font-family:"Cairo";src:url("../assets/fonts/cairo/Cairo-ExtraBold.woff2") format("woff2");font-weight:800;font-style:normal;font-display:swap}
 
 /* استخدام الخط عبر الموقع */
-body{font-family:"Cairo","Segoe UI",Arial,"Noto Kufi Arabic","Tajawal",sans-serif}
+:root {
+  --font-primary: "Cairo", "Segoe UI", Arial, "Noto Kufi Arabic", "Tajawal", sans-serif;
+}
+[lang="en"], [dir="ltr"] {
+  --font-primary: "Poppins", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+body{font-family:var(--font-primary);}
 
 /* ========== متغيرات أساسية غير مرتبطة بالثيم ========== */
 :root{
@@ -241,25 +251,30 @@ padding:12px 25px;
 .home-text span{font-size:18px;line-height:28px;color:var(--ink);opacity:.9;display:block;margin-top:10px}
 .home-text p{font-size:18px;color:var(--muted);margin-top:12px}
 .home-text .btn{display:inline-block;margin-top:16px}
-.header-hero-shape{position:absolute;inset:0 auto 0 0;width:55%;height:100%;pointer-events:none}
+.header-hero-shape{position:absolute;top:0;bottom:0;inset-inline-end:0;width:55%;height:100%;pointer-events:none}
 .header-hero-shape::before{content:"";position:absolute;inset:0;background:linear-gradient(140deg,rgba(0,167,142,.18),rgba(0,167,142,0));transform:skewX(20deg)}
+[dir="ltr"] .header-hero-shape::before{transform:skewX(-20deg)}
 
 /* حول */
 .about-section .about-content,.about-section .about-image{flex:0 0 50%;max-width:50%;padding:20px}
 .about-section .about-image .img-box{position:relative}
 .about-section .about-image .img-box img{width:100%;border-radius:12px}
 .about-section .about-image .img-box .about-shape{
-  width:404px;height:525px;border-left:15px solid var(--main-color);border-bottom:15px solid var(--main-color);
-  position:absolute;bottom:0;left:0;z-index:var(--z-back)
+  width:404px;height:525px;border-inline-end:15px solid var(--main-color);border-bottom:15px solid var(--main-color);
+  position:absolute;bottom:0;inset-inline-end:0;z-index:var(--z-back)
 }
-.about-section .about-image .img-box .about-shape::before{content:"";position:absolute;width:15px;height:85%;background:var(--main-color);bottom:0;right:0}
-.about-section .about-image .img-box .about-shape::after{content:"";position:absolute;width:104%;height:15px;top:36px;right:-2px;transform:rotate(11deg);background:var(--main-color);border-top-left-radius:20px}
+.about-section .about-image .img-box .about-shape::before{content:"";position:absolute;width:15px;height:85%;background:var(--main-color);bottom:0;inset-inline-start:0}
+.about-section .about-image .img-box .about-shape::after{
+  content:"";position:absolute;width:104%;height:15px;top:36px;inset-inline-start:-2px;
+  transform:rotate(11deg);background:var(--main-color);border-start-end-radius:20px
+}
+[dir="ltr"] .about-section .about-image .img-box .about-shape::after{transform:rotate(-11deg)}
 .about-section .about-content p{text-align:justify;color:var(--muted)}
 
 /* المهارات */
 .skill-item .skill-header{position:relative}
 .skill-item .skill-header .skill-title{font-size:16px;font-weight:600;margin-top:15px;color:var(--ink)}
-.skill-item .skill-header .skill-percentage{position:absolute;top:-3px;left:0;color:var(--muted)}
+.skill-item .skill-header .skill-percentage{position:absolute;top:-3px;inset-inline-end:0;color:var(--muted)}
 .skill-item .skill-bar{margin-top:12px}
 .skill-item .skill-bar .bar-inner{
   width:100%;height:9px;border-radius:5px;background:var(--track);
@@ -271,7 +286,7 @@ padding:12px 25px;
 }
 .skill-item .skill-bar .bar-inner .progress-line::before{
   content:"";position:absolute;width:7px;height:18px;background:var(--bg);
-  border:2px solid var(--main-color);top:-7px;right:0;border-radius:3px
+  border:2px solid var(--main-color);top:-7px;inset-inline-start:0;border-radius:3px
 }
 
 /* الخدمات */
@@ -340,13 +355,19 @@ padding:12px 25px;
 }
 .portfolio .portfolio-item:hover .portfolio-info{opacity:1}
 .portfolio .portfolio-item .portfolio-info h4{
-  font-size:18px;font-weight:800;color:#fff;text-transform:capitalize;transform:translateX(-14px);opacity:0
+  font-size:18px;font-weight:800;color:#fff;text-transform:capitalize;transform:translateX(-14px);opacity:0;
+  transition:transform .2s ease, opacity .2s ease
 }
+[dir="ltr"] .portfolio .portfolio-item .portfolio-info h4{transform:translateX(14px)}
+
 .portfolio .portfolio-item:hover .portfolio-info h4{transform:none;opacity:1}
 .portfolio .portfolio-item .portfolio-info .icon{
   height:40px;width:40px;color:#fff;background:var(--main-color);text-align:center;border-radius:50%;display:grid;place-items:center;
-  transform:translateX(14px);opacity:0
+  transform:translateX(14px);opacity:0;
+  transition:transform .2s ease, opacity .2s ease
 }
+[dir="ltr"] .portfolio .portfolio-item .portfolio-info .icon{transform:translateX(-14px)}
+
 .portfolio .portfolio-item:hover .portfolio-info .icon{transform:none;opacity:1}
 
 /* فيديو داخل المعرض */
@@ -371,10 +392,10 @@ padding:12px 25px;
 .technologies-plan .technologies-price .period{font-size:12px;font-weight:400;color:var(--muted);text-transform:uppercase}
 .technologies-plan .technologies-body{padding:0 20px 20px}
 .technologies-plan .technologies-body ul li{
-  font-size:16px;font-weight:400;color:var(--muted);padding:10px 0 10px 30px;border-bottom:1px solid var(--border);line-height:26px;position:relative
+  font-size:16px;font-weight:400;color:var(--muted);padding:10px 0 10px 0;padding-inline-end:30px;border-bottom:1px solid var(--border);line-height:26px;position:relative
 }
 .technologies-plan .technologies-body ul li:last-child{border-bottom:none}
-.technologies-plan .technologies-body ul li i{color:var(--main-color);position:absolute;left:0;top:12px}
+.technologies-plan .technologies-body ul li i{color:var(--main-color);position:absolute;inset-inline-end:0;top:12px}
 .technologies-plan .technologies-footer{padding:20px;text-align:center;margin-top:auto}
 
 /* اتصل بنا */
@@ -433,8 +454,8 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
   cursor:pointer; z-index:var(--z-lightbox-controls);
   box-shadow:0 0 15px rgba(0,0,0,0.3); transition:all .3s ease
 }
-.lightbox .lightbox-controls .prev-item{left:25px}
-.lightbox .lightbox-controls .next-item{right:25px}
+.lightbox .lightbox-controls .prev-item{inset-inline-start:25px}
+.lightbox .lightbox-controls .next-item{inset-inline-end:25px}
 
 .lightbox .lightbox-controls .next-item:hover,
 .lightbox .lightbox-controls .prev-item:hover{
@@ -448,7 +469,7 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
 .lightbox .lightbox-controls .prev-item:hover .ico{color:#fff}
 
 .lightbox .lightbox-caption{
-  position:absolute; bottom:20px; left:0; right:0;
+  position:absolute; bottom:20px; inset-inline:0;
   display:flex; justify-content:space-between; align-items:center;
   padding:0 20px; color:#000; pointer-events:none
 }
@@ -729,4 +750,38 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
 #portfolio, #technologies, #services {
   content-visibility: auto;
   contain-intrinsic-size: 1px 1000px; /* ????? ?????? ???????? ???? ????? */
+}
+/* Accessibility Utilities */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-link:focus {
+  position: fixed;
+  left: 16px;
+  top: 16px;
+  width: auto;
+  height: auto;
+  padding: .5rem .75rem;
+  background: #0ea5e9;
+  color: #fff;
+  border-radius: .5rem;
+  z-index: 10000;
 }

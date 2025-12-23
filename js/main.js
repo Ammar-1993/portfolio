@@ -292,8 +292,9 @@ const Utils = {
     const imgObj = galleryImages[currentIndex];
     if (!imgObj || !lightboxImg) return;
     
+    const isEn = document.documentElement.lang === 'en';
     lightboxImg.src = imgObj.src;
-    lightboxImg.alt = imgObj.alt || 'صورة من المعرض';
+    lightboxImg.alt = imgObj.alt || (isEn ? 'Gallery Image' : 'صورة من المعرض');
     
     if (lightboxText) lightboxText.textContent = imgObj.alt;
     if (lightboxCounter) lightboxCounter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
@@ -473,7 +474,8 @@ document.addEventListener('DOMContentLoaded', () => {
       deferredPrompt.prompt();
       const { outcome } = await deferredPrompt.userChoice;
       if (outcome === 'accepted') {
-        installBtn.querySelector('.btn-install__label').textContent = 'تم التثبيت ✅';
+        const isEn = document.documentElement.lang === 'en';
+        installBtn.querySelector('.btn-install__label').textContent = isEn ? 'Installed ✅' : 'تم التثبيت ✅';
         // خيار: بعد ثانيتين أخفِ الزر
         setTimeout(() => installBtn.hidden = true, 1600);
       } else {
@@ -485,7 +487,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   window.addEventListener('appinstalled', () => {
-    installBtn.querySelector('.btn-install__label').textContent = 'تم التثبيت ✅';
+    const isEn = document.documentElement.lang === 'en';
+    installBtn.querySelector('.btn-install__label').textContent = isEn ? 'Installed ✅' : 'تم التثبيت ✅';
     setTimeout(() => installBtn.hidden = true, 1200);
   });
 })();

@@ -1,11 +1,12 @@
 /* /portfolio/sw.js */
 const BASE = '/portfolio/';
-const VERSION = 'v1.0.1'; // bump version for cache updates
+const VERSION = 'v1.1.0'; // bump version for cache updates
 const STATIC_CACHE = `static-${VERSION}`;
 const RUNTIME_CACHE = `runtime-${VERSION}`;
 const PRECACHE_URLS = [
   `${BASE}`,
   `${BASE}index.html`,
+  `${BASE}index-en.html`,
   `${BASE}css/style.css`,
   `${BASE}js/main.js`,
   `${BASE}assets/icons/icon-192.png`,

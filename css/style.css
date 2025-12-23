@@ -445,12 +445,12 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
   width:24px; height:24px; color:#0f172a; transition:color .3s ease
 }
 .lightbox .lightbox-controls .next-item:hover .ico,
-.lightbox .lightbox-controls .prev-item:hover .ico{color:#000}
+.lightbox .lightbox-controls .prev-item:hover .ico{color:#fff}
 
 .lightbox .lightbox-caption{
   position:absolute; bottom:20px; left:0; right:0;
   display:flex; justify-content:space-between; align-items:center;
-  padding:0 20px; color:#fff; pointer-events:none
+  padding:0 20px; color:#000; pointer-events:none
 }
 .lightbox .caption-text, .lightbox .caption-counter{
   text-shadow:0 2px 4px rgba(0,0,0,0.8); font-weight:600; font-size:1.1rem

@@ -2,11 +2,21 @@
 // main.js — v4 (Theme + Nav + Filters + Lightbox A11y)
 // =====================================================
 
+// ===== Shared Utilities =====
+const Utils = {
+  qs: (sel, scope = document) => scope.querySelector(sel),
+  qsa: (sel, scope = document) => Array.from(scope.querySelectorAll(sel)),
+  on: (target, type, callback, options) => {
+    if (!target) return;
+    target.addEventListener(type, callback, options);
+  }
+};
+
 // ===== Theme (light/dark) =====
 (function () {
   'use strict';
   const html = document.documentElement;
-  const themeMeta = document.querySelector('meta[name="theme-color"]') || document.getElementById('theme-color');
+  const themeMeta = Utils.qs('meta[name="theme-color"]') || document.getElementById('theme-color');
   const themeBtnId = 'theme-toggle';
   const mqDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
   const prefersDark = () => (mqDark ? mqDark.matches : false);
@@ -67,9 +77,8 @@
 
 (() => {
   'use strict';
-  // ===== Helpers =====
-  const qs = (sel, scope = document) => scope.querySelector(sel);
-  const qsa = (sel, scope = document) => Array.from(scope.querySelectorAll(sel));
+  // ===== Helpers (Using Shared Utils) =====
+  const { qs, qsa, on } = Utils;
 
   // ===== Navbar sticky + active link on scroll =====
   const navbar = qs('.navbar');
@@ -312,22 +321,43 @@
   window.prevItem = prevItem;
 
   // open only when clicking image cards (not videos)
-  qsa('.portfolio-item').forEach((item, i) => {
-    const clickable = qs('.portfolio-item-inner', item) || item;
-    clickable.setAttribute('tabindex', '0');
+  // Event Delegation for Portfolio Items
+  const portfolioContainer = qs('.portfolio .row:nth-of-type(3)') || qs('.portfolio .container'); // Adjust selector based on HTML structure
+  if (portfolioContainer) {
+    portfolioContainer.addEventListener('click', (e) => {
+      const item = e.target.closest('.portfolio-item');
+      if (!item) return;
 
-    const openIfImageCard = (ev) => {
-      if (ev.target.tagName.toLowerCase() === 'video' || ev.target.closest('video')) return;
-      if (!qs('.portfolio-img img', item)) return; // تجاهل بطاقات الفيديو
+      // Check if it's a video or non-image card
+      if (e.target.tagName.toLowerCase() === 'video' || e.target.closest('video')) return;
+      if (!qs('.portfolio-img img', item)) return;
+
       computeVisibleList();
       const idxVisible = visibleList.indexOf(item);
-      openLightbox(idxVisible !== -1 ? idxVisible : i);
-    };
-
-    clickable.addEventListener('click', openIfImageCard);
-    clickable.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openIfImageCard(e); }
+      if (idxVisible !== -1) openLightbox(idxVisible);
     });
+
+    // Keyboard support for items (Enter/Space)
+    portfolioContainer.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      const item = e.target.closest('.portfolio-item');
+      if (!item) return;
+      
+      e.preventDefault();
+      // Check if it's a video or non-image card
+      if (e.target.tagName.toLowerCase() === 'video' || e.target.closest('video')) return;
+      if (!qs('.portfolio-img img', item)) return;
+
+      computeVisibleList();
+      const idxVisible = visibleList.indexOf(item);
+      if (idxVisible !== -1) openLightbox(idxVisible);
+    });
+  }
+
+  // Add tabindex to items for keyboard accessibility (done once)
+  qsa('.portfolio-item').forEach((item) => {
+    const clickable = qs('.portfolio-item-inner', item) || item;
+    clickable.setAttribute('tabindex', '0');
   });
 
   if (lightbox) {

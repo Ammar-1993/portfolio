@@ -415,13 +415,37 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
 .lightbox.open{display:flex}
 .lightbox .lightbox-content{position:relative}
 .lightbox .lightbox-content img{max-width:100%;max-height:70vh;border-radius:12px;display:block;padding:24px 0 18px}
-.lightbox .lightbox-content .lightbox-close{position:absolute;height:40px;width:40px;top:-6px;inset-inline-end:0;font-size:32px;color:#fff;line-height:40px;text-align:center}
-.lightbox .lightbox-content .lightbox-caption{position:absolute;left:0;bottom:-6px;width:100%;display:flex;justify-content:space-between;font-size:16px;color:#fff;font-weight:400}
-.lightbox .lightbox-controls .next-item,.lightbox .lightbox-controls .prev-item{position:absolute;height:40px;width:40px;background:#fff;border-radius:50%;text-align:center;cursor:pointer;top:50%;margin-top:-20px;z-index:var(--z-lightbox-controls)}
-.lightbox .lightbox-controls .next-item:hover,.lightbox .lightbox-controls .prev-item:hover{transform:scale(1.08)}
-.lightbox .lightbox-controls .prev-item{left:30px}
-.lightbox .lightbox-controls .next-item{right:30px}
-.lightbox .lightbox-controls .next-item .fa,.lightbox .lightbox-controls .prev-item .fa{font-size:32px;line-height:40px;color:#111}
+.lightbox .lightbox-content .lightbox-close{
+  position:absolute; top:-50px; inset-inline-end:0;
+  height:44px; width:44px; border-radius:50%;
+  background:rgba(255,255,255,0.2); color:#fff;
+  font-size:28px; line-height:44px; text-align:center;
+  display:flex; align-items:center; justify-content:center;
+  transition:all .3s ease; cursor:pointer;
+}
+.lightbox .lightbox-content .lightbox-close:hover{background:var(--main-color);transform:rotate(90deg)}
+
+.lightbox .lightbox-controls .next-item,
+.lightbox .lightbox-controls .prev-item{
+  position:absolute; top:50%; transform:translateY(-50%);
+  height:50px; width:50px; background:#fff; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; z-index:var(--z-lightbox-controls);
+  box-shadow:0 0 15px rgba(0,0,0,0.3); transition:all .3s ease
+}
+.lightbox .lightbox-controls .prev-item{left:25px}
+.lightbox .lightbox-controls .next-item{right:25px}
+
+.lightbox .lightbox-controls .next-item:hover,
+.lightbox .lightbox-controls .prev-item:hover{
+  background:var(--main-color); transform:translateY(-50%) scale(1.1)
+}
+.lightbox .lightbox-controls .next-item .ico,
+.lightbox .lightbox-controls .prev-item .ico{
+  width:24px; height:24px; fill:var(--ink); transition:fill .3s ease
+}
+.lightbox .lightbox-controls .next-item:hover .ico,
+.lightbox .lightbox-controls .prev-item:hover .ico{fill:#fff}
 
 /* وسائل التواصل في الهيدر (اختياري) */
 .header-social{position:absolute;top:53%;inset-inline-start:50px;transform:translateY(-53%);border:1px solid color-mix(in oklab,var(--main-color),#000 75%);border-radius:50px}

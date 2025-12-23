@@ -8,8 +8,8 @@ const PRECACHE_URLS = [
   `${BASE}index.html`,
   `${BASE}css/style.css`,
   `${BASE}js/main.js`,
-  `${BASE}icons/icon-192.png`,
-  `${BASE}icons/icon-512.png`,
+  `${BASE}assets/icons/icon-192.png`,
+  `${BASE}assets/icons/icon-512.png`,
   `${BASE}offline.html`
 ];
 

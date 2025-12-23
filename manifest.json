@@ -5,21 +5,21 @@
   "description": "م. عمار النجار: مهندس برمجيات يقدم حلول مواقع، موبايل، وسطح المكتب باحترافية ودعم مستمر.",
   "lang": "ar",
   "dir": "rtl",
-  "start_url": "/portfolio/?source=a2hs",
-  "scope": "/portfolio/",
+  "start_url": "./?source=a2hs",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#0b0f19",
   "theme_color": "#0b0f19",
   "orientation": "portrait-primary",
   "categories": ["productivity", "portfolio", "business", "utilities"],
   "screenshots": [
-    { "src": "/portfolio/images/hero4.png", "sizes": "420x420", "type": "image/png", "label": "الصفحة الرئيسية" },
-    { "src": "/portfolio/images/about_hero.png", "sizes": "520x650", "type": "image/png", "label": "نبذة عن الفريق" }
+    { "src": "images/hero4.png", "sizes": "420x420", "type": "image/png", "label": "الصفحة الرئيسية" },
+    { "src": "images/about_hero.png", "sizes": "520x650", "type": "image/png", "label": "نبذة عن الفريق" }
   ],
   "icons": [
-    { "src": "/portfolio/assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/portfolio/assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "/portfolio/assets/icons/maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
-    { "src": "/portfolio/assets/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/icons/maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "assets/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }

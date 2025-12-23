@@ -1,6 +1,6 @@
 /* /portfolio/sw.js */
-const BASE = '/portfolio/';
-const VERSION = 'v1.1.0'; // bump version for cache updates
+const BASE = './';
+const VERSION = 'v1.1.1'; // bump version for cache updates
 const STATIC_CACHE = `static-${VERSION}`;
 const RUNTIME_CACHE = `runtime-${VERSION}`;
 const PRECACHE_URLS = [
@@ -47,7 +47,7 @@ self.addEventListener('fetch', (event) => {
         return fresh;
       } catch {
         const cache = await caches.open(STATIC_CACHE);
-        return (await cache.match(`${BASE}offline.html`)) || Response.error();
+        return (await cache.match(`./offline.html`)) || Response.error();
       }
     })());
     return;

@@ -440,7 +440,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // مثال تسجيل SW (تأكد من المسار)
 (() => {
-  const BASE = '/portfolio/';
+  const BASE = './';
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register(`${BASE}sw.js`).catch(console.error);

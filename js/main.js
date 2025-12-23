@@ -470,17 +470,23 @@ document.addEventListener('DOMContentLoaded', () => {
   installBtn.addEventListener('click', async () => {
     if (!deferredPrompt) return;
     installBtn.disabled = true;
-    try{
-      deferredPrompt.prompt();
+    try {
+      await deferredPrompt.prompt();
       const { outcome } = await deferredPrompt.userChoice;
+      
       if (outcome === 'accepted') {
         const isEn = document.documentElement.lang === 'en';
         installBtn.querySelector('.btn-install__label').textContent = isEn ? 'Installed ✅' : 'تم التثبيت ✅';
-        // خيار: بعد ثانيتين أخفِ الزر
         setTimeout(() => installBtn.hidden = true, 1600);
       } else {
+        // User dismissed the prompt. The event cannot be reused.
+        // Hide the button until the browser fires the event again.
+        installBtn.hidden = true;
         installBtn.disabled = false;
       }
+    } catch (err) {
+      console.error('Install prompt failed:', err);
+      installBtn.disabled = false;
     } finally {
       deferredPrompt = null;
     }

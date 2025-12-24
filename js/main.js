@@ -97,28 +97,34 @@ const Utils = {
     recalcHeaderOffset();
   };
 
-  function setActiveLink() {
+  let activeObserver = null;
+  const setActiveLink = () => {
     if (!sections.length || !linksContainer) return;
-    const scrollPos = window.scrollY + HEADER_OFFSET + 1; // +1 لتفادي الحدود
-    let currentId = null;
-    for (const section of sections) {
-      const top = section.offsetTop;
-      const bottom = top + section.offsetHeight;
-      if (scrollPos >= top && scrollPos < bottom) { currentId = section.id; break; }
-    }
-    qsa('.links a').forEach((a) => a.classList.remove('active'));
-    if (currentId) {
-      try {
+    if (activeObserver) activeObserver.disconnect();
+    activeObserver = new IntersectionObserver((entries) => {
+      let currentId = null;
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          currentId = entry.target.id;
+        }
+      });
+      qsa('.links a').forEach((a) => {
+        a.classList.remove('active');
+        a.removeAttribute('aria-current');
+      });
+      if (currentId) {
         const activeLink = qs(`.links a[href*="#${CSS.escape(currentId)}"]`);
-        if (activeLink) activeLink.classList.add('active');
-      } catch (_) {
-        const activeLink = qsa('.links a').find((a) =>
-          (a.getAttribute('href') || '').includes(`#${currentId}`)
-        );
-        if (activeLink) activeLink.classList.add('active');
+        if (activeLink) {
+          activeLink.classList.add('active');
+          activeLink.setAttribute('aria-current', 'page');
+        }
       }
-    }
-  }
+    }, {
+      rootMargin: `-${HEADER_OFFSET}px 0px -${window.innerHeight - HEADER_OFFSET}px 0px`,
+      threshold: 0
+    });
+    sections.forEach((section) => activeObserver.observe(section));
+  };
 
   // smooth internal anchors (respects reduced-motion)
   function bindSmartAnchors() {
@@ -141,7 +147,7 @@ const Utils = {
   let ticking = false;
   window.addEventListener('scroll', () => {
     if (!ticking) {
-      window.requestAnimationFrame(() => { setSticky(); setActiveLink(); ticking = false; });
+      window.requestAnimationFrame(() => { setSticky(); ticking = false; });
       ticking = true;
     }
   }, { passive: true });

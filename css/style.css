@@ -517,12 +517,21 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
 [dir="rtl"] .lightbox .lightbox-controls .next-item svg{transform:scaleX(-1)}
 
 .lightbox .lightbox-caption{
-  position:absolute; bottom:20px; inset-inline:0;
-  display:flex; justify-content:space-between; align-items:center;
-  padding:0 20px; color:#000; pointer-events:none
+  position:absolute; bottom:20px; left:0; right:0;
+  display:flex; justify-content:space-between; align-items:center; gap:20px;
+  padding:12px 24px; 
+  background: rgba(0,0,0,0.7); 
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 0; 
+  color:#fff; 
+  pointer-events:none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 .lightbox .caption-text, .lightbox .caption-counter{
-  text-shadow:0 2px 4px rgba(0,0,0,0.8); font-weight:600; font-size:1.1rem
+  font-weight:600; font-size:1rem; color:#fff;
+  text-shadow: none;
 }
 
 /* وسائل التواصل في الهيدر (اختياري) */

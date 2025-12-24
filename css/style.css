@@ -252,7 +252,7 @@ padding:12px 25px;
 .home-text h1{font-size:44px;font-weight:800;margin-top:10px;color:var(--ink)}
 .home-text span{font-size:18px;line-height:28px;color:var(--ink);opacity:.9;display:block;margin-top:10px}
 .home-text p{font-size:18px;color:var(--muted);margin-top:12px}
-.home-text .btn{display:inline-block;margin-top:16px}
+.home-text .btn{display:inline-block;margin-top:40px}
 .header-hero-shape{position:absolute;top:0;bottom:0;inset-inline-end:0;width:55%;height:100%;pointer-events:none}
 .header-hero-shape::before{content:"";position:absolute;inset:0;background:linear-gradient(140deg,rgba(0,167,142,.18),rgba(0,167,142,0));transform:skewX(20deg)}
 [dir="ltr"] .header-hero-shape::before{transform:skewX(-20deg)}

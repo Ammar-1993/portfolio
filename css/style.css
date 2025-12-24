@@ -402,9 +402,7 @@ padding:12px 25px;
 
 /* اتصل بنا */
 .contact-section{min-height:100vh;background:var(--bg-soft)}
-.contact-section .contact-item{flex:0 0 33.33%;max-width:33.33%;padding:15px;display:flex}
-@media (max-width:991px){.contact-section .contact-item{flex:0 0 50%;max-width:50%}}
-@media (max-width:767px){.contact-section .contact-item{flex:0 0 100%;max-width:100%}}
+.contact-section .contact-item{flex:1;padding:15px;display:flex}
 
 .contact-section .contact-item-inner{
   padding:30px 20px;text-align:center;background:var(--surface);border:1px solid var(--border);

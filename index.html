@@ -190,14 +190,14 @@
               </svg>
               <span>Baaeed</span>
             </a>
-            <a class="btn-social"
+            <!-- <a class="btn-social"
               href="https://drive.google.com/file/d/1wBERoWgT2u-r2B2COt62Epb-LagoF-hM/view?usp=sharing" target="_blank"
               rel="noopener noreferrer" aria-label="السيرة الذاتية (PDF)">
               <svg class="ico" aria-hidden="true">
                 <use href="images/icons.svg#file-text" />
               </svg>
               <span>Resume</span>
-            </a>
+            </a> -->
           </div>
         </div>
 
@@ -219,8 +219,42 @@
       <div class="row align-items-center justify-content-center">
         <div class="about-image">
           <div class="img-box">
-            <img src="images/about_hero.png" alt="نبذة تعريفية عن الفريق والخدمات" width="520" height="650"
-              loading="lazy" decoding="async">
+            <!-- Arabic SDLC Diagram (CSS-based) -->
+            <div class="sdlc-container" aria-label="دورة حياة تطوير البرمجيات">
+              <div class="sdlc-ring"></div>
+              <div class="sdlc-center">دورة حياة<br>البرمجيات</div>
+              
+              <!-- 1. Analysis -->
+              <div class="sdlc-item">
+                <svg class="ico"><use href="images/icons.svg#search" /></svg>
+                <span>التحليل</span>
+              </div>
+              <!-- 2. Design -->
+              <div class="sdlc-item">
+                <svg class="ico"><use href="images/icons.svg#file-text" /></svg>
+                <span>التصميم</span>
+              </div>
+              <!-- 3. Development -->
+              <div class="sdlc-item">
+                <svg class="ico"><use href="images/icons.svg#laptop-code" /></svg>
+                <span>التطوير</span>
+              </div>
+              <!-- 4. Testing -->
+              <div class="sdlc-item">
+                <svg class="ico"><use href="images/icons.svg#check" /></svg>
+                <span>الاختبار</span>
+              </div>
+              <!-- 5. Deployment -->
+              <div class="sdlc-item">
+                <svg class="ico"><use href="images/icons.svg#mobile" /></svg>
+                <span>النشر</span>
+              </div>
+              <!-- 6. Maintenance -->
+              <div class="sdlc-item">
+                <svg class="ico"><use href="images/icons.svg#briefcase" /></svg>
+                <span>الصيانة</span>
+              </div>
+            </div>
             <div class="about-shape" aria-hidden="true"></div>
           </div>
         </div>
@@ -755,99 +789,56 @@
       </div>
 
       <div class="row justify-content-center">
+        <!-- Web Track -->
         <div class="technologies-item">
-          <div class="technologies-plan">
-            <div class="technologies-header">
-              <h3>مسار الويب</h3>
+          <div class="tech-card">
+            <div class="tech-icon">
+              <svg class="ico"><use href="images/icons.svg#laptop-code" /></svg>
             </div>
-            <div class="technologies-price"><span class="currency">st</span><span class="price">1</span><span
-                class="period">/Web</span></div>
-            <div class="technologies-body">
-              <ul>
-                <li><svg class="ico" aria-hidden="true">
-                    <use href="images/icons.svg#check" />
-                  </svg> HTML</li>
-                <li><svg class="ico" aria-hidden="true">
-                    <use href="images/icons.svg#check" />
-                  </svg> CSS</li>
-                <li><svg class="ico" aria-hidden="true">
-                    <use href="images/icons.svg#check" />
-                  </svg> JavaScript</li>
-                <li><svg class="ico" aria-hidden="true">
-                    <use href="images/icons.svg#check" />
-                  </svg> PHP</li>
-                <li><svg class="ico" aria-hidden="true">
-                    <use href="images/icons.svg#check" />
-                  </svg> MySQL</li>
-                <li><svg class="ico" aria-hidden="true">
-                    <use href="images/icons.svg#check" />
-                  </svg> MERN Stack</li>
-              </ul>
+            <h3>مسار الويب</h3>
+            <div class="tech-list">
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">PHP</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">MERN Stack</span>
             </div>
-            <div class="technologies-footer"><a href="#contact" class="btn-2">المزيد</a></div>
           </div>
         </div>
 
+        <!-- Mobile Track -->
         <div class="technologies-item">
-          <div class="technologies-plan">
-            <div class="technologies-header">
-              <h3>مسار الموبايل</h3>
+          <div class="tech-card">
+            <div class="tech-icon">
+              <svg class="ico"><use href="images/icons.svg#mobile" /></svg>
             </div>
-            <div class="technologies-price"><span class="currency">nd</span><span class="price">2</span><span
-                class="period">/Mobile</span></div>
-            <div class="technologies-body">
-              <ul>
-                <li><svg class="ico" aria-hidden="true">
-                    <use href="images/icons.svg#check" />
-                  </svg> Java / Kotlin</li>
-                <li><svg class="ico" aria-hidden="true">
-                    <use href="images/icons.svg#check" />
-                  </svg> Dart (Flutter)</li>
-                <li><svg class="ico" aria-hidden="true">
-                    <use href="images/icons.svg#check" />
-                  </svg> XML</li>
-                <li><svg class="ico" aria-hidden="true">
-                    <use href="images/icons.svg#check" />
-                  </svg> Firebase</li>
-                <li><svg class="ico" aria-hidden="true">
-                    <use href="images/icons.svg#check" />
-                  </svg> MySQL</li>
-              </ul>
+            <h3>مسار الموبايل</h3>
+            <div class="tech-list">
+              <span class="tech-tag">Java / Kotlin</span>
+              <span class="tech-tag">Dart (Flutter)</span>
+              <span class="tech-tag">XML</span>
+              <span class="tech-tag">Firebase</span>
+              <span class="tech-tag">MySQL</span>
             </div>
-            <div class="technologies-footer"><a href="#contact" class="btn-1">المزيد</a></div>
           </div>
         </div>
 
+        <!-- Desktop Track -->
         <div class="technologies-item">
-          <div class="technologies-plan">
-            <div class="technologies-header">
-              <h3>مسار سطح المكتب</h3>
+          <div class="tech-card">
+            <div class="tech-icon">
+              <svg class="ico"><use href="images/icons.svg#desktop" /></svg>
             </div>
-            <div class="technologies-price"><span class="currency">ed</span><span class="price">3</span><span
-                class="period">/Desktop</span></div>
-            <div class="technologies-body">
-              <ul>
-                <li><svg class="ico" aria-hidden="true">
-                    <use href="images/icons.svg#check" />
-                  </svg> C#</li>
-                <li><svg class="ico" aria-hidden="true">
-                    <use href="images/icons.svg#check" />
-                  </svg> JavaScript</li>
-                <li><svg class="ico" aria-hidden="true">
-                    <use href="images/icons.svg#check" />
-                  </svg> Angular</li>
-                <li><svg class="ico" aria-hidden="true">
-                    <use href="images/icons.svg#check" />
-                  </svg> MySQL</li>
-                <li><svg class="ico" aria-hidden="true">
-                    <use href="images/icons.svg#check" />
-                  </svg> JSON</li>
-                <li><svg class="ico" aria-hidden="true">
-                    <use href="images/icons.svg#check" />
-                  </svg> C++</li>
-              </ul>
+            <h3>مسار سطح المكتب</h3>
+            <div class="tech-list">
+              <span class="tech-tag">C#</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Angular</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">JSON</span>
+              <span class="tech-tag">C++</span>
             </div>
-            <div class="technologies-footer"><a href="#contact" class="btn-2">المزيد</a></div>
           </div>
         </div>
       </div>

@@ -1,0 +1,295 @@
+<h1>Portfolio — Eng. Ammar Al‑Najjar</h1>
+<p><a href="https://ammar-1993.github.io/portfolio/"><img src="https://img.shields.io/badge/status-live-brightgreen.svg" alt="Status"></a>
+<img src="https://img.shields.io/badge/Made%20with-HTML5%20%7C%20CSS3%20%7C%20JS-1f6feb" alt="Made with">
+<img src="https://img.shields.io/badge/Language-AR%20%7C%20RTL-0ea5e9" alt="RTL">
+<img src="https://img.shields.io/badge/Theme-Dark-0b1220" alt="Theme"></p>
+<hr>
+<h2>Quick Navigation</h2>
+<ul>
+<li><a href="https://ammar-1993.github.io/portfolio/">Live Site</a></li>
+<li><a href="https://github.com/Ammar-1993/portfolio">Repository</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#highlights">Highlights</a></li>
+<li><a href="#tech-stack">Tech Stack</a></li>
+<li><a href="#quick-start-local">Quick Start</a></li>
+<li><a href="#deploy-on-github-pages">Deploy</a></li>
+<li><a href="#customization">Customization</a></li>
+<li><a href="#seo-already-in-indexhtml">SEO</a></li>
+<li><a href="#accessibility">Accessibility</a></li>
+<li><a href="#performance">Performance</a></li>
+<li><a href="#lighthouse-targets">Lighthouse Targets</a></li>
+<li><a href="#license">License</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<hr>
+<h2>Overview</h2>
+<p>Arabic (RTL) portfolio website for Ammar Al-Najjar, showcasing services, selected projects (Web / Mobile / Desktop), technology stacks, and contact options. Optimized for speed, accessibility, and SEO with a dark theme by default.</p>
+<h2>Highlights</h2>
+<ul>
+<li>🎨 Dark theme with clear brand color</li>
+<li>🧭 Sticky navbar + active section highlight</li>
+<li>🗂️ Filterable portfolio (web/mobile/desktop) with Lightbox viewer</li>
+<li>🖼️ Unified card ratio via CSS aspect-ratio</li>
+<li>📱 PWA features: installable, offline support, update notifications</li>
+<li>♿ Accessibility: semantic HTML, alt text, keyboard support, Esc to close Lightbox</li>
+<li>⚡ Performance: lazy images, deferred JS, minimal scroll work</li>
+<li>🌐 SEO/Social: title/description, Open Graph/Twitter cards, JSON‑LD (Person)</li>
+</ul>
+<h2>Tech Stack</h2>
+<ul>
+<li><strong>Frontend:</strong> HTML5, CSS3 (Bootstrap RTL), Font Awesome</li>
+<li><strong>JavaScript:</strong> ES6 Modules (no bundling required)</li>
+<li><strong>Build Tools:</strong> Eleventy (SSG), Node.js, CleanCSS, Terser, Sharp</li>
+<li><strong>Linting:</strong> ESLint, Stylelint</li>
+<li><strong>Deployment:</strong> GitHub Pages (gh-pages)</li>
+<li><strong>Hosting:</strong> GitHub Pages</li>
+</ul>
+<h2>Development Setup</h2>
+<p>This project uses Eleventy (11ty) as a static site generator and ES6 modules for JavaScript.</p>
+<h3>Prerequisites</h3>
+<ul>
+<li>Node.js (v16+)</li>
+<li>npm</li>
+</ul>
+<h3>Installation &amp; Development</h3>
+<pre><code class="language-bash"># Install dependencies
+npm install
+
+# Start development server (with live reload)
+npm run serve
+
+# Build for production (linting + image optimization + CSS/JS minification + Eleventy)
+npm run build
+
+# Run linting (ESLint + Stylelint)
+npm run lint
+
+# Fix linting issues automatically
+npm run lint:fix
+
+# Deploy to GitHub Pages
+npm run deploy
+
+# Build CSS only (with minification)
+npm run build:css
+
+# Build JS only (with minification)
+npm run build:js
+
+# Optimize images (WebP/AVIF conversion)
+npm run optimize:images
+</code></pre>
+<h3>Project Structure</h3>
+<pre><code>portfolio/
+├── src/                     # Source JavaScript (ES6 modules)
+│   ├── main.mjs            # Main entry point
+│   └── modules/            # Modular JavaScript components
+│       ├── utils.js        # Shared utilities
+│       ├── theme.js        # Theme management
+│       ├── navigation.js   # Navbar, scrolling, mobile menu
+│       ├── skills.js       # Skills animation
+│       ├── portfolio.js    # Portfolio filtering &amp; lightbox
+│       └── pwa.js          # Service worker &amp; install button
+├── css/
+│   ├── partials/           # Modular CSS files
+│   │   ├── _variables.css
+│   │   ├── _base.css
+│   │   ├── _navbar.css
+│   │   ├── _home.css
+│   │   ├── _about.css
+│   │   ├── _services.css
+│   │   ├── _portfolio.css
+│   │   ├── _technologies.css
+│   │   ├── _contact.css
+│   │   ├── _footer.css
+│   │   ├── _lightbox.css
+│   │   └── _mobile.css
+│   └── style.css           # Compiled &amp; minified CSS
+├── js/                     # Built JavaScript (copied from src/)
+├── _data/                  # Eleventy data files
+├── _layouts/               # Base layout templates
+├── index.njk              # Arabic homepage template
+├── index-en.njk           # English homepage template
+├── build-css.js           # CSS build script
+├── build-js.js            # JS minification script
+├── optimize-images.js      # Image optimization script
+└── .eleventy.js           # Eleventy configuration
+
+### Build Process &amp; Quality Assurance
+The project includes a comprehensive build pipeline with linting, optimization, and deployment automation:
+
+#### Linting &amp; Code Quality
+- **ESLint:** JavaScript linting with ES6 module support
+- **Stylelint:** CSS linting with standard configuration
+- **Auto-fix:** `npm run lint:fix` automatically fixes common issues
+
+#### Asset Optimization
+- **Image Optimization:** Converts PNG to WebP/AVIF formats (54.8% WebP, 35% AVIF size reduction)
+- **CSS Minification:** CleanCSS with 29% compression ratio
+- **JavaScript Minification:** Terser with console/debugger removal
+
+#### Build Pipeline
+```bash
+npm run build  # Complete production build with all optimizations
+├── npm run lint          # Code quality checks
+├── npm run optimize:images  # Image format conversion
+├── npm run update:version   # Automated PWA versioning
+├── npm run build:css     # CSS compilation &amp; minification
+├── npm run build:js      # JS minification
+└── eleventy              # Static site generation
+</code></pre>
+<h4>Deployment</h4>
+<ul>
+<li><strong>GitHub Pages:</strong> Automated deployment with <code>npm run deploy</code></li>
+<li><strong>GitHub Actions:</strong> CI/CD pipeline for automatic builds on push</li>
+</ul>
+<pre><code>
+### Recent Refactoring (2024)
+- ✅ **Eleventy SSG Migration:** Converted static HTML to Nunjucks templates with data-driven content
+- ✅ **CSS Modularization:** Split monolithic `style.css` into 11 logical partials for better maintainability
+- ✅ **JavaScript Modularization:** Refactored `main.js` into 6 ES6 modules with error handling
+- ✅ **Build Process:** Automated linting (ESLint/Stylelint), image optimization (WebP/AVIF), CSS/JS minification, and deployment
+- ✅ **Quality Assurance:** Code linting with auto-fix capabilities and comprehensive error checking
+- ✅ **Asset Optimization:** Modern image formats (54.8% WebP savings, 35% AVIF savings) with lazy loading
+- ✅ **Bilingual Support:** Centralized strings and portfolio data in JSON files
+- ✅ **Performance Optimizations:** Content visibility, lazy loading, and mobile-first responsive design
+- ✅ **PWA Enhancement:** Advanced service worker with multiple caching strategies, automated versioning, and update notifications
+
+---
+
+## Quick Start (Local)
+1. **Clone:**
+   ```bash
+   git clone https://github.com/Ammar-1993/portfolio.git
+   cd portfolio
+</code></pre>
+<ol start="2">
+<li>Open <code>index.html</code> in your browser, or use VS Code Live Server extension.</li>
+</ol>
+<hr>
+<h2>Deploy on GitHub Pages</h2>
+<p>The site uses Eleventy SSG and GitHub Actions for automated deployment.</p>
+<h3>Automatic Deployment (Recommended)</h3>
+<ol>
+<li><strong>GitHub Actions Setup:</strong> The repository includes a GitHub Actions workflow (<code>.github/workflows/deploy.yml</code>) that automatically builds and deploys on every push to <code>main</code>.</li>
+<li><strong>Enable GitHub Pages:</strong>
+<ul>
+<li>Go to <strong>Settings → Pages</strong></li>
+<li>Source: <em>GitHub Actions</em>, then Save</li>
+</ul>
+</li>
+<li><strong>Push Changes:</strong> Commit and push your changes to the <code>main</code> branch. The site will be automatically built and deployed.</li>
+</ol>
+<h3>Manual Deployment (Alternative)</h3>
+<p>If you prefer to build locally:</p>
+<pre><code class="language-bash"># Build the site
+npm run build
+
+# The built files will be in _site/
+# Commit and push the _site folder, then configure Pages to serve from _site branch/folder
+</code></pre>
+<h3>Deployment Notes</h3>
+<ul>
+<li><strong>Source files</strong> (<code>.njk</code>, <code>css/partials/</code>, etc.) are in the repository root</li>
+<li><strong>Built files</strong> are generated in <code>_site/</code> and served by GitHub Pages</li>
+<li>The <code>_site/</code> folder is ignored by <code>.gitignore</code> to avoid committing build artifacts</li>
+<li>GitHub Actions handles the build process automatically</li>
+</ul>
+<p>Your site will be available at: https://ammar-1993.github.io/portfolio/</p>
+<hr>
+<h2>Customization</h2>
+<h3>Brand color &amp; fonts</h3>
+<ul>
+<li>Change the primary color in <code>style.css</code>:<pre><code class="language-css">:root{ --main-color:#00a78e; /* brand color */ }
+</code></pre>
+</li>
+<li>Default font: <strong>Cairo</strong> (adjust weights or swap as needed)</li>
+</ul>
+<h3>Unified card ratio (Portfolio grid)</h3>
+<p>Set via CSS variable (default 16:9):</p>
+<pre><code class="language-css">:root{
+  --tile-ratio: 16/9; /* switch to 4/3 or 1/1 as you prefer */
+  --tile-min-h: 220px;
+}
+.portfolio .portfolio-item-inner .portfolio-img,
+.portfolio .portfolio-item-inner-video{
+  aspect-ratio: var(--tile-ratio);
+  min-height: var(--tile-min-h);
+  display: grid; place-items: center;
+  background:#0e1626;
+}
+.portfolio .portfolio-item-inner .portfolio-img img,
+.portfolio .portfolio-item-inner-video video{
+  width:100%; height:100%; object-fit: cover;
+}
+</code></pre>
+<h3>Contact links</h3>
+<p>Update WhatsApp/Mail/Tel in the <strong>Contact</strong> section of <code>index.html</code>.</p>
+<hr>
+<h2>SEO (already in <code>index.html</code>)</h2>
+<ul>
+<li><code>&lt;title&gt;</code> and <code>&lt;meta name=&quot;description&quot;&gt;</code></li>
+<li>Open Graph + Twitter Card (ensure <code>images/og-cover.jpg</code> exists)</li>
+<li>JSON‑LD Person (name/phone/email)</li>
+<li><code>lang=&quot;ar&quot; dir=&quot;rtl&quot;</code> on <code>&lt;html&gt;</code></li>
+</ul>
+<h4>Quick checklist</h4>
+<ul>
+<li>[ ] Accurate Arabic title and description</li>
+<li>[ ] OG image ≥ 1200×630</li>
+<li>[ ] Valid contact/social links</li>
+</ul>
+<hr>
+<h2>Accessibility</h2>
+<ul>
+<li>Descriptive <code>alt</code> attributes for images</li>
+<li>Keyboard navigation (Tab, Enter/Space to open Lightbox)</li>
+<li>Close Lightbox via Esc</li>
+<li>Sufficient contrast in dark theme</li>
+</ul>
+<hr>
+<h2>Performance</h2>
+<ul>
+<li>Use WebP/AVIF when possible</li>
+<li>Add <code>loading=&quot;lazy&quot;</code> to non-critical images</li>
+<li>Provide <code>width</code>/<code>height</code> to images to prevent CLS</li>
+<li>Keep <code>main.js</code> with <code>defer</code></li>
+</ul>
+<hr>
+<h2>Lighthouse Targets</h2>
+<ul>
+<li>Performance ≥ 95</li>
+<li>Accessibility ≥ 90</li>
+<li>Best Practices ≥ 95</li>
+<li>SEO ≥ 95</li>
+</ul>
+<blockquote>
+<p>Tip: Chrome DevTools → Lighthouse → Generate report.
+<img src="image.png" alt="Lighthouse report"></p>
+</blockquote>
+<hr>
+<h2>License</h2>
+<p>Copyright (c) 2025 Ammar Al-Najjar</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+<hr>
+<hr>
+<h2>Contact</h2>
+<ul>
+<li>Phone/WhatsApp: <code>+967714294340</code></li>
+<li>Email: <code>ammaralnggar@gmail.com</code></li>
+</ul>
+<!-- - Phone: `+967774344625` -->

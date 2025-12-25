@@ -1,0 +1,77 @@
+/* شريط التنقل */
+.navbar{
+  /* position:fixed;inset:0 0 auto 0;z-index:999;width:100%;
+  padding-block-start:calc(22px + env(safe-area-inset-top));
+  padding:22px 25px;backdrop-filter:saturate(160%) blur(8px) */
+
+  padding-block-start: calc(var(--nav-pad-y) + env(safe-area-inset-top));
+  padding: var(--nav-pad-y) 25px;
+  position: fixed; inset: 0 0 auto 0; z-index: var(--z-navbar);
+  backdrop-filter: saturate(160%) blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.navbar.sticky{
+  /* padding-block-start:calc(12px + env(safe-area-inset-top));
+  padding:12px 25px;
+  background:var(--navbar-bg);
+  box-shadow:var(--shadow-black-100) */
+  padding-block-start:calc(22px + env(safe-area-inset-top));
+padding:12px 25px;
+  background: var(--navbar-bg);
+  box-shadow: var(--shadow-black-100);
+}
+.logo a{font-size:24px;color:var(--ink);font-weight:700;transition:color 0.3s ease}
+.logo a:hover{color:var(--main-color)}
+.logo a span{color:var(--main-color)}
+.links .menu{list-style:none}
+.navbar .menu .nav-item{display:inline-block;position:relative;margin-inline-start:28px}
+.navbar .menu .nav-item .nav-link{color:var(--ink);font-size:16px;font-weight:600;display:block;padding:10px 0;transition:color 0.3s ease, transform 0.2s ease}
+.navbar .menu .nav-item .nav-link:hover,
+.navbar .menu .nav-item .nav-link.active{color:var(--main-color);transform:translateY(-1px)}
+.navbar .menu .nav-item .nav-link:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+.navbar .menu .nav-item .nav-link span{display:none}
+
+/* زر قائمة الموبايل */
+.menu-btn{
+  display:none; width:46px; min-width:44px; height:44px; padding:0; border-radius:8px;
+  line-height:44px; text-align:center; font-size:18px; color:#fff; background:var(--main-color);
+  box-shadow:var(--shadow-black-100); touch-action:manipulation; -webkit-tap-highlight-color:transparent;
+  transition: all 0.3s ease;
+}
+.menu-btn:hover{
+  background:#fff;color:var(--main-color);
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(0,167,142,0.4);
+}
+@media (max-width:991px){
+  .menu-btn{display:inline-flex;align-items:center;justify-content:center;z-index:var(--z-menu-btn);}
+}
+
+/* موبايل/تابلت — القائمة المنسدلة الثابتة (منع التغطية عند الإغلاق) */
+@media (max-width:991px){
+  .navbar{ z-index:var(--z-menu-mobile); }
+  .navbar .menu{
+    position:fixed;
+    inset:72px 0 auto 0;                 /* أسفل الهيدر مباشرة */
+    max-height:calc(100dvh - 72px);
+    overflow:auto;
+    display:flex; flex-direction:column; gap:6px;
+    padding:16px 20px;
+    background:var(--surface); border-top:1px solid var(--border);
+    box-shadow:0 18px 40px rgba(0,0,0,.35);
+
+    /* الإخفاء الحقيقي */
+    transform:translateX(110%);
+    visibility:hidden;
+    pointer-events:none;
+    transition:transform .25s ease, visibility .25s step-end;
+  }
+  .navbar .menu.active{
+    transform:none;
+    visibility:visible;
+    pointer-events:auto;
+    transition:transform .25s ease, visibility 0s;
+  }
+  .navbar .menu .nav-item{margin:0}
+  .navbar .menu .nav-item .nav-link{color:var(--ink)}
+}

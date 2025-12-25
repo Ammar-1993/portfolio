@@ -1,0 +1,22 @@
+/* التقنيات */
+.technologies .technologies-item,.technologies-item{flex:0 0 33.33%;max-width:33.33%;padding:20px;display:flex}
+@media (max-width:991px){.technologies .technologies-item,.technologies-item{flex:0 0 50%;max-width:50%}}
+@media (max-width:767px){.technologies .technologies-item,.technologies-item{flex:0 0 100%;max-width:100%}}
+.technologies-plan{
+  width:100%;background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-black-100);
+  display:flex;flex-direction:column
+}
+.technologies-plan .technologies-header{padding:18px 20px;border-bottom:1px solid var(--border)}
+.technologies-plan .technologies-header h3{font-size:24px;color:var(--ink);font-weight:700;margin:0}
+.best-value{display:none}
+.technologies-plan .technologies-price{padding:26px 20px;display:flex;line-height:.7;align-items:flex-end;gap:6px}
+.technologies-plan .technologies-price .currency{font-size:14px;font-weight:400;color:var(--muted)}
+.technologies-plan .technologies-price .price{font-size:44px;font-weight:800;color:var(--main-color)}
+.technologies-plan .technologies-price .period{font-size:12px;font-weight:400;color:var(--muted);text-transform:uppercase}
+.technologies-plan .technologies-body{padding:0 20px 20px}
+.technologies-plan .technologies-body ul li{
+  font-size:16px;font-weight:400;color:var(--muted);padding:10px 0 10px 0;padding-inline-end:30px;border-bottom:1px solid var(--border);line-height:26px;position:relative
+}
+.technologies-plan .technologies-body ul li:last-child{border-bottom:none}
+.technologies-plan .technologies-body ul li i{color:var(--main-color);position:absolute;inset-inline-end:0;top:12px}
+.technologies-plan .technologies-footer{padding:20px;text-align:center;margin-top:auto}

@@ -1,0 +1,105 @@
+/* =====================================================
+   CSS — Theme v4 (Light/Dark + Accessibility polish)
+   - متوافق مع هيكلة المشروع الحالية (HTML/JS/Lightbox/filters)
+   - يدعم التبديل اليدوي: <html data-theme="light|dark">
+   - وإلا يتبع تفضيل النظام (prefers-color-scheme)
+   ===================================================== */
+
+/* Google Fonts: Poppins (English) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+/* Cairo — أوزان مختارة وسريعة (WOFF2 فقط) */
+@font-face{font-family:"Cairo";src:url("../assets/fonts/cairo/Cairo-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Cairo";src:url("../assets/fonts/cairo/Cairo-SemiBold.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Cairo";src:url("../assets/fonts/cairo/Cairo-Bold.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Cairo";src:url("../assets/fonts/cairo/Cairo-ExtraBold.woff2") format("woff2");font-weight:800;font-style:normal;font-display:swap}
+
+/* استخدام الخط عبر الموقع */
+:root {
+  --font-primary: "Cairo", "Segoe UI", Arial, "Noto Kufi Arabic", "Tajawal", sans-serif;
+}
+[lang="en"], [dir="ltr"] {
+  --font-primary: "Poppins", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+body{font-family:var(--font-primary);}
+
+/* ========== متغيرات أساسية غير مرتبطة بالثيم ========== */
+:root{
+  --main-color:#00a78e;
+  --shadow-black-100:0 5px 15px rgba(0,0,0,.35);
+  --tile-ratio: 4/3;
+  --tile-min-h: 220px;
+
+  /* Z-Index Layers */
+  --z-back: -1;
+  --z-normal: 1;
+  --z-navbar: 999;
+  --z-menu-mobile: 1000;
+  --z-menu-btn: 1001;
+  --z-lightbox: 2000;
+  --z-lightbox-controls: 2010;
+}
+
+/* ========== قيم افتراضية (Fallback سريع) — Light ========== */
+:root{
+  --bg:#ffffff;
+  --bg-soft:#f8fafc;
+  --surface:#ffffff;
+  --ink:#0f172a;
+  --muted:#475569;
+  --border:#e2e8f0;
+  --link:#1d4ed8;
+  --navbar-bg:rgba(255,255,255,.85);
+  --track:#e5e7eb;
+  --input-bg:#ffffff;
+  --media-bg:#0e1626;
+}
+
+/* ========== اتباع النظام عندما لا يوجد اختيار يدوي ========== */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme]){
+    --bg:#0b0f19;
+    --bg-soft:#0a0f1c;
+    --surface:#111827;
+    --ink:#e6eef7;
+    --muted:#AAB4C0;
+    --border:#233041;
+    --link:#60a5fa;
+    --navbar-bg:rgba(17,24,39,.85);
+    --track:#233041;
+    --input-bg:#0e1626;
+    --media-bg:#0e1626;
+  }
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme]){
+    --bg:#ffffff;
+    --bg-soft:#f8fafc;
+    --surface:#ffffff;
+    --ink:#0f172a;
+    --muted:#475569;
+    --border:#e2e8f0;
+    --link:#1d4ed8;
+    --navbar-bg:rgba(255,255,255,.85);
+    --track:#e5e7eb;
+    --input-bg:#ffffff;
+    --media-bg:#0e1626;
+  }
+}
+
+/* ========== فرض يدوي للتيمات ========== */
+:root[data-theme="light"]{
+  --bg:#ffffff; --bg-soft:#f8fafc; --surface:#ffffff; --ink:#0f172a; --muted:#475569;
+  --border:#e2e8f0; --link:#1d4ed8; --navbar-bg:rgba(255,255,255,.85);
+  --track:#e5e7eb; --input-bg:#ffffff; --media-bg:#0e1626;
+}
+:root[data-theme="dark"]{
+  --bg:#0b0f19; --bg-soft:#0a0f1c; --surface:#111827; --ink:#e6eef7; --muted:#AAB4C0;
+  --border:#233041; --link:#60a5fa; --navbar-bg:rgba(17,24,39,.85);
+  --track:#233041; --input-bg:#0e1626; --media-bg:#0e1626;
+}
+
+/* Anchor offset for fixed header */
+section[id]{scroll-margin-top:90px}
+@media (max-width:991px){section[id]{scroll-margin-top:100px}}

@@ -1,0 +1,3 @@
+/* التذييل */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:16px 0}
+footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;color:var(--muted)}

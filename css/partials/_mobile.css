@@ -1,0 +1,684 @@
+/* وسائل التواصل في الهيدر (اختياري) */
+.header-social{position:absolute;top:53%;inset-inline-start:50px;transform:translateY(-53%);border:1px solid color-mix(in oklab,var(--main-color),#000 75%);border-radius:50px}
+.header-social li a{font-size:18px;display:block;text-align:center;padding:20px 15px;color:color-mix(in oklab,var(--ink),#000 45%)}
+.header-social li a:hover{color:#fff}
+@media (min-width:1300px) and (max-width:1399px){.header-social{inset-inline-start:10px}}
+@media (max-width:1300px){.header-social{display:none}}
+
+/* استجابة الهيرو على الشاشات الصغيرة */
+@media (max-width:991px){
+  .about-section .about-content, .navbar .menu{text-align:center}
+  .about-section .about-image, .header-hero-shape{display:none}
+  .home-text, .home-image{flex:0 0 100%;max-width:100%;padding:0 16px}
+  .home-image{display:flex;justify-content:center}
+  .home-section{padding-top:calc(88px + env(safe-area-inset-top));}
+}
+
+/* تحسينات استجابة للبطاقات */
+@media (max-width:767px){
+  :root{--tile-min-h:180px;}
+}
+
+/* === Social links styles (منقولة من inline) === */
+.social-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.btn-social{
+  display:inline-flex;align-items:center;gap:8px;padding:0.5rem 1rem;
+  background-color:transparent;
+  border:1px solid var(--border);border-radius:50px;
+  color:var(--muted);text-decoration:none;font-weight:500;font-size:0.9rem;line-height:1.2;
+  transition:all 0.2s ease
+}
+.btn-social:hover{
+  transform:translateY(-2px);
+  background-color:var(--main-color);
+  border-color:var(--main-color);
+  color:#fff;
+  box-shadow:0 4px 12px rgba(0,167,142,0.25)
+}
+.btn-social .ico{width:1.1em;height:1.1em;fill:currentColor;transition:none}
+.btn-social:hover .ico{fill:#fff}
+.footer .social-icons{display:flex;gap:16px;justify-content:center;margin-top:8px}
+.footer .social-icons a{
+  display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;
+  border:1px solid color-mix(in oklab,var(--border),#000 20%);text-decoration:none
+}
+.footer .social-icons a:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
+.footer .social-icons i{font-size:1rem}
+
+/* SVG icons */
+.ico{width:1em;height:1em;display:inline-block;vertical-align:-.125em}
+.icon svg{width:28px;height:28px;display:block}                 /* كروت الخدمات */
+.portfolio .portfolio-item .portfolio-info .icon svg{width:20px;height:20px}
+.lightbox .lightbox-controls .prev-item svg,
+.lightbox .lightbox-controls .next-item svg{width:24px;height:24px}
+.menu-btn .ico{width:22px;height:22px}                          /* زر الموبايل */
+
+/* زر تبديل الثيم */
+.theme-toggle{
+  background:var(--surface);color:var(--ink);border:1px solid var(--border);
+  padding:.5rem .75rem;border-radius:.75rem;cursor:pointer;
+  transition: all 0.3s ease;
+}
+.theme-toggle:hover{
+  background:var(--main-color);color:#fff;border-color:var(--main-color);
+  transform:translateY(-2px);
+  box-shadow:0 4px 12px rgba(0,167,142,0.25);
+}
+.theme-toggle:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+
+/* عرض كسول للأقسام البعيدة */
+.service-section,
+.portfolio,
+.technologies,
+.contact-section{
+  content-visibility: auto;
+  contain-intrinsic-size: 1000px; /* تقدير ارتفاع مبدئي لمنع القفز */
+}
+
+/* وسّط أي SVG داخل شارة الأيقونة الخضراء في بطاقات الخدمات */
+.service-section .service-item-inner .icon{
+  display:flex;                 /* فلكس كفallback لكل المتصفحات */
+  align-items:center;
+  justify-content:center;
+}
+@supports (place-items: center){
+  .service-section .service-item-inner .icon{
+    display:grid;               /* Grid + place-items أبسط */
+    place-items:center;
+  }
+}
+/* حجم الـSVG داخل الشارة */
+.service-section .service-item-inner .icon .ico,
+.service-section .service-item-inner .icon svg{
+  width: 30px;
+  height: 30px;
+}
+
+/* (نظافة) كنا نوسّط <i> سابقًا—لم نعد نحتاجها */
+.service-section .service-item-inner .icon i{ line-height: 0; }
+
+/* ====== Mobile fix for About section (≤991px) ====== */
+@media (max-width:991px){
+  /* أخفينا الصورة سابقًا؛ خَلّ المحتوى بعرض كامل */
+  .about-section .about-image{ display:none; }
+  .about-section .about-content{
+    flex:0 0 100%;
+    max-width:100%;
+    padding:0 16px;               /* حواف مريحة */
+  }
+
+  /* العناوين */
+  .about-section .about-content .section-title{
+    text-align:center;
+    margin-bottom:18px;
+  }
+  .about-section .about-content .section-title .sub-title{
+    font-size:18px;
+  }
+  .about-section .about-content .section-title .main-title{
+    font-size:clamp(24px, 8vw, 32px);
+    line-height:1.25;
+  }
+
+  /* الفقرة */
+  .about-section .about-content p{
+    font-size:16px;
+    line-height:1.9;
+    margin-bottom:14px;
+    text-align:justify;
+  }
+
+  /* شريط المهارات بعرض مريح */
+  .about-section .about-skills{ margin-top:12px; }
+  .skill-item{ margin-bottom:14px; }
+  .skill-item .skill-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .skill-item .skill-header .skill-title{
+    font-size:14px;
+    margin-top:0;
+  }
+  .skill-item .skill-header .skill-percentage{
+    position:static;              /* بدلاً من absolute */
+    color:var(--muted);
+    font-size:14px;
+  }
+  .skill-item .skill-bar .bar-inner{
+    height:10px;                  /* أعلى قليلًا للمس */
+  }
+  .skill-item .skill-bar .bar-inner .progress-line{
+    height:10px;
+  }
+}
+
+/* في حال ظهرت أيقونة خارج الوسط داخل بطاقة الخدمة */
+.service-section .service-item-inner .icon{
+  display:grid; place-items:center;
+}
+
+/* زر التثبيت: كبسولة زجاجية مع توهج لطيف */
+/* ألوان متناسقة مع متغيّراتك الحالية */
+:root{
+  --install-brand: var(--link, #10b981);        /* لون العلامة الأساسي لديك */
+  --install-bg: color-mix(in oklab, var(--card-bg, #0b0f19), white 6%);
+  --install-border: color-mix(in oklab, var(--install-brand), transparent 72%);
+  --install-text: var(--text, #e7ecef);
+}
+@media (prefers-color-scheme: light){
+  :root{
+    --install-bg: color-mix(in oklab, #ffffff, var(--install-brand) 6%);
+    --install-text: #0b1220;
+  }
+}
+
+/* كبسولة زجاجية بلمعة خفيفة */
+.btn-install{
+  position: relative;
+  display: inline-flex; align-items: center; gap: .6rem;
+  padding: .85rem 1.15rem;
+  border-radius: 9999px;
+  border: 1px solid var(--install-border);
+  background:
+    radial-gradient(120% 180% at 100% 0%, color-mix(in oklab, var(--install-brand), transparent 80%) 0%, transparent 60%),
+    linear-gradient(180deg, color-mix(in oklab, var(--install-bg), transparent 0%) 0%, color-mix(in oklab, var(--install-bg), transparent 0%) 100%);
+  color: var(--install-text);
+  box-shadow: 0 10px 28px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.06);
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+  will-change: transform;
+}
+.btn-install__icon{ opacity:.92; transition: transform .25s ease, opacity .2s ease; }
+.btn-install__label{ font-weight:700; letter-spacing:.2px; }
+
+/* لمعة متحركة */
+.btn-install__shine{
+  content:""; position:absolute; inset:0; border-radius: inherit; pointer-events:none;
+  background: linear-gradient(120deg, rgba(255,255,255,.16), rgba(255,255,255,0) 40%);
+  mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+  -webkit-mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+  padding: 1px; opacity:.6;
+}
+.btn-install:hover{
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--install-brand), white 12%);
+  box-shadow: 0 14px 34px rgba(0,0,0,.22), 0 0 0 3px color-mix(in oklab, var(--install-brand), transparent 85%);
+}
+.btn-install:hover .btn-install__icon{ transform: translateY(-1px); }
+.btn-install:active{ transform: translateY(0); filter: brightness(.98); }
+
+/* وصولية */
+.btn-install:focus-visible{ outline: 3px solid color-mix(in oklab, var(--install-brand), white 10%); outline-offset: 3px; }
+
+/* مسافة بسيطة إذا كان ملاصق لزر آخر */
+.btn-install + .btn-1, .btn-1 + .btn-install{ margin-inline-start: .6rem; }
+
+/* === تحسينات زر التثبيت (تباين + أيقونة + لمسة جمالية) === */
+
+/* 1) تباين: اجعل النص والأيقونة دائمًا بلون أبيض صافي */
+.btn-install,
+.btn-install .btn-install__label { color:#fff !important; }
+
+/* 2) الأيقونة تتبع لون النص */
+.btn-install svg,
+.btn-install svg path { fill: currentColor; color: currentColor; }
+
+/* 3) خلفية كبسولة أغمق قليلًا وتدرّج أنعم */
+.btn-install{
+  background:
+    radial-gradient(140% 180% at 100% 0%,
+        color-mix(in oklab, var(--install-brand, #10b981), transparent 82%) 0%,
+        transparent 60%),
+    linear-gradient(180deg, #1a2130 0%, #121926 100%) !important;
+  border: 1px solid color-mix(in oklab, var(--install-brand, #10b981), transparent 70%) !important;
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.06),
+    inset 0 -1px 0 rgba(0,0,0,.22);
+}
+
+/* 4) لمعة أنظف وتوهج خفيف عند التحويم */
+.btn-install__shine{
+  background: linear-gradient(115deg, rgba(255,255,255,.18), rgba(255,255,255,0) 44%);
+  opacity:.7;
+}
+.btn-install:hover{
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--install-brand, #10b981), white 12%) !important;
+  box-shadow:
+    0 16px 36px rgba(0,0,0,.22),
+    0 0 0 3px color-mix(in oklab, var(--install-brand, #10b981), transparent 85%);
+}
+.btn-install:hover .btn-install__icon{ transform: translateY(-1px); }
+
+/* 5) وصولية: تركيز أوضح */
+.btn-install:focus-visible{
+  outline: 3px solid color-mix(in oklab, var(--install-brand, #10b981), white 10%);
+  outline-offset: 3px;
+}
+
+/* 6) تقليل الحركة لمن يفضل ذلك */
+@media (prefers-reduced-motion: reduce){
+  .btn-install, .btn-install:hover{ transform:none; transition:none; }
+  .btn-install__icon{ transition:none; }
+}
+
+/* ========== ??????? ?????? (Rendering Performance) ========== */
+/* ????? content-visibility ??? ??????? ??????? ???? ?????? */
+#portfolio, #technologies, #services {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 1000px; /* ????? ?????? ???????? ???? ????? */
+}
+/* Accessibility Utilities */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-link:focus {
+  position: fixed;
+  left: 16px;
+  top: 16px;
+  width: auto;
+  height: auto;
+  padding: .5rem .75rem;
+  background: #0ea5e9;
+  color: #fff;
+  border-radius: .5rem;
+  z-index: 10000;
+}
+/* CSS Hamburger Icon */
+.menu-icon-bar {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: #fff;
+  position: relative;
+  margin: 0 auto;
+  border-radius: 3px;
+}
+.menu-icon-bar::before,
+.menu-icon-bar::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  left: 0;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+.menu-icon-bar::before { top: -8px; }
+.menu-icon-bar::after { top: 8px; }
+
+/* Animate Hamburger to X when active */
+.menu.active + .menu-btn .menu-icon-bar { background: transparent; }
+.menu.active + .menu-btn .menu-icon-bar::before { top: 0; transform: rotate(45deg); }
+.menu.active + .menu-btn .menu-icon-bar::after { top: 0; transform: rotate(-45deg); }
+
+/* Ensure Navbar has background on mobile to prevent transparency issues */
+@media (max-width: 991px) {
+  .navbar {
+    background: var(--navbar-bg);
+    box-shadow: var(--shadow-black-100);
+  }
+  /* Ensure button is visible and on top */
+  .menu-btn {
+    z-index: 1002;
+    position: relative;
+  }
+}
+/* =========================================
+   MOBILE FIRST OVERRIDES (Aggressive Fixes)
+   ========================================= */
+
+/* 1. Global Overflow Protection */
+html, body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. Container & Layout Resets */
+.container {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  margin: 0 auto !important;
+}
+
+.row {
+  margin-left: -20px !important;
+  margin-right: -20px !important;
+  width: calc(100% + 40px) !important;
+  max-width: none !important;
+}
+
+/* 3. Image & Media Safety */
+img, video, svg {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* 4. Hide Decorative Shapes on Mobile (Common Overflow Cause) */
+@media (max-width: 991px) {
+  .header-hero-shape,
+  .about-shape,
+  .about-section .about-image .img-box .about-shape {
+    display: none !important;
+  }
+
+  /* Force single column layout */
+  .home-text, .home-image,
+  .about-content, .about-image,
+  .service-item, .portfolio-item,
+  .technologies-item, .contact-item,
+  .w-50 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Center text on mobile for better balance */
+  .home-text, .about-content, .section-title {
+    text-align: center !important;
+  }
+
+  /* Fix Section Title Lines centering */
+  .section-title .line {
+    justify-content: center;
+  }
+}
+
+/* 5. Navbar & Menu Fixes */
+.navbar {
+  width: 100% !important;
+  max-width: 100vw !important;
+  padding: 15px 20px !important; /* Simplified padding */
+  background: var(--navbar-bg) !important; /* Ensure background exists */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar .container {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 0 !important;
+}
+
+/* Force Menu Button Visibility */
+@media (max-width: 991px) {
+  .menu-btn {
+    display: flex !important; /* Force display */
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: var(--main-color) !important;
+    color: #fff !important;
+    border-radius: 8px;
+    z-index: 2147483647 !important; /* Max z-index to ensure visibility */
+    position: relative; /* Ensure it sits in the flow or absolute if needed */
+    border: none !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+  }
+
+  /* Ensure the icon bars are visible */
+  .menu-icon-bar {
+    background-color: #fff !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* Fix Menu Dropdown Position */
+  .navbar .menu {
+    width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: translateX(100%); /* Start hidden to the side (RTL: right side) */
+  }
+
+  .navbar .menu.active {
+    transform: translateX(0) !important;
+  }
+}
+
+/* 6. Fix "Blank Left Side" Issue (RTL Specific) */
+/* In RTL, overflow often happens on the left. We force LTR for the body wrapper if needed,
+   but better to just constrain the width. */
+body {
+  overflow-x: hidden;
+}
+
+/* 8. Mobile Typography & Spacing Adjustments */
+@media (max-width: 767px) {
+  body {
+    font-size: 16px !important; /* Slightly smaller body text */
+  }
+
+  .home-text h1 {
+    font-size: 32px !important; /* Reduce main heading size */
+    line-height: 1.3 !important;
+  }
+
+  .home-text h4 {
+    font-size: 20px !important;
+  }
+
+  .section-title .main-title {
+    font-size: 28px !important;
+  }
+
+  .section-padding {
+    padding: 50px 0 !important; /* Reduce vertical padding */
+  }
+
+  .home-section {
+    padding-top: 100px !important; /* Adjust for fixed navbar */
+  }
+
+  /* Fix 100vh issues on mobile browsers */
+  .service-section, .contact-section {
+    min-height: auto !important; /* Allow content to dictate height */
+  }
+}
+/* Hide the rectangular shape when using the circular diagram */
+.about-section .about-image .img-box:has(.sdlc-container) .about-shape {
+  display: none;
+}
+
+/* SDLC Diagram Styles (Arabic Replacement) */
+.sdlc-container {
+  position: relative;
+  width: 100%;
+  max-width: 480px; /* Increased size */
+  aspect-ratio: 1/1;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Optional: Add a subtle background circle to ground it */
+  background: radial-gradient(circle, rgba(0,167,142,0.03) 0%, rgba(0,0,0,0) 70%);
+  border-radius: 50%;
+}
+
+.sdlc-center {
+  width: 30%; /* Slightly smaller to give more breathing room */
+  height: 30%;
+  background: var(--main-color);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.2rem; /* Larger text */
+  line-height: 1.4;
+  z-index: 2;
+  box-shadow: 0 0 25px rgba(0,167,142,0.4); /* Stronger glow */
+  padding: 5px;
+  border: 6px solid var(--bg); /* Thicker border to separate from ring */
+}
+
+.sdlc-ring {
+  position: absolute;
+  width: 75%; /* Larger ring */
+  height: 75%;
+  border: 2px dashed var(--main-color);
+  border-radius: 50%;
+  z-index: 1;
+  opacity: 0.15;
+  animation: spin 60s linear infinite;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+.sdlc-item {
+  position: absolute;
+  width: 22%; /* Slightly smaller items to prevent overlap */
+  height: 22%;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.9rem; /* Larger text */
+  font-weight: 700;
+  color: var(--ink);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.sdlc-item:hover {
+  transform: scale(1.15) !important;
+  border-color: var(--main-color);
+  color: var(--main-color);
+  box-shadow: 0 10px 25px rgba(0,167,142,0.2);
+  z-index: 10;
+}
+
+.sdlc-item .ico {
+  width: 26px;
+  height: 26px;
+  margin-bottom: 6px;
+  color: var(--main-color);
+}
+
+/* Positioning items in a circle (6 items) */
+/* Radius = ~38-40% of container */
+.sdlc-item:nth-child(3) { top: 8%; left: 50%; transform: translateX(-50%); } /* 1. Analysis (Top) */
+.sdlc-item:nth-child(4) { top: 25%; right: 5%; } /* 2. Design (Top Right) */
+.sdlc-item:nth-child(5) { bottom: 25%; right: 5%; } /* 3. Dev (Bottom Right) */
+.sdlc-item:nth-child(6) { bottom: 8%; left: 50%; transform: translateX(-50%); } /* 4. Test (Bottom) */
+.sdlc-item:nth-child(7) { bottom: 25%; left: 5%; } /* 5. Deploy (Bottom Left) */
+.sdlc-item:nth-child(8) { top: 25%; left: 5%; } /* 6. Maintain (Top Left) */
+
+/* Mobile Adjustments */
+@media (max-width: 480px) {
+  .sdlc-container { max-width: 340px; }
+  .sdlc-center { font-size: 0.95rem; }
+  .sdlc-item { font-size: 0.8rem; width: 24%; height: 24%; }
+  .sdlc-item .ico { width: 20px; height: 20px; }
+}
+/* Technologies Section Redesign */
+.tech-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: var(--shadow-black-100);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tech-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  border-color: var(--main-color);
+}
+
+.tech-icon {
+  width: 70px;
+  height: 70px;
+  background: color-mix(in oklab, var(--main-color), white 90%);
+  color: var(--main-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 32px;
+}
+
+[data-theme="dark"] .tech-icon {
+  background: color-mix(in oklab, var(--main-color), black 80%);
+}
+
+.tech-icon .ico {
+  width: 36px;
+  height: 36px;
+}
+
+.tech-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--ink);
+}
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.tech-tag {
+  background: var(--bg-soft);
+  color: var(--muted);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.tech-card:hover .tech-tag {
+  background: var(--main-color);
+  color: #fff;
+  border-color: var(--main-color);
+}

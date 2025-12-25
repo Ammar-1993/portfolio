@@ -1,0 +1,99 @@
+{
+  "id": "/portfolio/",
+  "name": "عمار النجار — مهندس برمجيات",
+  "short_name": "عمار النجار",
+  "description": "م. عمار النجار: مهندس برمجيات يقدم حلول مواقع، موبايل، وسطح المكتب باحترافية ودعم مستمر.",
+  "version": "1.0.0",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./?source=a2hs",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0f19",
+  "theme_color": "#0b0f19",
+  "orientation": "portrait-primary",
+  "categories": [
+    "productivity",
+    "portfolio",
+    "business",
+    "utilities"
+  ],
+  "screenshots": [
+    {
+      "src": "images/optimized/hero4.avif",
+      "sizes": "420x420",
+      "type": "image/avif",
+      "label": "الصفحة الرئيسية"
+    },
+    {
+      "src": "images/optimized/about_hero.avif",
+      "sizes": "520x650",
+      "type": "image/avif",
+      "label": "نبذة عن الفريق"
+    }
+  ],
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "الصفحة الرئيسية",
+      "short_name": "الرئيسية",
+      "description": "العودة إلى الصفحة الرئيسية",
+      "url": "./",
+      "icons": [
+        {
+          "src": "assets/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "الأعمال",
+      "short_name": "الأعمال",
+      "description": "عرض الأعمال والمشاريع",
+      "url": "./#portfolio",
+      "icons": [
+        {
+          "src": "assets/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "التواصل",
+      "short_name": "التواصل",
+      "description": "معلومات التواصل",
+      "url": "./#contact",
+      "icons": [
+        {
+          "src": "assets/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

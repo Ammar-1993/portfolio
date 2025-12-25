@@ -1,0 +1,59 @@
+/* اتصل بنا */
+.contact-section{min-height:100vh;background:var(--bg-soft)}
+.contact-section .contact-item{flex:1;padding:15px;display:flex}
+
+.contact-section .contact-item-inner{
+  padding:30px 20px;text-align:center;background:var(--surface);border:1px solid var(--border);
+  border-radius:16px;width:100%;box-shadow:var(--shadow-black-100);
+  transition:transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.contact-section .contact-item-inner:hover{
+  transform:translateY(-5px);
+  box-shadow:0 15px 30px rgba(0,0,0,0.1);
+  border-color:var(--main-color);
+}
+.contact-section .contact-item-inner .icon-box{
+  width:60px;height:60px;color:var(--main-color);margin-bottom:16px;
+  background:color-mix(in oklab,var(--main-color),white 90%);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+.contact-section .contact-item-inner .icon-box .ico{
+  width:28px;height:28px;fill:currentColor;
+}
+[data-theme="dark"] .contact-section .contact-item-inner .icon-box{
+  background:color-mix(in oklab,var(--main-color),black 80%);
+}
+.contact-section .contact-item-inner span{display:block;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.contact-section .contact-item-inner p{font-size:16px;color:var(--muted);line-height:1.5;margin:0}
+.contact-section .contact-item-inner p a{color:var(--muted);text-decoration:none;transition:color 0.2s}
+.contact-section .contact-item-inner p a:hover{color:var(--main-color)}
+
+.contact-section .contact-form{
+  flex:0 0 100%;max-width:100%;margin-top:40px;
+  background:var(--surface);padding:40px;border-radius:20px;
+  border:1px solid var(--border);box-shadow:var(--shadow-black-100)
+}
+@media (max-width:767px){.contact-section .contact-form{padding:24px}}
+
+.contact-section .w-50{padding:0 15px;flex:0 0 50%;max-width:50%}
+@media (max-width:767px){
+  .contact-section .w-50{flex:0 0 100%;max-width:100%}
+  .contact-section .submit-btn .btn-1{width:100%;display:block}
+}
+.contact-section .input-group{
+  margin:0 0 24px;border-radius:12px;background:var(--bg-soft);border:1px solid var(--border);
+  transition:border-color 0.2s ease, box-shadow 0.2s ease
+}
+.contact-section .input-group:focus-within{
+  border-color:var(--main-color);
+  box-shadow:0 0 0 4px color-mix(in oklab,var(--main-color),transparent 85%)
+}
+.contact-section .input-group .input-control{
+  height:50px;display:block;width:100%;border-radius:12px;border:none;outline:0;background:transparent;color:var(--ink);
+  font-size:16px;padding:0 16px;font-weight:500
+}
+.contact-section .input-group textarea.input-control{height:180px;padding-top:16px;resize:none}
+.contact-section .input-group .input-control::placeholder{color:var(--muted);opacity:0.7}
+.contact-section .submit-btn{flex:0 0 100%;max-width:100%;text-align:end;padding:0 15px;margin-top:10px}

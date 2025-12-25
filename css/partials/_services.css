@@ -1,0 +1,18 @@
+/* الخدمات */
+.service-section{min-height:100vh;background:var(--bg-soft)}
+.service-section .service-item{flex:0 0 33.33%;max-width:33.33%;padding:20px;display:flex}
+@media (max-width:991px){.service-section .service-item{flex:0 0 50%;max-width:50%}}
+@media (max-width:767px){.service-section .service-item{flex:0 0 100%;max-width:100%}}
+.service-section .service-item-inner{
+  background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow-black-100);
+  padding:34px 18px;border-radius:12px;width:100%;text-align:center
+}
+.service-section .service-item-inner .icon{
+  height:60px;width:60px;background:var(--main-color);margin:0 auto 22px;text-align:center;
+  font-size:28px;color:#fff;border-radius:18px 18px 0 0;position:relative;z-index:var(--z-normal)
+}
+.service-section .service-item-inner .icon i{line-height:60px}
+.service-section .service-item-inner h3{font-size:20px;font-weight:700;color:var(--ink);margin:0 0 8px}
+.service-section .service-item-inner p{font-size:16px;color:var(--muted);margin:0;line-height:26px}
+.service-section .service-item-inner:hover{transform:translateY(-2px);border-color:color-mix(in oklab,var(--main-color),#000 30%)}
+.service-section .service-item-inner:hover .icon{background:#fff;color:var(--main-color)}

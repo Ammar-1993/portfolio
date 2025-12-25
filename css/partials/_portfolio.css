@@ -1,0 +1,66 @@
+/* المعرض */
+.portfolio{background:transparent}
+.portfolio .portfolio-filter{flex:0 0 100%;max-width:100%;padding:10px 20px;text-align:center}
+.portfolio .portfolio-filter button{
+  margin:6px 10px;outline:0;border:1px solid var(--border);padding:8px 12px;font-weight:700;border-radius:8px;
+  background:var(--surface);color:var(--ink);text-transform:uppercase
+}
+.portfolio .portfolio-filter button.active,
+.portfolio .portfolio-filter button:hover{color:#fff;background:var(--main-color);border-color:transparent}
+.portfolio .portfolio-filter button:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+
+.portfolio .portfolio-item{flex:0 0 33.33%;max-width:33.33%;padding:20px;display:flex}
+@media (max-width:991px){.portfolio .portfolio-item{flex:0 0 50%;max-width:50%}}
+@media (max-width:767px){.portfolio .portfolio-item{flex:0 0 100%;max-width:100%}}
+
+/* الفلاتر */
+.portfolio .portfolio-item.hide{display:none}
+.portfolio .portfolio-item.show{display:block;animation:.5s showItem}
+@keyframes showItem{0%{transform:scale(.95);opacity:0}100%{transform:scale(1);opacity:1}}
+
+.portfolio .portfolio-item-inner{
+  width:100%;border-radius:12px;overflow:hidden;box-shadow:var(--shadow-black-100);
+  border:1px solid var(--border);background:var(--surface);cursor:pointer;position:relative
+}
+
+/* الحاوية التي تضم الصورة أو الفيديو */
+.portfolio .portfolio-item-inner .portfolio-img,
+.portfolio .portfolio-item-inner-video{
+  aspect-ratio:var(--tile-ratio);
+  min-height:var(--tile-min-h);
+  display:grid;place-items:center;
+  background:var(--media-bg);
+}
+
+/* ملاءمة الوسائط داخل الحاوية */
+.portfolio .portfolio-item-inner .portfolio-img img,
+.portfolio .portfolio-item-inner-video video{
+  width:100%;height:100%;object-fit:contain;
+}
+
+.portfolio .portfolio-item .portfolio-info{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(2,6,23,0) 40%,rgba(2,6,23,.7));
+  z-index:var(--z-normal);padding:22px;opacity:0;display:flex;align-items:flex-end;justify-content:space-between;color:#fff
+}
+.portfolio .portfolio-item:hover .portfolio-info{opacity:1}
+.portfolio .portfolio-item .portfolio-info h4{
+  font-size:18px;font-weight:800;color:#fff;text-transform:capitalize;transform:translateX(-14px);opacity:0;
+  transition:transform .2s ease, opacity .2s ease
+}
+[dir="ltr"] .portfolio .portfolio-item .portfolio-info h4{transform:translateX(14px)}
+
+.portfolio .portfolio-item:hover .portfolio-info h4{transform:none;opacity:1}
+.portfolio .portfolio-item .portfolio-info .icon{
+  height:40px;width:40px;color:#fff;background:var(--main-color);text-align:center;border-radius:50%;display:grid;place-items:center;
+  transform:translateX(14px);opacity:0;
+  transition:transform .2s ease, opacity .2s ease
+}
+[dir="ltr"] .portfolio .portfolio-item .portfolio-info .icon{transform:translateX(-14px)}
+
+.portfolio .portfolio-item:hover .portfolio-info .icon{transform:none;opacity:1}
+
+/* فيديو داخل المعرض */
+.portfolio .portfolio-item-inner-video{border-radius:12px;overflow:hidden;box-shadow:var(--shadow-black-100);border:1px solid var(--border);background:#000}
+.portfolio .portfolio-item-inner-video figure{margin:0}
+.portfolio .portfolio-item-inner-video figcaption{color:#fff;background:rgba(0,0,0,.45);padding:.5rem .75rem}

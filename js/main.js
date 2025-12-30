@@ -484,9 +484,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let deferredPrompt = null;
 
   window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
+    // e.preventDefault();  // Remove to allow browser banner
     deferredPrompt = e;
-    installBtn.hidden = false;    // أظهر الزر فقط عندما يسمح المتصفح
+    // installBtn.hidden = false;  // Hide custom button to use browser banner
   });
 
   installBtn.addEventListener('click', async () => {

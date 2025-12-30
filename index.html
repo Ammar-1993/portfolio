@@ -27,6 +27,8 @@
   <!-- Preload critical fonts for performance -->
   <link rel="preload" as="font" href="assets/fonts/cairo/Cairo-Regular.woff2" type="font/woff2" crossorigin>
   <link rel="preload" as="font" href="assets/fonts/cairo/Cairo-ExtraBold.woff2" type="font/woff2" crossorigin>
+  <!-- Preload LCP image -->
+  <link rel="preload" as="image" href="images/hero4.png">
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
   {
@@ -175,7 +177,7 @@
           <div class="home-image">
             <div class="img-box">
               <img src="images/hero4.png" alt="صورة تعبيرية للمهندس وواجهة برمجية" width="420" height="420"
-                loading="eager" fetchpriority="high" decoding="async">
+                loading="eager" fetchpriority="high" decoding="async" sizes="(max-width: 767px) 100vw, 420px">
             </div>
           </div>
         </div>

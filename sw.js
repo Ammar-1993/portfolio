@@ -9,8 +9,14 @@ const PRECACHE_URLS = [
   `${BASE}index-en.html`,
   `${BASE}css/style.css`,
   `${BASE}js/main.js`,
+  `${BASE}js/portfolio-render.js`,
   `${BASE}assets/icons/icon-192.png`,
   `${BASE}assets/icons/icon-512.png`,
+  `${BASE}assets/icons/apple-touch-icon-180.png`,
+  `${BASE}assets/fonts/cairo/Cairo-Regular.woff2`,
+  `${BASE}assets/fonts/cairo/Cairo-ExtraBold.woff2`,
+  `${BASE}images/hero4.png`,
+  `${BASE}images/about_hero.png`,
   `${BASE}offline.html`
 ];
 

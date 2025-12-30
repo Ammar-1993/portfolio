@@ -216,9 +216,12 @@ const Utils = {
 
   // ===== Portfolio filter =====
   const filterContainer = qs('.portfolio-filter');
-  const portfolioItems = qsa('.portfolio-item');
+  let portfolioItems = qsa('.portfolio-item');
 
   function updateVisibleItems(filter) {
+    // Re-query items in case they were dynamically added
+    portfolioItems = qsa('.portfolio-item');
+    
     const f = filter || 'all';
     portfolioItems.forEach((item) => {
       const cat = item.getAttribute('data-category');
@@ -230,6 +233,11 @@ const Utils = {
 
   // default state
   updateVisibleItems('all');
+
+  // Listen for dynamic portfolio rendering completion
+  document.addEventListener('portfolioRendered', () => {
+    updateVisibleItems('all');
+  });
 
   if (filterContainer) {
     filterContainer.addEventListener('click', (e) => {
@@ -298,9 +306,10 @@ const Utils = {
     const imgObj = galleryImages[currentIndex];
     if (!imgObj || !lightboxImg) return;
     
-    const isEn = document.documentElement.lang === 'en';
+    const i18n = document.getElementById('i18n-data');
+    const galleryText = i18n ? i18n.dataset.gallery : 'Gallery Image';
     lightboxImg.src = imgObj.src;
-    lightboxImg.alt = imgObj.alt || (isEn ? 'Gallery Image' : 'صورة من المعرض');
+    lightboxImg.alt = imgObj.alt || galleryText;
     
     if (lightboxText) lightboxText.textContent = imgObj.alt;
     if (lightboxCounter) lightboxCounter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
@@ -481,8 +490,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const { outcome } = await deferredPrompt.userChoice;
       
       if (outcome === 'accepted') {
-        const isEn = document.documentElement.lang === 'en';
-        installBtn.querySelector('.btn-install__label').textContent = isEn ? 'Installed ✅' : 'تم التثبيت ✅';
+        const i18n = document.getElementById('i18n-data');
+        const installedText = i18n ? i18n.dataset.installed : 'Installed ✅';
+        installBtn.querySelector('.btn-install__label').textContent = installedText;
         setTimeout(() => installBtn.hidden = true, 1600);
       } else {
         // User dismissed the prompt. The event cannot be reused.
@@ -499,8 +509,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   window.addEventListener('appinstalled', () => {
-    const isEn = document.documentElement.lang === 'en';
-    installBtn.querySelector('.btn-install__label').textContent = isEn ? 'Installed ✅' : 'تم التثبيت ✅';
+    const i18n = document.getElementById('i18n-data');
+    const installedText = i18n ? i18n.dataset.installed : 'Installed ✅';
+    installBtn.querySelector('.btn-install__label').textContent = installedText;
     setTimeout(() => installBtn.hidden = true, 1200);
   });
 })();

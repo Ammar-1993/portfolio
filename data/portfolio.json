@@ -1,0 +1,427 @@
+{
+    "projects": [
+        {
+            "id": "job-app",
+            "category": "web-project",
+            "title": {
+                "ar": "نظام البحث عن وظائف",
+                "en": "Job Vacancies System"
+            },
+            "cover": "images/portfolio/job-app-1.webp",
+            "coverAlt": {
+                "ar": "تطبيق وظائف - صفحة الترحيب",
+                "en": "Job Search App - Welcome Page"
+            },
+            "gallery": [
+                {
+                    "src": "images/portfolio/job-app-2.webp",
+                    "alt": {
+                        "ar": "تطبيق وظائف - صفحة انشاء الحساب",
+                        "en": "Job Search App - Create Account Page"
+                    }
+                },
+                {
+                    "src": "images/portfolio/job-app-3.webp",
+                    "alt": {
+                        "ar": "تطبيق وظائف - صفحة الدخول",
+                        "en": "Job Search App - Login Page"
+                    }
+                },
+                {
+                    "src": "images/portfolio/job-app-4.webp",
+                    "alt": {
+                        "ar": "تطبيق وظائف - صفحة لوحة التحكم",
+                        "en": "Job Search App - Dashboard Page"
+                    }
+                },
+                {
+                    "src": "images/portfolio/job-app-5.webp",
+                    "alt": {
+                        "ar": "تطبيق وظائف - صفحة تفاصيل الوظيفة",
+                        "en": "Job Search App - Job Details Page"
+                    }
+                },
+                {
+                    "src": "images/portfolio/job-app-6.webp",
+                    "alt": {
+                        "ar": "تطبيق وظائف - صفحة تحميل السيرة الذاتية",
+                        "en": "Job Search App - Resume Upload Page"
+                    }
+                },
+                {
+                    "src": "images/portfolio/job-app-7.webp",
+                    "alt": {
+                        "ar": "تطبيق وظائف - صفحة انتظار رفع الملف والتحليل",
+                        "en": "Job Search App - File Upload and Analysis Waiting Page"
+                    }
+                },
+                {
+                    "src": "images/portfolio/job-app-8.webp",
+                    "alt": {
+                        "ar": "تطبيق وظائف - صفحة التغذية الراجعة من AI",
+                        "en": "Job Search App - AI Feedback Page"
+                    }
+                },
+                {
+                    "src": "images/portfolio/job-app-9.webp",
+                    "alt": {
+                        "ar": "تطبيق وظائف - صفحة الإعدادات",
+                        "en": "Job Search App - Settings Page"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "safe-comply",
+            "category": "web-project",
+            "title": {
+                "ar": "نظام الامتثال الآمن",
+                "en": "Safe Comply System"
+            },
+            "cover": "images/portfolio/safe-comply-dashboard.webp",
+            "coverAlt": {
+                "ar": "نظام الامتثال الآمن - لوحة التحكم",
+                "en": "Safe Comply System - Dashboard"
+            },
+            "gallery": [
+                {
+                    "src": "images/portfolio/safe-comply-welcome.webp",
+                    "alt": {
+                        "ar": "نظام الامتثال الآمن - صفحة الترحيب",
+                        "en": "Safe Comply System - Welcome Page"
+                    }
+                },
+                {
+                    "src": "images/portfolio/safe-comply-register.webp",
+                    "alt": {
+                        "ar": "نظام الامتثال الآمن - صفحة التسجيل",
+                        "en": "Safe Comply System - Registration Page"
+                    }
+                },
+                {
+                    "src": "images/portfolio/safe-comply-Login.webp",
+                    "alt": {
+                        "ar": "نظام الامتثال الآمن - صفحة الدخول",
+                        "en": "Safe Comply System - Login Page"
+                    }
+                },
+                {
+                    "src": "images/portfolio/safe-comply-dashboard.webp",
+                    "alt": {
+                        "ar": "نظام الامتثال الآمن - لوحة التحكم",
+                        "en": "Safe Comply System - Dashboard"
+                    }
+                },
+                {
+                    "src": "images/portfolio/safe-comply-settings.webp",
+                    "alt": {
+                        "ar": "نظام الامتثال الآمن - الإعدادات",
+                        "en": "Safe Comply System - Settings"
+                    }
+                },
+                {
+                    "src": "images/portfolio/safe-comply-password-policies.webp",
+                    "alt": {
+                        "ar": "نظام الامتثال الآمن - سياسات كلمة المرور",
+                        "en": "Safe Comply System - Password Policies"
+                    }
+                },
+                {
+                    "src": "images/portfolio/safe-comply-backup-policies.webp",
+                    "alt": {
+                        "ar": "نظام الامتثال الآمن - سياسات النسخ الاحتياطي",
+                        "en": "Safe Comply System - Backup Policies"
+                    }
+                },
+                {
+                    "src": "images/portfolio/safe-comply-upload-compliance-data.webp",
+                    "alt": {
+                        "ar": "نظام الامتثال الآمن - رفع بيانات الامتثال",
+                        "en": "Safe Comply System - Upload Compliance Data"
+                    }
+                },
+                {
+                    "src": "images/portfolio/safe-comply-reports.webp",
+                    "alt": {
+                        "ar": "نظام الامتثال الآمن - التقارير",
+                        "en": "Safe Comply System - Reports"
+                    }
+                },
+                {
+                    "src": "images/portfolio/safe-comply-recommendations.webp",
+                    "alt": {
+                        "ar": "نظام الامتثال الآمن - التوصيات",
+                        "en": "Safe Comply System - Recommendations"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "task-management",
+            "category": "web-project",
+            "title": {
+                "ar": "نظام إدارة المهام",
+                "en": "Task Management System"
+            },
+            "cover": "images/portfolio/portfolio-1.webp",
+            "coverAlt": {
+                "ar": "نظام إدارة المهام — لوحة التحكم",
+                "en": "Task Management System — Dashboard"
+            },
+            "gallery": []
+        },
+        {
+            "id": "educational-platform",
+            "category": "web-project",
+            "title": {
+                "ar": "منصة تعليمية",
+                "en": "Educational Platform"
+            },
+            "cover": "images/portfolio/portfolio-2.webp",
+            "coverAlt": {
+                "ar": "منصة تعليمية — صفحة الدروس",
+                "en": "Educational Platform — Lessons Page"
+            },
+            "gallery": []
+        },
+        {
+            "id": "ecommerce-store",
+            "category": "web-project",
+            "title": {
+                "ar": "متجر إلكتروني",
+                "en": "E-Commerce Store"
+            },
+            "cover": "images/portfolio/portfolio-3.webp",
+            "coverAlt": {
+                "ar": "متجر إلكتروني — صفحة المنتجات",
+                "en": "E-Commerce Store — Products Page"
+            },
+            "gallery": []
+        },
+        {
+            "id": "company-website",
+            "category": "web-project",
+            "title": {
+                "ar": "موقع شركة",
+                "en": "Company Website"
+            },
+            "cover": "images/portfolio/portfolio-4.webp",
+            "coverAlt": {
+                "ar": "موقع شركة — الصفحة الرئيسية",
+                "en": "Company Website — Homepage"
+            },
+            "gallery": []
+        },
+        {
+            "id": "tech-blog",
+            "category": "web-project",
+            "title": {
+                "ar": "مدونة تقنية",
+                "en": "Tech Blog"
+            },
+            "cover": "images/portfolio/portfolio-5.webp",
+            "coverAlt": {
+                "ar": "مدونة تقنية — صفحة المقالات",
+                "en": "Tech Blog — Article Page"
+            },
+            "gallery": []
+        },
+        {
+            "id": "desktop-app",
+            "category": "desktop-project",
+            "title": {
+                "ar": "تطبيق سطح مكتب",
+                "en": "Desktop App"
+            },
+            "cover": "images/portfolio/portfolio-6.webp",
+            "coverAlt": {
+                "ar": "تطبيق سطح مكتب — شاشة الدخول",
+                "en": "Desktop App — Login Screen"
+            },
+            "gallery": []
+        },
+        {
+            "id": "pos-system",
+            "category": "desktop-project",
+            "title": {
+                "ar": "نظام نقاط البيع",
+                "en": "POS System"
+            },
+            "cover": "images/portfolio/portfolio-7.webp",
+            "coverAlt": {
+                "ar": "نظام نقاط البيع — واجهة الكاشير",
+                "en": "POS System — Cashier Interface"
+            },
+            "gallery": []
+        },
+        {
+            "id": "accounting-software",
+            "category": "desktop-project",
+            "title": {
+                "ar": "برنامج محاسبة",
+                "en": "Accounting Software"
+            },
+            "cover": "images/portfolio/portfolio-8.webp",
+            "coverAlt": {
+                "ar": "برنامج محاسبة — التقارير المالية",
+                "en": "Accounting Software — Financial Reports"
+            },
+            "gallery": []
+        },
+        {
+            "id": "inventory-management",
+            "category": "desktop-project",
+            "title": {
+                "ar": "إدارة المخزون",
+                "en": "Inventory Management"
+            },
+            "cover": "images/portfolio/portfolio-9.webp",
+            "coverAlt": {
+                "ar": "إدارة المخزون — شاشة المنتجات",
+                "en": "Inventory Management — Products Screen"
+            },
+            "gallery": []
+        },
+        {
+            "id": "learning-app",
+            "category": "mobile-project",
+            "title": {
+                "ar": "تطبيق تعليمي",
+                "en": "Learning App"
+            },
+            "cover": "images/portfolio/mobile1.webp",
+            "coverAlt": {
+                "ar": "تطبيق تعليمي — الشاشة الرئيسية",
+                "en": "Learning App — Home Screen"
+            },
+            "gallery": [
+                {
+                    "src": "images/portfolio/mobile2.webp",
+                    "alt": {
+                        "ar": "تطبيق تعليمي — شاشة الدخول",
+                        "en": "Learning App — Login Screen"
+                    }
+                },
+                {
+                    "src": "images/portfolio/mobile3.webp",
+                    "alt": {
+                        "ar": "تطبيق تعليمي — شاشة المحتوى",
+                        "en": "Learning App — Content Screen"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "membership-app",
+            "category": "mobile-project",
+            "title": {
+                "ar": "تطبيق العضوية",
+                "en": "Membership App"
+            },
+            "cover": "images/portfolio/mobile2.webp",
+            "coverAlt": {
+                "ar": "تطبيق موبايل — شاشة التسجيل",
+                "en": "Mobile App — Registration Screen"
+            },
+            "gallery": []
+        },
+        {
+            "id": "content-app",
+            "category": "mobile-project",
+            "title": {
+                "ar": "تطبيق محتوى",
+                "en": "Content App"
+            },
+            "cover": "images/portfolio/mobile3.webp",
+            "coverAlt": {
+                "ar": "تطبيق موبايل — شاشة المحتوى",
+                "en": "Mobile App — Content Screen"
+            },
+            "gallery": []
+        },
+        {
+            "id": "settings-app",
+            "category": "mobile-project",
+            "title": {
+                "ar": "تطبيق الإعدادات",
+                "en": "Settings App"
+            },
+            "cover": "images/portfolio/mobile4.webp",
+            "coverAlt": {
+                "ar": "تطبيق موبايل — صفحة الإعدادات",
+                "en": "Mobile App — Settings Page"
+            },
+            "gallery": []
+        },
+        {
+            "id": "list-app",
+            "category": "mobile-project",
+            "title": {
+                "ar": "تطبيق قوائم",
+                "en": "List App"
+            },
+            "cover": "images/portfolio/mobile5.webp",
+            "coverAlt": {
+                "ar": "تطبيق موبايل — شاشة القوائم",
+                "en": "Mobile App — Lists Screen"
+            },
+            "gallery": []
+        },
+        {
+            "id": "profile-app",
+            "category": "mobile-project",
+            "title": {
+                "ar": "تطبيق الملف الشخصي",
+                "en": "Profile App"
+            },
+            "cover": "images/portfolio/mobile6.webp",
+            "coverAlt": {
+                "ar": "تطبيق موبايل — شاشة الملف الشخصي",
+                "en": "Mobile App — Profile Screen"
+            },
+            "gallery": []
+        },
+        {
+            "id": "store-app",
+            "category": "mobile-project",
+            "title": {
+                "ar": "تطبيق متجر",
+                "en": "Store App"
+            },
+            "cover": "images/portfolio/mobile7.webp",
+            "coverAlt": {
+                "ar": "تطبيق موبايل — شاشة المتجر",
+                "en": "Mobile App — Store Screen"
+            },
+            "gallery": []
+        },
+        {
+            "id": "communication-app",
+            "category": "mobile-project",
+            "title": {
+                "ar": "تطبيق تواصل",
+                "en": "Communication App"
+            },
+            "cover": "images/portfolio/mobile8.webp",
+            "coverAlt": {
+                "ar": "تطبيق موبايل — شاشة التواصل",
+                "en": "Mobile App — Contact Screen"
+            },
+            "gallery": []
+        },
+        {
+            "id": "details-app",
+            "category": "mobile-project",
+            "title": {
+                "ar": "تطبيق تفاصيل",
+                "en": "Details App"
+            },
+            "cover": "images/portfolio/mobile9.webp",
+            "coverAlt": {
+                "ar": "تطبيق موبايل — شاشة التفاصيل",
+                "en": "Mobile App — Details Screen"
+            },
+            "gallery": []
+        }
+    ]
+}

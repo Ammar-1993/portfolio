@@ -98,6 +98,8 @@
 </head>
 
 <body>
+  <div id="i18n-data" hidden data-gallery="صورة من المعرض" data-installed="تم التثبيت ✅">
+  </div>
   <!-- Improved skip link for accessibility -->
   <a class="skip-link" href="#home">تخطي إلى المحتوى</a>
 
@@ -163,9 +165,8 @@
 
             <button id="installBtn" class="btn-install" hidden aria-label="ثبّت كتطبيق">
               <span class="btn-install__shine" aria-hidden="true"></span>
-              <svg class="btn-install__icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-                <path
-                  d="M12 3a1 1 0 0 1 1 1v8.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.42L11 12.6V4a1 1 0 0 1 1-1zM5 20a2 2 0 0 1-2-2v-2a1 1 0 1 1 2 0v2h14v-2a1 1 0 1 1 2 0v2a2 2 0 0 1-2 2H5z" />
+              <svg class="btn-install__icon" width="20" height="20" aria-hidden="true">
+                <use href="images/icons.svg#install" />
               </svg>
               <span class="btn-install__label">ثبّت كتطبيق</span>
             </button>
@@ -482,8 +483,8 @@
               <div class="portfolio-item" data-category="web-project">
                 <div class="portfolio-item-inner">
                   <div class="portfolio-img">
-                    <img src="images/portfolio/safe-comply-dashboard.webp" alt="نظام الامتثال الآمن - لوحة التحكم" loading="lazy"
-                      decoding="async">
+                    <img src="images/portfolio/safe-comply-dashboard.webp" alt="نظام الامتثال الآمن - لوحة التحكم"
+                      loading="lazy" decoding="async">
                   </div>
                   <!-- Hidden Gallery for this Project -->
                   <div class="project-gallery" hidden>
@@ -492,9 +493,12 @@
                     <img src="images/portfolio/safe-comply-Login.webp" alt="نظام الامتثال الآمن - صفحة الدخول">
                     <img src="images/portfolio/safe-comply-dashboard.webp" alt="نظام الامتثال الآمن - لوحة التحكم">
                     <img src="images/portfolio/safe-comply-settings.webp" alt="نظام الامتثال الآمن - الإعدادات">
-                    <img src="images/portfolio/safe-comply-password-policies.webp" alt="نظام الامتثال الآمن - سياسات كلمة المرور">
-                    <img src="images/portfolio/safe-comply-backup-policies.webp" alt="نظام الامتثال الآمن - سياسات النسخ الاحتياطي">
-                    <img src="images/portfolio/safe-comply-upload-compliance-data.webp" alt="نظام الامتثال الآمن - رفع بيانات الامتثال">
+                    <img src="images/portfolio/safe-comply-password-policies.webp"
+                      alt="نظام الامتثال الآمن - سياسات كلمة المرور">
+                    <img src="images/portfolio/safe-comply-backup-policies.webp"
+                      alt="نظام الامتثال الآمن - سياسات النسخ الاحتياطي">
+                    <img src="images/portfolio/safe-comply-upload-compliance-data.webp"
+                      alt="نظام الامتثال الآمن - رفع بيانات الامتثال">
                     <img src="images/portfolio/safe-comply-reports.webp" alt="نظام الامتثال الآمن - التقارير">
                     <img src="images/portfolio/safe-comply-recommendations.webp" alt="نظام الامتثال الآمن - التوصيات">
                   </div>
@@ -1109,6 +1113,7 @@
   <!--===== Lightbox End =====-->
 
   <!--===== Scripts =====-->
+  <script src="js/portfolio-render.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 

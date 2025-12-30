@@ -259,6 +259,8 @@ const Utils = {
   const lightboxClose = lightbox ? qs('.lightbox-close', lightbox) : null;
   const lightboxText = lightbox ? qs('.caption-text', lightbox) : null;
   const lightboxCounter = lightbox ? qs('.caption-counter', lightbox) : null;
+  const prevBtn = lightbox ? qs('.prev-item', lightbox) : null;
+  const nextBtn = lightbox ? qs('.next-item', lightbox) : null;
 
   let galleryImages = []; // Stores {src, alt} for the current project
   let currentIndex = 0;
@@ -313,6 +315,11 @@ const Utils = {
     
     if (lightboxText) lightboxText.textContent = imgObj.alt;
     if (lightboxCounter) lightboxCounter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
+    
+    // Disable buttons at boundaries
+    if (prevBtn) prevBtn.disabled = currentIndex === 0;
+    if (nextBtn) nextBtn.disabled = currentIndex === galleryImages.length - 1;
+    
     preloadAround(currentIndex);
   }
 
@@ -352,14 +359,14 @@ const Utils = {
   }
 
   function nextItem() { 
-    if (!galleryImages.length) return;
-    currentIndex = (currentIndex + 1) % galleryImages.length; 
+    if (!galleryImages.length || currentIndex >= galleryImages.length - 1) return;
+    currentIndex++; 
     updateLightbox(); 
   }
   
   function prevItem() { 
-    if (!galleryImages.length) return;
-    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length; 
+    if (!galleryImages.length || currentIndex <= 0) return;
+    currentIndex--; 
     updateLightbox(); 
   }
 

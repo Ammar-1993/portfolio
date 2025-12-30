@@ -526,6 +526,14 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
 .lightbox .lightbox-controls .prev-item:hover{
   background:var(--main-color); transform:translateY(-50%) scale(1.1)
 }
+.lightbox .lightbox-controls .next-item:disabled,
+.lightbox .lightbox-controls .prev-item:disabled{
+  opacity: 0.3; cursor: not-allowed; transform: translateY(-50%);
+}
+.lightbox .lightbox-controls .next-item:disabled:hover,
+.lightbox .lightbox-controls .prev-item:disabled:hover{
+  background: #fff; transform: translateY(-50%); scale(1);
+}
 .lightbox .lightbox-controls .next-item .ico,
 .lightbox .lightbox-controls .prev-item .ico{
   width:24px; height:24px; color:#0f172a; transition:color .3s ease

@@ -47,7 +47,7 @@ const Utils = {
   (function initTheme() {
     let stored = null;
     try { stored = localStorage.getItem('theme'); } catch (_) {}
-    applyTheme(stored === 'light' || stored === 'dark' ? stored : null);
+    applyTheme(stored === 'light' || stored === 'dark' ? stored : 'light');
   })();
   // React to system changes if user didn't choose explicitly
   if (mqDark) {

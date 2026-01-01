@@ -268,11 +268,11 @@ padding:12px 25px;
 .home-text h1{font-size:44px;font-weight:800;margin-top:10px;color:var(--ink)}
 .home-text span{font-size:18px;line-height:28px;color:var(--ink);opacity:.9;display:block;margin-top:10px}
 .home-text p{font-size:18px;color:var(--muted);margin-top:12px}
-.home-text .btn{display:inline-block;margin-top:40px}
+.home-text .btn{display:inline-block;margin-top:28px}
 .header-hero-shape{position:absolute;top:0;bottom:0;inset-inline-end:0;width:55%;height:100%;pointer-events:none}
 .header-hero-shape::before{content:"";position:absolute;inset:0;background:linear-gradient(140deg,rgba(0,167,142,.18),rgba(0,167,142,0));transform:skewX(20deg)}
 [dir="ltr"] .header-hero-shape::before{transform:skewX(-20deg)}
-.home-stats{display:flex;justify-content:space-around;margin-top:40px;padding:0 25px}
+.home-stats{display:flex;justify-content:space-around;margin-top:32px;padding:0 25px}
 .home-stats .stat-item{text-align:center;padding:20px}
 .home-stats .stat-item h3{font-size:36px;font-weight:800;color:var(--main-color);margin:0}
 .home-stats .stat-item p{font-size:16px;color:var(--muted);margin:10px 0 0}
@@ -716,6 +716,74 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
 .lightbox .lightbox-controls .prev-item svg,
 .lightbox .lightbox-controls .next-item svg{width:24px;height:24px}
 .menu-btn .ico{width:22px;height:22px}                          /* زر الموبايل */
+
+/* ===== Social Links in Welcome Section ===== */
+.home-social-links{
+  display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;justify-content:flex-start;
+  align-items:flex-start
+}
+.home-text #installBtn{
+  margin-top:18px;
+}
+@media (min-width:576px){
+  .home-text #installBtn{
+    margin-top:0;
+    margin-inline-start:16px;
+  }
+}
+.social-icon-link{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:48px;height:48px;border-radius:12px;
+  background:var(--surface);border:1.5px solid var(--border);
+  color:var(--muted);transition:all 0.3s ease;
+  position:relative;overflow:hidden;text-decoration:none
+}
+.social-icon-link::before{
+  content:'';position:absolute;inset:0;
+  background:var(--main-color);opacity:0;
+  transition:opacity 0.3s ease;z-index:0
+}
+.social-icon-link:hover{
+  transform:translateY(-4px);
+  border-color:var(--main-color);
+  box-shadow:0 8px 20px rgba(0,167,142,0.25)
+}
+.social-icon-link:hover::before{opacity:0.1}
+.social-icon-link .ico{
+  width:24px;height:24px;position:relative;z-index:1;
+  transition:color 0.3s ease,transform 0.3s ease
+}
+.social-icon-link:hover .ico{color:var(--main-color);transform:scale(1.1)}
+
+/* Platform-specific hover colors */
+.social-icon-link[data-platform="github"]:hover{
+  border-color:#333;box-shadow:0 8px 20px rgba(51,51,51,0.25)
+}
+.social-icon-link[data-platform="github"]:hover .ico{color:#333}
+.social-icon-link[data-platform="linkedin"]:hover{
+  border-color:#0077b5;box-shadow:0 8px 20px rgba(0,119,181,0.25)
+}
+.social-icon-link[data-platform="linkedin"]:hover .ico{color:#0077b5}
+.social-icon-link[data-platform="mostaql"]:hover,
+.social-icon-link[data-platform="baaeed"]:hover{
+  border-color:var(--main-color);box-shadow:0 8px 20px rgba(0,167,142,0.25)
+}
+.social-icon-link[data-platform="mostaql"]:hover .ico,
+.social-icon-link[data-platform="baaeed"]:hover .ico{color:var(--main-color)}
+.social-icon-link[data-platform="resume"]:hover{
+  border-color:#6366f1;box-shadow:0 8px 20px rgba(99,102,241,0.25)
+}
+.social-icon-link[data-platform="resume"]:hover .ico{color:#6366f1}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .social-icon-link[data-platform="github"]:hover .ico{color:#fff}
+
+/* Responsive adjustments */
+@media (max-width:767px){
+  .home-social-links{gap:10px;margin-top:24px}
+  .social-icon-link{width:44px;height:44px}
+  .social-icon-link .ico{width:22px;height:22px}
+}
 
 
 /* زر تبديل الثيم */

@@ -398,6 +398,47 @@ padding:12px 25px;
 .service-section .service-item-inner:hover .icon{background:#fff;color:var(--main-color)}
 
 /* المعرض */
+/* ===== Testimonials ===== */
+.testimonials .testimonials-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  width:100%;
+}
+.testimonial-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:22px;
+  box-shadow:var(--shadow-black-100);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.testimonial-quote{
+  font-size:16px;
+  color:var(--muted);
+  line-height:1.6;
+  margin-bottom:18px;
+  font-style:italic;
+}
+.testimonial-footer{display:flex;align-items:center;gap:12px}
+.testimonial-footer .avatar{
+  width:52px;height:52px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;color:#fff;background:var(--main-color);flex-shrink:0
+}
+.testimonial-footer .meta{display:flex;flex-direction:column}
+.testimonial-footer .meta strong{font-size:15px;color:var(--ink)}
+.testimonial-footer .meta .role{font-size:13px;color:var(--muted)}
+.testimonial-footer .stars{margin-inline-start:auto;color:var(--main-color);font-size:14px;letter-spacing:1px}
+
+@media (max-width:991px){
+  .testimonials .testimonials-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:576px){
+  .testimonials .testimonials-grid{grid-template-columns:1fr}
+  .testimonial-footer .stars{margin-inline-start:0}
+}
+
 .portfolio{background:transparent}
 .portfolio .portfolio-filter{flex:0 0 100%;max-width:100%;padding:10px 20px;text-align:center}
 .portfolio .portfolio-filter button{

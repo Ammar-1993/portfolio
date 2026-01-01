@@ -75,6 +75,36 @@ const Utils = {
   });
 })();
 
+// ===== Language toggle (simple navigation between pages) =====
+document.addEventListener('DOMContentLoaded', () => {
+  const langLinks = document.querySelectorAll('#lang-toggle');
+  if (!langLinks.length) return;
+  langLinks.forEach((el) => {
+    // ensure keyboard role/visibility for assistive tech when element isn't an actual link (kept for compatibility)
+    if (el.tagName.toLowerCase() !== 'a') el.setAttribute('role', 'button');
+    el.addEventListener('click', (e) => {
+      // href takes precedence; fallback to data-target for older markup
+      const href = el.getAttribute('href') || (el.dataset && el.dataset.target);
+      if (!href) return;
+
+      // Close mobile menu if open
+      const menu = document.querySelector('.menu');
+      const menuBtn = document.querySelector('.menu-btn');
+      if (menu && menu.classList.contains('active')) {
+        menu.classList.remove('active');
+        if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      // Preserve search and hash when switching pages (enhanced behavior)
+      const { search, hash } = window.location;
+      // If element is a true <a> and user agent has JS disabled, this code won't run — progressive enhancement preserved.
+      e.preventDefault();
+      window.location.href = href + (search || '') + (hash || '');
+    });
+  });
+});
+
 (() => {
   'use strict';
   // ===== Helpers (Using Shared Utils) =====

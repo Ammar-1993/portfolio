@@ -223,6 +223,14 @@ padding:12px 25px;
   .menu-btn{display:inline-flex;align-items:center;justify-content:center;z-index:var(--z-menu-btn);}
 }
 
+/* Language toggle button (header) */
+.nav-lang .lang-toggle{
+  padding:8px 12px;border-radius:8px;border:1px solid transparent;background:transparent;font-weight:700;color:var(--ink);cursor:pointer;
+}
+.nav-lang .lang-toggle:hover{background:color-mix(in oklab,var(--main-color),transparent 92%);border-color:color-mix(in oklab,var(--main-color),var(--border) 10%)}
+.nav-lang .lang-toggle:focus-visible{outline:3px solid color-mix(in oklab,var(--main-color),white 20%);outline-offset:3px}
+
+
 /* موبايل/تابلت — القائمة المنسدلة الثابتة (منع التغطية عند الإغلاق) */
 @media (max-width:991px){
   .navbar{ z-index:var(--z-menu-mobile); }

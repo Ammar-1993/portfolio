@@ -300,21 +300,82 @@ padding:12px 25px;
 .about-section .about-content p{text-align:justify;color:var(--muted)}
 
 /* المهارات */
-.skill-item .skill-header{position:relative}
-.skill-item .skill-header .skill-title{font-size:16px;font-weight:600;margin-top:15px;color:var(--ink)}
-.skill-item .skill-header .skill-percentage{position:absolute;top:-3px;inset-inline-end:0;color:var(--muted)}
-.skill-item .skill-bar{margin-top:12px}
+.skill-item{
+  background:color-mix(in oklab,var(--surface),var(--main-color) 4%);
+  border:1px solid color-mix(in oklab,var(--border),var(--main-color) 15%);
+  border-radius:20px;
+  padding:14px 18px 18px;
+  margin-bottom:12px;
+  box-shadow:0 18px 40px rgba(15,23,42,.08);
+}
+.skill-item .skill-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.skill-item .skill-header .skill-title{
+  font-size:16px;
+  font-weight:700;
+  color:var(--ink);
+}
+.skill-item .skill-header .skill-percentage{
+  min-width:54px;
+  padding:4px 10px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:0.9rem;
+  color:var(--main-color);
+  background:color-mix(in oklab,var(--main-color),#fff 85%);
+  border:1px solid color-mix(in oklab,var(--main-color),#000 10%);
+  text-align:center;
+}
+[data-theme="dark"] .skill-item .skill-header .skill-percentage{
+  background:color-mix(in oklab,var(--main-color),#000 80%);
+  color:#fff;
+}
+.skill-item .skill-bar{
+  margin-top:8px;
+}
 .skill-item .skill-bar .bar-inner{
-  width:100%;height:9px;border-radius:5px;background:var(--track);
-  position:relative;border:1px solid var(--border)
+  width:100%;
+  height:7px;
+  border-radius:999px;
+  position:relative;
+  overflow:hidden;
+  background:color-mix(in oklab,var(--track),var(--main-color) 8%);
+  border:1px solid color-mix(in oklab,var(--border),#000 8%);
+}
+.skill-item .skill-bar .bar-inner::after{
+  content:"";
+  position:absolute;
+  inset:0.6px;
+  border-radius:999px;
+  background:linear-gradient(135deg,rgba(255,255,255,.35),transparent 60%);
+  pointer-events:none;
 }
 .skill-item .skill-bar .bar-inner .progress-line{
-  position:absolute;inset:0 auto 0 0;height:9px;border-radius:5px;background:var(--main-color);
-  width:0%;transition:width .8s ease
+  position:absolute;
+  inset:0 auto 0 0;
+  height:100%;
+  border-radius:999px;
+  width:0%;
+  background:linear-gradient(90deg,var(--main-color),color-mix(in oklab,var(--main-color),#00ffe1 25%));
+  box-shadow:0 10px 30px color-mix(in oklab,var(--main-color),transparent 60%);
+  transition:width .9s ease;
 }
-.skill-item .skill-bar .bar-inner .progress-line::before{
-  content:"";position:absolute;width:7px;height:18px;background:var(--bg);
-  border:2px solid var(--main-color);top:-7px;inset-inline-start:0;border-radius:3px
+.skill-item .skill-bar .bar-inner .progress-line::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  inset-inline-end:0;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  border:2px solid #fff;
+  background:var(--main-color);
+  transform:translate(50%,-50%);
+  box-shadow:0 0 0 3px color-mix(in oklab,var(--main-color),transparent 70%);
 }
 
 /* الخدمات */
@@ -1096,6 +1157,10 @@ body {
     radial-gradient(circle at 50% 20%, color-mix(in oklab, var(--main-color), #fff 85%) 0%, transparent 52%),
     radial-gradient(circle, color-mix(in oklab, var(--main-color), transparent 80%) 0%, transparent 72%);
   isolation: isolate;
+}
+
+.about-section .about-image .sdlc-container{
+  margin-top:clamp(56px,6.5vw,108px);
 }
 
 .sdlc-center {

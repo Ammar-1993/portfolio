@@ -263,7 +263,8 @@ padding:12px 25px;
 /* الرئيسية */
 .home-section{position:relative;background:var(--bg-soft);overflow-x:hidden;padding-top:90px;z-index:var(--z-normal)}
 .home-text{flex:0 0 50%;max-width:50%;padding:0 25px}
-.home-image{flex:0 0 50%;max-width:50%;padding:0 25px;display:flex;justify-content:center}
+.home-image-container{flex:0 0 50%;max-width:50%;display:flex;flex-direction:column;padding:0 25px}
+.home-image{flex:1;display:flex;justify-content:center}
 .home-text h4{font-size:28px;font-weight:700;letter-spacing:2px;color:var(--main-color)}
 .home-text h1{font-size:44px;font-weight:800;margin-top:10px;color:var(--ink)}
 .home-text span{font-size:18px;line-height:28px;color:var(--ink);opacity:.9;display:block;margin-top:10px}
@@ -272,20 +273,22 @@ padding:12px 25px;
 .header-hero-shape{position:absolute;top:0;bottom:0;inset-inline-end:0;width:55%;height:100%;pointer-events:none}
 .header-hero-shape::before{content:"";position:absolute;inset:0;background:linear-gradient(140deg,rgba(0,167,142,.18),rgba(0,167,142,0));transform:skewX(20deg)}
 [dir="ltr"] .header-hero-shape::before{transform:skewX(-20deg)}
-.home-stats{display:flex;justify-content:space-around;margin-top:32px;padding:0 25px}
+.home-stats{display:flex;justify-content:space-around;margin-top:0;padding:0}
 .home-stats .stat-item{text-align:center;padding:20px}
 .home-stats .stat-item h3{font-size:36px;font-weight:800;color:var(--main-color);margin:0}
 .home-stats .stat-item p{font-size:16px;color:var(--muted);margin:10px 0 0}
 
-@media (max-width:991px){.home-stats{padding:0 15px}}
+@media (max-width:991px){.home-stats{padding:0}}
 @media (max-width:767px){
-  .home-stats{flex-wrap:wrap;justify-content:center;padding:0 20px;margin-top:30px}
+  .home-text, .home-image-container{flex:0 0 100%;max-width:100%;padding:0 16px}
+  .home-image{display:flex;justify-content:center}
+  .home-stats{flex-wrap:wrap;justify-content:center;padding:0 20px;margin-top:20px}
   .home-stats .stat-item{flex:0 0 50%;max-width:50%;padding:20px 15px;text-align:center}
   .home-stats .stat-item h3{font-size:32px;line-height:1.2}
   .home-stats .stat-item p{font-size:15px;margin:12px 0 0;line-height:1.4}
 }
 @media (max-width:576px){
-  .home-stats{flex-wrap:wrap;justify-content:center;padding:0 15px;margin-top:25px}
+  .home-stats{flex-wrap:wrap;justify-content:center;padding:0 15px;margin-top:15px}
   .home-stats .stat-item{flex:0 0 100%;max-width:100%;padding:25px 20px;margin-bottom:10px}
   .home-stats .stat-item h3{font-size:36px;line-height:1.2}
   .home-stats .stat-item p{font-size:16px;margin:15px 0 0;line-height:1.4}

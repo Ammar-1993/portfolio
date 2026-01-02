@@ -791,6 +791,13 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
   background:var(--surface);color:var(--ink);border:1px solid var(--border);
   padding:.5rem .75rem;border-radius:.75rem;cursor:pointer;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  min-width: 3rem;
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .theme-toggle:hover{
   background:var(--main-color);color:#fff;border-color:var(--main-color);
@@ -798,6 +805,45 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
   box-shadow:0 4px 12px rgba(0,167,142,0.25);
 }
 .theme-toggle:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+
+/* Theme icons */
+.theme-icon {
+  display: inline-block;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: scale(0.8) rotate(-180deg);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center;
+}
+
+.theme-icon-sun {
+  transform: translate(-50%, -50%) scale(0.8) rotate(-180deg);
+}
+
+.theme-icon-moon {
+  transform: translate(-50%, -50%) scale(0.8) rotate(180deg);
+}
+
+/* Show sun icon in light theme */
+:root[data-theme="light"] .theme-icon-sun,
+:root:not([data-theme]) .theme-icon-sun {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+}
+
+/* Show moon icon in dark theme */
+:root[data-theme="dark"] .theme-icon-moon {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+}
+
+/* Hover effects for icons */
+.theme-toggle:hover .theme-icon {
+  transform: translate(-50%, -50%) scale(1.1) rotate(0deg);
+}
 
 
 

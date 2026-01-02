@@ -275,8 +275,8 @@ padding:12px 25px;
 [dir="ltr"] .header-hero-shape::before{transform:skewX(-20deg)}
 .home-stats{display:flex;justify-content:space-around;margin-top:-20px;padding:0}
 .home-stats .stat-item{text-align:center;padding:20px}
-.home-stats .stat-item h3{font-size:36px;font-weight:800;color:var(--main-color);margin:0}
-.home-stats .stat-item p{font-size:16px;color:var(--muted);margin:10px 0 0}
+.home-stats .stat-item h3{font-size:26px;font-weight:800;color:var(--main-color);margin:0}
+.home-stats .stat-item p{font-size:16px;color:var(--muted);margin:0 0 0}
 
 @media (max-width:991px){.home-stats{padding:0}}
 @media (max-width:767px){

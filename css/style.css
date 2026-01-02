@@ -405,6 +405,14 @@ padding:12px 25px;
 .service-section .service-item-inner:hover{transform:translateY(-2px);border-color:color-mix(in oklab,var(--main-color),#000 30%)}
 .service-section .service-item-inner:hover .icon{background:#fff;color:var(--main-color)}
 
+/* Light theme: only change the icon badge to black on hover (do not darken whole card) */
+:root[data-theme="light"] .service-section .service-item-inner:hover .icon{
+  background: #000;
+  color: #00ffe1;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
 /* المعرض */
 /* ===== Testimonials ===== */
 .testimonials .testimonials-grid{

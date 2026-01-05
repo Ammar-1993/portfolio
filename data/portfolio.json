@@ -1,6 +1,91 @@
 {
     "projects": [
         {
+            "id": "smart-compliance-platform",
+            "category": "web-project",
+            "title": {
+                "ar": "منصة الامتثال الذكية",
+                "en": "Smart Compliance Platform"
+            },
+            "cover": "images/portfolio/safe-comply-dashboard-1.webp",
+            "coverAlt": {
+                "ar": "منصة الامتثال الذكية - واجهة 1",
+                "en": "Smart Compliance Platform - Interface 1"
+            },
+            "gallery": [
+                {
+                    "src": "images/portfolio/safe-comply-dashboard-1.webp",
+                    "alt": {
+                        "ar": "منصة الامتثال الذكية - واجهة 1",
+                        "en": "Smart Compliance Platform - Interface 1"
+                    }
+                },
+                {
+                    "src": "images/portfolio/safe-comply-home-2.webp",
+                    "alt": {
+                        "ar": "منصة الامتثال الذكية - واجهة 2",
+                        "en": "Smart Compliance Platform - Interface 2"
+                    }
+                },
+                {
+                    "src": "images/portfolio/safe-comply-login-3.webp",
+                    "alt": {
+                        "ar": "منصة الامتثال الذكية - واجهة 3",
+                        "en": "Smart Compliance Platform - Interface 3"
+                    }
+                },
+                {
+                    "src": "images/portfolio/safe-comply-password-policies-4.webp",
+                    "alt": {
+                        "ar": "منصة الامتثال الذكية - واجهة 4",
+                        "en": "Smart Compliance Platform - Interface 4"
+                    }
+                },
+                {
+                    "src": "images/portfolio/safe-comply-backup-policies-5.webp",
+                    "alt": {
+                        "ar": "منصة الامتثال الذكية - واجهة 5",
+                        "en": "Smart Compliance Platform - Interface 5"
+                    }
+                },
+                {
+                    "src": "images/portfolio/safe-comply-upload-6.webp",
+                    "alt": {
+                        "ar": "منصة الامتثال الذكية - واجهة 6",
+                        "en": "Smart Compliance Platform - Interface 6"
+                    }
+                },
+                {
+                    "src": "images/portfolio/safe-comply-reports-7.webp",
+                    "alt": {
+                        "ar": "منصة الامتثال الذكية - واجهة 7",
+                        "en": "Smart Compliance Platform - Interface 7"
+                    }
+                },
+                {
+                    "src": "images/portfolio/safe-comply-recommendations-8.webp",
+                    "alt": {
+                        "ar": "منصة الامتثال الذكية - واجهة 8",
+                        "en": "Smart Compliance Platform - Interface 8"
+                    }
+                },
+                {
+                    "src": "images/portfolio/safe-comply-settings-9.webp",
+                    "alt": {
+                        "ar": "منصة الامتثال الذكية - واجهة 9",
+                        "en": "Smart Compliance Platform - Interface 9"
+                    }
+                },
+                {
+                    "src": "images/portfolio/safe-comply-logout-10.webp",
+                    "alt": {
+                        "ar": "منصة الامتثال الذكية - واجهة 10",
+                        "en": "Smart Compliance Platform - Interface 10"
+                    }
+                }
+            ]
+        },
+        {
             "id": "job-app",
             "category": "web-project",
             "title": {

@@ -368,131 +368,75 @@
             "gallery": []
         },
         {
-            "id": "learning-app",
+            "id": "electronic-marketplace-app",
             "category": "mobile-project",
             "title": {
-                "ar": "تطبيق تعليمي",
-                "en": "Learning App"
+                "ar": "تطبيق السوق الإلكتروني",
+                "en": "Electronic Marketplace App"
             },
             "cover": "images/portfolio/mobile1.webp",
             "coverAlt": {
-                "ar": "تطبيق تعليمي — الشاشة الرئيسية",
-                "en": "Learning App — Home Screen"
+                "ar": "تطبيق السوق الإلكتروني — الواجهة الرئيسية",
+                "en": "Electronic Marketplace App — Main Interface"
             },
             "gallery": [
                 {
+                    "src": "images/portfolio/mobile1.webp",
+                    "alt": {
+                        "ar": "تطبيق السوق الإلكتروني — بوابة التعليم الرقمي",
+                        "en": "Electronic Marketplace App — Digital Learning Hub"
+                    }
+                },
+                {
                     "src": "images/portfolio/mobile2.webp",
                     "alt": {
-                        "ar": "تطبيق تعليمي — شاشة الدخول",
-                        "en": "Learning App — Login Screen"
+                        "ar": "تطبيق السوق الإلكتروني — إدارة العضويات",
+                        "en": "Electronic Marketplace App — Membership Management"
                     }
                 },
                 {
                     "src": "images/portfolio/mobile3.webp",
                     "alt": {
-                        "ar": "تطبيق تعليمي — شاشة المحتوى",
-                        "en": "Learning App — Content Screen"
+                        "ar": "تطبيق السوق الإلكتروني — تدفق المحتوى",
+                        "en": "Electronic Marketplace App — Content Feed"
+                    }
+                },
+                {
+                    "src": "images/portfolio/mobile4.webp",
+                    "alt": {
+                        "ar": "تطبيق السوق الإلكتروني — مركز الإعدادات",
+                        "en": "Electronic Marketplace App — Settings Center"
+                    }
+                },
+                {
+                    "src": "images/portfolio/mobile5.webp",
+                    "alt": {
+                        "ar": "تطبيق السوق الإلكتروني — قوائم العروض",
+                        "en": "Electronic Marketplace App — Offers Menus"
+                    }
+                },
+                {
+                    "src": "images/portfolio/mobile6.webp",
+                    "alt": {
+                        "ar": "تطبيق السوق الإلكتروني — الملف الشخصي المتقدم",
+                        "en": "Electronic Marketplace App — Advanced Profile"
+                    }
+                },
+                {
+                    "src": "images/portfolio/mobile7.webp",
+                    "alt": {
+                        "ar": "تطبيق السوق الإلكتروني — سوق المنتجات",
+                        "en": "Electronic Marketplace App — Product Store"
+                    }
+                },
+                {
+                    "src": "images/portfolio/mobile8.webp",
+                    "alt": {
+                        "ar": "تطبيق السوق الإلكتروني — مركز التواصل",
+                        "en": "Electronic Marketplace App — Communication Hub"
                     }
                 }
             ]
-        },
-        {
-            "id": "membership-app",
-            "category": "mobile-project",
-            "title": {
-                "ar": "تطبيق العضوية",
-                "en": "Membership App"
-            },
-            "cover": "images/portfolio/mobile2.webp",
-            "coverAlt": {
-                "ar": "تطبيق موبايل — شاشة التسجيل",
-                "en": "Mobile App — Registration Screen"
-            },
-            "gallery": []
-        },
-        {
-            "id": "content-app",
-            "category": "mobile-project",
-            "title": {
-                "ar": "تطبيق محتوى",
-                "en": "Content App"
-            },
-            "cover": "images/portfolio/mobile3.webp",
-            "coverAlt": {
-                "ar": "تطبيق موبايل — شاشة المحتوى",
-                "en": "Mobile App — Content Screen"
-            },
-            "gallery": []
-        },
-        {
-            "id": "settings-app",
-            "category": "mobile-project",
-            "title": {
-                "ar": "تطبيق الإعدادات",
-                "en": "Settings App"
-            },
-            "cover": "images/portfolio/mobile4.webp",
-            "coverAlt": {
-                "ar": "تطبيق موبايل — صفحة الإعدادات",
-                "en": "Mobile App — Settings Page"
-            },
-            "gallery": []
-        },
-        {
-            "id": "list-app",
-            "category": "mobile-project",
-            "title": {
-                "ar": "تطبيق قوائم",
-                "en": "List App"
-            },
-            "cover": "images/portfolio/mobile5.webp",
-            "coverAlt": {
-                "ar": "تطبيق موبايل — شاشة القوائم",
-                "en": "Mobile App — Lists Screen"
-            },
-            "gallery": []
-        },
-        {
-            "id": "profile-app",
-            "category": "mobile-project",
-            "title": {
-                "ar": "تطبيق الملف الشخصي",
-                "en": "Profile App"
-            },
-            "cover": "images/portfolio/mobile6.webp",
-            "coverAlt": {
-                "ar": "تطبيق موبايل — شاشة الملف الشخصي",
-                "en": "Mobile App — Profile Screen"
-            },
-            "gallery": []
-        },
-        {
-            "id": "store-app",
-            "category": "mobile-project",
-            "title": {
-                "ar": "تطبيق متجر",
-                "en": "Store App"
-            },
-            "cover": "images/portfolio/mobile7.webp",
-            "coverAlt": {
-                "ar": "تطبيق موبايل — شاشة المتجر",
-                "en": "Mobile App — Store Screen"
-            },
-            "gallery": []
-        },
-        {
-            "id": "communication-app",
-            "category": "mobile-project",
-            "title": {
-                "ar": "تطبيق تواصل",
-                "en": "Communication App"
-            },
-            "cover": "images/portfolio/mobile8.webp",
-            "coverAlt": {
-                "ar": "تطبيق موبايل — شاشة التواصل",
-                "en": "Mobile App — Contact Screen"
-            },
-            "gallery": []
         },
         {
             "id": "details-app",

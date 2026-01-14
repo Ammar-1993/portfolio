@@ -8,6 +8,21 @@
 
 ---
 
+## Quick Navigation
+- [Live Site](https://ammar-1993.github.io/portfolio/)
+- [Repository](https://github.com/Ammar-1993/portfolio)
+- [Overview](#overview)
+- [Highlights](#highlights)
+- [Tech Stack](#tech-stack)
+- [Quick Start](#quick-start-local)
+- [Deploy](#deploy-on-github-pages)
+- [Customization](#customization)
+- [SEO](#seo-already-in-indexhtml)
+- [Accessibility](#accessibility)
+- [Performance](#performance)
+- [Lighthouse Targets](#lighthouse-targets)
+- [License](#license)
+- [Contact](#contact)
 
 ---
 

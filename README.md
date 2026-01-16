@@ -157,32 +157,32 @@ Personal summary, core skills, and a brief timeline / professional snapshot.
 
 ---
 
-### Services Overview
+### Services Section
 Overview of offered services with short, actionable descriptions for each service card.
 
 ![Services Overview](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8c61a1a/portfolioservices.png)
 
 ---
 
-### Technologies & Skills
+### Technologies & Skills Section
 Stack badges and proficiency highlights showing core technologies used in projects.
 
 ![Technologies & Skills](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8ca0688/portfoliotechnologies.png)
 ---
 
-### Portfolio Gallery — Project Thumbnails
+### Portfolio Gallery Section — Project Thumbnails
 Grid view of selected projects with Lightbox previews and filtering controls.
 
 ![Portfolio Gallery — Project Thumbnails](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8ac7ad2/portfoliogallary.png)
 ---
 
-### Reviews & Testimonials
+### Reviews Section
 Client feedback and short testimonials highlighting project outcomes.
 
 ![Reviews & Testimonials](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8b9bbc6/portfolioreviews.png)
 ---
 
-### Contact Panel — Reach & Links
+### Contact Section
 Contact methods, social links, and quick actions for hiring or inquiries.
 
 ![Contact Panel — Reach & Links](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8a5adeb/portfoliocontact.png)

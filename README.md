@@ -3,8 +3,9 @@
 
 [![Status](https://img.shields.io/badge/status-live-brightgreen.svg)](https://ammar-1993.github.io/portfolio/)
 ![Made with](https://img.shields.io/badge/Made%20with-HTML5%20%7C%20CSS3%20%7C%20JS-1f6feb)
-![RTL](https://img.shields.io/badge/Language-AR%20%7C%20RTL-0ea5e9)
-![Theme](https://img.shields.io/badge/Theme-Dark-0b1220)
+![Language](https://img.shields.io/badge/Language-AR%20%7C%20EN-0ea5e9)
+![Layout](https://img.shields.io/badge/Layout-RTL%20%7C%20LTR-0ea5e9)
+![Theme](https://img.shields.io/badge/Theme-Dark%20%7C%20Light-0b1220)
 
 <div align="center">
 
@@ -21,8 +22,6 @@
 
 
 - [Live Site](https://ammar-1993.github.io/portfolio/)
-
----
 
 ---
 

@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Portfolio Interface](docx/screenshots/portfolio_home.png)
+![Portfolio Interface](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8b07297/portfoliohome.png)
 
 [![HTML5](https://img.shields.io/badge/HTML5-%3E%3D5.0-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
 [![CSS3](https://img.shields.io/badge/CSS3-%3E%3D3.0-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
@@ -19,7 +19,7 @@
 
 </div>
 
-A lightweight, accessible, and high-performance personal portfolio website for Eng. Ammar Al‑Najjar. The site showcases services, selected projects (web, mobile, desktop), technology stacks, and contact methods. It emphasizes fast load times, SEO readiness, and a dark-first design with RTL support.
+A lightweight, user-friendly, and high-performance personal website showcasing the work of engineer Ammar Al-Najjar. The site displays his services, selected projects (websites, mobile applications, and computers), the technologies used, and contact information. It features fast loading speeds, search engine optimization, a dark and light design, and supports both Arabic and English.
 
 - [Live Site](https://ammar-1993.github.io/portfolio/)
 
@@ -214,6 +214,7 @@ Client feedback and short testimonials highlighting project outcomes.
 Contact methods, social links, and quick actions for hiring or inquiries.
 
 ![Contact Panel — Reach & Links](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8a5adeb/portfoliocontact.png)
+
 ---
 
 

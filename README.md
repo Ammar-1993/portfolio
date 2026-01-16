@@ -144,59 +144,59 @@ A selection of key interfaces and audits from this portfolio project. Click any 
 ### Home — Hero & Intro
 Primary landing section with brief bio, core CTA, and top navigation.
 
-[![Home — Hero & Intro](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8b07297/portfoliohome.png)]
+![Home — Hero & Intro](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8b07297/portfoliohome.png)
 
 ---
 
 ### Home (Dark) — Primary Theme
 Dark-mode presentation of the hero, showing the default site theme and navigation states.
 
-[![Home (Dark) — Primary Theme](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8b60bc8/portfoliohomedark.png)]
+![Home (Dark) — Primary Theme](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8b60bc8/portfoliohomedark.png)
 ---
 
 ### Home (Dark, English) — English Layout
 English-language (LTR) variant demonstrating bilingual support and layout adaptation.
 
-[![Home (Dark, English) — English Layout](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8c01625/portfoliohomedarkenglish.png)]
+![Home (Dark, English) — English Layout](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8c01625/portfoliohomedarkenglish.png)
 
 ---
 
 ### About Section — Profile & Summary
 Personal summary, core skills, and a brief timeline / professional snapshot.
 
-[![About Section — Profile & Summary](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8a841f3/portfolioabout.png)]
+![About Section — Profile & Summary](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8a841f3/portfolioabout.png)
 
 ---
 
 ### Services Overview
 Overview of offered services with short, actionable descriptions for each service card.
 
-[![Services Overview](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8c61a1a/portfolioservices.png)]
+![Services Overview](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8c61a1a/portfolioservices.png)
 
 ---
 
 ### Technologies & Skills
 Stack badges and proficiency highlights showing core technologies used in projects.
 
-[![Technologies & Skills](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8ca0688/portfoliotechnologies.png)]
+![Technologies & Skills](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8ca0688/portfoliotechnologies.png)
 ---
 
 ### Portfolio Gallery — Project Thumbnails
 Grid view of selected projects with Lightbox previews and filtering controls.
 
-[![Portfolio Gallery — Project Thumbnails](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8ac7ad2/portfoliogallary.png)]
+![Portfolio Gallery — Project Thumbnails](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8ac7ad2/portfoliogallary.png)
 ---
 
 ### Reviews & Testimonials
 Client feedback and short testimonials highlighting project outcomes.
 
-[![Reviews & Testimonials](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8b9bbc6/portfolioreviews.png)]
+![Reviews & Testimonials](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8b9bbc6/portfolioreviews.png)
 ---
 
 ### Contact Panel — Reach & Links
 Contact methods, social links, and quick actions for hiring or inquiries.
 
-[![Contact Panel — Reach & Links](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8a5adeb/portfoliocontact.png)]
+![Contact Panel — Reach & Links](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8a5adeb/portfoliocontact.png)
 ---
 
 

@@ -112,7 +112,13 @@ Update WhatsApp/Mail/Tel in the **Contact** section of `index.html`.
 
 ---
 
+## Accessibility
+- Descriptive `alt` attributes for images
+- Keyboard navigation (Tab, Enter/Space to open Lightbox)
+- Close Lightbox via Esc
+- Sufficient contrast in dark theme
 
+---
 
 ## Performance
 - Use WebP/AVIF when possible

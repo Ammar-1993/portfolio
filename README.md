@@ -135,20 +135,79 @@ Update WhatsApp/Mail/Tel in the **Contact** section of `index.html`.
 - SEO ≥ 95
 
 > Tip: Chrome DevTools → Lighthouse → Generate report.
-> ![Lighthouse report](image.png)
+> ![Lighthouse report](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a89e9378/lighthousetest.png)
 
 
 ## Screenshots
 
 A selection of key interfaces and audits from this portfolio project. Click any thumbnail to view the full screenshot.
+### Home — Hero & Intro
+Primary landing section with brief bio, core CTA, and top navigation.
 
-| | |
-|---|---|
-| [![Home — Hero & Intro](docx/screenshots/portfolio_home.png)](docx/screenshots/portfolio_home.png) <br> **Home — Hero & Intro:** Primary landing section with brief bio and CTA. | [![Home (Dark) — Primary Theme](docx/screenshots/portfolio_home_dark.png)](docx/screenshots/portfolio_home_dark.png) <br> **Home (Dark) — Primary Theme:** Dark-mode presentation of the hero and navigation. |
-| [![Home (Dark, English) — English Layout](docx/screenshots/portfolio_home_dark_english.png)](docx/screenshots/portfolio_home_dark_english.png) <br> **Home (Dark, English) — English Layout:** English-language variant showcasing LTR layout. | [![Lighthouse Audit — Performance & SEO](docx/screenshots/lighthouse_test.png)](docx/screenshots/lighthouse_test.png) <br> **Lighthouse Audit — Performance & SEO:** Representative Lighthouse report used for optimization targets. |
-| [![About Section — Profile & Summary](docx/screenshots/portfolio_about.png)](docx/screenshots/portfolio_about.png) <br> **About Section — Profile & Summary:** Personal summary, skills and brief timeline. | [![Services Overview](docx/screenshots/portfolio_services.png)](docx/screenshots/portfolio_services.png) <br> **Services Overview:** Offered services and short descriptions. |
-| [![Technologies & Skills](docx/screenshots/portfolio_technologies.png)](docx/screenshots/portfolio_technologies.png) <br> **Technologies & Skills:** Stack badges and proficiency highlights. | [![Portfolio Gallery — Project Thumbnails](docx/screenshots/portfolio_gallary.png)](docx/screenshots/portfolio_gallary.png) <br> **Portfolio Gallery — Project Thumbnails:** Grid view of selected projects with Lightbox. |
-| [![Reviews & Testimonials](docx/screenshots/portfolio_reviews.png)](docx/screenshots/portfolio_reviews.png) <br> **Reviews & Testimonials:** Client feedback and endorsements. | [![Contact Panel — Reach & Links](docx/screenshots/portfolio_contact.png)](docx/screenshots/portfolio_contact.png) <br> **Contact Panel — Reach & Links:** Contact methods and social links. |
+[![Home — Hero & Intro](docx/screenshots/portfolio_home.png)](docx/screenshots/portfolio_home.png)
+
+---
+
+### Home (Dark) — Primary Theme
+Dark-mode presentation of the hero, showing the default site theme and navigation states.
+
+[![Home (Dark) — Primary Theme](docx/screenshots/portfolio_home_dark.png)](docx/screenshots/portfolio_home_dark.png)
+
+---
+
+### Home (Dark, English) — English Layout
+English-language (LTR) variant demonstrating bilingual support and layout adaptation.
+
+[![Home (Dark, English) — English Layout](docx/screenshots/portfolio_home_dark_english.png)](docx/screenshots/portfolio_home_dark_english.png)
+
+---
+
+### About Section — Profile & Summary
+Personal summary, core skills, and a brief timeline / professional snapshot.
+
+[![About Section — Profile & Summary](docx/screenshots/portfolio_about.png)](docx/screenshots/portfolio_about.png)
+
+---
+
+### Services Overview
+Overview of offered services with short, actionable descriptions for each service card.
+
+[![Services Overview](docx/screenshots/portfolio_services.png)](docx/screenshots/portfolio_services.png)
+
+---
+
+### Technologies & Skills
+Stack badges and proficiency highlights showing core technologies used in projects.
+
+[![Technologies & Skills](docx/screenshots/portfolio_technologies.png)](docx/screenshots/portfolio_technologies.png)
+
+---
+
+### Portfolio Gallery — Project Thumbnails
+Grid view of selected projects with Lightbox previews and filtering controls.
+
+[![Portfolio Gallery — Project Thumbnails](docx/screenshots/portfolio_gallary.png)](docx/screenshots/portfolio_gallary.png)
+
+---
+
+### Reviews & Testimonials
+Client feedback and short testimonials highlighting project outcomes.
+
+[![Reviews & Testimonials](docx/screenshots/portfolio_reviews.png)](docx/screenshots/portfolio_reviews.png)
+
+---
+
+### Contact Panel — Reach & Links
+Contact methods, social links, and quick actions for hiring or inquiries.
+
+[![Contact Panel — Reach & Links](docx/screenshots/portfolio_contact.png)](docx/screenshots/portfolio_contact.png)
+
+---
+
+### Lighthouse Audit — Performance & SEO
+A representative Lighthouse report used to inform performance and SEO improvements.
+
+[![Lighthouse Audit — Performance & SEO](docx/screenshots/lighthouse_test.png)](docx/screenshots/lighthouse_test.png)
 
 
 Copyright (c) 2025 Ammar Al-Najjar

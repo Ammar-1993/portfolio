@@ -19,32 +19,15 @@
 
 </div>
 
-A lightweight, user-friendly, and high-performance personal website showcasing the work of engineer Ammar Al-Najjar. The site displays his services, selected projects (websites, mobile applications, and computers), the technologies used, and contact information. It features fast loading speeds, search engine optimization, a dark and light design, and supports both Arabic and English.
 
 - [Live Site](https://ammar-1993.github.io/portfolio/)
 
 ---
-
-## Quick Navigation
-- [Live Site](https://ammar-1993.github.io/portfolio/)
-- [Repository](https://github.com/Ammar-1993/portfolio)
-- [Overview](#overview)
-- [Highlights](#highlights)
-- [Tech Stack](#tech-stack)
-- [Quick Start](#quick-start-local)
-- [Deploy](#deploy-on-github-pages)
-- [Customization](#customization)
-- [SEO](#seo-already-in-indexhtml)
-- [Accessibility](#accessibility)
-- [Performance](#performance)
-- [Lighthouse Targets](#lighthouse-targets)
-- [License](#license)
-- [Contact](#contact)
 
 ---
 
 ## Overview
-Arabic (RTL) portfolio website for Ammar Al-Najjar, showcasing services, selected projects (Web / Mobile / Desktop), technology stacks, and contact options. Optimized for speed, accessibility, and SEO with a dark theme by default.
+A lightweight, user-friendly, and high-performance personal website showcasing the work of engineer Ammar Al-Najjar. The site displays his services, selected projects (websites, mobile applications, and computers), the technologies used, and contact information. It features fast loading speeds, search engine optimization, a dark and light design, and supports both Arabic and English.
 
 ## Highlights
 - 🎨 Dark theme with clear brand color

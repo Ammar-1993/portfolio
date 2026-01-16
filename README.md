@@ -137,9 +137,19 @@ Update WhatsApp/Mail/Tel in the **Contact** section of `index.html`.
 > Tip: Chrome DevTools → Lighthouse → Generate report.
 > ![Lighthouse report](image.png)
 
----
 
-## License
+## Screenshots
+
+A selection of key interfaces and audits from this portfolio project. Click any thumbnail to view the full screenshot.
+
+| | |
+|---|---|
+| [![Home — Hero & Intro](docx/screenshots/portfolio_home.png)](docx/screenshots/portfolio_home.png) <br> **Home — Hero & Intro:** Primary landing section with brief bio and CTA. | [![Home (Dark) — Primary Theme](docx/screenshots/portfolio_home_dark.png)](docx/screenshots/portfolio_home_dark.png) <br> **Home (Dark) — Primary Theme:** Dark-mode presentation of the hero and navigation. |
+| [![Home (Dark, English) — English Layout](docx/screenshots/portfolio_home_dark_english.png)](docx/screenshots/portfolio_home_dark_english.png) <br> **Home (Dark, English) — English Layout:** English-language variant showcasing LTR layout. | [![Lighthouse Audit — Performance & SEO](docx/screenshots/lighthouse_test.png)](docx/screenshots/lighthouse_test.png) <br> **Lighthouse Audit — Performance & SEO:** Representative Lighthouse report used for optimization targets. |
+| [![About Section — Profile & Summary](docx/screenshots/portfolio_about.png)](docx/screenshots/portfolio_about.png) <br> **About Section — Profile & Summary:** Personal summary, skills and brief timeline. | [![Services Overview](docx/screenshots/portfolio_services.png)](docx/screenshots/portfolio_services.png) <br> **Services Overview:** Offered services and short descriptions. |
+| [![Technologies & Skills](docx/screenshots/portfolio_technologies.png)](docx/screenshots/portfolio_technologies.png) <br> **Technologies & Skills:** Stack badges and proficiency highlights. | [![Portfolio Gallery — Project Thumbnails](docx/screenshots/portfolio_gallary.png)](docx/screenshots/portfolio_gallary.png) <br> **Portfolio Gallery — Project Thumbnails:** Grid view of selected projects with Lightbox. |
+| [![Reviews & Testimonials](docx/screenshots/portfolio_reviews.png)](docx/screenshots/portfolio_reviews.png) <br> **Reviews & Testimonials:** Client feedback and endorsements. | [![Contact Panel — Reach & Links](docx/screenshots/portfolio_contact.png)](docx/screenshots/portfolio_contact.png) <br> **Contact Panel — Reach & Links:** Contact methods and social links. |
+
 
 Copyright (c) 2025 Ammar Al-Najjar
 

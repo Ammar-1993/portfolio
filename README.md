@@ -104,11 +104,6 @@ Update WhatsApp/Mail/Tel in the **Contact** section of `index.html`.
 - JSON‑LD Person (name/phone/email)
 - `lang="ar" dir="rtl"` on `<html>`
 
-#### Quick checklist
-- [ ] Accurate Arabic title and description
-- [ ] OG image ≥ 1200×630
-- [ ] Valid contact/social links
-
 ---
 
 ## Accessibility
@@ -129,8 +124,7 @@ Update WhatsApp/Mail/Tel in the **Contact** section of `index.html`.
 
 ## Lighthouse Targets
 
-> Tip: Chrome DevTools → Lighthouse → Generate report.
-> ![Lighthouse report](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a89e9378/lighthousetest.png)
+![Lighthouse report](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a89e9378/lighthousetest.png)
 
 
 ## Screenshots

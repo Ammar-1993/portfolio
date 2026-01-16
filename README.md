@@ -6,6 +6,23 @@
 ![RTL](https://img.shields.io/badge/Language-AR%20%7C%20RTL-0ea5e9)
 ![Theme](https://img.shields.io/badge/Theme-Dark-0b1220)
 
+<div align="center">
+
+![Portfolio Interface](docx/screenshots/portfolio_home.png)
+
+[![HTML5](https://img.shields.io/badge/HTML5-%3E%3D5.0-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+[![CSS3](https://img.shields.io/badge/CSS3-%3E%3D3.0-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-RTL-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com)
+[![Font Awesome](https://img.shields.io/badge/Font_Awesome-Icons-1786B1?style=for-the-badge&logo=font-awesome&logoColor=white)](https://fontawesome.com)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Hosting-24292F?style=for-the-badge&logo=github&logoColor=white)](https://pages.github.com)
+
+</div>
+
+A lightweight, accessible, and high-performance personal portfolio website for Eng. Ammar Al‑Najjar. The site showcases services, selected projects (web, mobile, desktop), technology stacks, and contact methods. It emphasizes fast load times, SEO readiness, and a dark-first design with RTL support.
+
+- [Live Site](https://ammar-1993.github.io/portfolio/)
+
 ---
 
 ## Quick Navigation

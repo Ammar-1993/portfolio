@@ -128,10 +128,6 @@ Update WhatsApp/Mail/Tel in the **Contact** section of `index.html`.
 ---
 
 ## Lighthouse Targets
-- Performance ≥ 95
-- Accessibility ≥ 90
-- Best Practices ≥ 95
-- SEO ≥ 95
 
 > Tip: Chrome DevTools → Lighthouse → Generate report.
 > ![Lighthouse report](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a89e9378/lighthousetest.png)

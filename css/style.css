@@ -516,14 +516,33 @@ padding:12px 25px;
 [dir="ltr"] .portfolio .portfolio-item .portfolio-info h4{transform:translateX(14px)}
 
 .portfolio .portfolio-item:hover .portfolio-info h4{transform:none;opacity:1}
-.portfolio .portfolio-item .portfolio-info .icon{
-  height:40px;width:40px;color:#fff;background:var(--main-color);text-align:center;border-radius:50%;display:grid;place-items:center;
-  transform:translateX(14px);opacity:0;
-  transition:transform .2s ease, opacity .2s ease
-}
-[dir="ltr"] .portfolio .portfolio-item .portfolio-info .icon{transform:translateX(-14px)}
+/* search icon removed — primary CTA (project-preview) used instead */
 
-.portfolio .portfolio-item:hover .portfolio-info .icon{transform:none;opacity:1}
+/* Project preview (Primary CTA inside card) */
+.portfolio .portfolio-item .portfolio-info .portfolio-info-body{display:flex;align-items:center;justify-content:space-between;width:100%;gap:12px}
+.portfolio .portfolio-item .portfolio-info .portfolio-info-text{display:flex;flex-direction:column;gap:6px}
+.portfolio .portfolio-item .portfolio-short{font-size:13px;color:rgba(255,255,255,0.9);margin:0}
+
+.portfolio .portfolio-item .project-preview{
+  display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 20px;border-radius:12px;font-size:15px;font-weight:600;
+  background:#18B7A1;color:#ffffff;box-shadow:0 6px 16px rgba(0,0,0,0.08);text-decoration:none;white-space:nowrap;
+  transition:transform 160ms ease,background-color 160ms ease,box-shadow 160ms ease;transform:translateY(0);
+}
+.portfolio .portfolio-item .project-preview:hover{background:#149686;transform:translateY(-1px);box-shadow:0 10px 22px rgba(0,0,0,0.12)}
+.portfolio .portfolio-item .project-preview:active{box-shadow:0 4px 10px rgba(0,0,0,0.06);transform:translateY(0)}
+.portfolio .portfolio-item .project-preview:focus-visible{outline:3px solid color-mix(in oklab,#18B7A1,white 24%);outline-offset:3px}
+.portfolio .portfolio-item .project-preview{padding:0 18px}
+.portfolio .portfolio-item .project-preview__svg{width:18px;height:18px;display:block;color:#fff}
+.portfolio .portfolio-item .project-preview{justify-content:center}
+
+/* Mobile: move CTA out of overlay — full width under image */
+@media (max-width:767px){
+  .portfolio .portfolio-item .portfolio-info{position:static;inset:auto;background:transparent;padding:12px 16px 18px;opacity:1;align-items:flex-start}
+  .portfolio .portfolio-item .portfolio-info h4{transform:none;opacity:1}
+  .portfolio .portfolio-item .portfolio-info .icon{display:none}
+  .portfolio .portfolio-item .project-preview{display:flex;width:100%;justify-content:center;padding:0 18px;margin-top:8px}
+  .portfolio .portfolio-item .portfolio-img{border-bottom-left-radius:12px;border-bottom-right-radius:12px}
+}
 
 /* فيديو داخل المعرض */
 .portfolio .portfolio-item-inner-video{border-radius:12px;overflow:hidden;box-shadow:var(--shadow-black-100);border:1px solid var(--border);background:#000}

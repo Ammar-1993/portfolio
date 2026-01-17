@@ -449,6 +449,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const item = e.target.closest('.portfolio-item');
       if (!item) return;
 
+      // If user clicked the preview link, let the anchor behave normally
+      if (e.target.closest && e.target.closest('a.project-preview')) return;
+
       // Check if it's a video or non-image card
       if (e.target.tagName.toLowerCase() === 'video' || e.target.closest('video')) return;
       if (!qs('.portfolio-img img', item)) return;
@@ -461,6 +464,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key !== 'Enter' && e.key !== ' ') return;
       const item = e.target.closest('.portfolio-item');
       if (!item) return;
+      // Don't open lightbox when Enter/Space is used on the preview link
+      if (e.target.closest && e.target.closest('a.project-preview')) return;
       
       e.preventDefault();
       // Check if it's a video or non-image card

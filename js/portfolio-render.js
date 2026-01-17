@@ -25,6 +25,9 @@
     const title = project.title[lang] || project.title.ar;
     const coverAlt = project.coverAlt[lang] || project.coverAlt.ar;
 
+    // Optional short description if provided in data
+    const shortDesc = project.description ? (project.description[lang] || project.description.ar) : (project.summary ? (project.summary[lang] || project.summary.ar) : '');
+
     item.innerHTML = `
       <div class="portfolio-item-inner">
         <div class="portfolio-img">
@@ -32,11 +35,20 @@
         </div>
         ${project.gallery && project.gallery.length > 0 ? createGalleryHTML(project.gallery) : ''}
         <div class="portfolio-info">
-          <h4>${title}</h4>
-          <div class="icon" aria-hidden="true">
-            <svg class="ico" aria-hidden="true">
-              <use href="images/icons.svg#search" />
-            </svg>
+          <div class="portfolio-info-body">
+            <div class="portfolio-info-text">
+              <h4>${title}</h4>
+              ${shortDesc ? `<p class="portfolio-short">${shortDesc}</p>` : ''}
+            </div>
+            <a class="project-preview" href="${project.preview || '#'}" target="_blank" rel="noopener noreferrer" title="يفتح في نافذة جديدة" aria-label="${lang === 'en' ? 'Open preview (opens in new window)' : 'يفتح في نافذة جديدة'}">
+              <svg class="project-preview__svg" aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 3h7v7" />
+                  <path d="M10 14L21 3" />
+                  <path d="M21 21H3V3" />
+                </g>
+              </svg>
+            </a>
           </div>
         </div>
       </div>

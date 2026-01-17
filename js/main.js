@@ -375,7 +375,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (currentIndex === 0 && currentPreviewUrl) {
         lightboxPreviewEl.href = currentPreviewUrl;
         lightboxPreviewEl.hidden = false;
-        lightboxPreviewEl.textContent = document.documentElement.lang === 'en' ? 'Preview' : 'معاينة';
+        const previewLabel = document.documentElement.lang === 'en' ? 'Preview' : 'معاينة';
+        lightboxPreviewEl.innerHTML = previewLabel + ' <span aria-hidden="true">🔗</span>';
       } else {
         lightboxPreviewEl.hidden = true;
       }

@@ -296,6 +296,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentIndex = 0;
   let lastFocused = null;
   let hiddenForA11y = [];
+  let currentPreviewUrl = null;
+  let lightboxPreviewEl = null;
 
   // Helper to extract images from a project item
   function getProjectImages(item) {
@@ -351,6 +353,33 @@ document.addEventListener('DOMContentLoaded', () => {
     if (nextBtn) nextBtn.disabled = currentIndex === galleryImages.length - 1;
     
     preloadAround(currentIndex);
+    // Show or hide preview button: only visible on the first image (index 0)
+    if (!lightbox) return;
+    if (!lightboxPreviewEl) {
+      const content = qs('.lightbox-content', lightbox);
+      if (content) {
+        lightboxPreviewEl = document.createElement('a');
+        lightboxPreviewEl.className = 'lightbox-preview';
+        lightboxPreviewEl.setAttribute('target', '_blank');
+        lightboxPreviewEl.setAttribute('rel', 'noopener noreferrer');
+        lightboxPreviewEl.setAttribute('role', 'link');
+        lightboxPreviewEl.setAttribute('aria-label', document.documentElement.lang === 'en' ? 'Open preview' : 'افتح المعاينة');
+        // Insert after the close button so it appears near the header controls
+        const closeBtn = qs('.lightbox-close', content);
+        if (closeBtn && closeBtn.parentElement) closeBtn.parentElement.insertBefore(lightboxPreviewEl, closeBtn.nextSibling);
+        else content.appendChild(lightboxPreviewEl);
+      }
+    }
+
+    if (lightboxPreviewEl) {
+      if (currentIndex === 0 && currentPreviewUrl) {
+        lightboxPreviewEl.href = currentPreviewUrl;
+        lightboxPreviewEl.hidden = false;
+        lightboxPreviewEl.textContent = document.documentElement.lang === 'en' ? 'Preview' : 'معاينة';
+      } else {
+        lightboxPreviewEl.hidden = true;
+      }
+    }
   }
 
   function hideBackgroundForA11y(hide) {
@@ -370,6 +399,9 @@ document.addEventListener('DOMContentLoaded', () => {
     galleryImages = getProjectImages(item);
     if (galleryImages.length === 0) return;
 
+    // Read preview URL from the DOM element (set by renderer)
+    currentPreviewUrl = item.getAttribute('data-preview') || null;
+
     currentIndex = 0; // Always start from the first image (cover)
     updateLightbox();
     
@@ -386,6 +418,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
     hideBackgroundForA11y(false);
     if (lastFocused) lastFocused.focus();
+    // cleanup preview link
+    if (lightboxPreviewEl) {
+      lightboxPreviewEl.hidden = true;
+    }
   }
 
   function nextItem() { 

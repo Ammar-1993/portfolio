@@ -20,18 +20,10 @@
     const item = document.createElement('div');
     item.className = 'portfolio-item';
     item.setAttribute('data-category', project.category);
+    if (project.preview) item.setAttribute('data-preview', project.preview);
 
     const title = project.title[lang] || project.title.ar;
     const coverAlt = project.coverAlt[lang] || project.coverAlt.ar;
-
-    // Build inner HTML
-    const previewHTML = project.preview ? `
-          <div class="portfolio-actions">
-            <a class="btn btn-preview" href="${project.preview}" target="_blank" rel="noopener noreferrer">
-              ${lang === 'en' ? 'Preview' : 'معاينة'}
-            </a>
-          </div>
-        ` : '';
 
     item.innerHTML = `
       <div class="portfolio-item-inner">
@@ -46,7 +38,6 @@
               <use href="images/icons.svg#search" />
             </svg>
           </div>
-          ${previewHTML}
         </div>
       </div>
     `;

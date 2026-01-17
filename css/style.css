@@ -1545,9 +1545,6 @@ body {
 .lightbox-close{
   position:absolute;top:12px;left:12px;background:rgba(255,255,255,0.9);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:none;font-size:20px;z-index:2200
 }
-.lightbox-preview{
-  position:absolute;top:12px;right:12px;left:auto;z-index:2100;padding:10px 14px;border-radius:8px;background:var(--surface);color:var(--main-color);border:1px solid var(--border);font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px;height:44px
-}
-.lightbox-preview:hover{background:var(--main-color);color:#fff;border-color:var(--main-color)}
+/* .lightbox-preview removed — preview link created dynamically was removed */
 
 

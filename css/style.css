@@ -1511,3 +1511,13 @@ body {
   color: #fff;
   border-color: var(--main-color);
 }
+
+/* Portfolio Preview button */
+.portfolio-actions{margin-top:12px}
+.portfolio-actions .btn-preview{
+  display:inline-block;padding:8px 14px;border-radius:8px;font-weight:700;font-size:14px;
+  background:transparent;color:var(--main-color);border:1px solid var(--main-color);text-decoration:none
+}
+.portfolio-actions .btn-preview:hover{background:var(--main-color);color:#fff}
+.portfolio-actions .btn-preview:focus-visible{outline:3px solid color-mix(in oklab,var(--main-color),white 20%);outline-offset:2px}
+

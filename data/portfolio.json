@@ -12,6 +12,7 @@
                 "ar": "منصة الامتثال الذكية - واجهة 1",
                 "en": "Smart Compliance Platform - Interface 1"
             },
+            "preview": "https://github.com/Ammar-1993/Safe-Comply-System",
             "gallery": [
                 {
                     "src": "images/portfolio/safe-comply-dashboard-1.webp",
@@ -97,6 +98,7 @@
                 "ar": "تطبيق وظائف - صفحة الترحيب",
                 "en": "Job Search App - Welcome Page"
             },
+            "preview": "https://job-app-mbe9k.ondigitalocean.app/",
             "gallery": [
                 {
                     "src": "images/portfolio/job-app-2.webp",
@@ -168,6 +170,7 @@
                 "ar": "نظام الامتثال الآمن - لوحة التحكم",
                 "en": "Safe Comply System - Dashboard"
             },
+            "preview": "https://github.com/Ammar-1993/Safe-Comply-System",
             "gallery": [
                 {
                     "src": "images/portfolio/safe-comply-welcome.webp",
@@ -253,6 +256,7 @@
                 "ar": "نظام إدارة المهام — لوحة التحكم",
                 "en": "Task Management System — Dashboard"
             },
+            "preview": "https://example.com/task-management",
             "gallery": []
         },
         {
@@ -267,6 +271,7 @@
                 "ar": "منصة تعليمية — صفحة الدروس",
                 "en": "Educational Platform — Lessons Page"
             },
+            "preview": "https://example.com/educational-platform",
             "gallery": []
         },
         {
@@ -281,6 +286,7 @@
                 "ar": "متجر إلكتروني — صفحة المنتجات",
                 "en": "E-Commerce Store — Products Page"
             },
+            "preview": "https://example.com/ecommerce-store",
             "gallery": []
         },
         {
@@ -295,6 +301,7 @@
                 "ar": "موقع شركة — الصفحة الرئيسية",
                 "en": "Company Website — Homepage"
             },
+            "preview": "https://example.com/company-website",
             "gallery": []
         },
         {
@@ -309,6 +316,7 @@
                 "ar": "مدونة تقنية — صفحة المقالات",
                 "en": "Tech Blog — Article Page"
             },
+            "preview": "https://example.com/tech-blog",
             "gallery": []
         },
         {
@@ -323,6 +331,7 @@
                 "ar": "تطبيق سطح مكتب — شاشة الدخول",
                 "en": "Desktop App — Login Screen"
             },
+            "preview": "https://example.com/desktop-app",
             "gallery": []
         },
         {
@@ -337,6 +346,7 @@
                 "ar": "نظام نقاط البيع — واجهة الكاشير",
                 "en": "POS System — Cashier Interface"
             },
+            "preview": "https://example.com/pos-system",
             "gallery": []
         },
         {
@@ -351,6 +361,7 @@
                 "ar": "برنامج محاسبة — التقارير المالية",
                 "en": "Accounting Software — Financial Reports"
             },
+            "preview": "https://example.com/accounting-software",
             "gallery": []
         },
         {
@@ -365,6 +376,7 @@
                 "ar": "إدارة المخزون — شاشة المنتجات",
                 "en": "Inventory Management — Products Screen"
             },
+            "preview": "https://example.com/inventory-management",
             "gallery": []
         },
         {
@@ -379,6 +391,7 @@
                 "ar": "تطبيق السوق الإلكتروني — الواجهة الرئيسية",
                 "en": "Electronic Marketplace App — Main Interface"
             },
+            "preview": "https://example.com/electronic-marketplace-app",
             "gallery": [
                 {
                     "src": "images/portfolio/mobile1.webp",
@@ -450,6 +463,7 @@
                 "ar": "تطبيق موبايل — شاشة التفاصيل",
                 "en": "Mobile App — Details Screen"
             },
+            "preview": "https://example.com/details-app",
             "gallery": []
         }
     ]

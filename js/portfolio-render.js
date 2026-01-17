@@ -25,12 +25,20 @@
     const coverAlt = project.coverAlt[lang] || project.coverAlt.ar;
 
     // Build inner HTML
+    const previewHTML = project.preview ? `
+          <div class="portfolio-actions">
+            <a class="btn btn-preview" href="${project.preview}" target="_blank" rel="noopener noreferrer">
+              ${lang === 'en' ? 'Preview' : 'معاينة'}
+            </a>
+          </div>
+        ` : '';
+
     item.innerHTML = `
       <div class="portfolio-item-inner">
         <div class="portfolio-img">
           <img src="${project.cover}" alt="${coverAlt}" loading="lazy" decoding="async">
         </div>
-        ${project.gallery.length > 0 ? createGalleryHTML(project.gallery) : ''}
+        ${project.gallery && project.gallery.length > 0 ? createGalleryHTML(project.gallery) : ''}
         <div class="portfolio-info">
           <h4>${title}</h4>
           <div class="icon" aria-hidden="true">
@@ -38,6 +46,7 @@
               <use href="images/icons.svg#search" />
             </svg>
           </div>
+          ${previewHTML}
         </div>
       </div>
     `;

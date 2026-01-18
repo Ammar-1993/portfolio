@@ -87,10 +87,9 @@
       return;
     }
 
-    // Clear existing portfolio items (keep video items if any)
+    // Clear existing portfolio items
     const existingItems = container.querySelectorAll('.portfolio-item');
     existingItems.forEach(item => {
-      // Only remove image-based items, not video items
       if (item.querySelector('.portfolio-img')) {
         item.remove();
       }
@@ -102,13 +101,8 @@
       fragment.appendChild(createPortfolioItem(project));
     });
 
-    // Insert before video items if they exist
-    const firstVideoItem = container.querySelector('.portfolio-item-inner-video');
-    if (firstVideoItem && firstVideoItem.parentElement) {
-      container.insertBefore(fragment, firstVideoItem.parentElement);
-    } else {
-      container.appendChild(fragment);
-    }
+    // Append new items
+    container.appendChild(fragment);
   }
 
   /**

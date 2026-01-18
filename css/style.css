@@ -122,7 +122,7 @@ body{
   max-width: 100vw;
   /* Prevent horizontal scroll */
 }
-img,video{max-width:100%;height:auto;display:block}
+img{max-width:100%;height:auto;display:block}
 
 /* انتقالات محترمة للوصولية */
 @media (prefers-reduced-motion:no-preference){
@@ -488,9 +488,8 @@ padding:12px 25px;
   box-shadow: 0 15px 35px rgba(0,0,0,.2);
 }
 
-/* الحاوية التي تضم الصورة أو الفيديو */
-.portfolio .portfolio-item-inner .portfolio-img,
-.portfolio .portfolio-item-inner-video{
+/* الحاوية التي تضم الصورة */
+.portfolio .portfolio-item-inner .portfolio-img{
   aspect-ratio:var(--tile-ratio);
   min-height:var(--tile-min-h);
   display:grid;place-items:center;
@@ -498,8 +497,7 @@ padding:12px 25px;
 }
 
 /* ملاءمة الوسائط داخل الحاوية */
-.portfolio .portfolio-item-inner .portfolio-img img,
-.portfolio .portfolio-item-inner-video video{
+.portfolio .portfolio-item-inner .portfolio-img img{
   width:100%;height:100%;object-fit:contain;
 }
 
@@ -544,10 +542,7 @@ padding:12px 25px;
   .portfolio .portfolio-item .portfolio-img{border-bottom-left-radius:12px;border-bottom-right-radius:12px}
 }
 
-/* فيديو داخل المعرض */
-.portfolio .portfolio-item-inner-video{border-radius:12px;overflow:hidden;box-shadow:var(--shadow-black-100);border:1px solid var(--border);background:#000}
-.portfolio .portfolio-item-inner-video figure{margin:0}
-.portfolio .portfolio-item-inner-video figcaption{color:#fff;background:rgba(0,0,0,.45);padding:.5rem .75rem}
+
 
 /* التقنيات */
 .technologies .technologies-item,.technologies-item{flex:0 0 33.33%;max-width:33.33%;padding:20px;display:flex}
@@ -1201,7 +1196,7 @@ html, body {
 
 /* 3. Image & Media Safety */
 /* 3. Image & Media Safety */
-img, video, svg {
+img, svg {
   max-width: 100%;
   height: auto;
 }

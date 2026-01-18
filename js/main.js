@@ -419,8 +419,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // If user clicked the preview link, let the anchor behave normally
       if (e.target.closest && e.target.closest('a.project-preview')) return;
 
-      // Check if it's a video or non-image card
-      if (e.target.tagName.toLowerCase() === 'video' || e.target.closest('video')) return;
+      // Check if there's an image in the card
       if (!qs('.portfolio-img img', item)) return;
 
       openLightbox(item);
@@ -435,8 +434,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.target.closest && e.target.closest('a.project-preview')) return;
       
       e.preventDefault();
-      // Check if it's a video or non-image card
-      if (e.target.tagName.toLowerCase() === 'video' || e.target.closest('video')) return;
+      // Check if there's an image in the card
       if (!qs('.portfolio-img img', item)) return;
 
       openLightbox(item);

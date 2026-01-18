@@ -538,7 +538,7 @@ padding:12px 25px;
 /* Mobile: move CTA out of overlay — full width under image */
 @media (max-width:767px){
   .portfolio .portfolio-item .portfolio-info{position:static;inset:auto;background:transparent;padding:12px 16px 18px;opacity:1;align-items:flex-start}
-  .portfolio .portfolio-item .portfolio-info h4{transform:none;opacity:1}
+  .portfolio .portfolio-item .portfolio-info h4{transform:none;opacity:1;color:var(--ink)}
   .portfolio .portfolio-item .portfolio-info .icon{display:none}
   .portfolio .portfolio-item .project-preview{display:flex;width:auto;justify-content:center;padding:0 12px;margin-top:8px;height:36px;font-size:14px;gap:6px}
   .portfolio .portfolio-item .portfolio-img{border-bottom-left-radius:12px;border-bottom-right-radius:12px}

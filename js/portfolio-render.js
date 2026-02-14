@@ -5,7 +5,7 @@
 (function() {
   'use strict';
 
-  const PORTFOLIO_DATA_URL = 'data/portfolio.json';
+  const PORTFOLIO_DATA_URL = './data/portfolio.json';
   const PORTFOLIO_CONTAINER_SELECTOR = '.portfolio .row:nth-of-type(3)';
   
   // Detect language from HTML lang attribute

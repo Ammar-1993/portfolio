@@ -5,8 +5,6 @@
    - وإلا يتبع تفضيل النظام (prefers-color-scheme)
    ===================================================== */
 
-/* Google Fonts: Poppins (English) */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
 
 /* Cairo — أوزان مختارة وسريعة (WOFF2 فقط) */
 @font-face{font-family:"Cairo";src:url("../assets/fonts/cairo/Cairo-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}

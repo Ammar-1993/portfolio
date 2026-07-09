@@ -6,7 +6,7 @@
   'use strict';
 
   const PORTFOLIO_DATA_URL = 'data/portfolio.json';
-  const PORTFOLIO_CONTAINER_SELECTOR = '.portfolio .row:nth-of-type(3)';
+  const PORTFOLIO_CONTAINER_SELECTOR = '#portfolio-grid';
   
   // Detect language from HTML lang attribute
   const lang = document.documentElement.lang === 'en' ? 'en' : 'ar';

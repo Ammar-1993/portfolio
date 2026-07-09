@@ -408,7 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // open only when clicking image cards (not videos)
   // Event Delegation for Portfolio Items
-  const portfolioContainer = qs('.portfolio .row:nth-of-type(3)') || qs('.portfolio .container'); // Adjust selector based on HTML structure
+  const portfolioContainer = document.getElementById('portfolio-grid') || qs('.portfolio .container');
   if (portfolioContainer) {
     portfolioContainer.addEventListener('click', (e) => {
       const item = e.target.closest('.portfolio-item');
@@ -455,8 +455,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => {
       if (!lightbox.classList.contains('open')) return;
       if (e.key === 'Escape') closeLightbox();
-      else if (e.key === 'ArrowRight') nextItem();
-      else if (e.key === 'ArrowLeft') prevItem();
+      else if (e.key === 'ArrowRight') { document.documentElement.dir === 'rtl' ? prevItem() : nextItem(); }
+      else if (e.key === 'ArrowLeft') { document.documentElement.dir === 'rtl' ? nextItem() : prevItem(); }
 
       if (e.key === 'Tab') {
         const focusables = qsa(

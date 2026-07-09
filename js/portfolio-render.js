@@ -40,7 +40,8 @@
               <h4>${title}</h4>
               ${shortDesc ? `<p class="portfolio-short">${shortDesc}</p>` : ''}
             </div>
-            <a class="project-preview" href="${project.preview || '#'}" target="_blank" rel="noopener noreferrer" title="يفتح في نافذة جديدة" aria-label="${lang === 'en' ? 'Open preview (opens in new window)' : 'يفتح في نافذة جديدة'}">
+            ${project.preview && !project.preview.includes('example.com') && project.preview !== '#' ? `
+            <a class="project-preview" href="${project.preview}" target="_blank" rel="noopener noreferrer" title="يفتح في نافذة جديدة" aria-label="${lang === 'en' ? 'Open preview (opens in new window)' : 'يفتح في نافذة جديدة'}">
               <svg class="project-preview__svg" aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false">
                 <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M14 3h7v7" />
@@ -48,7 +49,7 @@
                   <path d="M21 21H3V3" />
                 </g>
               </svg>
-            </a>
+            </a>` : ''}
           </div>
         </div>
       </div>

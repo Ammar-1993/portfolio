@@ -41,6 +41,12 @@ def main():
     
     png_files = list(portfolio_dir.glob("*.png"))
     
+    # Additional specific images to convert
+    extra_images = [Path("images/hero4.png"), Path("images/about_hero.png")]
+    for img in extra_images:
+        if img.exists():
+            png_files.append(img)
+    
     if not png_files:
         print(f"[!] No PNG files found in {PORTFOLIO_PATH}")
         sys.exit(0)

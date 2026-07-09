@@ -13,8 +13,8 @@
   "orientation": "portrait-primary",
   "categories": ["productivity", "portfolio", "business", "utilities"],
   "screenshots": [
-    { "src": "images/hero4.webp", "sizes": "420x420", "type": "image/webp", "label": "الصفحة الرئيسية" },
-    { "src": "images/about_hero.webp", "sizes": "520x650", "type": "image/webp", "label": "نبذة عن الفريق" }
+    { "src": "images/hero4.webp", "sizes": "1080x952", "type": "image/webp", "label": "الصفحة الرئيسية" },
+    { "src": "images/about_hero.webp", "sizes": "490x487", "type": "image/webp", "label": "نبذة عن الفريق" }
   ],
   "icons": [
     { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },

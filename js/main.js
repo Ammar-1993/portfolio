@@ -249,9 +249,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let portfolioItems = qsa('.portfolio-item');
 
   function updateVisibleItems(filter) {
-    // Re-query items in case they were dynamically added
-    portfolioItems = qsa('.portfolio-item');
-    
     const f = filter || 'all';
     portfolioItems.forEach((item) => {
       const cat = item.getAttribute('data-category');
@@ -266,6 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Listen for dynamic portfolio rendering completion
   document.addEventListener('portfolioRendered', () => {
+    portfolioItems = qsa('.portfolio-item');
     updateVisibleItems('all');
   });
 

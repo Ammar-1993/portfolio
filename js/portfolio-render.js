@@ -31,7 +31,7 @@
     item.innerHTML = `
       <div class="portfolio-item-inner">
         <div class="portfolio-img">
-          <img src="${project.cover}" alt="${coverAlt}" loading="lazy" decoding="async">
+          <img src="${project.cover}" alt="${coverAlt}" width="640" height="360" loading="lazy" decoding="async">
         </div>
         ${project.gallery && project.gallery.length > 0 ? createGalleryHTML(project.gallery) : ''}
         <div class="portfolio-info">
@@ -67,7 +67,7 @@
     
     const galleryImages = gallery.map(img => {
       const alt = img.alt[lang] || img.alt.ar;
-      return `<img src="${img.src}" alt="${alt}">`;
+      return `<img src="${img.src}" alt="${alt}" width="640" height="360" loading="lazy" decoding="async">`;
     }).join('\n                    ');
 
     return `

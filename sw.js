@@ -7,7 +7,7 @@ const PRECACHE_URLS = [
   `${BASE}`,
   `${BASE}index.html`,
   `${BASE}index-en.html`,
-  `${BASE}css/style.css`,
+  `${BASE}css/style.min.css`,
   `${BASE}js/main.js`,
   `${BASE}js/portfolio-render.js`,
   `${BASE}assets/icons/icon-192.png`,
@@ -15,8 +15,8 @@ const PRECACHE_URLS = [
   `${BASE}assets/icons/apple-touch-icon-180.png`,
   `${BASE}assets/fonts/cairo/Cairo-Regular.woff2`,
   `${BASE}assets/fonts/cairo/Cairo-ExtraBold.woff2`,
-  `${BASE}images/hero4.png`,
-  `${BASE}images/about_hero.png`,
+  `${BASE}images/hero4.webp`,
+  `${BASE}images/about_hero.webp`,
   `${BASE}offline.html`
 ];
 

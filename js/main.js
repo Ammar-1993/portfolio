@@ -118,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function recalcHeaderOffset() {
     HEADER_OFFSET = navbar ? navbar.getBoundingClientRect().height : 60;
   }
-  window.addEventListener('resize', recalcHeaderOffset, { passive: true });
 
   const setSticky = () => {
     if (!navbar) return;
@@ -182,7 +181,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
 
-  window.addEventListener('resize', setActiveLink, { passive: true });
+  let resizeTimeout = null;
+  window.addEventListener('resize', () => {
+    if (resizeTimeout) clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      recalcHeaderOffset();
+      setActiveLink();
+    }, 200);
+  }, { passive: true });
   window.addEventListener('hashchange', setActiveLink, { passive: true });
   document.addEventListener('DOMContentLoaded', () => {
     setSticky(); setActiveLink(); bindSmartAnchors();

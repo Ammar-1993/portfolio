@@ -68,7 +68,7 @@
     
     const galleryImages = gallery.map(img => {
       const alt = img.alt[lang] || img.alt.ar;
-      return `<img src="${img.src}" alt="${alt}" width="640" height="360" loading="lazy" decoding="async">`;
+      return `<img data-src="${img.src}" alt="${alt}" width="640" height="360" loading="lazy" decoding="async">`;
     }).join('\n                    ');
 
     return `

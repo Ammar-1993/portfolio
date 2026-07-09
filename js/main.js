@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const hiddenImgs = qsa('img', hiddenGallery);
       hiddenImgs.forEach(img => {
         images.push({
-          src: img.getAttribute('src'), // Use getAttribute for lazy-loaded/hidden images
+          src: img.getAttribute('data-src'), // Use getAttribute for lazy-loaded/hidden images
           alt: img.getAttribute('alt') || ''
         });
       });

@@ -935,7 +935,8 @@
   <footer class="footer">
     <div class="container">
       <div class="row justify-content-center">
-        <p class="copyright-text">تم تصميم هذا الموقع بواسطة م. عمار النجار © 2020–2025</p>
+        <p class="copyright-text">تم تصميم هذا الموقع بواسطة م. عمار النجار © 2020–<span id="copyright-year">2026</span></p>
+        <script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
       </div>
     </div>
   </footer>

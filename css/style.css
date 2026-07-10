@@ -1345,6 +1345,22 @@ body {
   isolation: isolate;
 }
 
+/* Light Mode Enhancements for SDLC */
+[data-theme="light"] .sdlc-container,
+:root:not([data-theme="dark"]) .sdlc-container {
+  background:
+    radial-gradient(circle at 50% 20%, color-mix(in oklab, var(--main-color), transparent 85%) 0%, transparent 55%),
+    radial-gradient(circle, color-mix(in oklab, var(--main-color), transparent 92%) 0%, transparent 75%);
+  box-shadow: 
+    inset 0 0 100px color-mix(in oklab, var(--main-color), transparent 95%),
+    0 35px 80px rgba(0, 167, 142, 0.06);
+}
+
+[data-theme="light"] .sdlc-node,
+:root:not([data-theme="dark"]) .sdlc-node {
+  box-shadow: 0 15px 35px rgba(0, 167, 142, 0.12), 0 5px 15px rgba(15, 23, 42, 0.05);
+  border-color: color-mix(in oklab, var(--main-color), transparent 75%);
+}
 .about-section .about-image .sdlc-container{
   margin-top:clamp(56px,6.5vw,108px);
 }

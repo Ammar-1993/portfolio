@@ -83,6 +83,7 @@ body{font-family:var(--font-primary);}
     --track:#e5e7eb;
     --input-bg:#ffffff;
     --media-bg:#0e1626;
+    --text-brand:#007a68;
   }
 }
 
@@ -90,12 +91,12 @@ body{font-family:var(--font-primary);}
 :root[data-theme="light"]{
   --bg:#ffffff; --bg-soft:#f8fafc; --surface:#ffffff; --ink:#0f172a; --muted:#475569;
   --border:#e2e8f0; --link:#1d4ed8; --navbar-bg:rgba(255,255,255,.85);
-  --track:#e5e7eb; --input-bg:#ffffff; --media-bg:#0e1626;
+  --track:#e5e7eb; --input-bg:#ffffff; --media-bg:#0e1626; --text-brand:#007a68;
 }
 :root[data-theme="dark"]{
   --bg:#0b0f19; --bg-soft:#0a0f1c; --surface:#111827; --ink:#e6eef7; --muted:#AAB4C0;
   --border:#233041; --link:#60a5fa; --navbar-bg:rgba(17,24,39,.85);
-  --track:#233041; --input-bg:#0e1626; --media-bg:#0e1626;
+  --track:#233041; --input-bg:#0e1626; --media-bg:#0e1626; --text-brand:#00a78e;
 }
 
 /* Anchor offset for fixed header */
@@ -156,7 +157,7 @@ img{max-width:100%;height:auto;display:block}
 }
 .btn-1{background:var(--main-color);color:#fff;box-shadow:0 10px 24px rgba(0,167,142,.25)}
 .btn-1:hover{transform:translateY(-1px);box-shadow:0 14px 36px rgba(0,167,142,.33)}
-.btn-2{background:transparent;color:var(--main-color);border:1px solid var(--main-color)}
+.btn-2{background:transparent;color:var(--text-brand);border:1px solid var(--text-brand)}
 .btn-2:hover{background:var(--main-color);color:#fff}
 .btn-1:focus-visible,.btn-2:focus-visible{outline:3px solid color-mix(in oklab,var(--main-color),white 20%);outline-offset:2px}
 /* General focus style for accessibility */
@@ -164,7 +165,7 @@ img{max-width:100%;height:auto;display:block}
 
 /* عناوين الأقسام */
 .section-title{flex:0 0 100%;max-width:100%;margin-bottom:30px}
-.section-title .sub-title{font-size:20px;font-weight:700;color:var(--main-color);display:block}
+.section-title .sub-title{font-size:20px;font-weight:700;color:var(--text-brand);display:block}
 .section-title .main-title{font-size:34px;font-weight:700;margin-top:10px;color:var(--ink)}
 .section-title .line{padding-top:0}
 .section-title .line li{display:inline-block;background:var(--main-color);border-radius:50px;height:3px}
@@ -263,7 +264,7 @@ padding:12px 25px;
 .home-text{flex:0 0 50%;max-width:50%;padding:0 25px}
 .home-image-container{flex:0 0 50%;max-width:50%;display:flex;flex-direction:column;padding:0 25px}
 .home-image{flex:1;display:flex;justify-content:center}
-.home-text h4{font-size:28px;font-weight:700;letter-spacing:2px;color:var(--main-color)}
+.home-text h4{font-size:28px;font-weight:700;letter-spacing:2px;color:var(--text-brand)}
 .home-text h1{font-size:44px;font-weight:800;margin-top:10px;color:var(--ink)}
 .home-text span{font-size:18px;line-height:28px;color:var(--ink);opacity:.9;display:block;margin-top:10px}
 .home-text p{font-size:18px;color:var(--muted);margin-top:12px}
@@ -273,7 +274,7 @@ padding:12px 25px;
 [dir="ltr"] .header-hero-shape::before{transform:skewX(-20deg)}
 .home-stats{display:flex;justify-content:space-around;margin-top:-20px;padding:0}
 .home-stats .stat-item{text-align:center;padding:20px}
-.home-stats .stat-item h3{font-size:26px;font-weight:800;color:var(--main-color);margin:0}
+.home-stats .stat-item h3{font-size:36px;font-weight:800;color:var(--main-color);margin:0}
 .home-stats .stat-item p{font-size:16px;color:var(--muted);margin:0 0 0}
 
 @media (max-width:991px){.home-stats{padding:0}}
@@ -288,7 +289,7 @@ padding:12px 25px;
 @media (max-width:576px){
   .home-stats{flex-wrap:wrap;justify-content:center;padding:0 15px;margin-top:5px}
   .home-stats .stat-item{flex:0 0 100%;max-width:100%;padding:25px 20px;margin-bottom:10px}
-  .home-stats .stat-item h3{font-size:36px;line-height:1.2}
+  .home-stats .stat-item h3{font-size:26px;line-height:1.2}
   .home-stats .stat-item p{font-size:16px;margin:15px 0 0;line-height:1.4}
 }
 
@@ -555,7 +556,7 @@ padding:12px 25px;
 .best-value{display:none}
 .technologies-plan .technologies-price{padding:26px 20px;display:flex;line-height:.7;align-items:flex-end;gap:6px}
 .technologies-plan .technologies-price .currency{font-size:14px;font-weight:400;color:var(--muted)}
-.technologies-plan .technologies-price .price{font-size:44px;font-weight:800;color:var(--main-color)}
+.technologies-plan .technologies-price .price{font-size:44px;font-weight:800;color:var(--text-brand)}
 .technologies-plan .technologies-price .period{font-size:12px;font-weight:400;color:var(--muted);text-transform:uppercase}
 .technologies-plan .technologies-body{padding:0 20px 20px}
 .technologies-plan .technologies-body ul li{

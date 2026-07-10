@@ -527,7 +527,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('beforeinstallprompt', (e) => {
     // e.preventDefault();  // Remove to allow browser banner
     deferredPrompt = e;
-    // installBtn.hidden = false;  // Hide custom button to use browser banner
+    installBtn.hidden = false;
   });
 
   installBtn.addEventListener('click', async () => {

@@ -1,7 +1,7 @@
 
 # Portfolio — Eng. Ammar Al‑Najjar
 
-[![Status](https://img.shields.io/badge/status-live-brightgreen.svg)](https://ammar-1993.github.io/portfolio/)
+[![Status](https://img.shields.io/badge/status-live-brightgreen.svg)](https://ammar1993.vercel.app/)
 ![Made with](https://img.shields.io/badge/Made%20with-HTML5%20%7C%20CSS3%20%7C%20JS-1f6feb)
 ![Language](https://img.shields.io/badge/Language-AR%20%7C%20EN-0ea5e9)
 ![Layout](https://img.shields.io/badge/Layout-RTL%20%7C%20LTR-0ea5e9)
@@ -21,7 +21,7 @@
 </div>
 
 
-- [Live Site](https://ammar-1993.github.io/portfolio/)
+- [Live Site](https://ammar1993.vercel.app/)
 
 ---
 
@@ -61,7 +61,7 @@ A lightweight, user-friendly, and high-performance personal website showcasing t
 2. Source: *Deploy from a branch*
 3. Branch: `main` & Folder: `/ (root)`, then Save
 4. Your site will be available at:
-   https://ammar-1993.github.io/portfolio/
+   https://ammar1993.vercel.app/
 
 ---
 

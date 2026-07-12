@@ -2,13 +2,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ammar-1993.github.io/portfolio/</loc>
+    <loc>https://ammar1993.vercel.app/</loc>
     <lastmod>2025-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ammar-1993.github.io/portfolio/offline.html</loc>
+    <loc>https://ammar1993.vercel.app/offline.html</loc>
     <lastmod>2025-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>

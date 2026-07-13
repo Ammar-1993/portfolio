@@ -288,7 +288,7 @@ padding:12px 25px;
 .home-text span{font-size:var(--text-md);line-height:28px;color:var(--ink);opacity:.9;display:block;margin-top:var(--space-xs)}
 .home-text p{font-size:var(--text-md);color:var(--muted);margin-top:var(--space-sm)}
 .home-text .btn{display:inline-block;margin-top:28px}
-.header-hero-shape{position:absolute;top:0;bottom:0;inset-inline-end:0;width:55%;height:100%;pointer-events:none}
+.header-hero-shape{position:absolute;top:0;bottom:0;inset-inline-end:0;width:42%;height:100%;pointer-events:none}
 .header-hero-shape::before{content:"";position:absolute;inset:0;background:linear-gradient(140deg,rgba(0,167,142,.18),rgba(0,167,142,0));transform:skewX(20deg)}
 [dir="ltr"] .header-hero-shape::before{transform:skewX(-20deg)}
 .home-stats{display:flex;justify-content:space-around;margin-top:-20px;padding:0}

@@ -614,7 +614,7 @@ padding:12px 25px;
 }
 .contact-section .contact-item-inner span{display:block;font-size:var(--text-md);font-weight:700;color:var(--ink);margin-bottom:8px}
 .contact-section .contact-item-inner p{font-size:var(--text-base);color:var(--muted);line-height:1.5;margin:0}
-.contact-section .contact-item-inner p a{color:var(--muted);text-decoration:none;transition:color 0.2s}
+.contact-section .contact-item-inner p a{color:var(--link);text-decoration:none;transition:color 0.2s}
 .contact-section .contact-item-inner p a:hover{color:var(--main-color)}
 
 .contact-section .contact-form{

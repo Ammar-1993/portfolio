@@ -219,7 +219,10 @@ padding:12px 25px;
 .logo a span{color:var(--main-color)}
 .links .menu{list-style:none}
 .navbar .menu .nav-item{display:inline-block;position:relative;margin-inline-start:28px}
-.navbar .menu .nav-item .nav-link{color:var(--ink);font-size:16px;font-weight:600;display:block;padding:10px 0;transition:color 0.3s ease, transform 0.2s ease}
+.navbar .menu .nav-item .nav-link{position:relative;color:var(--ink);font-size:16px;font-weight:600;display:block;padding:10px 0;transition:color 0.3s ease, transform 0.2s ease}
+.navbar .menu .nav-item .nav-link::after{content:"";position:absolute;bottom:0;inset-inline-start:0;width:0;height:2px;background-color:var(--main-color);transition:width 0.3s ease;border-radius:2px}
+.navbar .menu .nav-item .nav-link:hover::after,
+.navbar .menu .nav-item .nav-link.active::after{width:100%}
 .navbar .menu .nav-item .nav-link:hover,
 .navbar .menu .nav-item .nav-link.active{color:var(--main-color);transform:translateY(-1px)}
 .navbar .menu .nav-item .nav-link:focus-visible{outline:2px solid var(--link);outline-offset:2px}

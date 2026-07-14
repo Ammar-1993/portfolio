@@ -306,8 +306,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function getProjectImages(item) {
     const images = [];
     
-    // 1. Main Cover Image
-    const coverImg = qs('.portfolio-img img', item) || qs('.cert-cover-img', item);
+    // 1. Main Cover Image (portfolio items)
+    const coverImg = qs('.portfolio-img img', item);
     if (coverImg) {
       images.push({
         src: coverImg.currentSrc || coverImg.getAttribute('src'),
@@ -445,25 +445,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Event Delegation for Cert Items
-  const certContainer = document.querySelector('.cert-grid');
-  if (certContainer) {
-    certContainer.addEventListener('click', (e) => {
-      const item = e.target.closest('.cert-item');
-      if (!item) return;
-
-      // Ensure it has a trigger
-      if (!e.target.closest('.cert-btn-gallery') && !e.target.closest('.lightbox-trigger')) return;
-
-      e.preventDefault();
-      openLightbox(item);
-    });
-  }
-
   // Add tabindex to items for keyboard accessibility (done once)
   qsa('.portfolio-item').forEach((item) => {
     const clickable = qs('.portfolio-item-inner', item) || item;
     clickable.setAttribute('tabindex', '0');
+  });
+
+  // Cert Gallery Lightbox: click on .cert-btn-gallery triggers lightbox
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.cert-btn-gallery');
+    if (!btn) return;
+    e.preventDefault();
+    const certItem = btn.closest('.cert-item');
+    if (!certItem) return;
+    // Build images from hidden gallery only
+    const hiddenGallery = qs('.project-gallery', certItem);
+    if (!hiddenGallery) return;
+    const imgs = qsa('img', hiddenGallery);
+    galleryImages = Array.from(imgs).map(img => ({
+      src: img.getAttribute('data-src'),
+      alt: img.getAttribute('alt') || ''
+    })).filter(o => o.src);
+    if (!galleryImages.length) return;
+    currentIndex = 0;
+    updateLightbox();
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lastFocused = document.activeElement;
+    hideBackgroundForA11y(true);
+    if (lightboxClose) lightboxClose.focus();
   });
 
   if (lightbox) {

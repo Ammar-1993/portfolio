@@ -499,21 +499,43 @@
 
         <div class="row cert-grid">
 
-          <!-- Cert Item -->
-          <div class="cert-item" style="flex: 0 0 calc(33.33% - 16px); max-width: calc(33.33% - 16px);">
+          <!-- ITLegend Consolidated Card -->
+          <div class="cert-item cert-item--featured">
             <div class="cert-card" style="padding: 24px 16px;">
-              <div class="cert-icon" style="width: 50px; height: 50px; margin-bottom: 15px;">
+              <div class="cert-icon" style="width: 60px; height: 60px; margin-bottom: 15px;">
                 <img src="images/itlegend-logo.svg" alt="ITLegend Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
               </div>
               <div class="cert-info">
-                \1مسار مطور برمجيات متكامل (12 شهادة متخصصة)\2
+                <h3 style="font-size: 17px; margin-bottom: 6px;">مسار مطور برمجيات متكامل</h3>
                 <span class="cert-org" style="font-size: 14px; margin-bottom: 15px;">ITLegend</span>
+                <div class="cert-meta" style="margin-bottom: 12px;">
+                  <span>12 شهادة متخصصة</span>
+                  <span class="dot">•</span>
+                  <span>C# · SQL · HTML · CSS</span>
+                </div>
               </div>
-              \1 cert-btn-gallery\2عرض الشهادات\3
+              <button class="cert-btn cert-btn-gallery" aria-label="عرض شهادات ITLegend" style="padding: 6px 16px; font-size: 13px;">
+                🎓 عرض الشهادات (12)
+              </button>
+              <!-- Hidden gallery for lightbox -->
+              <div class="project-gallery" hidden>
+                <img data-src="images/certs/course-intro-computer-science-itlegend.webp" alt="أساسيات علوم الحاسوب">
+                <img data-src="images/certs/course-algorithm-problem-solving-l1-itlegend.webp" alt="الخوارزميات وحل المشاكل (مستوى 1)">
+                <img data-src="images/certs/course-csharp-basics-itlegend.webp" alt="أساسيات C#">
+                <img data-src="images/certs/course-csharp-problem-solving-itlegend.webp" alt="حل المشاكل بـ C#">
+                <img data-src="images/certs/course-csharp-oop-itlegend.webp" alt="البرمجة الكائنية (C# OOP)">
+                <img data-src="images/certs/course-csharp-oop-project-itlegend.webp" alt="مشروع البرمجة الكائنية (C# OOP)">
+                <img data-src="images/certs/course-data-structures-algorithms-itlegend.webp" alt="هياكل البيانات والخوارزميات">
+                <img data-src="images/certs/course-advanced-sql-server-itlegend.webp" alt="قواعد البيانات المتقدمة SQL Server">
+                <img data-src="images/certs/course-html-itlegend.webp" alt="أساسيات HTML">
+                <img data-src="images/certs/course-css-itlegend.webp" alt="أساسيات CSS">
+                <img data-src="images/certs/course-html-css-project-itlegend.webp" alt="مشروع HTML &amp; CSS">
+                <img data-src="images/certs/course-career-os-itlegend.webp" alt="المسار المهني (Career OS)">
+              </div>
             </div>
           </div>
 
-          <!-- Cert Item -->
+          <!-- Cert Item: Udemy Laravel -->
           <div class="cert-item" style="flex: 0 0 calc(33.33% - 16px); max-width: calc(33.33% - 16px);">
             <div class="cert-card" style="padding: 24px 16px;">
               <div class="cert-icon" style="width: 50px; height: 50px; margin-bottom: 15px;">
@@ -523,11 +545,14 @@
                 <h3 style="font-size: 17px; margin-bottom: 6px;">دورة Laravel 12 الشاملة</h3>
                 <span class="cert-org" style="font-size: 14px; margin-bottom: 15px;">Udemy</span>
               </div>
-              \1 cert-btn-gallery\2عرض الشهادة</a>
+              <button class="cert-btn cert-btn-gallery" aria-label="عرض شهادة Laravel" style="padding: 6px 16px; font-size: 13px;">عرض الشهادة</button>
+              <div class="project-gallery" hidden>
+                <img data-src="images/certs/course-udemy-laravel.webp" alt="دورة Laravel 12 الشاملة">
+              </div>
             </div>
           </div>
 
-          <!-- Cert Item -->
+          <!-- Cert Item: Udemy MERN -->
           <div class="cert-item" style="flex: 0 0 calc(33.33% - 16px); max-width: calc(33.33% - 16px);">
             <div class="cert-card" style="padding: 24px 16px;">
               <div class="cert-icon" style="width: 50px; height: 50px; margin-bottom: 15px;">
@@ -537,10 +562,12 @@
                 <h3 style="font-size: 17px; margin-bottom: 6px;">تطوير الويب (MERN Stack)</h3>
                 <span class="cert-org" style="font-size: 14px; margin-bottom: 15px;">Udemy</span>
               </div>
-              \1 cert-btn-gallery\2عرض الشهادة</a>
+              <a href="images/certs/course-udemy-mern.pdf" target="_blank" class="cert-btn"
+                style="padding: 6px 16px; font-size: 13px;" aria-label="عرض الشهادة">عرض الشهادة</a>
             </div>
           </div>
-          <!-- Cert Item -->
+
+          <!-- Cert Item: Million Prompters -->
           <div class="cert-item" style="flex: 0 0 calc(33.33% - 16px); max-width: calc(33.33% - 16px);">
             <div class="cert-card" style="padding: 24px 16px;">
               <div class="cert-icon" style="width: 50px; height: 50px; margin-bottom: 15px;">
@@ -550,7 +577,8 @@
                 <h3 style="font-size: 17px; margin-bottom: 6px;">مبادرة مليون مبرمج</h3>
                 <span class="cert-org" style="font-size: 14px; margin-bottom: 15px;">Million Prompters</span>
               </div>
-              \1 cert-btn-gallery\2عرض الشهادة</a>
+              <a href="images/certs/course-million-prompters.pdf" target="_blank" class="cert-btn"
+                style="padding: 6px 16px; font-size: 13px;" aria-label="عرض الشهادة">عرض الشهادة</a>
             </div>
           </div>
         </div>
@@ -624,7 +652,7 @@
 
                   </div>
 
-                  <a class="project-preview" href="#" 
+                  <a class="project-preview" href="https://github.com/Ammar-1993/Safe-Comply-System" target="_blank"
                     rel="noopener noreferrer" title="يفتح في نافذة جديدة" aria-label="يفتح في نافذة جديدة">
                     <svg class="project-preview__svg" aria-hidden="true" viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg" focusable="false">
@@ -672,7 +700,7 @@
 
                   </div>
 
-                  <a class="project-preview" href="https://ammar-jobs.duckdns.org/" 
+                  <a class="project-preview" href="https://ammar-jobs.duckdns.org/" target="_blank"
                     rel="noopener noreferrer" title="يفتح في نافذة جديدة" aria-label="يفتح في نافذة جديدة">
                     <svg class="project-preview__svg" aria-hidden="true" viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg" focusable="false">
@@ -728,7 +756,7 @@
 
                   </div>
 
-                  <a class="project-preview" href="https://github.com/Ammar-1993/Safe-Comply-System" 
+                  <a class="project-preview" href="https://github.com/Ammar-1993/Safe-Comply-System" target="_blank"
                     rel="noopener noreferrer" title="يفتح في نافذة جديدة" aria-label="يفتح في نافذة جديدة">
                     <svg class="project-preview__svg" aria-hidden="true" viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg" focusable="false">
@@ -1062,7 +1090,7 @@
                 </svg>
               </div>
               <span>الواتساب</span>
-              <p><a href="https://wa.me/967714294340"  rel="noopener noreferrer"><bdi
+              <p><a href="https://wa.me/967714294340" target="_blank" rel="noopener noreferrer"><bdi
                     dir="ltr">+967714294340</bdi></a></p>
             </div>
           </div>

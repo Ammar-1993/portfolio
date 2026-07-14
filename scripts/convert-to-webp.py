@@ -20,7 +20,7 @@ except ImportError:
     print()
     sys.exit(1)
 
-PORTFOLIO_PATH = "images/portfolio"
+TARGET_PATH = sys.argv[1] if len(sys.argv) > 1 else "images/portfolio"
 QUALITY = 85  # Quality setting (0-100, recommended: 80-90)
 
 def format_size(bytes):
@@ -34,12 +34,14 @@ def main():
     print()
     
     # Get all PNG files
-    portfolio_dir = Path(PORTFOLIO_PATH)
+    portfolio_dir = Path(TARGET_PATH)
     if not portfolio_dir.exists():
-        print(f"[ERROR] Directory not found: {PORTFOLIO_PATH}")
+        print(f"[ERROR] Directory not found: {TARGET_PATH}")
         sys.exit(1)
     
-    png_files = list(portfolio_dir.glob("*.png"))
+    png_files = []
+    for ext in ("*.png", "*.jpg", "*.jpeg", "*.PNG", "*.JPG", "*.JPEG"):
+        png_files.extend(list(portfolio_dir.glob(ext)))
     
     # Additional specific images to convert
     extra_images = [Path("images/hero4.png"), Path("images/about_hero.png")]
@@ -48,7 +50,7 @@ def main():
             png_files.append(img)
     
     if not png_files:
-        print(f"[!] No PNG files found in {PORTFOLIO_PATH}")
+        print(f"[!] No PNG files found in {TARGET_PATH}")
         sys.exit(0)
     
     print(f"Found {len(png_files)} PNG files to convert")

@@ -82,7 +82,7 @@
               <a id="lang-toggle" class="lang-toggle" href="index.html" aria-label="Switch to Arabic">AR</a>
             </li>
             <li class="nav-item nav-install">
-              <button id="installBtn" class="theme-toggle" hidden aria-label="Install App" title="Install App">
+              <button class="theme-toggle install-btn-trigger" hidden aria-label="Install App" title="Install App">
                 <svg class="ico" aria-hidden="true" width="20" height="20">
                   <use href="images/icons.svg#install" />
                 </svg>
@@ -170,11 +170,13 @@
 
             <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
               <a href="https://wa.me/967714294340" target="_blank" rel="noopener noreferrer" class="btn btn-1"
-                aria-label="Contact via WhatsApp">Chat on WhatsApp</a>
-              <a href="#portfolio" class="btn btn-2" aria-label="View Portfolio">View Portfolio</a>
+                aria-label="Contact via WhatsApp">Contact via WhatsApp</a>
+              <button class="social-icon-link install-btn-trigger" hidden aria-label="Install App" title="Install App" style="background: none; border: none; padding: 0; cursor: pointer;">
+                <svg class="ico" aria-hidden="true">
+                  <use href="images/icons.svg#install" />
+                </svg>
+              </button>
             </div>
-
-
           </div>
 
           <div class="home-image-container">

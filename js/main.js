@@ -515,51 +515,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // زر تثبيت تطبيق أنيق + تبديل النص بعد التثبيت
 (() => {
-  const installBtn = document.getElementById('installBtn');
-  if (!installBtn) return;
+  const installBtns = document.querySelectorAll('.install-btn-trigger');
+  if (installBtns.length === 0) return;
 
-  // إن كان التطبيق يعمل بوضع مستقل (مثبّت)، أخفِ الزر
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-  if (isStandalone) { installBtn.hidden = true; return; }
+  if (isStandalone) { installBtns.forEach(btn => btn.hidden = true); return; }
 
   let deferredPrompt = null;
 
   window.addEventListener('beforeinstallprompt', (e) => {
-    // e.preventDefault();  // Remove to allow browser banner
+    e.preventDefault();
     deferredPrompt = e;
-    installBtn.hidden = false;
+    installBtns.forEach(btn => btn.hidden = false);
   });
 
-  installBtn.addEventListener('click', async () => {
-    if (!deferredPrompt) return;
-    installBtn.disabled = true;
-    try {
-      await deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      
-      if (outcome === 'accepted') {
-        const i18n = document.getElementById('i18n-data');
-        const installedText = i18n ? i18n.dataset.installed : 'Installed ✅';
-        installBtn.querySelector('.btn-install__label').textContent = installedText;
-        setTimeout(() => installBtn.hidden = true, 1600);
-      } else {
-        // User dismissed the prompt. The event cannot be reused.
-        // Hide the button until the browser fires the event again.
-        installBtn.hidden = true;
-        installBtn.disabled = false;
+  installBtns.forEach(installBtn => {
+    installBtn.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      installBtn.disabled = true;
+      try {
+        await deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        
+        if (outcome === 'accepted') {
+          const i18n = document.getElementById('i18n-data');
+          const installedText = i18n ? i18n.dataset.installed : 'Installed ✅';
+          installBtns.forEach(btn => {
+            const label = btn.querySelector('.btn-install__label');
+            if(label) label.textContent = installedText;
+            setTimeout(() => btn.hidden = true, 1600);
+          });
+          deferredPrompt = null;
+        } else {
+          installBtns.forEach(btn => {
+            btn.hidden = true;
+            btn.disabled = false;
+          });
+        }
+      } catch (err) {
+        console.error('Install prompt failed:', err);
+        installBtns.forEach(btn => btn.disabled = false);
+      } finally {
+        deferredPrompt = null;
       }
-    } catch (err) {
-      console.error('Install prompt failed:', err);
-      installBtn.disabled = false;
-    } finally {
-      deferredPrompt = null;
-    }
+    });
   });
 
   window.addEventListener('appinstalled', () => {
+    deferredPrompt = null;
     const i18n = document.getElementById('i18n-data');
     const installedText = i18n ? i18n.dataset.installed : 'Installed ✅';
-    installBtn.querySelector('.btn-install__label').textContent = installedText;
-    setTimeout(() => installBtn.hidden = true, 1200);
+    installBtns.forEach(btn => {
+      const label = btn.querySelector('.btn-install__label');
+      if (label) label.textContent = installedText;
+      setTimeout(() => btn.hidden = true, 1200);
+    });
   });
 })();

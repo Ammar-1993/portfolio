@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const images = [];
     
     // 1. Main Cover Image
-    const coverImg = qs('.portfolio-img img', item);
+    const coverImg = qs('.portfolio-img img', item) || qs('.cert-cover-img', item);
     if (coverImg) {
       images.push({
         src: coverImg.currentSrc || coverImg.getAttribute('src'),
@@ -441,6 +441,21 @@ document.addEventListener('DOMContentLoaded', () => {
       // Check if there's an image in the card
       if (!qs('.portfolio-img img', item)) return;
 
+      openLightbox(item);
+    });
+  }
+
+  // Event Delegation for Cert Items
+  const certContainer = document.querySelector('.cert-grid');
+  if (certContainer) {
+    certContainer.addEventListener('click', (e) => {
+      const item = e.target.closest('.cert-item');
+      if (!item) return;
+
+      // Ensure it has a trigger
+      if (!e.target.closest('.cert-btn-gallery') && !e.target.closest('.lightbox-trigger')) return;
+
+      e.preventDefault();
       openLightbox(item);
     });
   }

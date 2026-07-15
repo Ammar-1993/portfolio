@@ -1603,4 +1603,59 @@ body {
 }
 /* .lightbox-preview removed — preview link created dynamically was removed */
 
-
+/* Service Card Extensions */
+.service-item-inner.service-extended {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+[dir="rtl"] .service-item-inner.service-extended {
+  text-align: right;
+}
+.service-tagline {
+  font-size: 15px;
+  color: var(--main-color);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+.service-item-inner.service-extended p {
+  margin-bottom: 15px;
+}
+.service-list {
+  list-style: disc;
+  margin-left: 20px;
+  color: var(--muted);
+  margin-bottom: 15px;
+}
+[dir="rtl"] .service-list {
+  margin-left: 0;
+  margin-right: 20px;
+}
+.service-list li {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+.service-examples strong {
+  color: var(--ink);
+  font-size: 14px;
+}
+.service-examples ul {
+  list-style: circle;
+  margin-left: 20px;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+[dir="rtl"] .service-examples ul {
+  margin-left: 0;
+  margin-right: 20px;
+}
+.service-cta {
+  padding: 8px 16px;
+  font-size: 13px;
+  transition: all 0.3s ease;
+}
+.service-cta:hover {
+  background: color-mix(in oklab, var(--main-color), #000 20%);
+}

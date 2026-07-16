@@ -319,66 +319,7 @@
             "preview": "https://example.com/tech-blog",
             "gallery": []
         },
-        {
-            "id": "desktop-app",
-            "category": "desktop-project",
-            "title": {
-                "ar": "تطبيق سطح مكتب",
-                "en": "Desktop App"
-            },
-            "cover": "images/portfolio/portfolio-6.webp",
-            "coverAlt": {
-                "ar": "تطبيق سطح مكتب — شاشة الدخول",
-                "en": "Desktop App — Login Screen"
-            },
-            "preview": "https://example.com/desktop-app",
-            "gallery": []
-        },
-        {
-            "id": "pos-system",
-            "category": "desktop-project",
-            "title": {
-                "ar": "نظام نقاط البيع",
-                "en": "POS System"
-            },
-            "cover": "images/portfolio/portfolio-7.webp",
-            "coverAlt": {
-                "ar": "نظام نقاط البيع — واجهة الكاشير",
-                "en": "POS System — Cashier Interface"
-            },
-            "preview": "https://example.com/pos-system",
-            "gallery": []
-        },
-        {
-            "id": "accounting-software",
-            "category": "desktop-project",
-            "title": {
-                "ar": "برنامج محاسبة",
-                "en": "Accounting Software"
-            },
-            "cover": "images/portfolio/portfolio-8.webp",
-            "coverAlt": {
-                "ar": "برنامج محاسبة — التقارير المالية",
-                "en": "Accounting Software — Financial Reports"
-            },
-            "preview": "https://example.com/accounting-software",
-            "gallery": []
-        },
-        {
-            "id": "inventory-management",
-            "category": "desktop-project",
-            "title": {
-                "ar": "إدارة المخزون",
-                "en": "Inventory Management"
-            },
-            "cover": "images/portfolio/portfolio-9.webp",
-            "coverAlt": {
-                "ar": "إدارة المخزون — شاشة المنتجات",
-                "en": "Inventory Management — Products Screen"
-            },
-            "preview": "https://example.com/inventory-management",
-            "gallery": []
-        },
+
         {
             "id": "electronic-marketplace-app",
             "category": "mobile-project",

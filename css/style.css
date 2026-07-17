@@ -1628,4 +1628,55 @@ body {
 }
 /* .lightbox-preview removed — preview link created dynamically was removed */
 
+/* Fix hamburger menu icon color on hover (prevent white-on-white) */
+.menu-btn:hover .menu-icon-bar,
+.menu-btn:hover .menu-icon-bar::before,
+.menu-btn:hover .menu-icon-bar::after {
+  background-color: var(--main-color);
+}
+
+/* Fix header layout on very small screens to prevent wrapping and overlapping */
+@media (max-width: 480px) {
+  .navbar .container .row {
+    flex-wrap: nowrap !important;
+    gap: 4px;
+  }
+  .logo a {
+    font-size: 16px !important;
+  }
+  .logo a svg {
+    width: 14px !important;
+    height: 14px !important;
+    margin-right: 2px !important;
+    margin-left: 2px !important;
+  }
+  .header-controls {
+    gap: 4px !important;
+  }
+  .header-controls .lang-toggle {
+    padding: 4px 6px !important;
+    font-size: 13px !important;
+    gap: 3px !important;
+  }
+  .header-controls .lang-toggle svg {
+    width: 13px !important;
+    height: 13px !important;
+  }
+  .header-controls .theme-toggle,
+  .menu-btn {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    padding: 0 !important;
+  }
+  .theme-icon {
+    font-size: 0.9rem !important;
+  }
+  .menu-icon-bar {
+    width: 18px !important;
+  }
+  .menu-icon-bar::before { top: -6px !important; }
+  .menu-icon-bar::after { top: 6px !important; }
+}
+
 

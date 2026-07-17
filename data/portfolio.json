@@ -245,78 +245,79 @@
             ]
         },
         {
-            "id": "task-management",
+            "id": "taj-educational-platform",
             "category": "web-project",
             "title": {
-                "ar": "نظام إدارة المهام",
-                "en": "Task Management System"
+                "ar": "منصة تاج التعليمية",
+                "en": "Taj Educational Platform"
             },
-            "cover": "images/portfolio/portfolio-1.webp",
+            "cover": "images/portfolio/taj-platform-cover.png",
             "coverAlt": {
-                "ar": "نظام إدارة المهام — لوحة التحكم",
-                "en": "Task Management System — Dashboard"
+                "ar": "منصة تاج التعليمية — بث مباشر مع Next.js 14 و Laravel 12",
+                "en": "Taj Educational Platform — Live Streaming with Next.js 14 & Laravel 12"
             },
-            "preview": "https://example.com/task-management",
+            "summary": {
+                "ar": "منصة تعليمية متكاملة بـ Next.js 14 و Laravel 12 وبث مباشر عبر Agora",
+                "en": "Full-stack educational platform with Next.js 14, Laravel 12 & Agora live streaming"
+            },
+            "preview": "https://github.com/Ammar-1993/Taj-Platform",
             "gallery": []
         },
         {
-            "id": "educational-platform",
+            "id": "online-bookstore-system",
             "category": "web-project",
             "title": {
-                "ar": "منصة تعليمية",
-                "en": "Educational Platform"
+                "ar": "نظام المكتبة الإلكترونية",
+                "en": "Online Bookstore System"
             },
-            "cover": "images/portfolio/portfolio-2.webp",
+            "cover": "images/portfolio/bookstore-cover.png",
             "coverAlt": {
-                "ar": "منصة تعليمية — صفحة الدروس",
-                "en": "Educational Platform — Lessons Page"
+                "ar": "نظام المكتبة الإلكترونية — تجارة إلكترونية بـ TALL Stack وبوابة Stripe",
+                "en": "Online Bookstore System — E-Commerce with TALL Stack & Stripe"
             },
-            "preview": "https://example.com/educational-platform",
+            "summary": {
+                "ar": "نظام تجارة إلكترونية متكامل بـ TALL Stack مع دفع Stripe وتقارير PDF",
+                "en": "Full e-commerce system with TALL Stack, Stripe payment gateway & PDF reports"
+            },
+            "preview": "https://github.com/Ammar-1993/online-bookstore-system",
             "gallery": []
         },
         {
-            "id": "ecommerce-store",
+            "id": "facecrypt-face-id",
             "category": "web-project",
             "title": {
-                "ar": "متجر إلكتروني",
-                "en": "E-Commerce Store"
+                "ar": "FaceCrypt — مصادقة بالوجه",
+                "en": "FaceCrypt — Passwordless Face-ID"
             },
-            "cover": "images/portfolio/portfolio-3.webp",
+            "cover": "images/portfolio/facecrypt-cover.png",
             "coverAlt": {
-                "ar": "متجر إلكتروني — صفحة المنتجات",
-                "en": "E-Commerce Store — Products Page"
+                "ar": "FaceCrypt — نظام مصادقة بالوجه بدون كلمة مرور باستخدام Python و Flask",
+                "en": "FaceCrypt — Passwordless face authentication system with Python & Flask"
             },
-            "preview": "https://example.com/ecommerce-store",
+            "summary": {
+                "ar": "نظام مصادقة بيومترية بالوجه بدون كلمة مرور مبني بـ Python و Flask",
+                "en": "Biometric passwordless authentication system built with Python & Flask"
+            },
+            "preview": "#",
             "gallery": []
         },
         {
-            "id": "company-website",
+            "id": "wavss-vulnerability-scanner",
             "category": "web-project",
             "title": {
-                "ar": "موقع شركة",
-                "en": "Company Website"
+                "ar": "WAVSS — فاحص الثغرات الأمنية",
+                "en": "WAVSS — Vulnerability Scanner"
             },
-            "cover": "images/portfolio/portfolio-4.webp",
+            "cover": "images/portfolio/wavss-cover.png",
             "coverAlt": {
-                "ar": "موقع شركة — الصفحة الرئيسية",
-                "en": "Company Website — Homepage"
+                "ar": "WAVSS — فاحص ثغرات تطبيقات الويب الأمنية",
+                "en": "WAVSS — Web Application Vulnerability Security Scanner"
             },
-            "preview": "https://example.com/company-website",
-            "gallery": []
-        },
-        {
-            "id": "tech-blog",
-            "category": "web-project",
-            "title": {
-                "ar": "مدونة تقنية",
-                "en": "Tech Blog"
+            "summary": {
+                "ar": "فاحص ثغرات أمنية لتطبيقات الويب يكشف XSS و SQL Injection وغيرها",
+                "en": "Web vulnerability scanner detecting XSS, SQL Injection & more — raw PHP"
             },
-            "cover": "images/portfolio/portfolio-5.webp",
-            "coverAlt": {
-                "ar": "مدونة تقنية — صفحة المقالات",
-                "en": "Tech Blog — Article Page"
-            },
-            "preview": "https://example.com/tech-blog",
+            "preview": "https://github.com/Ammar-1993/wavss",
             "gallery": []
         },
 

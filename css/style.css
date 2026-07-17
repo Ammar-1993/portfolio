@@ -215,10 +215,11 @@ padding:12px 25px;
   background: var(--navbar-bg); 
   box-shadow: var(--shadow-black-100);
 }
-.logo a{font-size:24px;color:var(--ink);font-weight:700;transition:color 0.3s ease}
+.logo a{display:flex;align-items:center;font-size:24px;color:var(--ink);font-weight:700;transition:color 0.3s ease;text-decoration:none}
 .logo a:hover{color:var(--main-color)}
 .logo a span{color:var(--main-color)}
-.links .menu{list-style:none}
+.links{flex:1;display:flex;justify-content:center}
+.links .menu{list-style:none;display:flex;margin:0;padding:0}
 .navbar .menu .nav-item{display:inline-block;position:relative;margin-inline-start:28px}
 .navbar .menu .nav-item .nav-link{position:relative;color:var(--ink);font-size:16px;font-weight:600;display:block;padding:10px 0;transition:color 0.3s ease, transform 0.2s ease}
 .navbar .menu .nav-item .nav-link::after{content:"";position:absolute;bottom:0;inset-inline-start:0;width:0;height:2px;background-color:var(--main-color);transition:width 0.3s ease;border-radius:2px}
@@ -245,12 +246,33 @@ padding:12px 25px;
   .menu-btn{display:inline-flex;align-items:center;justify-content:center;z-index:var(--z-menu-btn);}
 }
 
-/* Language toggle button (header) */
-.nav-lang .lang-toggle{
-  padding:8px 12px;border-radius:8px;border:1px solid transparent;background:transparent;font-weight:700;color:var(--ink);cursor:pointer;
+/* Header Controls (Language & Theme) */
+.header-controls {
+  display: flex; align-items: center; gap: 10px;
 }
-.nav-lang .lang-toggle:hover{background:color-mix(in oklab,var(--main-color),transparent 92%);border-color:color-mix(in oklab,var(--main-color),var(--border) 10%)}
-.nav-lang .lang-toggle:focus-visible{outline:3px solid color-mix(in oklab,var(--main-color),white 20%);outline-offset:3px}
+.header-controls .lang-toggle{
+  display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;border:1px solid var(--border);
+  background:transparent;font-weight:700;color:var(--ink);cursor:pointer;transition:all 0.3s ease;
+  font-size:15px;text-decoration:none;
+}
+.header-controls .lang-toggle:hover{
+  background:color-mix(in oklab,var(--main-color),transparent 92%);
+  border-color:var(--main-color);color:var(--main-color);
+  transform:translateY(-1px);
+}
+.header-controls .lang-toggle:focus-visible{outline:3px solid color-mix(in oklab,var(--main-color),white 20%);outline-offset:3px}
+
+.header-controls .theme-toggle{
+  display:flex;align-items:center;justify-content:center;width:36px;height:36px;
+  border-radius:8px;border:1px solid var(--border);background:transparent;
+  cursor:pointer;transition:all 0.3s ease;color:var(--ink);
+}
+.header-controls .theme-toggle:hover{
+  background:color-mix(in oklab,var(--main-color),transparent 92%);
+  border-color:var(--main-color);color:var(--main-color);
+  transform:translateY(-1px);
+}
+.header-controls .theme-toggle:focus-visible{outline:3px solid color-mix(in oklab,var(--main-color),white 20%);outline-offset:3px}
 
 
 /* موبايل/تابلت — القائمة المنسدلة الثابتة (منع التغطية عند الإغلاق) */

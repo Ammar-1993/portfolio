@@ -1234,7 +1234,7 @@ html, body {
   margin: 0 auto;
 }
 
-.row {
+.row:not(.cert-grid) {
   margin-left: -20px;
   margin-right: -20px;
   width: calc(100% + 40px);

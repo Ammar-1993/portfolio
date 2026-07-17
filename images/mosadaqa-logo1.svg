@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 100" width="220" height="100" role="img" aria-label="Mosadaqa Logo">
+  <defs>
+    <style>
+      .mos-text-ar { font-family: 'Arial', 'Helvetica', sans-serif; }
+      .mos-text-en { font-family: 'Arial', 'Helvetica', sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Background: transparent (white page assumed) -->
+
+  <!-- Arabic text: مصادقة -->
+  <text x="10" y="42" class="mos-text-ar"
+        font-size="32" font-weight="700"
+        fill="#333333" text-anchor="start"
+        direction="rtl" unicode-bidi="bidi-override">مصادقة</text>
+
+  <!-- Latin text: mosadaqa -->
+  <text x="10" y="72" class="mos-text-en"
+        font-size="22" font-weight="400"
+        fill="#444444" text-anchor="start" letter-spacing="-0.3">mosadaqa</text>
+
+  <!-- Pentagon / Shield mark (teal) -->
+  <!-- A downward-pointing pentagon shape like the Mosadaqa brand mark -->
+  <g transform="translate(155, 8)">
+    <!-- Pentagon pointing down: top-left, top-right, right, bottom-point, left -->
+    <polygon
+      points="0,0 52,0 60,30 26,62 -8,30"
+      fill="#4da5b0"
+    />
+    <!-- Slight inner highlight -->
+    <polygon
+      points="4,4 48,4 55,30 26,56 -3,30"
+      fill="none"
+      stroke="rgba(255,255,255,0.18)"
+      stroke-width="1.5"
+    />
+  </g>
+</svg>

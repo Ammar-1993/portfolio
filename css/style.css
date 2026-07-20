@@ -1679,4 +1679,16 @@ body {
   .menu-icon-bar::after { top: 6px !important; }
 }
 
+/* Prevent navbar items from touching the screen edge on all devices */
+.navbar .container .row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: 100% !important;
+}
+
+/* Ensure an extra comfortable margin specifically before the logo icon */
+.logo {
+  padding-inline-start: 5px;
+}
+
 

@@ -98,7 +98,7 @@
                 "ar": "تطبيق وظائف - صفحة الترحيب",
                 "en": "Job Search App - Welcome Page"
             },
-            "preview": "https://ammar-jobs.duckdns.org/",
+            "preview": "https://hireme-platform.online/",
             "gallery": [
                 {
                     "src": "images/portfolio/job-app-2.webp",
@@ -320,7 +320,6 @@
             "preview": "https://github.com/Ammar-1993/wavss",
             "gallery": []
         },
-
         {
             "id": "electronic-marketplace-app",
             "category": "mobile-project",

@@ -2,5 +2,18 @@
 User-agent: *
 Allow: /
 
-# Explicitly allow all bots and reference sitemap
+# Allow all AI crawlers explicitly
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Sitemap location
 Sitemap: https://ammar1993.vercel.app/sitemap.xml

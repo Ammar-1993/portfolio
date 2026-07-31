@@ -1785,4 +1785,81 @@ body {
   }
 }
 
+/* Unified Header Controls Refactor */
+.header-controls .lang-toggle,
+.header-controls .theme-toggle,
+.menu-btn {
+  align-items: center !important;
+  justify-content: center !important;
+  height: 44px !important;
+  width: 44px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  color: var(--ink) !important;
+  box-shadow: none !important;
+  transition: all 0.2s ease !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  gap: 4px !important;
+}
+
+@media (min-width: 992px) {
+  .menu-btn {
+    display: none !important;
+  }
+  .header-controls .lang-toggle,
+  .header-controls .theme-toggle {
+    display: inline-flex !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .header-controls .lang-toggle,
+  .header-controls .theme-toggle,
+  .menu-btn {
+    display: inline-flex !important;
+  }
+}
+
+/* Hover States (Flat) */
+.header-controls .lang-toggle:hover,
+.header-controls .theme-toggle:hover,
+.menu-btn:hover {
+  background: var(--bg-soft) !important;
+  border-color: var(--muted) !important;
+  color: var(--ink) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Hamburger Icon Colors */
+.menu-icon-bar,
+.menu-icon-bar::before,
+.menu-icon-bar::after {
+  background-color: var(--ink) !important;
+}
+.menu.active + .menu-btn .menu-icon-bar {
+  background-color: transparent !important;
+}
+.menu-btn:hover .menu-icon-bar,
+.menu-btn:hover .menu-icon-bar::before,
+.menu-btn:hover .menu-icon-bar::after {
+  background-color: var(--ink) !important;
+}
+.menu.active + .menu-btn:hover .menu-icon-bar {
+  background-color: transparent !important;
+}
+
+/* SVG colors */
+.header-controls .theme-toggle svg,
+.header-controls .lang-toggle svg,
+.menu-btn svg,
+.menu-btn .ico {
+  color: inherit !important;
+  fill: currentColor !important;
+}
+
 

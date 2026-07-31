@@ -1,6 +1,6 @@
 /* /portfolio/sw.js */
 const BASE = './';
-const VERSION = 'v1.2.4'; // bump version for cache updates
+const VERSION = 'v1.2.5'; // bump version for cache updates
 const STATIC_CACHE = `static-${VERSION}`;
 const RUNTIME_CACHE = `runtime-${VERSION}`;
 const PRECACHE_URLS = [

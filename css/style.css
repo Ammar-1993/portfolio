@@ -215,9 +215,38 @@ padding:12px 25px;
   background: var(--navbar-bg); 
   box-shadow: var(--shadow-black-100);
 }
-.logo a{display:flex;align-items:center;font-size:24px;color:var(--ink);font-weight:700;transition:color 0.3s ease;text-decoration:none}
-.logo a:hover{color:var(--main-color)}
-.logo a span{color:var(--main-color)}
+.logo a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  color: var(--ink);
+  font-weight: 500;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+.logo a .logo-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--main-color);
+}
+.logo a:hover {
+  color: var(--main-color);
+}
+.logo a span {
+  font-weight: 700;
+  color: var(--main-color);
+}
+@media (min-width: 768px) {
+  .logo a {
+    font-size: 24px;
+    gap: 10px;
+  }
+  .logo a .logo-icon {
+    width: 26px;
+    height: 26px;
+  }
+}
 .links{flex:1;display:flex;justify-content:center}
 .links .menu{list-style:none;display:flex;margin:0;padding:0}
 .navbar .menu .nav-item{display:inline-block;position:relative;margin-inline-start:28px}

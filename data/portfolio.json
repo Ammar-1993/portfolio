@@ -289,7 +289,7 @@
                 "ar": "FaceCrypt — مصادقة بالوجه",
                 "en": "FaceCrypt — Passwordless Face-ID"
             },
-            "cover": "images/portfolio/facecrypt-cover.png",
+            "cover": "images/portfolio/facecrypt-cover.webp",
             "coverAlt": {
                 "ar": "FaceCrypt — نظام مصادقة بالوجه بدون كلمة مرور باستخدام Python و Flask",
                 "en": "FaceCrypt — Passwordless face authentication system with Python & Flask"

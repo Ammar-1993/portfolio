@@ -251,7 +251,7 @@
                 "ar": "منصة تاج التعليمية",
                 "en": "Taj Educational Platform"
             },
-            "cover": "images/portfolio/taj-platform-cover.png",
+            "cover": "images/portfolio/taj-platform-cover.webp",
             "coverAlt": {
                 "ar": "منصة تاج التعليمية — بث مباشر مع Next.js 14 و Laravel 12",
                 "en": "Taj Educational Platform — Live Streaming with Next.js 14 & Laravel 12"

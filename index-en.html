@@ -100,6 +100,19 @@
     ]
   }
   </script>
+  <style>
+    .logo-text-short {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .logo-text-full {
+        display: none;
+      }
+      .logo-text-short {
+        display: inline;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -118,7 +131,8 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                 d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
             </svg>
-            Software <span>Engineering</span>
+            <span class="logo-text-full">Software <span>Engineering</span></span>
+            <span class="logo-text-short">SWE</span>
           </a>
         </div>
 

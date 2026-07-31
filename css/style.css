@@ -326,21 +326,17 @@ padding:12px 25px;
 .home-stats .stat-item{text-align:center;padding:var(--space-md)}
 .home-stats .stat-item h3{font-size:var(--text-3xl);font-weight:800;color:var(--main-color);margin:0}
 .home-stats .stat-item p{font-size:var(--text-base);color:var(--muted);margin:0 0 0}
-
+.mobile-text{display:none}
 @media (max-width:991px){.home-stats{padding:0}}
 @media (max-width:767px){
+  .desktop-text{display:none}
+  .mobile-text{display:inline-block}
   .home-text, .home-image-container{flex:0 0 100%;max-width:100%;padding:0 16px}
   .home-image{display:flex;justify-content:center}
-  .home-stats{flex-wrap:wrap;justify-content:center;padding:0 20px;margin-top:10px}
-  .home-stats .stat-item{flex:0 0 50%;max-width:50%;padding:20px 15px;text-align:center}
-  .home-stats .stat-item h3{font-size:32px;line-height:1.2}
-  .home-stats .stat-item p{font-size:15px;margin:12px 0 0;line-height:1.4}
-}
-@media (max-width:576px){
-  .home-stats{flex-wrap:wrap;justify-content:center;padding:0 15px;margin-top:5px}
-  .home-stats .stat-item{flex:0 0 100%;max-width:100%;padding:25px 20px;margin-bottom:10px}
-  .home-stats .stat-item h3{font-size:26px;line-height:1.2}
-  .home-stats .stat-item p{font-size:16px;margin:15px 0 0;line-height:1.4}
+  .home-stats{flex-wrap:nowrap;justify-content:space-between;padding:0 5px;margin-top:20px;gap:5px}
+  .home-stats .stat-item{flex:1;max-width:25%;padding:10px 0;text-align:center;display:flex;flex-direction:column;align-items:center}
+  .home-stats .stat-item h3{font-size:18px;line-height:1}
+  .home-stats .stat-item p{font-size:12px;margin:12px 0 0;line-height:1.2;transform:rotate(-45deg);transform-origin:center;white-space:nowrap}
 }
 
 /* حول */

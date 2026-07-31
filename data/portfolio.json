@@ -270,7 +270,7 @@
                 "ar": "نظام المكتبة الإلكترونية",
                 "en": "Online Bookstore System"
             },
-            "cover": "images/portfolio/bookstore-cover.png",
+            "cover": "images/portfolio/bookstore-cover.webp",
             "coverAlt": {
                 "ar": "نظام المكتبة الإلكترونية — تجارة إلكترونية بـ TALL Stack وبوابة Stripe",
                 "en": "Online Bookstore System — E-Commerce with TALL Stack & Stripe"

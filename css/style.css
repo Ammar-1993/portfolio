@@ -310,6 +310,10 @@ padding:12px 25px;
 .home-text{flex:0 0 50%;max-width:50%;padding:0 25px}
 .home-image-container{flex:0 0 50%;max-width:50%;display:flex;flex-direction:column;padding:0 25px}
 .home-image{flex:1;display:flex;justify-content:center}
+.home-image .img-box img{
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
 .home-text h4{font-size:var(--text-2xl);font-weight:700;letter-spacing:2px;color:var(--text-brand)}
 .home-text h1{font-size:var(--text-4xl);font-weight:800;margin-top:var(--space-xs);color:var(--ink)}
 .home-text span{font-size:var(--text-md);line-height:28px;color:var(--ink);opacity:.9;display:block;margin-top:var(--space-xs)}

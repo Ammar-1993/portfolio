@@ -1862,4 +1862,70 @@ body {
   fill: currentColor !important;
 }
 
+/* Hero CTA and Social Icons Layout Refactor */
+.home-social-links {
+  display: grid !important;
+  grid-template-columns: repeat(5, max-content) !important;
+  gap: 16px 10px !important;
+}
+.hero-wa-btn {
+  grid-column: span 4 !important;
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+.hero-install-btn {
+  grid-column: span 1 !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+@media (max-width: 767px) {
+  .home-social-links {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 16px !important;
+    margin-top: 24px !important;
+  }
+  
+  .hero-wa-btn {
+    order: 1 !important;
+    flex: 1 1 calc(100% - 70px) !important;
+    min-width: 0 !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .hero-install-btn {
+    order: 2 !important;
+    flex: 0 0 54px !important;
+    width: 54px !important;
+    height: 54px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+    border-radius: 8px !important;
+    border: 1.5px solid var(--main-color) !important;
+    color: var(--main-color) !important;
+    background: transparent !important;
+    margin-bottom: 12px !important;
+  }
+  .hero-install-btn:hover {
+    background: var(--main-color) !important;
+    color: #fff !important;
+    box-shadow: none !important;
+  }
+  .hero-install-btn:hover .ico {
+    color: #fff !important;
+    transform: scale(1.1) !important;
+  }
+  
+  .social-icon-link:not(.hero-install-btn) {
+    order: 3 !important;
+    margin: 0 !important;
+  }
+}
+
 

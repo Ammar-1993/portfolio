@@ -1,0 +1,30 @@
+name: Verify Build Sync
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  verify-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run build script
+        run: node build.js
+
+      - name: Check for uncommitted changes
+        run: |
+          if ! git diff --exit-code index.html index-en.html; then
+            echo "::error::index.html and/or index-en.html are out of sync with data/portfolio.json. Please run 'node build.js' locally and commit the result."
+            exit 1
+          fi

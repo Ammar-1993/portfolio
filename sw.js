@@ -1,6 +1,6 @@
 /* /portfolio/sw.js */
 const BASE = './';
-const VERSION = 'v1.4.1'; // bump version for cache updates
+const VERSION = 'v1.4.2'; // bump version for cache updates
 const STATIC_CACHE = `static-${VERSION}`;
 const RUNTIME_CACHE = `runtime-${VERSION}`;
 const PRECACHE_URLS = [
@@ -17,7 +17,8 @@ const PRECACHE_URLS = [
   `${BASE}assets/fonts/cairo/Cairo-ExtraBold.woff2`,
   `${BASE}images/hero4.webp`,
   `${BASE}images/about_hero.webp`,
-  `${BASE}offline.html`
+  `${BASE}offline.html`,
+  `${BASE}data/portfolio.json`
 ];
 
 self.addEventListener('install', (event) => {

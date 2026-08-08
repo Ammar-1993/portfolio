@@ -9,7 +9,7 @@
 
 <div align="center">
 
-![Portfolio Interface](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8b07297/portfoliohome.png)
+![Portfolio Interface](docx/screenshots/portfolio_home.webp)
 
 [![HTML5](https://img.shields.io/badge/HTML5-%3E%3D5.0-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
 [![CSS3](https://img.shields.io/badge/CSS3-%3E%3D3.0-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
@@ -124,7 +124,7 @@ Update WhatsApp/Mail/Tel in the **Contact** section of `index.html`.
 
 ## Lighthouse Targets
 
-![Lighthouse report](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a89e9378/lighthousetest.png)
+![Lighthouse report](docx/screenshots/lighthouse_test.webp)
 
 
 ## Screenshots
@@ -133,59 +133,59 @@ A selection of key interfaces and audits from this portfolio project. Click any 
 ### Home — Hero & Intro
 Primary landing section with brief bio, core CTA, and top navigation.
 
-![Home — Hero & Intro](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8b07297/portfoliohome.png)
+![Home — Hero & Intro](docx/screenshots/portfolio_home.webp)
 
 ---
 
 ### Home (Dark) — Primary Theme
 Dark-mode presentation of the hero, showing the default site theme and navigation states.
 
-![Home (Dark) — Primary Theme](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8b60bc8/portfoliohomedark.png)
+![Home (Dark) — Primary Theme](docx/screenshots/portfolio_home_dark.webp)
 ---
 
 ### Home (Dark, English) — English Layout
 English-language (LTR) variant demonstrating bilingual support and layout adaptation.
 
-![Home (Dark, English) — English Layout](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8c01625/portfoliohomedarkenglish.png)
+![Home (Dark, English) — English Layout](docx/screenshots/portfolio_home_dark_english.webp)
 
 ---
 
 ### About Section — Profile & Summary
 Personal summary, core skills, and a brief timeline / professional snapshot.
 
-![About Section — Profile & Summary](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8a841f3/portfolioabout.png)
+![About Section — Profile & Summary](docx/screenshots/portfolio_about.webp)
 
 ---
 
 ### Services Section
 Overview of offered services with short, actionable descriptions for each service card.
 
-![Services Overview](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8c61a1a/portfolioservices.png)
+![Services Overview](docx/screenshots/portfolio_services.webp)
 
 ---
 
 ### Technologies & Skills Section
 Stack badges and proficiency highlights showing core technologies used in projects.
 
-![Technologies & Skills](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8ca0688/portfoliotechnologies.png)
+![Technologies & Skills](docx/screenshots/portfolio_technologies.webp)
 ---
 
 ### Portfolio Gallery Section — Project Thumbnails
 Grid view of selected projects with Lightbox previews and filtering controls.
 
-![Portfolio Gallery — Project Thumbnails](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8ac7ad2/portfoliogallary.png)
+![Portfolio Gallery — Project Thumbnails](docx/screenshots/portfolio_gallary.webp)
 ---
 
-### Reviews Section
-Client feedback and short testimonials highlighting project outcomes.
+### Certificates Section
+Professional certificates and achievements highlighting skill proficiency.
 
-![Reviews & Testimonials](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8b9bbc6/portfolioreviews.png)
+![Certificates & Achievements](docx/screenshots/portfolio_certificates.webp)
 ---
 
 ### Contact Section
 Contact methods, social links, and quick actions for hiring or inquiries.
 
-![Contact Panel — Reach & Links](https://ms.hsoubcdn.com/uploads/portfolios/1503826/696a8a8a5adeb/portfoliocontact.png)
+![Contact Panel — Reach & Links](docx/screenshots/portfolio_contact.webp)
 
 ---
 

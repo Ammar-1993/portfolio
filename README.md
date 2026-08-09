@@ -9,7 +9,7 @@
 
 <div align="center">
 
-![Portfolio Interface](docx/screenshots/portfolio_home_dark.png)
+![Portfolio Interface](docx/screenshots/portfolio_home_dark.webp)
 
 [![HTML5](https://img.shields.io/badge/HTML5-%3E%3D5.0-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
 [![CSS3](https://img.shields.io/badge/CSS3-%3E%3D3.0-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
@@ -132,7 +132,7 @@ Update WhatsApp/Mail/Tel in the **Contact** section of `index.html`.
 
 ## Lighthouse Targets
 
-![Lighthouse report](docx/screenshots/lighthouse_test.png)
+![Lighthouse report](docx/screenshots/lighthouse_test.webp)
 
 
 ## Screenshots
@@ -141,55 +141,61 @@ A selection of key interfaces and audits from this portfolio project. Click any 
 ### Home — Hero & Intro
 Primary landing section with brief bio, core CTA, and top navigation.
 
-![Home — Hero & Intro](docx/screenshots/portfolio_home.png)
+![Home — Hero & Intro](docx/screenshots/portfolio_home.webp)
 
 ---
 
 ### Home (Dark) — Primary Theme
 Dark-mode presentation of the hero, showing the default site theme and navigation states.
 
-![Home (Dark) — Primary Theme](docx/screenshots/portfolio_home_dark.png)
+![Home (Dark) — Primary Theme](docx/screenshots/portfolio_home_dark.webp)
 ---
 
 ### Home (Dark, English) — English Layout
 English-language (LTR) variant demonstrating bilingual support and layout adaptation.
 
-![Home (Dark, English) — English Layout](docx/screenshots/portfolio_home_dark_english.png)
+![Home (Dark, English) — English Layout](docx/screenshots/portfolio_home_dark_english.webp)
 
 ---
 
 ### About Section — Profile & Summary
 Personal summary, core skills, and a brief timeline / professional snapshot.
 
-![About Section — Profile & Summary](docx/screenshots/portfolio_about.png)
+![About Section — Profile & Summary](docx/screenshots/portfolio_about.webp)
 
 ---
 
 ### Services Section
 Overview of offered services with short, actionable descriptions for each service card.
 
-![Services Overview](docx/screenshots/portfolio_services.png)
+![Services Overview](docx/screenshots/portfolio_services.webp)
 
 ---
 
 ### Technologies & Skills Section
 Stack badges and proficiency highlights showing core technologies used in projects.
 
-![Technologies & Skills](docx/screenshots/portfolio_technologies.png)
+![Technologies & Skills](docx/screenshots/portfolio_technologies.webp)
 ---
 
 ### Portfolio Gallery Section — Project Thumbnails
 Grid view of selected projects with Lightbox previews and filtering controls.
 
-![Portfolio Gallery — Project Thumbnails](docx/screenshots/portfolio_gallary.png)
+![Portfolio Gallery — Project Thumbnails](docx/screenshots/portfolio_gallary.webp)
 ---
 
 
 
+### Certificates Section
+Professional certificates and achievements highlighting skill proficiency.
+
+![Certificates & Achievements](docx/screenshots/portfolio_certificates.webp)
+---
+
 ### Contact Section
 Contact methods, social links, and quick actions for hiring or inquiries.
 
-![Contact Panel — Reach & Links](docx/screenshots/portfolio_contact.png)
+![Contact Panel — Reach & Links](docx/screenshots/portfolio_contact.webp)
 
 ---
 

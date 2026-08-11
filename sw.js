@@ -1,6 +1,6 @@
 /* /portfolio/sw.js */
 const BASE = './';
-const VERSION = 'v1.4.2'; // bump version for cache updates
+const VERSION = 'v1.4.3'; // bumped version for cache updates
 const STATIC_CACHE = `static-${VERSION}`;
 const RUNTIME_CACHE = `runtime-${VERSION}`;
 const PRECACHE_URLS = [
@@ -21,53 +21,58 @@ const PRECACHE_URLS = [
   `${BASE}data/portfolio.json`
 ];
 
+// 1. Install Phase: Pre-cache essential static assets
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(STATIC_CACHE)
       .then((cache) => cache.addAll(PRECACHE_URLS))
-      .then(() => self.skipWaiting())
+      .then(() => self.skipWaiting()) // Force the waiting service worker to become the active service worker
   );
 });
 
+// 2. Activate Phase: Cache Management (Delete old/outdated caches)
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(k => ![STATIC_CACHE, RUNTIME_CACHE].includes(k)).map(k => caches.delete(k)))
-    ).then(() => self.clients.claim())
+    caches.keys().then((keys) => {
+      return Promise.all(
+        keys.filter((key) => key !== STATIC_CACHE && key !== RUNTIME_CACHE)
+            .map((key) => caches.delete(key))
+      );
+    }).then(() => self.clients.claim()) // Claim any clients immediately
   );
 });
 
-// HTML: الشبكة أولاً ثم الكاش مع صفحة offline
-// الأصول: stale-while-revalidate
+// 3. Fetch Phase: Stale-While-Revalidate Strategy
 self.addEventListener('fetch', (event) => {
   const req = event.request;
-  const url = new URL(req.url);
-  if (!url.pathname.startsWith(BASE)) return;
+  
+  // Only handle GET requests
+  if (req.method !== 'GET') return;
 
-  // Navigation requests: network first, fallback to offline page
-  if (req.mode === 'navigate') {
-    event.respondWith((async () => {
-      try {
-        const fresh = await fetch(req);
-        const cache = await caches.open(RUNTIME_CACHE);
-        cache.put(req, fresh.clone());
-        return fresh;
-      } catch {
-        const cache = await caches.open(STATIC_CACHE);
-        return (await cache.match(`./offline.html`)) || Response.error();
-      }
-    })());
-    return;
-  }
-
-  // Assets: stale-while-revalidate
   event.respondWith((async () => {
-    const cache = await caches.open(RUNTIME_CACHE);
-    const cached = await cache.match(req);
-    const network = fetch(req).then(res => {
-      if (res && res.status === 200 && res.type === 'basic') cache.put(req, res.clone());
-      return res;
-    }).catch(() => cached);
-    return cached || network;
+    // Check if we have a cached response
+    const cachedResponse = await caches.match(req);
+
+    // Fetch from the network in the background to keep the cache fresh
+    const networkPromise = fetch(req).then(async (networkResponse) => {
+      // Only cache valid basic responses (from our origin)
+      if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
+        const cache = await caches.open(RUNTIME_CACHE);
+        cache.put(req, networkResponse.clone());
+      }
+      return networkResponse;
+    }).catch(async (error) => {
+      // If the network fails and we DON'T have a cached response,
+      // fallback to offline.html for navigation requests
+      if (!cachedResponse && req.mode === 'navigate') {
+        const staticCache = await caches.open(STATIC_CACHE);
+        return staticCache.match(`${BASE}offline.html`);
+      }
+      // If it's not a navigate request, just throw the error
+      throw error;
+    });
+
+    // Return the cached response immediately if available, otherwise wait for the network response
+    return cachedResponse || networkPromise;
   })());
 });

@@ -226,5 +226,13 @@ SOFTWARE.
 - Phone/WhatsApp: `+967714294340`
 - Email: `ammaralnggar@gmail.com`
 <!-- - Phone: `+967774344625` -->
+```
+
+---
+
+<div align="center">
+  <br />
+  <p>Developed By ❤️ <b>Engineer Ammar Al-Najjar</b></p>
+</div>
 
 

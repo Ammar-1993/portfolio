@@ -226,7 +226,6 @@ SOFTWARE.
 - Phone/WhatsApp: `+967714294340`
 - Email: `ammaralnggar@gmail.com`
 <!-- - Phone: `+967774344625` -->
-```
 
 ---
 

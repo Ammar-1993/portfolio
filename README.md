@@ -29,13 +29,13 @@
 A lightweight, user-friendly, and high-performance personal website showcasing the work of engineer Ammar Al-Najjar. The site displays his services, selected projects (websites, mobile applications, and computers), the technologies used, and contact information. It features fast loading speeds, search engine optimization, a dark and light design, and supports both Arabic and English.
 
 ## Highlights
-- 🎨 Dark theme with clear brand color
-- 🧭 Sticky navbar + active section highlight
-- 🗂️ Filterable portfolio (web/mobile/desktop) with Lightbox viewer
-- 🖼️ Unified card ratio via CSS aspect-ratio
-- ♿ Accessibility: semantic HTML, alt text, keyboard support, Esc to close Lightbox
-- ⚡ Performance: lazy images, deferred JS, minimal scroll work
-- 🌐 SEO/Social: title/description, Open Graph/Twitter cards, JSON‑LD (Person)
+ 🎨 Dark theme with clear brand color
+ 🧭 Sticky navbar + active section highlight
+ 🗂️ Filterable portfolio (web/mobile/desktop) with Lightbox viewer
+ 🖼️ Unified card ratio via CSS aspect-ratio
+ ♿ Accessibility: semantic HTML, alt text, keyboard support, Esc to close Lightbox
+ ⚡ Performance: lazy images, deferred JS, minimal scroll work
+ 🌐 SEO/Social: title/description, Open Graph/Twitter cards, JSON‑LD (Person)
 
 ## Tech Stack
 - **Frontend:** HTML5, CSS3 (Bootstrap RTL), Font Awesome

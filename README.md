@@ -1,4 +1,3 @@
-
 # Portfolio — Eng. Ammar Al‑Najjar
 
 [![Status](https://img.shields.io/badge/status-live-brightgreen.svg)](https://ammar1993.vercel.app/)
@@ -13,120 +12,225 @@
 
 [![HTML5](https://img.shields.io/badge/HTML5-%3E%3D5.0-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
 [![CSS3](https://img.shields.io/badge/CSS3-%3E%3D3.0-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![Bootstrap](https://img.shields.io/badge/Bootstrap-RTL-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com)
-[![Font Awesome](https://img.shields.io/badge/Font_Awesome-Icons-1786B1?style=for-the-badge&logo=font-awesome&logoColor=white)](https://fontawesome.com)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![PWA](https://img.shields.io/badge/PWA-Ready-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)
+[![Node.js](https://img.shields.io/badge/Node.js-Build%20Tool-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Vercel](https://img.shields.io/badge/Vercel-Hosting-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
 
 </div>
-
 
 - [Live Site](https://ammar1993.vercel.app/)
 
 ---
 
 ## Overview
-A lightweight, user-friendly, and high-performance personal website showcasing the work of engineer Ammar Al-Najjar. The site displays his services, selected projects (websites, mobile applications, and computers), the technologies used, and contact information. It features fast loading speeds, search engine optimization, a dark and light design, and supports both Arabic and English.
+A lightweight, user-friendly, and high-performance personal portfolio website showcasing the work of software engineer Ammar Al-Najjar. The site highlights his services, featured projects (web applications, mobile apps, and desktop software), certifications, technical skills, and direct contact channels. It features sub-second loading speeds, full search engine optimization, an adaptive dark and light design, and native bilingual support (Arabic RTL and English LTR).
 
 ## Highlights
-- 🎨 Dark theme with clear brand color
-- 🧭 Sticky navbar + active section highlight
-- 🗂️ Filterable portfolio (web/mobile/desktop) with Lightbox viewer
-- 🖼️ Unified card ratio via CSS aspect-ratio
-- ♿ Accessibility: semantic HTML, alt text, keyboard support, Esc to close Lightbox
-- ⚡ Performance: lazy images, deferred JS, minimal scroll work
-- 🌐 SEO/Social: title/description, Open Graph/Twitter cards, JSON‑LD (Person)
+- 🎨 **Adaptive Theme:** Smooth dark and light modes with system preference auto-detection and cross-tab sync
+- 🧭 **Intelligent Navigation:** Sticky navbar with throttled scroll spy and `IntersectionObserver` section tracking
+- 🗂️ **Filterable Portfolio:** Category filtering (Web, Mobile, Desktop) with an accessible multi-image Lightbox viewer
+- 📱 **Progressive Web App (PWA):** Offline support via Service Worker (Stale-While-Revalidate) and installable app manifest
+- 🌐 **Bilingual Architecture:** Native Arabic (`dir="rtl"`) on `index.html` and English (`dir="ltr"`) on `index-en.html`
+- 🖼️ **Unified Card Ratios:** Consistent visual layout via CSS custom properties (`--tile-ratio`)
+- ♿ **Accessibility (a11y):** Semantic HTML5, ARIA landmarks, keyboard focus traps, and Esc-key modal dismissal
+- ⚡ **Ultra Performance:** Self-hosted WOFF2 fonts, WebP imagery, native lazy loading, deferred scripts, and zero framework bloat
+- 🔍 **Comprehensive SEO:** Optimized meta tags, Open Graph, Twitter Cards, and dual JSON-LD schemas (`Person` & `CreativeWork`)
 
 ## Tech Stack
-- **Frontend:** HTML5, CSS3 (Bootstrap RTL), Font Awesome
-- **JavaScript:** Vanilla JS (no heavy libs)
-- **Hosting:** Vercel
-
-
+- **Frontend:** Semantic HTML5, Modern CSS3 (CSS Variables, Flexbox & CSS Grid), Native Inline SVGs
+- **JavaScript:** Vanilla ES6+ (Zero heavy external libraries or runtime frameworks)
+- **PWA:** Service Worker (`sw.js`), Web App Manifest (`manifest.json`), Offline Fallback (`offline.html`)
+- **Build & Optimization:** Node.js (Static HTML injection from JSON), Python (Pillow for image WebP batch processing)
+- **Hosting & Infrastructure:** Vercel (Edge network, custom security headers, SSL/TLS)
 
 ---
 
+## System Architecture
+
+The following diagram illustrates the end-to-end architecture of the portfolio—from raw project data and image optimization scripts, through the dual-page static generation and PWA caching layers, to global edge deployment on Vercel:
+
+```mermaid
+flowchart TD
+    subgraph DataLayer["1. Data & Asset Pipeline"]
+        PJ["data/portfolio.json - Projects Metadata"]
+        BUILD["build.js - Static Site Generator"]
+        OPT["scripts - Python Pillow Optimizers"]
+        ASSETS["Assets - WebP Images, WOFF2 Fonts, SVG Icons"]
+        PJ -->|Reads project records| BUILD
+        OPT -->|Optimizes and downscales| ASSETS
+    end
+
+    subgraph PresentationLayer["2. Dual-Language Presentation Layer"]
+        AR["index.html - Arabic RTL Entry"]
+        EN["index-en.html - English LTR Entry"]
+        CSS["css/style.min.css - Theme Variables & Responsive Layout"]
+        JS["js/main.js - Navigation, Theme Engine, Lightbox & a11y"]
+        
+        BUILD -->|Injects pre-rendered HTML| AR
+        BUILD -->|Injects pre-rendered HTML| EN
+        AR <-->|Language Switcher with URL state| EN
+        
+        CSS -.->|Styles| AR
+        CSS -.->|Styles| EN
+        JS -.->|Interactive features| AR
+        JS -.->|Interactive features| EN
+        ASSETS -.->|Delivers media| AR
+        ASSETS -.->|Delivers media| EN
+    end
+
+    subgraph OfflineLayer["3. PWA & Offline Resilience"]
+        SW["sw.js - Service Worker with Stale-While-Revalidate"]
+        CACHE[("Cache Storage - Critical Shell, Fonts, Assets")]
+        OFFLINE["offline.html - Offline Fallback Screen"]
+        
+        AR -->|Registers service worker| SW
+        EN -->|Registers service worker| SW
+        SW <-->|Caches & serves offline assets| CACHE
+        SW -->|Fallback on network drop| OFFLINE
+    end
+
+    subgraph EdgeLayer["4. Edge Hosting & Distribution"]
+        VERCEL["Vercel Global Edge CDN - Security Headers & SSL"]
+        SEO["SEO & Discovery - sitemap.xml, robots.txt, JSON-LD"]
+        USERS["End Users & Crawlers - Mobile, Desktop & PWA Standalone"]
+        
+        AR -->|Served via edge| VERCEL
+        EN -->|Served via edge| VERCEL
+        SEO -->|Discovered via| VERCEL
+        VERCEL -->|Delivers content to| USERS
+    end
+```
+
+---
+
+## Prerequisites
+- Modern web browser (Chrome, Firefox, Safari, Edge)
+- [Node.js](https://nodejs.org/) (v16+ recommended, for compiling portfolio data via `build.js`)
+- *(Optional)* [Python 3](https://www.python.org/) with `Pillow` (for running image optimization scripts in `scripts/`)
+
 ## Quick Start (Local)
-1. **Clone:**
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/Ammar-1993/portfolio.git
    cd portfolio
    ```
-2. Open `index.html` in your browser, or use VS Code Live Server extension.
+2. **Open the project:**
+   - Arabic layout: Open `index.html` in your browser.
+   - English layout: Open `index-en.html` in your browser.
+   - Or run a local HTTP server (recommended for testing Service Worker / PWA features):
+     ```bash
+     npx serve .
+     ```
 
 ---
 
 ## Build & Development
-- **Rebuilding Portfolio Data:** Whenever you modify `data/portfolio.json`, you must run `node build.js` to regenerate the dependent HTML snippets.
-- **Image Optimization:**
-  - `scripts/convert-to-webp.py`: Bulk converts images to WebP format for optimal web performance.
-  - `scripts/downscale-portfolio.py`: Resizes large portfolio images to uniform dimensions to save bandwidth.
+
+### 1. Dual-Page Architecture
+- [`index.html`](index.html): Primary Arabic entry point (`lang="ar" dir="rtl"`).
+- [`index-en.html`](index-en.html): English entry point (`lang="en" dir="ltr"`).
+
+### 2. Updating Portfolio Projects
+All project items are centralized in [`data/portfolio.json`](data/portfolio.json). Whenever you modify this file, regenerate the static markup across both pages:
+```bash
+node build.js
+```
+This updates the `<div id="portfolio-grid">` section in both `index.html` and `index-en.html` automatically.
+
+### 3. Image Optimization Scripts
+- `scripts/convert-to-webp.py`: Bulk converts images to WebP format using Pillow.
+  ```bash
+  python scripts/convert-to-webp.py [optional_directory_path]
+  ```
+- `scripts/downscale-portfolio.py`: Resizes large portfolio captures to uniform dimensions to conserve bandwidth.
 
 ---
 
 ## Deploy on Vercel
 1. Push your code to GitHub.
-2. Import the repository in Vercel.
-3. Keep default settings (Vercel automatically detects static sites).
-4. Your site will be available at:
+2. Import the repository in [Vercel](https://vercel.com/).
+3. Keep default settings (Vercel automatically detects static sites and reads `vercel.json` for security headers).
+4. Your site will be live at:
    https://ammar1993.vercel.app/
 
 ---
 
 ## Customization
-### Brand color & fonts
-- Change the primary color in `style.css`:
-  ```css
-  :root{ --main-color:#00a78e; /* brand color */ }
-  ```
-- Default font: **Cairo** (adjust weights or swap as needed)
 
-### Unified card ratio (Portfolio grid)
-Set via CSS variable (default 16:9):
+### Brand Color & Fonts
+- Change the primary brand color variable in [`css/style.css`](css/style.css):
   ```css
-  :root{
-    --tile-ratio: 16/9; /* switch to 4/3 or 1/1 as you prefer */
-    --tile-min-h: 220px;
-  }
-  .portfolio .portfolio-item-inner .portfolio-img,
-  .portfolio .portfolio-item-inner-video{
-    aspect-ratio: var(--tile-ratio);
-    min-height: var(--tile-min-h);
-    display: grid; place-items: center;
-    background:#0e1626;
-  }
-  .portfolio .portfolio-item-inner .portfolio-img img,
-  .portfolio .portfolio-item-inner-video video{
-    width:100%; height:100%; object-fit: cover;
+  :root {
+    --main-color: #00a78e; /* brand primary color */
   }
   ```
+- **Default Fonts:**
+  - Arabic: **Cairo** (self-hosted WOFF2 files in `assets/fonts/cairo/`)
+  - English: **Poppins** (via Google Fonts)
 
-### Contact links
-Update WhatsApp/Mail/Tel in the **Contact** section of `index.html`.
+### Unified Card Ratio (Portfolio Grid)
+Adjust card dimensions and aspect ratio via CSS variables in [`css/style.css`](css/style.css):
+```css
+:root {
+  --tile-ratio: 4/3;   /* switch to 16/9 or 1/1 as preferred */
+  --tile-min-h: 220px;
+}
+
+.portfolio .portfolio-item-inner .portfolio-img {
+  aspect-ratio: var(--tile-ratio);
+  min-height: var(--tile-min-h);
+  display: grid;
+  place-items: center;
+  background: var(--surface);
+}
+
+.portfolio .portfolio-item-inner .portfolio-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+```
+
+### Contact Channels
+Update your WhatsApp, email address, or phone number in the **Contact** section of `index.html` and `index-en.html`.
 
 ---
 
-## SEO (already in `index.html`)
-- `<title>` and `<meta name="description">`
-- Open Graph + Twitter Card (ensure `images/og-cover.jpg` exists)
-- JSON‑LD Person (name/phone/email)
-- `lang="ar" dir="rtl"` on `<html>`
+## Progressive Web App (PWA)
+- **Service Worker (`sw.js`):** Employs a Stale-While-Revalidate caching strategy with versioned cache busting (`v1.4.x`) to serve cached assets instantly while refreshing them in the background.
+- **Offline Resilience:** If network connectivity drops, navigation requests gracefully fall back to [`offline.html`](offline.html).
+- **Home Screen Install:** Uses [`manifest.json`](manifest.json) configured with maskable icons (192px and 512px) and a custom in-app install button prompt (`.install-btn-trigger`).
+
+---
+
+## SEO & Structured Data
+- **Meta Tags:** Informative `<title>`, `<meta name="description">`, canonical links, and `hreflang` alternate tags for Arabic and English versions.
+- **Social Cards:** Complete Open Graph and Twitter Card tags configured with `images/og-cover.jpg`.
+- **JSON-LD Schemas:**
+  - `Person`: Detailed author entity with contact points, university alumni details, and verified profile links.
+  - `CreativeWork`: Structured catalog indexing portfolio projects for enhanced search engine results.
+- **Bot Control:** Configured [`sitemap.xml`](sitemap.xml) and [`robots.txt`](robots.txt) allowing search engines and modern AI crawlers.
 
 ---
 
 ## Accessibility
-- Descriptive `alt` attributes for images
-- Keyboard navigation (Tab, Enter/Space to open Lightbox)
-- Close Lightbox via Esc
-- Sufficient contrast in dark theme
+- Semantic HTML5 sectioning (`<header>`, `<main>`, `<section>`, `<footer>`, `<nav>`)
+- Descriptive `alt` attributes for all images
+- Full keyboard navigation (Tab navigation, Enter/Space to open project lightbox)
+- Modal focus trapping and `Esc` key dismissal
+- RTL-aware directional navigation (ArrowLeft/ArrowRight adjust according to reading direction)
+- Respects `prefers-reduced-motion` and `prefers-color-scheme` media queries
 
 ---
 
 ## Performance
-- Use WebP/AVIF when possible
-- Add `loading="lazy"` to non-critical images
-- Provide `width`/`height` to images to prevent CLS
-- Keep `main.js` with `defer`
+- Modern WebP image formats throughout the gallery
+- Native `loading="lazy"` and `decoding="async"` on non-critical images
+- Explicit `width` and `height` dimensions to eliminate Cumulative Layout Shift (CLS)
+- Preloaded critical WOFF2 font files and LCP hero image
+- Scripts loaded with `defer` to eliminate render-blocking resources
+- Throttled scroll and resize handlers using `requestAnimationFrame`
 
 ---
 
@@ -134,10 +238,12 @@ Update WhatsApp/Mail/Tel in the **Contact** section of `index.html`.
 
 ![Lighthouse report](docx/screenshots/lighthouse_test.webp)
 
+---
 
 ## Screenshots
 
 A selection of key interfaces and audits from this portfolio project. Click any thumbnail to view the full screenshot.
+
 ### Home — Hero & Intro
 Primary landing section with brief bio, core CTA, and top navigation.
 
@@ -149,6 +255,7 @@ Primary landing section with brief bio, core CTA, and top navigation.
 Dark-mode presentation of the hero, showing the default site theme and navigation states.
 
 ![Home (Dark) — Primary Theme](docx/screenshots/portfolio_home_dark.webp)
+
 ---
 
 ### Home (Dark, English) — English Layout
@@ -176,20 +283,21 @@ Overview of offered services with short, actionable descriptions for each servic
 Stack badges and proficiency highlights showing core technologies used in projects.
 
 ![Technologies & Skills](docx/screenshots/portfolio_technologies.webp)
+
 ---
 
 ### Portfolio Gallery Section — Project Thumbnails
 Grid view of selected projects with Lightbox previews and filtering controls.
 
 ![Portfolio Gallery — Project Thumbnails](docx/screenshots/portfolio_gallary.webp)
+
 ---
-
-
 
 ### Certificates Section
 Professional certificates and achievements highlighting skill proficiency.
 
 ![Certificates & Achievements](docx/screenshots/portfolio_certificates.webp)
+
 ---
 
 ### Contact Section
@@ -199,8 +307,11 @@ Contact methods, social links, and quick actions for hiring or inquiries.
 
 ---
 
+## License
 
-### Copyright (c) 2025 Ammar Al-Najjar
+MIT License
+
+Copyright (c) 2025 Ammar Al-Najjar
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -242,8 +353,3 @@ SOFTWARE.
    <sub>All rights reserved © 2026 Engineer Ammar Al-Najjar</sub>
   </div>
 </div>
-
-
-
-
-

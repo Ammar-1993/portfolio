@@ -28,6 +28,22 @@
     // Optional short description if provided in data
     const shortDesc = project.description ? (project.description[lang] || project.description.ar) : (project.summary ? (project.summary[lang] || project.summary.ar) : '');
 
+    let previewHtml = '';
+    if (project.preview && !project.preview.includes('example.com') && project.preview !== '#') {
+      const previewTitle = lang === 'en' ? 'Open preview (opens in new window)' : 'يفتح في نافذة جديدة';
+      const previewHoverTitle = lang === 'en' ? 'Opens in a new window' : 'يفتح في نافذة جديدة';
+      previewHtml = `
+            <a class="project-preview" href="${project.preview}" target="_blank" rel="noopener noreferrer" title="${previewHoverTitle}" aria-label="${previewTitle}">
+              <svg class="project-preview__svg" aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 3h7v7" />
+                  <path d="M10 14L21 3" />
+                  <path d="M21 21H3V3" />
+                </g>
+              </svg>
+            </a>`;
+    }
+
     item.innerHTML = `
       <div class="portfolio-item-inner">
         <div class="portfolio-img">
@@ -40,15 +56,7 @@
               <h4>${title}</h4>
               ${shortDesc ? `<p class="portfolio-short">${shortDesc}</p>` : ''}
             </div>
-            <a class="project-preview" href="${project.preview || '#'}" target="_blank" rel="noopener noreferrer" title="${lang === 'en' ? 'Opens in a new window' : 'يفتح في نافذة جديدة'}" aria-label="${lang === 'en' ? 'Open preview (opens in new window)' : 'يفتح في نافذة جديدة'}">
-              <svg class="project-preview__svg" aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false">
-                <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 3h7v7" />
-                  <path d="M10 14L21 3" />
-                  <path d="M21 21H3V3" />
-                </g>
-              </svg>
-            </a>
+            ${previewHtml}
           </div>
         </div>
       </div>

@@ -65,14 +65,18 @@ flowchart TD
         AR["index.html - Arabic RTL Entry"]
         EN["index-en.html - English LTR Entry"]
         CSS["css/style.min.css - Theme Variables & Responsive Layout"]
+        RENDER["js/portfolio-render.js - Dynamic Portfolio Hydrator"]
         JS["js/main.js - Navigation, Theme Engine, Lightbox & a11y"]
         
         BUILD -->|Injects pre-rendered HTML| AR
         BUILD -->|Injects pre-rendered HTML| EN
+        PJ -.->|Hydrates at runtime| RENDER
         AR <-->|Language Switcher with URL state| EN
         
         CSS -.->|Styles| AR
         CSS -.->|Styles| EN
+        RENDER -.->|Renders project grid| AR
+        RENDER -.->|Renders project grid| EN
         JS -.->|Interactive features| AR
         JS -.->|Interactive features| EN
         ASSETS -.->|Delivers media| AR
@@ -136,7 +140,7 @@ All project items are centralized in [`data/portfolio.json`](data/portfolio.json
 ```bash
 node build.js
 ```
-This updates the `<div id="portfolio-grid">` section in both `index.html` and `index-en.html` automatically.
+This updates the `<div class="row" id="portfolio-grid">` section in both `index.html` and `index-en.html` automatically for SEO and instant initial paint, while [`js/portfolio-render.js`](js/portfolio-render.js) hydrates the grid dynamically at runtime with a fallback to the pre-rendered HTML.
 
 ### 3. Image Optimization Scripts
 - `scripts/convert-to-webp.py`: Bulk converts images to WebP format using Pillow.

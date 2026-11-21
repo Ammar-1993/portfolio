@@ -229,14 +229,14 @@ padding:12px 25px;
 .logo a .logo-icon {
   width: 20px;
   height: 20px;
-  color: var(--main-color);
+  color: var(--text-brand);
 }
 .logo a:hover {
-  color: var(--main-color);
+  color: var(--text-brand);
 }
 .logo a span {
   font-weight: 700;
-  color: var(--main-color);
+  color: var(--text-brand);
 }
 @media (min-width: 768px) {
   .logo a {
@@ -256,7 +256,7 @@ padding:12px 25px;
 .navbar .menu .nav-item .nav-link:hover::after,
 .navbar .menu .nav-item .nav-link.active::after{width:100%}
 .navbar .menu .nav-item .nav-link:hover,
-.navbar .menu .nav-item .nav-link.active{color:var(--main-color);transform:translateY(-1px)}
+.navbar .menu .nav-item .nav-link.active{color:var(--text-brand);transform:translateY(-1px)}
 .navbar .menu .nav-item .nav-link:focus-visible{outline:2px solid var(--link);outline-offset:2px}
 .navbar .menu .nav-item .nav-link span{display:none}
 
@@ -354,7 +354,7 @@ padding:12px 25px;
 [dir="ltr"] .header-hero-shape::before{transform:skewX(-20deg)}
 .home-stats{display:flex;justify-content:space-around;margin-top:-20px;padding:0}
 .home-stats .stat-item{text-align:center;padding:var(--space-md)}
-.home-stats .stat-item h3{font-size:var(--text-3xl);font-weight:800;color:var(--main-color);margin:0}
+.home-stats .stat-item h3{font-size:var(--text-3xl);font-weight:800;color:var(--text-brand);margin:0}
 .home-stats .stat-item p{font-size:var(--text-base);color:var(--muted);margin:0 0 0}
 .mobile-text{display:none}
 @media (max-width:991px){.home-stats{padding:0}}

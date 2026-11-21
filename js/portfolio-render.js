@@ -30,7 +30,7 @@
 
     let previewHtml = '';
     if (project.preview && !project.preview.includes('example.com') && project.preview !== '#') {
-      const previewTitle = lang === 'en' ? 'Open preview (opens in new window)' : 'يفتح في نافذة جديدة';
+      const previewTitle = lang === 'en' ? `Open preview: ${title} (opens in new window)` : `معاينة ${title} (يفتح في نافذة جديدة)`;
       const previewHoverTitle = lang === 'en' ? 'Opens in a new window' : 'يفتح في نافذة جديدة';
       previewHtml = `
             <a class="project-preview" href="${project.preview}" target="_blank" rel="noopener noreferrer" title="${previewHoverTitle}" aria-label="${previewTitle}">

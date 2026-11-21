@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     }, {
-      rootMargin: `-${HEADER_OFFSET}px 0px -${window.innerHeight - HEADER_OFFSET}px 0px`,
+      rootMargin: `-${Math.max(0, Math.round(HEADER_OFFSET))}px 0px -${Math.max(0, Math.round(window.innerHeight - Math.max(0, Math.round(HEADER_OFFSET)) - 1))}px 0px`,
       threshold: 0
     });
     sections.forEach((section) => activeObserver.observe(section));

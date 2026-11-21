@@ -1,6 +1,6 @@
 /* /portfolio/sw.js */
 const BASE = "./";
-const VERSION = "v1.4.8"; // bump version for cache updates
+const VERSION = "v1.4.9"; // bump version for cache updates
 const STATIC_CACHE = `static-${VERSION}`;
 const RUNTIME_CACHE = `runtime-${VERSION}`;
 const PRECACHE_URLS = [
@@ -53,8 +53,8 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const req = event.request;
 
-  // Only handle GET requests
-  if (req.method !== "GET") return;
+  // Only handle HTTP/HTTPS GET requests
+  if (req.method !== "GET" || !req.url.startsWith("http")) return;
 
   event.respondWith(
     (async () => {
@@ -75,15 +75,18 @@ self.addEventListener("fetch", (event) => {
           }
           return networkResponse;
         })
-        .catch(async (error) => {
-          // If the network fails and we DON'T have a cached response,
-          // fallback to offline.html for navigation requests
-          if (!cachedResponse && req.mode === "navigate") {
-            const staticCache = await caches.open(STATIC_CACHE);
-            return staticCache.match(`${BASE}offline.html`);
+        .catch(async () => {
+          // If the network fails and we already have a cached response, return it silently
+          if (cachedResponse) {
+            return cachedResponse;
           }
-          // If it's not a navigate request, just throw the error
-          throw error;
+          // If we DON'T have a cached response, fallback to offline.html for navigation requests
+          if (req.mode === "navigate") {
+            const staticCache = await caches.open(STATIC_CACHE);
+            const offlinePage = await staticCache.match(`${BASE}offline.html`);
+            if (offlinePage) return offlinePage;
+          }
+          return Response.error();
         });
 
       // Return the cached response immediately if available, otherwise wait for the network response

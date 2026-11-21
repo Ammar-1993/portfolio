@@ -72,6 +72,7 @@ body{font-family:var(--font-primary);}
   --track:#e5e7eb;
   --input-bg:#ffffff;
   --media-bg:#0e1626;
+  --text-brand:#007a68;
 }
 
 /* ========== اتباع النظام عندما لا يوجد اختيار يدوي ========== */
@@ -175,10 +176,10 @@ img{max-width:100%;height:auto;display:block}
   padding:var(--space-sm) var(--space-xl);border:none;font-weight:600;font-size:var(--text-base);
   text-transform:capitalize;border-radius:8px;cursor:pointer
 }
-.btn-1{background:var(--main-color);color:#fff;box-shadow:0 10px 24px rgba(0,167,142,.25)}
-.btn-1:hover{transform:translateY(-1px);box-shadow:0 14px 36px rgba(0,167,142,.33)}
+.btn-1{background:#007a68;color:#fff;box-shadow:0 10px 24px rgba(0,122,104,.25)}
+.btn-1:hover{background:#006657;transform:translateY(-1px);box-shadow:0 14px 36px rgba(0,122,104,.33)}
 .btn-2{background:transparent;color:var(--text-brand);border:1px solid var(--text-brand)}
-.btn-2:hover{background:var(--main-color);color:#fff}
+.btn-2:hover{background:#007a68;color:#fff}
 .btn-1:focus-visible,.btn-2:focus-visible{outline:3px solid color-mix(in oklab,var(--main-color),white 20%);outline-offset:2px}
 /* General focus style for accessibility */
 *:focus-visible{outline:2px solid var(--link);outline-offset:2px}
@@ -502,18 +503,18 @@ padding:12px 25px;
 [data-theme="dark"] .cert-icon{background:color-mix(in oklab,var(--main-color),#000 80%)}
 .cert-icon svg{width:32px;height:32px}
 .cert-info h3{font-size:20px;font-weight:700;color:var(--ink);margin-bottom:8px}
-.cert-org{display:block;font-size:16px;font-weight:600;color:var(--main-color);margin-bottom:12px}
+.cert-org{display:block;font-size:16px;font-weight:600;color:var(--text-brand);margin-bottom:12px}
 .cert-meta{display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;color:var(--muted);margin-bottom:24px}
 .cert-meta .dot{font-size:18px}
-.cert-btn{margin-top:auto;display:inline-block;padding:10px 24px;border-radius:8px;font-weight:600;font-size:15px;background:0 0;color:var(--main-color);border:1px solid var(--main-color);text-decoration:none;transition:all 0.2s ease;cursor:pointer;font-family:inherit}
-.cert-btn:hover{background:var(--main-color);color:#fff;transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,167,142,0.25)}
+.cert-btn{margin-top:auto;display:inline-block;padding:10px 24px;border-radius:8px;font-weight:600;font-size:15px;background:0 0;color:var(--text-brand);border:1px solid var(--text-brand);text-decoration:none;transition:all 0.2s ease;cursor:pointer;font-family:inherit}
+.cert-btn:hover{background:#007a68;color:#fff;border-color:#007a68;transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,122,104,0.25)}
 .cert-btn:focus-visible{outline:3px solid color-mix(in oklab,var(--main-color),white 20%);outline-offset:2px}
 /* Featured cert item (consolidated ITLegend card) */
 .cert-item--featured{flex:0 0 100%;max-width:100%}
 .cert-item--featured .cert-card{border:2px solid color-mix(in oklab,var(--main-color),transparent 55%);background:linear-gradient(135deg,var(--surface),color-mix(in oklab,var(--main-color),var(--surface) 6%));position:relative;overflow:hidden}
 .cert-item--featured .cert-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 60%,color-mix(in oklab,var(--main-color),transparent 85%));pointer-events:none}
-.cert-item--featured .cert-btn{padding:12px 28px;font-size:16px;background:var(--main-color);color:#fff;border-color:var(--main-color);box-shadow:0 6px 18px rgba(0,167,142,0.3)}
-.cert-item--featured .cert-btn:hover{background:color-mix(in oklab,var(--main-color),#000 15%);transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,167,142,0.4)}
+.cert-item--featured .cert-btn{padding:12px 28px;font-size:16px;background:#007a68;color:#fff;border-color:#007a68;box-shadow:0 6px 18px rgba(0,122,104,0.3)}
+.cert-item--featured .cert-btn:hover{background:#006657;transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,122,104,0.4)}
 
 /* المعرض */
 /* ===== Testimonials ===== */
@@ -564,7 +565,7 @@ padding:12px 25px;
   background:var(--surface);color:var(--ink);text-transform:uppercase
 }
 .portfolio .portfolio-filter button.active,
-.portfolio .portfolio-filter button:hover{color:#fff;background:var(--main-color);border-color:transparent}
+.portfolio .portfolio-filter button:hover{color:#fff;background:#007a68;border-color:transparent}
 .portfolio .portfolio-filter button:focus-visible{outline:2px solid var(--link);outline-offset:2px}
 
 .portfolio .portfolio-item{flex:0 0 33.33%;max-width:33.33%;padding:20px;display:flex}
@@ -606,12 +607,15 @@ padding:12px 25px;
   z-index:var(--z-normal);padding:22px;opacity:0;display:flex;align-items:flex-end;justify-content:space-between;color:#fff
 }
 .portfolio .portfolio-item:hover .portfolio-info{opacity:1}
+.portfolio .portfolio-item .portfolio-info h3,
 .portfolio .portfolio-item .portfolio-info h4{
   font-size:18px;font-weight:800;color:#fff;text-transform:capitalize;transform:translateX(-14px);opacity:0;
   transition:transform .2s ease, opacity .2s ease
 }
+[dir="ltr"] .portfolio .portfolio-item .portfolio-info h3,
 [dir="ltr"] .portfolio .portfolio-item .portfolio-info h4{transform:translateX(14px)}
 
+.portfolio .portfolio-item:hover .portfolio-info h3,
 .portfolio .portfolio-item:hover .portfolio-info h4{transform:none;opacity:1}
 /* search icon removed — primary CTA (project-preview) used instead */
 
@@ -635,6 +639,7 @@ padding:12px 25px;
 /* Mobile: move CTA out of overlay — full width under image */
 @media (max-width:767px){
   .portfolio .portfolio-item .portfolio-info{position:static;inset:auto;background:transparent;padding:12px 16px 18px;opacity:1;align-items:flex-start}
+  .portfolio .portfolio-item .portfolio-info h3,
   .portfolio .portfolio-item .portfolio-info h4{transform:none;opacity:1;color:var(--ink)}
   .portfolio .portfolio-item .portfolio-info .icon{display:none}
   .portfolio .portfolio-item .project-preview{display:flex;width:44px;height:44px;justify-content:center;padding:0;margin-top:0;flex-shrink:0}
@@ -973,6 +978,7 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
 
 /* عرض كسول للأقسام البعيدة */
 .service-section,
+.certifications,
 .portfolio,
 .technologies,
 .contact-section{

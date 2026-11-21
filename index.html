@@ -36,8 +36,6 @@
   <link rel="stylesheet" href="css/style.min.css">
   <!-- Preload critical fonts for performance -->
   <link rel="preload" as="font" href="assets/fonts/cairo/Cairo-Regular.woff2" type="font/woff2" crossorigin>
-  <link rel="preload" as="font" href="assets/fonts/cairo/Cairo-SemiBold.woff2" type="font/woff2" crossorigin>
-  <link rel="preload" as="font" href="assets/fonts/cairo/Cairo-Bold.woff2" type="font/woff2" crossorigin>
   <link rel="preload" as="font" href="assets/fonts/cairo/Cairo-ExtraBold.woff2" type="font/woff2" crossorigin>
   <!-- Preload LCP image -->
   <link rel="preload" as="image" href="images/hero4.webp">
@@ -129,8 +127,8 @@
     <div class="container">
       <div class="row align-items-center" style="width: 100%; justify-content: space-between;">
         <div class="logo">
-          <a href="#home" aria-label="الانتقال إلى الرئيسية">
-            <svg class="logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          <a href="#home">
+            <svg class="logo-icon" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                 d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
@@ -139,7 +137,7 @@
           </a>
         </div>
 
-        <div class="links" aria-label="روابط الموقع">
+        <div class="links">
           <ul class="menu" id="main-menu">
             <li class="nav-item"><a href="#home" class="nav-link active" aria-current="page">الرئيسية</a></li>
             <li class="nav-item"><a href="#about" class="nav-link">نبذة</a></li>
@@ -152,7 +150,7 @@
         </div>
 
         <div class="header-controls">
-          <a id="lang-toggle" class="lang-toggle" href="index-en.html" aria-label="التبديل إلى الإنجليزية">
+          <a id="lang-toggle" class="lang-toggle" href="index-en.html" aria-label="EN - التبديل إلى الإنجليزية">
             <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -290,7 +288,7 @@
           <div class="about-image">
             <div class="img-box">
               <!-- Arabic SDLC Diagram (CSS-based) -->
-              <div class="sdlc-container" aria-label="دورة حياة تطوير البرمجيات">
+              <div class="sdlc-container" role="group" aria-label="دورة حياة تطوير البرمجيات">
                 <div class="sdlc-ring"></div>
                 <div class="sdlc-center">دورة حياة<br>البرمجيات</div>
 
@@ -500,7 +498,7 @@
                 </div>
               </div>
               <a href="images/certs/bachelor-degree-front.webp" target="_blank" class="cert-btn"
-                style="padding: 6px 16px; font-size: 13px;" aria-label="عرض الشهادة الجامعية">عرض الشهادة</a>
+                style="padding: 6px 16px; font-size: 13px;" aria-label="عرض الشهادة - بكالوريوس في هندسة البرمجيات">عرض الشهادة</a>
             </div>
           </div>
 
@@ -522,7 +520,7 @@
                 </div>
               </div>
               <a href="images/certs/mosadaqa-saudi-authentication.pdf" target="_blank" class="cert-btn"
-                style="padding: 6px 16px; font-size: 13px;" aria-label="عرض مصادقة الشهادة">عرض الشهادة</a>
+                style="padding: 6px 16px; font-size: 13px;" aria-label="عرض الشهادة - مصادقة الشهادة الجامعية">عرض الشهادة</a>
             </div>
           </div>
 
@@ -553,7 +551,7 @@
                   <span>C# · SQL · HTML · CSS</span>
                 </div>
               </div>
-              <button class="cert-btn cert-btn-gallery" aria-label="عرض شهادات ITLegend"
+              <button class="cert-btn cert-btn-gallery"
                 style="padding: 6px 16px; font-size: 13px;">
                 🎓 عرض الشهادات (12)
               </button>
@@ -591,7 +589,7 @@
                 <span class="cert-org" style="font-size: 14px; margin-bottom: 15px;">Udemy</span>
               </div>
               <a href="images/certs/course-udemy-laravel.webp" target="_blank" class="cert-btn"
-                style="padding: 6px 16px; font-size: 13px;" aria-label="عرض شهادة Laravel">عرض الشهادة</a>
+                style="padding: 6px 16px; font-size: 13px;" aria-label="عرض الشهادة - دورة Laravel 12 الشاملة">عرض الشهادة</a>
             </div>
           </div>
 
@@ -650,7 +648,7 @@
 
         <div class="row">
           <!-- فلتر المعرض (أزرار عادية مع aria-pressed بدلاً من تبويب وهمي) -->
-          <div class="portfolio-filter" aria-label="تصفية المشاريع">
+          <div class="portfolio-filter" role="group" aria-label="تصفية المشاريع">
             <button type="button" class="active" data-filter="all" aria-pressed="true">كل المشاريع</button>
             <button type="button" data-filter="web-project" aria-pressed="false">مشاريع الويب</button>
             <button type="button" data-filter="mobile-project" aria-pressed="false">مشاريع الموبايل</button>
@@ -681,7 +679,7 @@
                   <div class="portfolio-info">
                     <div class="portfolio-info-body">
                       <div class="portfolio-info-text">
-                        <h4>منصة الامتثال الذكية</h4>
+                        <h3>منصة الامتثال الذكية</h3>
                         
                       </div>
                       
@@ -717,7 +715,7 @@
                   <div class="portfolio-info">
                     <div class="portfolio-info-body">
                       <div class="portfolio-info-text">
-                        <h4>نظام البحث عن وظائف</h4>
+                        <h3>نظام البحث عن وظائف</h3>
                         
                       </div>
                       
@@ -755,7 +753,7 @@
                   <div class="portfolio-info">
                     <div class="portfolio-info-body">
                       <div class="portfolio-info-text">
-                        <h4>نظام الامتثال الآمن</h4>
+                        <h3>نظام الامتثال الآمن</h3>
                         
                       </div>
                       
@@ -780,7 +778,7 @@
                   <div class="portfolio-info">
                     <div class="portfolio-info-body">
                       <div class="portfolio-info-text">
-                        <h4>منصة تاج التعليمية</h4>
+                        <h3>منصة تاج التعليمية</h3>
                         <p class="portfolio-short">منصة تعليمية متكاملة بـ Next.js 14 و Laravel 12 وبث مباشر عبر Agora</p>
                       </div>
                       
@@ -805,7 +803,7 @@
                   <div class="portfolio-info">
                     <div class="portfolio-info-body">
                       <div class="portfolio-info-text">
-                        <h4>نظام المكتبة الإلكترونية</h4>
+                        <h3>نظام المكتبة الإلكترونية</h3>
                         <p class="portfolio-short">نظام تجارة إلكترونية متكامل بـ TALL Stack مع دفع Stripe وتقارير PDF</p>
                       </div>
                       
@@ -830,7 +828,7 @@
                   <div class="portfolio-info">
                     <div class="portfolio-info-body">
                       <div class="portfolio-info-text">
-                        <h4>FaceCrypt — مصادقة بالوجه</h4>
+                        <h3>FaceCrypt — مصادقة بالوجه</h3>
                         <p class="portfolio-short">نظام مصادقة بيومترية بالوجه بدون كلمة مرور مبني بـ Python و Flask</p>
                       </div>
                       
@@ -850,12 +848,12 @@
               <div class="portfolio-item" data-category="web-project" data-preview="https://github.com/Ammar-1993/wavss">
                 <div class="portfolio-item-inner">
                   <div class="portfolio-img">
-                    <img src="images/portfolio/wavss-cover.png" alt="WAVSS — فاحص ثغرات تطبيقات الويب الأمنية" width="640" height="360" loading="lazy" decoding="async">
+                    <img src="images/portfolio/wavss-cover.webp" alt="WAVSS — فاحص ثغرات تطبيقات الويب الأمنية" width="640" height="360" loading="lazy" decoding="async">
                   </div>
                   <div class="portfolio-info">
                     <div class="portfolio-info-body">
                       <div class="portfolio-info-text">
-                        <h4>WAVSS — فاحص الثغرات الأمنية</h4>
+                        <h3>WAVSS — فاحص الثغرات الأمنية</h3>
                         <p class="portfolio-short">فاحص ثغرات أمنية لتطبيقات الويب يكشف XSS و SQL Injection وغيرها</p>
                       </div>
                       
@@ -891,7 +889,7 @@
                   <div class="portfolio-info">
                     <div class="portfolio-info-body">
                       <div class="portfolio-info-text">
-                        <h4>تطبيق السوق الإلكتروني</h4>
+                        <h3>تطبيق السوق الإلكتروني</h3>
                         
                       </div>
                       
@@ -907,7 +905,7 @@
                   <div class="portfolio-info">
                     <div class="portfolio-info-body">
                       <div class="portfolio-info-text">
-                        <h4>تطبيق تفاصيل</h4>
+                        <h3>تطبيق تفاصيل</h3>
                         
                       </div>
                       

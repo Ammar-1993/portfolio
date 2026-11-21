@@ -53,7 +53,7 @@
         <div class="portfolio-info">
           <div class="portfolio-info-body">
             <div class="portfolio-info-text">
-              <h4>${title}</h4>
+              <h3>${title}</h3>
               ${shortDesc ? `<p class="portfolio-short">${shortDesc}</p>` : ''}
             </div>
             ${previewHtml}
@@ -114,9 +114,13 @@
   }
 
   /**
-   * Load and render portfolio data
+   * Load and render portfolio data (skips redundant DOM rebuild if pre-rendered by build.js)
    */
   async function initPortfolio() {
+    const container = document.querySelector(PORTFOLIO_CONTAINER_SELECTOR);
+    if (container && container.querySelector('.portfolio-item')) {
+      return;
+    }
     try {
       const response = await fetch(PORTFOLIO_DATA_URL);
       if (!response.ok) {

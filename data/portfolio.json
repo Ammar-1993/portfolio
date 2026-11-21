@@ -308,7 +308,7 @@
                 "ar": "WAVSS — فاحص الثغرات الأمنية",
                 "en": "WAVSS — Vulnerability Scanner"
             },
-            "cover": "images/portfolio/wavss-cover.png",
+            "cover": "images/portfolio/wavss-cover.webp",
             "coverAlt": {
                 "ar": "WAVSS — فاحص ثغرات تطبيقات الويب الأمنية",
                 "en": "WAVSS — Web Application Vulnerability Security Scanner"

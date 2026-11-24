@@ -227,29 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
   }
 
-  // ===== Skills progress fill =====
-  const skillsWrap = qs('.about-skills');
-  const skillBars = qsa('.progress-line');
-  if (skillsWrap && skillBars.length) {
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            skillBars.forEach((bar) => {
-              const val = bar.dataset.progress;
-              if (val) bar.style.width = val;
-            });
-            obs.disconnect();
-          }
-        });
-      }, { threshold: 0.3 });
-      observer.observe(skillsWrap);
-    } else {
-      // متصفح قديم: املأها مباشرة
-      skillBars.forEach((bar) => { const v = bar.dataset.progress; if (v) bar.style.width = v; });
-    }
-  }
-
   // ===== Portfolio filter =====
   const filterContainer = qs('.portfolio-filter');
   let portfolioItems = qsa('.portfolio-item');
@@ -300,7 +277,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentIndex = 0;
   let lastFocused = null;
   let hiddenForA11y = [];
-  let currentPreviewUrl = null;
 
   // Helper to extract images from a project item
   function getProjectImages(item) {
@@ -374,9 +350,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     galleryImages = getProjectImages(item);
     if (galleryImages.length === 0) return;
-
-    // Read preview URL from the DOM element (set by renderer)
-    currentPreviewUrl = item.getAttribute('data-preview') || null;
 
     currentIndex = 0; // Always start from the first image (cover)
     updateLightbox();

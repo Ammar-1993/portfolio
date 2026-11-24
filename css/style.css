@@ -385,85 +385,6 @@ padding:12px 25px;
 [dir="ltr"] .about-section .about-image .img-box .about-shape::after{transform:rotate(-11deg)}
 .about-section .about-content p{text-align:justify;color:var(--muted)}
 
-/* المهارات */
-.skill-item{
-  background:color-mix(in oklab,var(--surface),var(--main-color) 4%);
-  border:1px solid color-mix(in oklab,var(--border),var(--main-color) 15%);
-  border-radius:20px;
-  padding:14px 18px 18px;
-  margin-bottom:12px;
-  box-shadow:0 18px 40px rgba(15,23,42,.08);
-}
-.skill-item .skill-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-}
-.skill-item .skill-header .skill-title{
-  font-size:16px;
-  font-weight:700;
-  color:var(--ink);
-}
-.skill-item .skill-header .skill-percentage{
-  min-width:54px;
-  padding:4px 10px;
-  border-radius:999px;
-  font-weight:700;
-  font-size:0.9rem;
-  color:var(--main-color);
-  background:color-mix(in oklab,var(--main-color),#fff 85%);
-  border:1px solid color-mix(in oklab,var(--main-color),#000 10%);
-  text-align:center;
-}
-[data-theme="dark"] .skill-item .skill-header .skill-percentage{
-  background:color-mix(in oklab,var(--main-color),#000 80%);
-  color:#fff;
-}
-.skill-item .skill-bar{
-  margin-top:8px;
-}
-.skill-item .skill-bar .bar-inner{
-  width:100%;
-  height:7px;
-  border-radius:999px;
-  position:relative;
-  overflow:hidden;
-  background:color-mix(in oklab,var(--track),var(--main-color) 8%);
-  border:1px solid color-mix(in oklab,var(--border),#000 8%);
-}
-.skill-item .skill-bar .bar-inner::after{
-  content:"";
-  position:absolute;
-  inset:0.6px;
-  border-radius:999px;
-  background:linear-gradient(135deg,rgba(255,255,255,.35),transparent 60%);
-  pointer-events:none;
-}
-.skill-item .skill-bar .bar-inner .progress-line{
-  position:absolute;
-  inset:0 auto 0 0;
-  height:100%;
-  border-radius:999px;
-  width:0%;
-  background:linear-gradient(90deg,var(--main-color),color-mix(in oklab,var(--main-color),#00ffe1 25%));
-  box-shadow:0 10px 30px color-mix(in oklab,var(--main-color),transparent 60%);
-  transition:width .9s ease;
-}
-.skill-item .skill-bar .bar-inner .progress-line::after{
-  content:"";
-  position:absolute;
-  top:50%;
-  inset-inline-end:0;
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  border:2px solid #fff;
-  background:var(--main-color);
-  transform:translate(50%,-50%);
-  box-shadow:0 0 0 3px color-mix(in oklab,var(--main-color),transparent 70%);
-}
-
 /* الخدمات */
 .service-section{min-height:100vh;background:var(--bg-soft)}
 .service-section .service-item{flex:0 0 33.33%;max-width:33.33%;padding:var(--space-md);display:flex}
@@ -517,47 +438,6 @@ padding:12px 25px;
 .cert-item--featured .cert-btn:hover{background:#006657;transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,122,104,0.4)}
 
 /* المعرض */
-/* ===== Testimonials ===== */
-.testimonials .testimonials-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
-  width:100%;
-}
-.testimonial-card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:22px;
-  box-shadow:var(--shadow-black-100);
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-}
-.testimonial-quote{
-  font-size:16px;
-  color:var(--muted);
-  line-height:1.6;
-  margin-bottom:18px;
-  font-style:italic;
-}
-.testimonial-footer{display:flex;align-items:center;gap:12px}
-.testimonial-footer .avatar{
-  width:52px;height:52px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;color:#fff;background:var(--main-color);flex-shrink:0
-}
-.testimonial-footer .meta{display:flex;flex-direction:column}
-.testimonial-footer .meta strong{font-size:15px;color:var(--ink)}
-.testimonial-footer .meta .role{font-size:13px;color:var(--muted)}
-.testimonial-footer .stars{margin-inline-start:auto;color:var(--main-color);font-size:14px;letter-spacing:1px}
-
-@media (max-width:991px){
-  .testimonials .testimonials-grid{grid-template-columns:repeat(2,1fr)}
-}
-@media (max-width:576px){
-  .testimonials .testimonials-grid{grid-template-columns:1fr}
-  .testimonial-footer .stars{margin-inline-start:0}
-}
-
 .portfolio{background:transparent}
 .portfolio .portfolio-filter{flex:0 0 100%;max-width:100%;padding:10px 20px;text-align:center}
 .portfolio .portfolio-filter button{
@@ -652,24 +532,6 @@ padding:12px 25px;
 .technologies .technologies-item,.technologies-item{flex:0 0 33.33%;max-width:33.33%;padding:20px;display:flex}
 @media (max-width:991px){.technologies .technologies-item,.technologies-item{flex:0 0 50%;max-width:50%}}
 @media (max-width:767px){.technologies .technologies-item,.technologies-item{flex:0 0 100%;max-width:100%}}
-.technologies-plan{
-  width:100%;background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-black-100);
-  display:flex;flex-direction:column
-}
-.technologies-plan .technologies-header{padding:18px 20px;border-bottom:1px solid var(--border)}
-.technologies-plan .technologies-header h3{font-size:var(--text-xl);color:var(--ink);font-weight:700;margin:0}
-.best-value{display:none}
-.technologies-plan .technologies-price{padding:26px var(--space-md);display:flex;line-height:.7;align-items:flex-end;gap:6px}
-.technologies-plan .technologies-price .currency{font-size:var(--text-sm);font-weight:400;color:var(--muted)}
-.technologies-plan .technologies-price .price{font-size:var(--text-4xl);font-weight:800;color:var(--text-brand)}
-.technologies-plan .technologies-price .period{font-size:var(--text-xs);font-weight:400;color:var(--muted);text-transform:uppercase}
-.technologies-plan .technologies-body{padding:0 var(--space-md) var(--space-md)}
-.technologies-plan .technologies-body ul li{
-  font-size:var(--text-base);font-weight:400;color:var(--muted);padding:10px 0 10px 0;padding-inline-end:30px;border-bottom:1px solid var(--border);line-height:26px;position:relative
-}
-.technologies-plan .technologies-body ul li:last-child{border-bottom:none}
-.technologies-plan .technologies-body ul li i{color:var(--main-color);position:absolute;inset-inline-end:0;top:12px}
-.technologies-plan .technologies-footer{padding:var(--space-md);text-align:center;margin-top:auto}
 
 /* اتصل بنا */
 .contact-section{min-height:100vh;background:var(--bg-soft)}
@@ -791,13 +653,6 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
   text-shadow: none;
 }
 
-/* وسائل التواصل في الهيدر (اختياري) */
-.header-social{position:absolute;top:53%;inset-inline-start:50px;transform:translateY(-53%);border:1px solid color-mix(in oklab,var(--main-color),#000 75%);border-radius:50px}
-.header-social li a{font-size:18px;display:block;text-align:center;padding:20px 15px;color:color-mix(in oklab,var(--ink),#000 45%)}
-.header-social li a:hover{color:#fff}
-@media (min-width:1300px) and (max-width:1399px){.header-social{inset-inline-start:10px}}
-@media (max-width:1300px){.header-social{display:none}}
-
 /* استجابة الهيرو على الشاشات الصغيرة */
 @media (max-width:991px){
   .about-section .about-content, .navbar .menu{text-align:center}
@@ -812,32 +667,6 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
   :root{--tile-min-h:180px;}
 }
 
-/* === Social links styles (منقولة من inline) === */
-.social-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-.btn-social{
-  display:inline-flex;align-items:center;gap:8px;padding:0.5rem 1rem;
-  background-color:transparent;
-  border:1px solid var(--border);border-radius:50px;
-  color:var(--muted);text-decoration:none;font-weight:500;font-size:0.9rem;line-height:1.2;
-  transition:all 0.2s ease
-}
-.btn-social:hover{
-  transform:translateY(-2px);
-  background-color:var(--main-color);
-  border-color:var(--main-color);
-  color:#fff;
-  box-shadow:0 4px 12px rgba(0,167,142,0.25)
-}
-.btn-social .ico{width:1.1em;height:1.1em;fill:currentColor;transition:none}
-.btn-social:hover .ico{fill:#fff}
-.footer .social-icons{display:flex;gap:16px;justify-content:center;margin-top:8px}
-.footer .social-icons a{
-  display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;
-  border:1px solid color-mix(in oklab,var(--border),#000 20%);text-decoration:none
-}
-.footer .social-icons a:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
-.footer .social-icons i{font-size:1rem}
-
 /* SVG icons */
 .ico{width:1em;height:1em;display:inline-block;vertical-align:-.125em}
 .icon svg{width:28px;height:28px;display:block}                 /* كروت الخدمات */
@@ -850,15 +679,6 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
 .home-social-links{
   display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;justify-content:flex-start;
   align-items:flex-start
-}
-.home-text #installBtn{
-  margin-top:18px;
-}
-@media (min-width:576px){
-  .home-text #installBtn{
-    margin-top:0;
-    margin-inline-start:16px;
-  }
 }
 .social-icon-link{
   display:inline-flex;align-items:center;justify-content:center;
@@ -1044,149 +864,12 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
     margin-bottom:14px;
     text-align:justify;
   }
-
-  /* شريط المهارات بعرض مريح */
-  .about-section .about-skills{ margin-top:12px; }
-  .skill-item{ margin-bottom:14px; }
-  .skill-item .skill-header{
-    display:flex; 
-    align-items:center; 
-    justify-content:space-between;
-  }
-  .skill-item .skill-header .skill-title{
-    font-size:14px; 
-    margin-top:0;
-  }
-  .skill-item .skill-header .skill-percentage{
-    position:static;              /* بدلاً من absolute */
-    color:var(--muted);
-    font-size:14px;
-  }
-  .skill-item .skill-bar .bar-inner{
-    height:10px;                  /* أعلى قليلًا للمس */
-  }
-  .skill-item .skill-bar .bar-inner .progress-line{
-    height:10px;
-  }
 }
 
 /* في حال ظهرت أيقونة خارج الوسط داخل بطاقة الخدمة */
 .service-section .service-item-inner .icon{
   display:grid; place-items:center;
 }
-
-
-/* زر التثبيت: كبسولة زجاجية مع توهج لطيف */
-/* ألوان متناسقة مع متغيّراتك الحالية */
-:root{
-  --install-brand: var(--link, #10b981);        /* لون العلامة الأساسي لديك */
-  --install-bg: color-mix(in oklab, var(--card-bg, #0b0f19), white 6%);
-  --install-border: color-mix(in oklab, var(--install-brand), transparent 72%);
-  --install-text: var(--text, #e7ecef);
-}
-@media (prefers-color-scheme: light){
-  :root{
-    --install-bg: color-mix(in oklab, #ffffff, var(--install-brand) 6%);
-    --install-text: #ffffff;  /* Force white text since button has dark background */
-  }
-}
-
-/* كبسولة زجاجية بلمعة خفيفة */
-.btn-install {
-  position: relative;
-  display: inline-flex; align-items: center; gap: .6rem;
-  padding: .85rem 1.15rem;
-  border-radius: 9999px;
-  
-  /* Theme-aware background and border */
-  border: 1px solid color-mix(in oklab, var(--install-brand, #10b981), transparent 70%);
-  background:
-    radial-gradient(140% 180% at 100% 0%, color-mix(in oklab, var(--install-brand, #10b981), transparent 82%) 0%, transparent 60%),
-    linear-gradient(180deg, #1a2130 0%, #121926 100%);
-    
-  color: #fff; /* Enforce white text */
-  box-shadow: 0 10px 24px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.06), inset 0 -1px 0 rgba(0,0,0,.22);
-  
-  backdrop-filter: blur(8px) saturate(120%);
-  -webkit-backdrop-filter: blur(8px) saturate(120%);
-  transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
-  will-change: transform;
-}
-
-/* Light theme variant */
-[data-theme="light"] .btn-install,
-:root:not([data-theme]) .btn-install {
-  background:
-    radial-gradient(140% 180% at 100% 0%, color-mix(in oklab, var(--install-brand, #10b981), transparent 92%) 0%, transparent 60%),
-    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-  color: var(--ink);
-  box-shadow: 0 10px 24px rgba(0,0,0,.1), inset 0 1px 0 rgba(255,255,255,.5), inset 0 -1px 0 rgba(0,0,0,.05);
-  border: 1px solid color-mix(in oklab, var(--install-brand, #10b981), transparent 80%);
-}
-
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme]) .btn-install {
-    background:
-      radial-gradient(140% 180% at 100% 0%, color-mix(in oklab, var(--install-brand, #10b981), transparent 92%) 0%, transparent 60%),
-      linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-    color: var(--ink);
-    box-shadow: 0 10px 24px rgba(0,0,0,.1), inset 0 1px 0 rgba(255,255,255,.5), inset 0 -1px 0 rgba(0,0,0,.05);
-    border: 1px solid color-mix(in oklab, var(--install-brand, #10b981), transparent 80%);
-  }
-}
-
-.btn-install__icon { 
-  opacity: .92; 
-  transition: transform .25s ease, opacity .2s ease; 
-  fill: currentColor; color: currentColor; /* Ensure icon matches text */
-}
-
-.btn-install__label { font-weight: 700; letter-spacing: .2px; }
-
-/* لمعة متحركة - Updated gradient */
-.btn-install__shine {
-  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-  background: linear-gradient(115deg, rgba(0,0,0,.1), rgba(0,0,0,0) 44%);
-  mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000); 
-  -webkit-mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
-  padding: 1px; opacity: .7;
-}
-
-.btn-install:hover {
-  transform: translateY(-2px);
-  border-color: color-mix(in oklab, var(--install-brand, #10b981), white 12%);
-  box-shadow: 0 16px 36px rgba(0,0,0,.22), 0 0 0 3px color-mix(in oklab, var(--install-brand, #10b981), transparent 85%);
-}
-
-.btn-install:hover .btn-install__icon { transform: translateY(-1px); }
-.btn-install:active { transform: translateY(0); filter: brightness(.98); }
-
-/* وصولية */
-.btn-install:focus-visible { 
-  outline: 3px solid color-mix(in oklab, var(--install-brand, #10b981), white 10%); 
-  outline-offset: 3px; 
-}
-
-/* 6) تقليل الحركة لمن يفضل ذلك */
-@media (prefers-reduced-motion: reduce){
-  .btn-install, .btn-install:hover { transform: none; transition: none; }
-  .btn-install__icon { transition: none; }
-}
-
-/* وصولية */
-.btn-install:focus-visible{ outline: 3px solid color-mix(in oklab, var(--install-brand), white 10%); outline-offset: 3px; }
-
-/* مسافة بسيطة إذا كان ملاصق لزر آخر */
-.btn-install + .btn-1, .btn-1 + .btn-install{ margin-inline-start: .6rem; }
-
-
-
-
-
-
-
-
-
 
 /* ========== ??????? ?????? (Rendering Performance) ========== */
 /* ????? content-visibility ??? ??????? ??????? ???? ?????? */
@@ -1646,15 +1329,6 @@ body {
   color: #fff;
   border-color: var(--main-color);
 }
-
-/* Portfolio Preview button */
-.portfolio-actions{margin-top:12px}
-.portfolio-actions .btn-preview{
-  display:inline-block;padding:8px 14px;border-radius:8px;font-weight:700;font-size:14px;
-  background:transparent;color:var(--main-color);border:1px solid var(--main-color);text-decoration:none
-}
-.portfolio-actions .btn-preview:hover{background:var(--main-color);color:#fff}
-.portfolio-actions .btn-preview:focus-visible{outline:3px solid color-mix(in oklab,var(--main-color),white 20%);outline-offset:2px}
 
 /* Lightbox preview placed near close button */
 .lightbox-content{position:relative}

@@ -217,35 +217,58 @@ padding:12px 25px;
   box-shadow: var(--shadow-black-100);
 }
 .logo a {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 18px;
+  gap: clamp(8px, 0.9vw, 12px);
+  font-size: clamp(17px, 1.65vw, 22px);
   color: var(--ink);
-  font-weight: 500;
-  transition: color 0.3s ease;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+  transition: color 0.3s ease, transform 0.25s ease;
   text-decoration: none;
 }
 .logo a .logo-icon {
-  width: 20px;
-  height: 20px;
+  width: 34px;
+  height: 34px;
+  padding: 6px;
+  border-radius: 10px;
   color: var(--text-brand);
+  background: color-mix(in oklab, var(--main-color), transparent 88%);
+  border: 1px solid color-mix(in oklab, var(--main-color), transparent 72%);
+  box-shadow: 0 4px 12px rgba(0, 167, 142, 0.14);
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
-.logo a:hover {
-  color: var(--text-brand);
+[data-theme="dark"] .logo a .logo-icon {
+  background: color-mix(in oklab, var(--main-color), transparent 84%);
+  border-color: color-mix(in oklab, var(--main-color), transparent 65%);
+  box-shadow: 0 4px 14px rgba(0, 167, 142, 0.22);
+}
+.logo a:hover .logo-icon {
+  transform: translateY(-1px) rotate(-6deg) scale(1.04);
+  background: var(--text-brand);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 6px 16px rgba(0, 167, 142, 0.32);
 }
 .logo a span {
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-brand);
 }
+.logo a .logo-text-full {
+  color: var(--ink);
+  font-weight: 700;
+}
+.logo a .logo-text-full span {
+  color: var(--text-brand);
+  font-weight: 800;
+}
 @media (min-width: 768px) {
-  .logo a {
-    font-size: 24px;
-    gap: 10px;
-  }
   .logo a .logo-icon {
-    width: 26px;
-    height: 26px;
+    width: 38px;
+    height: 38px;
+    padding: 7px;
   }
 }
 .links{flex:1;display:flex;justify-content:center}
@@ -1351,13 +1374,15 @@ body {
     gap: 4px;
   }
   .logo a {
-    font-size: 18px !important;
+    font-size: 17px !important;
+    gap: 7px !important;
   }
   .logo a svg {
-    width: 14px !important;
-    height: 14px !important;
-    margin-right: 2px !important;
-    margin-left: 2px !important;
+    width: 30px !important;
+    height: 30px !important;
+    padding: 5px !important;
+    border-radius: 8px !important;
+    margin: 0 !important;
   }
   .header-controls {
     gap: 4px !important;

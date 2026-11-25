@@ -352,18 +352,18 @@ padding:12px 25px;
 .header-hero-shape{position:absolute;top:0;bottom:0;inset-inline-end:0;width:42%;height:100%;pointer-events:none}
 .header-hero-shape::before{content:"";position:absolute;inset:0;background:linear-gradient(140deg,rgba(0,167,142,.18),rgba(0,167,142,0));transform:skewX(20deg)}
 [dir="ltr"] .header-hero-shape::before{transform:skewX(-20deg)}
-.home-stats{display:flex;justify-content:space-around;margin-top:-20px;padding:0}
-.home-stats .stat-item{text-align:center;padding:var(--space-md)}
-.home-stats .stat-item h3{font-size:var(--text-3xl);font-weight:800;color:var(--text-brand);margin:0}
-.home-stats .stat-item p{font-size:var(--text-base);color:var(--muted);margin:0 0 0}
+.home-stats{display:flex;justify-content:space-between;width:100%;max-width:400px;margin:-10px auto 0;padding:0 8px 30px}
+.home-stats .stat-item{flex:1;max-width:25%;text-align:center;padding:10px 4px;display:flex;flex-direction:column;align-items:center}
+.home-stats .stat-item h3{font-size:28px;font-weight:800;color:var(--text-brand);margin:0;line-height:1.1}
+.home-stats .stat-item p{font-size:14px;font-weight:600;color:var(--muted);margin:18px 0 0;line-height:1.2;transform:rotate(-40deg);transform-origin:center;white-space:nowrap}
 .mobile-text{display:none}
-@media (max-width:991px){.home-stats{padding:0}}
+@media (max-width:991px){.home-stats{padding:0 8px 30px}}
 @media (max-width:767px){
   .desktop-text{display:none}
   .mobile-text{display:inline-block}
   .home-text, .home-image-container{flex:0 0 100%;max-width:100%;padding:0 16px}
   .home-image{display:flex;justify-content:center}
-  .home-stats{flex-wrap:nowrap;justify-content:space-between;padding:0 5px;margin-top:20px;gap:5px}
+  .home-stats{max-width:100%;flex-wrap:nowrap;justify-content:space-between;padding:0 5px;margin-top:20px;gap:5px}
   .home-stats .stat-item{flex:1;max-width:25%;padding:10px 0;text-align:center;display:flex;flex-direction:column;align-items:center}
   .home-stats .stat-item h3{font-size:18px;line-height:1}
   .home-stats .stat-item p{font-size:12px;margin:12px 0 0;line-height:1.2;transform:rotate(-45deg);transform-origin:center;white-space:nowrap}

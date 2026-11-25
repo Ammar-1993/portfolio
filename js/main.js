@@ -127,32 +127,56 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   let activeObserver = null;
+  let isClickScrolling = false;
+  let clickScrollTimer = null;
+
+  function activateLinkById(id) {
+    if (!id || !linksContainer) return;
+    const activeLink = qs(`.links a[href*="#${CSS.escape(id)}"]`);
+    if (!activeLink) return;
+    qsa('.links a').forEach((a) => {
+      a.classList.remove('active');
+      a.removeAttribute('aria-current');
+    });
+    activeLink.classList.add('active');
+    activeLink.setAttribute('aria-current', 'page');
+  }
+
+  function syncActiveSectionByPosition() {
+    if (isClickScrolling || !sections.length || !linksContainer) return;
+    const scrollBottom = window.innerHeight + window.scrollY;
+    const docHeight = document.documentElement.scrollHeight;
+    if (docHeight > window.innerHeight && scrollBottom >= docHeight - 20) {
+      activateLinkById(sections[sections.length - 1].id);
+      return;
+    }
+    const triggerLine = HEADER_OFFSET + 80;
+    let currentId = sections[0].id;
+    for (let i = 0; i < sections.length; i++) {
+      const rect = sections[i].getBoundingClientRect();
+      if (rect.top <= triggerLine) {
+        currentId = sections[i].id;
+      }
+    }
+    activateLinkById(currentId);
+  }
+
   const setActiveLink = () => {
     if (!sections.length || !linksContainer) return;
     if (activeObserver) activeObserver.disconnect();
     activeObserver = new IntersectionObserver((entries) => {
-      let currentId = null;
+      if (isClickScrolling) return;
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          currentId = entry.target.id;
+          syncActiveSectionByPosition();
         }
       });
-      qsa('.links a').forEach((a) => {
-        a.classList.remove('active');
-        a.removeAttribute('aria-current');
-      });
-      if (currentId) {
-        const activeLink = qs(`.links a[href*="#${CSS.escape(currentId)}"]`);
-        if (activeLink) {
-          activeLink.classList.add('active');
-          activeLink.setAttribute('aria-current', 'page');
-        }
-      }
     }, {
       rootMargin: `-${Math.max(0, Math.round(HEADER_OFFSET))}px 0px -${Math.max(0, Math.round(window.innerHeight - Math.max(0, Math.round(HEADER_OFFSET)) - 1))}px 0px`,
       threshold: 0
     });
     sections.forEach((section) => activeObserver.observe(section));
+    syncActiveSectionByPosition();
   };
 
   // smooth internal anchors (respects reduced-motion)
@@ -166,9 +190,36 @@ document.addEventListener('DOMContentLoaded', () => {
       const target = id ? document.getElementById(id) : null;
       if (!target) return;
       e.preventDefault();
-      const top = Math.max(0, window.pageYOffset + target.getBoundingClientRect().top - HEADER_OFFSET);
-      window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
+
+      activateLinkById(id);
+      isClickScrolling = true;
+      if (clickScrollTimer) clearTimeout(clickScrollTimer);
+
+      const scrollToTarget = (behavior) => {
+        recalcHeaderOffset();
+        const top = Math.max(0, window.pageYOffset + target.getBoundingClientRect().top - HEADER_OFFSET);
+        window.scrollTo({ top, behavior });
+      };
+
+      scrollToTarget(reduce ? 'auto' : 'smooth');
       history.replaceState(null, '', hash);
+
+      if (reduce) {
+        isClickScrolling = false;
+      } else {
+        setTimeout(() => {
+          recalcHeaderOffset();
+          const delta = target.getBoundingClientRect().top - HEADER_OFFSET;
+          const atBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 10);
+          if (Math.abs(delta) > 6 && !atBottom) {
+            scrollToTarget('smooth');
+          }
+        }, 350);
+        clickScrollTimer = setTimeout(() => {
+          isClickScrolling = false;
+          activateLinkById(id);
+        }, 800);
+      }
     });
   }
 
@@ -176,7 +227,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let ticking = false;
   window.addEventListener('scroll', () => {
     if (!ticking) {
-      window.requestAnimationFrame(() => { setSticky(); ticking = false; });
+      window.requestAnimationFrame(() => {
+        setSticky();
+        syncActiveSectionByPosition();
+        ticking = false;
+      });
       ticking = true;
     }
   }, { passive: true });

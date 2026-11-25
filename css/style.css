@@ -589,32 +589,59 @@ padding:12px 25px;
 .contact-section .contact-item-inner p a:hover{color:var(--main-color)}
 
 .contact-section .contact-form{
-  flex:0 0 100%;max-width:100%;margin-top:40px;
-  background:var(--surface);padding:40px;border-radius:20px;
+  flex:0 0 calc(100% - 30px);max-width:calc(100% - 30px);margin:24px auto 0;
+  background:var(--surface);padding:36px 32px;border-radius:20px;
   border:1px solid var(--border);box-shadow:var(--shadow-black-100)
 }
-@media (max-width:767px){.contact-section .contact-form{padding:24px}}
-
-.contact-section .w-50{padding:0 15px;flex:0 0 50%;max-width:50%}
-@media (max-width:767px){
-  .contact-section .w-50{flex:0 0 100%;max-width:100%}
-  .contact-section .submit-btn .btn-1{width:100%;display:block}
+.contact-section .contact-form .row{
+  margin-left:-12px;margin-right:-12px;width:calc(100% + 24px);align-items:stretch
+}
+.contact-section .w-50{
+  padding:0 12px;flex:0 0 50%;max-width:50%;display:flex;flex-direction:column
 }
 .contact-section .input-group{
-  margin:0 0 24px;border-radius:12px;background:var(--bg-soft);border:1px solid var(--border);
-  transition:border-color 0.2s ease, box-shadow 0.2s ease
+  margin:0 0 20px;border-radius:12px;background:var(--bg-soft);border:1.5px solid var(--border);
+  transition:border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease
+}
+.contact-section .input-group:hover{
+  border-color:color-mix(in oklab,var(--main-color),var(--border) 45%)
 }
 .contact-section .input-group:focus-within{
+  background:var(--surface);
   border-color:var(--main-color);
-  box-shadow:0 0 0 4px color-mix(in oklab,var(--main-color),transparent 85%)
+  box-shadow:0 0 0 4px color-mix(in oklab,var(--main-color),transparent 86%)
+}
+@media (min-width:992px){
+  .contact-section .w-50 .input-group:last-child{margin-bottom:0}
+  .contact-section .w-50 .input-group:only-child{flex:1;display:flex}
 }
 .contact-section .input-group .input-control{
-  height:50px;display:block;width:100%;border-radius:12px;border:none;outline:0;background:transparent;color:var(--ink);
-  font-size:16px;padding:0 16px;font-weight:500
+  height:52px;display:block;width:100%;border-radius:12px;border:none;outline:0;background:transparent;color:var(--ink);
+  font-family:inherit;font-size:15.5px;padding:0 18px;font-weight:500;line-height:1.5
 }
-.contact-section .input-group textarea.input-control{height:180px;padding-top:16px;resize:none}
-.contact-section .input-group .input-control::placeholder{color:var(--muted);opacity:0.7}
-.contact-section .submit-btn{flex:0 0 100%;max-width:100%;text-align:end;padding:0 15px;margin-top:10px}
+.contact-section .input-group textarea.input-control{
+  height:100%;min-height:192px;padding:14px 18px;resize:vertical
+}
+.contact-section .input-group .input-control::placeholder{
+  color:var(--muted);opacity:0.75;font-family:inherit
+}
+.contact-section .submit-btn{
+  flex:0 0 100%;max-width:100%;text-align:end;padding:0 12px;margin-top:24px
+}
+.contact-section .submit-btn .btn-1{
+  font-family:inherit;min-width:180px;padding:14px 32px;border-radius:12px;font-size:16px;font-weight:700
+}
+@media (max-width:991px){
+  .contact-section .contact-form{flex:0 0 calc(100% - 40px);max-width:calc(100% - 40px);padding:28px 22px}
+  .contact-section .w-50{padding:0 12px !important}
+  .contact-section .w-50 .input-group:only-child{margin-bottom:0}
+  .contact-section .input-group textarea.input-control{min-height:160px}
+}
+@media (max-width:767px){
+  .contact-section .contact-form{padding:22px 18px;border-radius:16px}
+  .contact-section .submit-btn{margin-top:18px}
+  .contact-section .submit-btn .btn-1{width:100%;display:block}
+}
 
 /* التذييل */
 footer{background:var(--surface);border-top:1px solid var(--border);padding:16px 0}

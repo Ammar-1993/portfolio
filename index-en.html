@@ -122,7 +122,7 @@
   <!--===== Navbar Start =====-->
   <nav class="navbar" role="navigation" aria-label="Main Navigation">
     <div class="container">
-      <div class="row align-items-center" style="width: 100%; justify-content: space-between;">
+      <div class="row align-items-center">
         <div class="logo">
           <a href="#home">
             <svg class="logo-icon" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -149,7 +149,7 @@
 
         <div class="header-controls">
           <a id="lang-toggle" class="lang-toggle" href="index.html" aria-label="AR - Switch to Arabic">
-            <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
@@ -487,76 +487,70 @@
         <div class="row cert-grid">
           <!-- Cert 1 -->
           <div class="cert-item">
-            <div class="cert-card" style="padding: 24px 16px;">
-              <div class="cert-icon"
-                style="width: 70px; height: 70px; margin-bottom: 15px; background: #fff; border-radius: 50%; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.12); padding: 5px;">
-                <img src="images/taiz-university-logo.svg" alt="Taiz University Logo"
-                  style="width: 100%; height: 100%; object-fit: contain;">
+            <div class="cert-card">
+              <div class="cert-icon cert-icon--academic">
+                <img src="images/taiz-university-logo.svg" alt="Taiz University Logo">
               </div>
               <div class="cert-info">
-                <h3 style="font-size: 17px; margin-bottom: 6px;">Bachelor of Software Engineering</h3>
-                <span class="cert-org" style="font-size: 14px; margin-bottom: 15px;">Taiz University - Yemen</span>
-                <div class="cert-meta" style="margin-bottom: 12px;">
+                <h3>Bachelor of Software Engineering</h3>
+                <span class="cert-org">Taiz University - Yemen</span>
+                <div class="cert-meta">
                   <span>July 2020</span>
                   <span class="dot">•</span>
                   <span>Grade: Very Good</span>
                 </div>
               </div>
               <a href="images/certs/bachelor-degree-front.webp" target="_blank" class="cert-btn"
-                style="padding: 6px 16px; font-size: 13px;" aria-label="View Certificate - Bachelor of Software Engineering">View Certificate</a>
+                aria-label="View Certificate - Bachelor of Software Engineering">View Certificate</a>
             </div>
           </div>
 
           <!-- Cert 2 -->
           <div class="cert-item">
-            <div class="cert-card" style="padding: 24px 16px;">
-              <div class="cert-icon"
-                style="width: 70px; height: 70px; margin-bottom: 15px; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.10); padding: 4px;">
-                <img src="images/mosadaqa-logo.svg" alt="Mosadaqa Platform Logo"
-                  style="width: 100%; height: 100%; object-fit: contain;">
+            <div class="cert-card">
+              <div class="cert-icon cert-icon--mosadaqa">
+                <img src="images/mosadaqa-logo.svg" alt="Mosadaqa Platform Logo">
               </div>
               <div class="cert-info">
-                <h3 style="font-size: 17px; margin-bottom: 6px;">Saudi Certificate Verification</h3>
-                <span class="cert-org" style="font-size: 14px; margin-bottom: 15px;">Mosadaqa Platform - KSA</span>
-                <div class="cert-meta" style="margin-bottom: 12px;">
+                <h3>Saudi Certificate Verification</h3>
+                <span class="cert-org">Mosadaqa Platform - KSA</span>
+                <div class="cert-meta">
                   <span>2020</span>
                   <span class="dot">•</span>
                   <span>Authenticated</span>
                 </div>
               </div>
               <a href="images/certs/mosadaqa-saudi-authentication.pdf" target="_blank" class="cert-btn"
-                style="padding: 6px 16px; font-size: 13px;" aria-label="View Certificate - Saudi Certificate Verification">View Certificate</a>
+                aria-label="View Certificate - Saudi Certificate Verification">View Certificate</a>
             </div>
           </div>
 
         </div>
 
         <!-- Courses Sub-section -->
-        <div class="row w-100" style="margin-top: 50px; margin-bottom: 30px; width: 100%;">
-          <div class="section-title text-align" style="margin-bottom: 0;">
-            <h3 style="font-size: 26px; color: var(--ink); font-weight: 700;">Programming & Development Courses</h3>
+        <div class="cert-subsection">
+          <div class="section-title text-align">
+            <h3>Programming & Development Courses</h3>
           </div>
         </div>
 
         <div class="row cert-grid">
           <!-- ITLegend Consolidated Card -->
           <div class="cert-item cert-item--featured">
-            <div class="cert-card" style="padding: 24px 16px;">
-              <div class="cert-icon" style="width: 60px; height: 60px; margin-bottom: 15px;">
-                <img src="images/itlegend-logo.svg" alt="ITLegend Logo"
-                  style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
+            <div class="cert-card">
+              <div class="cert-icon cert-icon--rounded">
+                <img src="images/itlegend-logo.svg" alt="ITLegend Logo">
               </div>
               <div class="cert-info">
-                <h3 style="font-size: 17px; margin-bottom: 6px;">Full Stack Software Developer Track</h3>
-                <span class="cert-org" style="font-size: 14px; margin-bottom: 15px;">ITLegend</span>
-                <div class="cert-meta" style="margin-bottom: 12px;">
+                <h3>Full Stack Software Developer Track</h3>
+                <span class="cert-org">ITLegend</span>
+                <div class="cert-meta">
                   <span>12 Specialized Certificates</span>
                   <span class="dot">•</span>
                   <span>C# · SQL · HTML · CSS</span>
                 </div>
               </div>
-              <button class="cert-btn cert-btn-gallery"
-                style="padding: 6px 16px; font-size: 13px;">
+              <button class="cert-btn cert-btn-gallery">
                 🎓 View Certificates (12)
               </button>
               <!-- Hidden gallery for lightbox -->
@@ -583,49 +577,46 @@
 
           <!-- Cert Item: Udemy Laravel -->
           <div class="cert-item">
-            <div class="cert-card" style="padding: 24px 16px;">
-              <div class="cert-icon" style="width: 50px; height: 50px; margin-bottom: 15px;">
-                <img src="images/udemy-logo.svg" alt="Udemy Logo"
-                  style="width: 100%; height: 100%; object-fit: contain;">
+            <div class="cert-card">
+              <div class="cert-icon cert-icon--course">
+                <img src="images/udemy-logo.svg" alt="Udemy Logo">
               </div>
               <div class="cert-info">
-                <h3 style="font-size: 17px; margin-bottom: 6px;">Laravel 12 Complete Guide</h3>
-                <span class="cert-org" style="font-size: 14px; margin-bottom: 15px;">Udemy</span>
+                <h3>Laravel 12 Complete Guide</h3>
+                <span class="cert-org">Udemy</span>
               </div>
               <a href="images/certs/course-udemy-laravel.webp" target="_blank" class="cert-btn"
-                style="padding: 6px 16px; font-size: 13px;" aria-label="View Certificate - Laravel 12 Complete Guide">View Certificate</a>
+                aria-label="View Certificate - Laravel 12 Complete Guide">View Certificate</a>
             </div>
           </div>
 
           <!-- Cert Item: Udemy MERN -->
           <div class="cert-item">
-            <div class="cert-card" style="padding: 24px 16px;">
-              <div class="cert-icon" style="width: 50px; height: 50px; margin-bottom: 15px;">
-                <img src="images/udemy-logo.svg" alt="Udemy Logo"
-                  style="width: 100%; height: 100%; object-fit: contain;">
+            <div class="cert-card">
+              <div class="cert-icon cert-icon--course">
+                <img src="images/udemy-logo.svg" alt="Udemy Logo">
               </div>
               <div class="cert-info">
-                <h3 style="font-size: 17px; margin-bottom: 6px;">Web Development (MERN Stack)</h3>
-                <span class="cert-org" style="font-size: 14px; margin-bottom: 15px;">Udemy</span>
+                <h3>Web Development (MERN Stack)</h3>
+                <span class="cert-org">Udemy</span>
               </div>
               <a href="images/certs/course-udemy-mern.pdf" target="_blank" class="cert-btn"
-                style="padding: 6px 16px; font-size: 13px;" aria-label="View Certificate - Web Development (MERN Stack)">View Certificate</a>
+                aria-label="View Certificate - Web Development (MERN Stack)">View Certificate</a>
             </div>
           </div>
 
           <!-- Cert Item: Million Prompters -->
           <div class="cert-item">
-            <div class="cert-card" style="padding: 24px 16px;">
-              <div class="cert-icon" style="width: 50px; height: 50px; margin-bottom: 15px;">
-                <img src="images/million-prompters-logo.svg" alt="Million Prompters Logo"
-                  style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
+            <div class="cert-card">
+              <div class="cert-icon cert-icon--course cert-icon--rounded">
+                <img src="images/million-prompters-logo.svg" alt="Million Prompters Logo">
               </div>
               <div class="cert-info">
-                <h3 style="font-size: 17px; margin-bottom: 6px;">Million Prompters Initiative</h3>
-                <span class="cert-org" style="font-size: 14px; margin-bottom: 15px;">Million Prompters</span>
+                <h3>Million Prompters Initiative</h3>
+                <span class="cert-org">Million Prompters</span>
               </div>
               <a href="images/certs/course-million-prompters.pdf" target="_blank" class="cert-btn"
-                style="padding: 6px 16px; font-size: 13px;" aria-label="View Certificate - Million Prompters Initiative">View Certificate</a>
+                aria-label="View Certificate - Million Prompters Initiative">View Certificate</a>
             </div>
           </div>
         </div>

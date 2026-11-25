@@ -125,7 +125,7 @@
   <!--===== Navbar Start =====-->
   <nav class="navbar" role="navigation" aria-label="الرئيسية">
     <div class="container">
-      <div class="row align-items-center" style="width: 100%; justify-content: space-between;">
+      <div class="row align-items-center">
         <div class="logo">
           <a href="#home">
             <svg class="logo-icon" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -151,7 +151,7 @@
 
         <div class="header-controls">
           <a id="lang-toggle" class="lang-toggle" href="index-en.html" aria-label="EN - التبديل إلى الإنجليزية">
-            <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
@@ -482,54 +482,50 @@
         <div class="row cert-grid">
           <!-- Cert 1 -->
           <div class="cert-item">
-            <div class="cert-card" style="padding: 24px 16px;">
-              <div class="cert-icon"
-                style="width: 70px; height: 70px; margin-bottom: 15px; background: #fff; border-radius: 50%; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.12); padding: 5px;">
-                <img src="images/taiz-university-logo.svg" alt="شعار جامعة تعز"
-                  style="width: 100%; height: 100%; object-fit: contain;">
+            <div class="cert-card">
+              <div class="cert-icon cert-icon--academic">
+                <img src="images/taiz-university-logo.svg" alt="شعار جامعة تعز">
               </div>
               <div class="cert-info">
-                <h3 style="font-size: 17px; margin-bottom: 6px;">بكالوريوس في هندسة البرمجيات</h3>
-                <span class="cert-org" style="font-size: 14px; margin-bottom: 15px;">جامعة تعز - اليمن</span>
-                <div class="cert-meta" style="margin-bottom: 12px;">
+                <h3>بكالوريوس في هندسة البرمجيات</h3>
+                <span class="cert-org">جامعة تعز - اليمن</span>
+                <div class="cert-meta">
                   <span>يوليو 2020</span>
                   <span class="dot">•</span>
                   <span>تقدير: جيد جداً</span>
                 </div>
               </div>
               <a href="images/certs/bachelor-degree-front.webp" target="_blank" class="cert-btn"
-                style="padding: 6px 16px; font-size: 13px;" aria-label="عرض الشهادة - بكالوريوس في هندسة البرمجيات">عرض الشهادة</a>
+                aria-label="عرض الشهادة - بكالوريوس في هندسة البرمجيات">عرض الشهادة</a>
             </div>
           </div>
 
           <!-- Cert 2 -->
           <div class="cert-item">
-            <div class="cert-card" style="padding: 24px 16px;">
-              <div class="cert-icon"
-                style="width: 70px; height: 70px; margin-bottom: 15px; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.10); padding: 4px;">
-                <img src="images/mosadaqa-logo.svg" alt="شعار منصة مصادقة"
-                  style="width: 100%; height: 100%; object-fit: contain;">
+            <div class="cert-card">
+              <div class="cert-icon cert-icon--mosadaqa">
+                <img src="images/mosadaqa-logo.svg" alt="شعار منصة مصادقة">
               </div>
               <div class="cert-info">
-                <h3 style="font-size: 17px; margin-bottom: 6px;">مصادقة الشهادة الجامعية</h3>
-                <span class="cert-org" style="font-size: 14px; margin-bottom: 15px;">منصة مصادقة - السعودية</span>
-                <div class="cert-meta" style="margin-bottom: 12px;">
+                <h3>مصادقة الشهادة الجامعية</h3>
+                <span class="cert-org">منصة مصادقة - السعودية</span>
+                <div class="cert-meta">
                   <span>2020</span>
                   <span class="dot">•</span>
                   <span>مصدّقة ومعتمدة</span>
                 </div>
               </div>
               <a href="images/certs/mosadaqa-saudi-authentication.pdf" target="_blank" class="cert-btn"
-                style="padding: 6px 16px; font-size: 13px;" aria-label="عرض الشهادة - مصادقة الشهادة الجامعية">عرض الشهادة</a>
+                aria-label="عرض الشهادة - مصادقة الشهادة الجامعية">عرض الشهادة</a>
             </div>
           </div>
 
         </div>
 
         <!-- Courses Sub-section -->
-        <div class="row w-100" style="margin-top: 50px; margin-bottom: 30px; width: 100%;">
-          <div class="section-title text-align" style="margin-bottom: 0;">
-            <h3 style="font-size: 26px; color: var(--ink); font-weight: 700;">شهادات البرمجة والتطوير</h3>
+        <div class="cert-subsection">
+          <div class="section-title text-align">
+            <h3>شهادات البرمجة والتطوير</h3>
           </div>
         </div>
 
@@ -537,22 +533,20 @@
 
           <!-- ITLegend Consolidated Card -->
           <div class="cert-item cert-item--featured">
-            <div class="cert-card" style="padding: 24px 16px;">
-              <div class="cert-icon" style="width: 60px; height: 60px; margin-bottom: 15px;">
-                <img src="images/itlegend-logo.svg" alt="ITLegend Logo"
-                  style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
+            <div class="cert-card">
+              <div class="cert-icon cert-icon--rounded">
+                <img src="images/itlegend-logo.svg" alt="ITLegend Logo">
               </div>
               <div class="cert-info">
-                <h3 style="font-size: 17px; margin-bottom: 6px;">مسار مطور برمجيات متكامل</h3>
-                <span class="cert-org" style="font-size: 14px; margin-bottom: 15px;">ITLegend</span>
-                <div class="cert-meta" style="margin-bottom: 12px;">
+                <h3>مسار مطور برمجيات متكامل</h3>
+                <span class="cert-org">ITLegend</span>
+                <div class="cert-meta">
                   <span>12 شهادة متخصصة</span>
                   <span class="dot">•</span>
                   <span>C# · SQL · HTML · CSS</span>
                 </div>
               </div>
-              <button class="cert-btn cert-btn-gallery"
-                style="padding: 6px 16px; font-size: 13px;">
+              <button class="cert-btn cert-btn-gallery">
                 🎓 عرض الشهادات (12)
               </button>
               <!-- Hidden gallery for lightbox -->
@@ -579,49 +573,46 @@
 
           <!-- Cert Item: Udemy Laravel -->
           <div class="cert-item">
-            <div class="cert-card" style="padding: 24px 16px;">
-              <div class="cert-icon" style="width: 50px; height: 50px; margin-bottom: 15px;">
-                <img src="images/udemy-logo.svg" alt="Udemy Logo"
-                  style="width: 100%; height: 100%; object-fit: contain;">
+            <div class="cert-card">
+              <div class="cert-icon cert-icon--course">
+                <img src="images/udemy-logo.svg" alt="Udemy Logo">
               </div>
               <div class="cert-info">
-                <h3 style="font-size: 17px; margin-bottom: 6px;">دورة Laravel 12 الشاملة</h3>
-                <span class="cert-org" style="font-size: 14px; margin-bottom: 15px;">Udemy</span>
+                <h3>دورة Laravel 12 الشاملة</h3>
+                <span class="cert-org">Udemy</span>
               </div>
               <a href="images/certs/course-udemy-laravel.webp" target="_blank" class="cert-btn"
-                style="padding: 6px 16px; font-size: 13px;" aria-label="عرض الشهادة - دورة Laravel 12 الشاملة">عرض الشهادة</a>
+                aria-label="عرض الشهادة - دورة Laravel 12 الشاملة">عرض الشهادة</a>
             </div>
           </div>
 
           <!-- Cert Item: Udemy MERN -->
           <div class="cert-item">
-            <div class="cert-card" style="padding: 24px 16px;">
-              <div class="cert-icon" style="width: 50px; height: 50px; margin-bottom: 15px;">
-                <img src="images/udemy-logo.svg" alt="Udemy Logo"
-                  style="width: 100%; height: 100%; object-fit: contain;">
+            <div class="cert-card">
+              <div class="cert-icon cert-icon--course">
+                <img src="images/udemy-logo.svg" alt="Udemy Logo">
               </div>
               <div class="cert-info">
-                <h3 style="font-size: 17px; margin-bottom: 6px;">تطوير الويب (MERN Stack)</h3>
-                <span class="cert-org" style="font-size: 14px; margin-bottom: 15px;">Udemy</span>
+                <h3>تطوير الويب (MERN Stack)</h3>
+                <span class="cert-org">Udemy</span>
               </div>
               <a href="images/certs/course-udemy-mern.pdf" target="_blank" class="cert-btn"
-                style="padding: 6px 16px; font-size: 13px;" aria-label="عرض الشهادة - تطوير الويب (MERN Stack)">عرض الشهادة</a>
+                aria-label="عرض الشهادة - تطوير الويب (MERN Stack)">عرض الشهادة</a>
             </div>
           </div>
 
           <!-- Cert Item: Million Prompters -->
           <div class="cert-item">
-            <div class="cert-card" style="padding: 24px 16px;">
-              <div class="cert-icon" style="width: 50px; height: 50px; margin-bottom: 15px;">
-                <img src="images/million-prompters-logo.svg" alt="Million Prompters Logo"
-                  style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
+            <div class="cert-card">
+              <div class="cert-icon cert-icon--course cert-icon--rounded">
+                <img src="images/million-prompters-logo.svg" alt="Million Prompters Logo">
               </div>
               <div class="cert-info">
-                <h3 style="font-size: 17px; margin-bottom: 6px;">مبادرة مليون مبرمج</h3>
-                <span class="cert-org" style="font-size: 14px; margin-bottom: 15px;">Million Prompters</span>
+                <h3>مبادرة مليون مبرمج</h3>
+                <span class="cert-org">Million Prompters</span>
               </div>
               <a href="images/certs/course-million-prompters.pdf" target="_blank" class="cert-btn"
-                style="padding: 6px 16px; font-size: 13px;" aria-label="عرض الشهادة - مبادرة مليون مبرمج">عرض الشهادة</a>
+                aria-label="عرض الشهادة - مبادرة مليون مبرمج">عرض الشهادة</a>
             </div>
           </div>
         </div>

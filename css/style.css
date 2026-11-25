@@ -382,7 +382,7 @@ img{max-width:100%;height:auto;display:block}
 .home-stats .stat-item h3{font-size:clamp(22px,2vw,26px);font-weight:800;color:var(--text-brand);margin:0;line-height:1.15}
 .home-stats .stat-item p{font-size:clamp(13px,1.1vw,15px);color:var(--muted);margin:12px 0 0;transform:rotate(-20deg);transform-origin:center;white-space:nowrap}
 .mobile-text{display:none}
-@media (max-width:991px){.home-stats{padding:0 0 24px}}
+@media (max-width:991px){.home-stats{max-width:560px;margin:10px auto 0;padding:0 0 24px}}
 @media (max-width:767px){
   .desktop-text{display:none}
   .mobile-text{display:inline-block}
@@ -708,9 +708,9 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
 /* استجابة الهيرو على الشاشات الصغيرة */
 @media (max-width:991px){
   .about-section .about-content, .navbar .menu{text-align:center}
-  .about-section .about-image, .header-hero-shape{display:none}
-  .home-text, .home-image{flex:0 0 100%;max-width:100%;padding:0 16px}
-  .home-image{display:flex;justify-content:center}
+  .header-hero-shape{display:none}
+  .home-text, .home-image-container, .home-image{flex:0 0 100%;max-width:100%;padding:0 16px}
+  .home-image{display:flex;justify-content:center;margin-top:24px}
   .home-section{padding-top:calc(88px + env(safe-area-inset-top));}
 }
 
@@ -886,14 +886,24 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
 
 
 
-/* ====== Mobile fix for About section (≤991px) ====== */
+/* ====== Mobile & Tablet fix for About section (≤991px) ====== */
 @media (max-width:991px){
-  /* أخفينا الصورة سابقًا؛ خَلّ المحتوى بعرض كامل */
-  .about-section .about-image{ display:none; }
   .about-section .about-content{
+    order:1;
     flex:0 0 100%;
     max-width:100%;
-    padding:0 16px;               /* حواف مريحة */
+    padding:0 16px;
+  }
+  .about-section .about-image{
+    order:2;
+    display:block;
+    flex:0 0 100%;
+    max-width:100%;
+    padding:8px 16px 0;
+  }
+  .about-section .about-image .sdlc-container{
+    width:min(380px, 100%);
+    margin:16px auto 0;
   }
 
   /* العناوين */
@@ -913,8 +923,9 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
   .about-section .about-content p{
     font-size:16px;
     line-height:1.9;
-    margin-bottom:14px;
-    text-align:justify;
+    margin:0 auto 14px;
+    max-width:680px;
+    text-align:center;
   }
 }
 
@@ -1049,16 +1060,14 @@ img, svg {
     display: none;
   }
   
-  /* Force single column layout - Increased specificity to override originals */
-  .home-text, .home-image,
+  /* Force single column layout for Hero, About & Contact on Tablet */
+  .home-text, .home-image-container, .home-image,
   .about-section .about-content, .about-section .about-image,
-  .service-section .service-item, .portfolio .portfolio-item,
-  .technologies .technologies-item, .contact-section .contact-item,
   .w-50 {
     flex: 0 0 100%;
     max-width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
   
   /* Center text on mobile for better balance */
@@ -1210,7 +1219,7 @@ body {
 .sdlc-center {
   width: min(210px, 38%);
   height: min(210px, 38%);
-  background: linear-gradient(145deg, var(--main-color), color-mix(in oklab, var(--main-color), #022927 40%));
+  background: linear-gradient(145deg, #007a68, #023b36);
   color: #fff;
   border-radius: 50%;
   display: flex;
@@ -1302,11 +1311,12 @@ body {
 .sdlc-item:nth-child(8) { top: 23%; left: 4%; }
 
 @media (max-width: 540px) {
+  .about-section .about-image .sdlc-container { width: min(320px, 100%); }
   .sdlc-container { padding: 8px; }
-  .sdlc-center { width: 45%; height: 45%; font-size: 0.95rem; letter-spacing: 1px; }
-  .sdlc-node { width: 62px; height: 62px; }
-  .sdlc-item { font-size: 0.82rem; }
-  .sdlc-item .ico { width: 26px; height: 26px; }
+  .sdlc-center { width: 42%; height: 42%; font-size: 0.9rem; letter-spacing: 0.8px; }
+  .sdlc-node { width: 58px; height: 58px; }
+  .sdlc-item { font-size: 0.8rem; gap: 6px; }
+  .sdlc-item .ico { width: 24px; height: 24px; }
 }
 /* Technologies Section Redesign */
 .tech-card {
@@ -1653,6 +1663,13 @@ body {
   background: none !important;
   border: none !important;
   padding: 0 !important;
+}
+
+@media (max-width: 991px) {
+  .home-social-links {
+    justify-content: center !important;
+    margin-inline: auto !important;
+  }
 }
 
 @media (max-width: 767px) {

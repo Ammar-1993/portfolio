@@ -670,21 +670,21 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
 .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.82);display:none;z-index:var(--z-lightbox);justify-content:center;align-items:center;cursor:zoom-out;padding:30px}
 .lightbox.open{display:flex}
 .lightbox .lightbox-content{position:relative}
-.lightbox .lightbox-content img{max-width:100%;max-height:70vh;border-radius:12px;display:block;padding:24px 0 18px}
+.lightbox .lightbox-content img{max-width:100%;max-height:70vh;border-radius:12px;display:block;padding:24px 0 18px;object-fit:contain}
 .lightbox .lightbox-content .lightbox-close{
   position:absolute; top:-50px; inset-inline-end:0;
-  height:44px; width:44px; border-radius:50%;
+  height:44px; width:44px; border-radius:50%; border:none;
   background:rgba(255,255,255,0.2); color:#fff;
   font-size:28px; line-height:44px; text-align:center;
   display:flex; align-items:center; justify-content:center;
-  transition:all .3s ease; cursor:pointer;
+  transition:all .3s ease; cursor:pointer; z-index:2200;
 }
 .lightbox .lightbox-content .lightbox-close:hover{background:var(--main-color);transform:rotate(90deg)}
 
 .lightbox .lightbox-controls .next-item,
 .lightbox .lightbox-controls .prev-item{
   position:absolute; top:50%; transform:translateY(-50%);
-  height:50px; width:50px; background:#fff; border-radius:50%;
+  height:50px; width:50px; background:#fff; border-radius:50%; border:none;
   display:flex; align-items:center; justify-content:center;
   cursor:pointer; z-index:var(--z-lightbox-controls);
   box-shadow:0 0 15px rgba(0,0,0,0.3); transition:all .3s ease
@@ -720,6 +720,36 @@ footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;col
 .lightbox .caption-text, .lightbox .caption-counter{
   font-weight:600; font-size:1rem; color:#fff;
   text-shadow: none;
+}
+
+@media (max-width:991px){
+  .lightbox{padding:24px}
+  .lightbox .lightbox-controls .next-item,
+  .lightbox .lightbox-controls .prev-item{width:46px;height:46px}
+  .lightbox .lightbox-controls .prev-item{inset-inline-start:14px}
+  .lightbox .lightbox-controls .next-item{inset-inline-end:14px}
+}
+
+@media (max-width:767px){
+  .lightbox{padding:16px}
+  .lightbox .lightbox-content img{max-height:66dvh;padding:12px 0}
+  .lightbox .lightbox-content .lightbox-close{top:-46px;inset-inline-end:0;width:42px;height:42px;font-size:26px;line-height:42px}
+  .lightbox .lightbox-controls .next-item,
+  .lightbox .lightbox-controls .prev-item{
+    top:auto;
+    bottom:max(22px,calc(env(safe-area-inset-bottom) + 14px));
+    transform:none;
+    width:46px;
+    height:46px;
+  }
+  .lightbox .lightbox-controls .prev-item{inset-inline-start:calc(50% - 58px)}
+  .lightbox .lightbox-controls .next-item{inset-inline-end:calc(50% - 58px)}
+  .lightbox .lightbox-controls .next-item:hover,
+  .lightbox .lightbox-controls .prev-item:hover{transform:scale(1.06)}
+  .lightbox .lightbox-controls .next-item:disabled,
+  .lightbox .lightbox-controls .prev-item:disabled,
+  .lightbox .lightbox-controls .next-item:disabled:hover,
+  .lightbox .lightbox-controls .prev-item:disabled:hover{transform:none}
 }
 
 /* استجابة الهيرو على الشاشات الصغيرة */
@@ -1409,11 +1439,6 @@ body {
   border-color: var(--main-color);
 }
 
-/* Lightbox preview placed near close button */
-.lightbox-content{position:relative}
-.lightbox-close{
-  position:absolute;top:12px;left:12px;background:rgba(255,255,255,0.9);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:none;font-size:20px;z-index:2200
-}
 /* .lightbox-preview removed — preview link created dynamically was removed */
 
 /* Fix hamburger menu icon color on hover (prevent white-on-white) */

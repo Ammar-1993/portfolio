@@ -195,23 +195,15 @@ img{max-width:100%;height:auto;display:block}
 
 /* شريط التنقل */
 .navbar{
-  /* position:fixed;inset:0 0 auto 0;z-index:999;width:100%;
-  padding-block-start:calc(22px + env(safe-area-inset-top));
-  padding:22px 25px;backdrop-filter:saturate(160%) blur(8px) */
-
-  padding-block-start: calc(var(--nav-pad-y) + env(safe-area-inset-top));
-  padding: var(--nav-pad-y) 25px;
+  padding: 14px 20px;
+  padding-block-start: calc(14px + env(safe-area-inset-top));
   position: fixed; inset: 0 0 auto 0; z-index: var(--z-navbar);
   backdrop-filter: saturate(160%) blur(8px);
   border-bottom: 1px solid var(--border);
 }
 .navbar.sticky{
-  /* padding-block-start:calc(12px + env(safe-area-inset-top));
-  padding:12px 25px;
-  background:var(--navbar-bg);
-  box-shadow:var(--shadow-black-100) */
-  padding-block-start:calc(22px + env(safe-area-inset-top));
-padding:12px 25px;
+  padding: 10px 20px;
+  padding-block-start: calc(10px + env(safe-area-inset-top));
   background: var(--navbar-bg); 
   box-shadow: var(--shadow-black-100);
 }
@@ -263,6 +255,17 @@ padding:12px 25px;
   color: var(--text-brand);
   font-weight: 800;
 }
+.logo-text-short {
+  display: none;
+}
+@media (max-width: 600px) {
+  .logo-text-full {
+    display: none;
+  }
+  .logo-text-short {
+    display: inline;
+  }
+}
 @media (min-width: 768px) {
   .logo a .logo-icon {
     width: 38px;
@@ -270,10 +273,10 @@ padding:12px 25px;
     padding: 7px;
   }
 }
-.links{flex:1;display:flex;justify-content:center}
-.links .menu{list-style:none;display:flex;margin:0;padding:0}
-.navbar .menu .nav-item{display:inline-block;position:relative;margin-inline-start:28px}
-.navbar .menu .nav-item .nav-link{position:relative;color:var(--ink);font-size:16px;font-weight:600;display:block;padding:10px 0;transition:color 0.3s ease, transform 0.2s ease}
+.links{flex:1;display:flex;justify-content:center;padding-inline:clamp(8px,1.5vw,20px)}
+.links .menu{list-style:none;display:flex;align-items:center;gap:clamp(14px,1.8vw,28px);margin:0;padding:0}
+.navbar .menu .nav-item{display:inline-block;position:relative;margin:0}
+.navbar .menu .nav-item .nav-link{position:relative;color:var(--ink);font-size:clamp(14.5px,1.1vw,16px);font-weight:600;white-space:nowrap;display:block;padding:10px 0;transition:color 0.3s ease, transform 0.2s ease}
 .navbar .menu .nav-item .nav-link::after{content:"";position:absolute;bottom:2px;inset-inline:0;height:3px;background:linear-gradient(90deg,var(--text-brand),var(--main-color));border-radius:999px;box-shadow:0 2px 8px rgba(0,167,142,.38);transform:scaleX(0);transform-origin:center;transition:transform .28s cubic-bezier(.22,1,.36,1)}
 .navbar .menu .nav-item .nav-link:hover::after,
 .navbar .menu .nav-item .nav-link.active::after{transform:scaleX(1)}
@@ -1411,22 +1414,25 @@ body {
     margin: 0 !important;
   }
   .header-controls {
-    gap: 4px !important;
+    gap: 6px !important;
   }
   .header-controls .lang-toggle {
-    padding: 4px 6px !important;
+    height: 38px !important;
+    width: auto !important;
+    min-width: 42px !important;
+    padding: 0 8px !important;
     font-size: 13px !important;
     gap: 3px !important;
   }
   .header-controls .lang-toggle svg {
-    width: 13px !important;
-    height: 13px !important;
+    width: 14px !important;
+    height: 14px !important;
   }
   .header-controls .theme-toggle,
   .menu-btn {
-    width: 32px !important;
-    height: 32px !important;
-    min-width: 32px !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
     padding: 0 !important;
   }
   .theme-icon {
@@ -1499,11 +1505,17 @@ body {
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s step-end !important;
   }
   [dir="rtl"] .navbar .menu {
+    right: auto !important;
+    left: 0 !important;
+    inset: 0 auto auto 0 !important;
     border-left: none !important;
     border-right: 1px solid var(--border) !important;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.15) !important;
+    transform: translateX(-100%) !important;
   }
 
-  .navbar .menu.active {
+  .navbar .menu.active,
+  [dir="rtl"] .navbar .menu.active {
     transform: translateX(0) !important;
     visibility: visible !important;
     pointer-events: auto !important;

@@ -13,7 +13,7 @@
   "orientation": "portrait-primary",
   "categories": ["productivity", "portfolio", "business", "utilities"],
   "screenshots": [
-    { "src": "images/hero4.webp", "sizes": "1080x952", "type": "image/webp", "label": "الصفحة الرئيسية" },
+    { "src": "images/hero4.webp", "sizes": "1254x1254", "type": "image/webp", "label": "الصفحة الرئيسية" },
     { "src": "images/about_hero.webp", "sizes": "490x487", "type": "image/webp", "label": "نبذة عن الفريق" }
   ],
   "icons": [

@@ -672,7 +672,11 @@ img{max-width:100%;height:auto;display:block}
 
 /* التذييل */
 footer{background:var(--surface);border-top:1px solid var(--border);padding:16px 0}
-footer .copyright-text{padding:6px 0;font-size:16px;font-weight:400;margin:0;color:var(--muted)}
+footer.footer .row{margin-left:0;margin-right:0;width:100%}
+footer .copyright-text{padding:6px 8px;font-size:16px;font-weight:400;line-height:1.6;margin:0;color:var(--muted);text-align:center;text-wrap:balance}
+@media (max-width:767px){
+  [dir="ltr"] footer .copyright-text{font-size:clamp(12.5px,3.4vw,14.5px);padding:6px 6px}
+}
 
 /* Lightbox */
 .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.82);display:none;z-index:var(--z-lightbox);justify-content:center;align-items:center;cursor:zoom-out;padding:30px}
@@ -1589,69 +1593,83 @@ body {
   padding-inline-start: 5px;
 }
 
-/* Sidebar Drawer Menu for Mobile */
+/* Sidebar Popover Menu for Mobile */
 @media (max-width: 991px) {
-  /* Overlay Backdrop */
+  /* Overlay Backdrop (starts cleanly below navbar so header stays crisp) */
   .links::before {
     content: "";
     position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100dvh;
+    background: rgba(2, 6, 23, 0.36);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     z-index: 900;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.3s ease, visibility 0.3s step-end;
+    transition: opacity 0.25s ease, visibility 0.25s step-end;
   }
   .links:has(.menu.active)::before {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    transition: opacity 0.3s ease, visibility 0s;
+    transition: opacity 0.25s ease, visibility 0s;
   }
 
-  /* Right-aligned Sidebar Drawer */
+  /* Compact Content-Fitted Floating Sidebar Card */
   .navbar .menu {
     position: fixed !important;
-    top: 0 !important;
-    bottom: 0 !important;
-    right: 0 !important;
+    top: calc(100% + 8px) !important;
+    bottom: auto !important;
+    right: 12px !important;
     left: auto !important;
-    inset: 0 0 auto auto !important;
-    height: 100dvh !important;
-    width: 280px !important;
-    max-width: 80vw !important;
-    max-height: none !important;
-    background: var(--surface) !important;
-    border-top: none !important;
-    border-left: 1px solid var(--border) !important;
+    inset: calc(100% + 8px) 12px auto auto !important;
+    height: auto !important;
+    max-height: calc(100dvh - 88px) !important;
+    overflow-y: auto !important;
+    width: max-content !important;
+    min-width: 176px !important;
+    max-width: calc(100vw - 24px) !important;
+    background: color-mix(in oklab, var(--surface), transparent 3%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border: 1px solid color-mix(in oklab, var(--main-color), var(--border) 76%) !important;
+    border-radius: 16px !important;
     z-index: 1001 !important;
-    padding: 80px 16px 20px !important;
+    padding: 8px !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 4px !important;
-    box-shadow: -4px 0 20px rgba(0,0,0,0.15) !important;
-    transform: translateX(100%) !important;
+    gap: 3px !important;
+    box-shadow: 0 18px 42px rgba(15, 23, 42, 0.16), 0 4px 12px rgba(0, 167, 142, 0.08) !important;
+    transform-origin: top right !important;
+    opacity: 0 !important;
+    transform: translateY(-8px) scale(0.95) !important;
     visibility: hidden !important;
     pointer-events: none !important;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s step-end !important;
+    transition: opacity 0.22s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.25s step-end !important;
+  }
+  [data-theme="dark"] .navbar .menu {
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.04) !important;
   }
   [dir="rtl"] .navbar .menu {
     right: auto !important;
-    left: 0 !important;
-    inset: 0 auto auto 0 !important;
-    border-left: none !important;
-    border-right: 1px solid var(--border) !important;
-    box-shadow: 4px 0 20px rgba(0,0,0,0.15) !important;
-    transform: translateX(-100%) !important;
+    left: 12px !important;
+    inset: calc(100% + 8px) auto auto 12px !important;
+    min-width: 164px !important;
+    transform-origin: top left !important;
   }
 
   .navbar .menu.active,
   [dir="rtl"] .navbar .menu.active {
-    transform: translateX(0) !important;
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
     visibility: visible !important;
     pointer-events: auto !important;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s !important;
+    transition: opacity 0.22s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s !important;
   }
 
   /* Nav Links Active State & Touch Targets */
@@ -1662,32 +1680,41 @@ body {
   .navbar .menu .nav-item .nav-link {
     display: flex !important;
     align-items: center !important;
-    padding: 12px 16px !important;
-    min-height: 48px !important;
-    color: var(--muted) !important;
-    border-radius: 8px !important;
+    justify-content: flex-start !important;
+    padding: 10px 18px !important;
+    min-height: 44px !important;
+    color: var(--ink) !important;
+    opacity: 0.86;
+    border-radius: 11px !important;
     background: transparent !important;
     transition: all 0.2s ease !important;
-    font-size: 16px !important;
+    font-size: 15px !important;
     font-weight: 600 !important;
+    white-space: nowrap !important;
+    text-align: start !important;
   }
   .navbar .menu .nav-item .nav-link::after {
-    display: none !important; /* Remove bottom border */
+    display: none !important;
   }
   
   /* Active / Hover state */
   .navbar .menu .nav-item .nav-link.active,
   .navbar .menu .nav-item .nav-link:hover {
-    background-color: rgba(0, 167, 142, 0.1) !important;
+    opacity: 1;
+    font-weight: 700 !important;
+    background-color: color-mix(in oklab, var(--main-color), transparent 89%) !important;
     color: var(--text-brand) !important;
-    box-shadow: inset 0 -2px 0 var(--main-color) !important;
+    box-shadow: inset 3.5px 0 0 var(--main-color) !important;
     transform: none !important;
+  }
+  [dir="rtl"] .navbar .menu .nav-item .nav-link.active,
+  [dir="rtl"] .navbar .menu .nav-item .nav-link:hover {
+    box-shadow: inset -3.5px 0 0 var(--main-color) !important;
   }
   [data-theme="dark"] .navbar .menu .nav-item .nav-link.active,
   [data-theme="dark"] .navbar .menu .nav-item .nav-link:hover {
-    background-color: rgba(0, 167, 142, 0.16) !important;
+    background-color: color-mix(in oklab, var(--main-color), transparent 83%) !important;
     color: var(--text-brand) !important;
-    box-shadow: inset 0 -2px 0 var(--main-color) !important;
   }
 }
 
@@ -1741,22 +1768,34 @@ body {
   box-shadow: none !important;
 }
 
-/* Hamburger Icon Colors */
+/* Hamburger Icon Colors & Active X Animation */
 .menu-icon-bar,
 .menu-icon-bar::before,
 .menu-icon-bar::after {
   background-color: var(--ink) !important;
-}
-.menu.active + .menu-btn .menu-icon-bar {
-  background-color: transparent !important;
 }
 .menu-btn:hover .menu-icon-bar,
 .menu-btn:hover .menu-icon-bar::before,
 .menu-btn:hover .menu-icon-bar::after {
   background-color: var(--ink) !important;
 }
-.menu.active + .menu-btn:hover .menu-icon-bar {
+.menu-btn[aria-expanded="true"] {
+  border-color: var(--main-color) !important;
+  background: color-mix(in oklab, var(--main-color), transparent 90%) !important;
+}
+.menu-btn[aria-expanded="true"] .menu-icon-bar,
+.menu-btn[aria-expanded="true"]:hover .menu-icon-bar {
   background-color: transparent !important;
+}
+.menu-btn[aria-expanded="true"] .menu-icon-bar::before {
+  top: 0 !important;
+  transform: rotate(45deg) !important;
+  background-color: var(--text-brand) !important;
+}
+.menu-btn[aria-expanded="true"] .menu-icon-bar::after {
+  top: 0 !important;
+  transform: rotate(-45deg) !important;
+  background-color: var(--text-brand) !important;
 }
 
 /* SVG colors */

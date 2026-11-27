@@ -11,6 +11,29 @@
   // Detect language from HTML lang attribute
   const lang = document.documentElement.lang === 'en' ? 'en' : 'ar';
 
+  function escapeHtml(value) {
+    if (value === null || value === undefined) return '';
+    return String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function isSafePreviewUrl(url) {
+    if (url === null || url === undefined) return true;
+    const s = String(url).trim();
+    if (!s) return true;
+    if (/[\s\u0000-\u001F\u007F]/.test(s)) return false;
+    try {
+      const parsed = new URL(s);
+      return parsed.protocol === 'https:' || parsed.protocol === 'http:';
+    } catch (_) {
+      return false;
+    }
+  }
+
   /**
    * Create a portfolio item DOM element
    * @param {Object} project - Project data object
@@ -20,7 +43,8 @@
     const item = document.createElement('div');
     item.className = 'portfolio-item';
     item.setAttribute('data-category', project.category);
-    if (project.preview) item.setAttribute('data-preview', project.preview);
+    const hasSafePreview = Boolean(project.preview && isSafePreviewUrl(project.preview));
+    if (hasSafePreview) item.setAttribute('data-preview', project.preview);
 
     const title = project.title[lang] || project.title.ar;
     const coverAlt = project.coverAlt[lang] || project.coverAlt.ar;
@@ -29,11 +53,11 @@
     const shortDesc = project.description ? (project.description[lang] || project.description.ar) : (project.summary ? (project.summary[lang] || project.summary.ar) : '');
 
     let previewHtml = '';
-    if (project.preview && !project.preview.includes('example.com') && project.preview !== '#') {
+    if (hasSafePreview && !project.preview.includes('example.com') && project.preview !== '#') {
       const previewTitle = lang === 'en' ? `Open preview: ${title} (opens in new window)` : `معاينة ${title} (يفتح في نافذة جديدة)`;
       const previewHoverTitle = lang === 'en' ? 'Opens in a new window' : 'يفتح في نافذة جديدة';
       previewHtml = `
-            <a class="project-preview" href="${project.preview}" target="_blank" rel="noopener noreferrer" title="${previewHoverTitle}" aria-label="${previewTitle}">
+            <a class="project-preview" href="${escapeHtml(project.preview)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(previewHoverTitle)}" aria-label="${escapeHtml(previewTitle)}">
               <svg class="project-preview__svg" aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false">
                 <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M14 3h7v7" />
@@ -47,14 +71,14 @@
     item.innerHTML = `
       <div class="portfolio-item-inner">
         <div class="portfolio-img">
-          <img src="${project.cover}" alt="${coverAlt}" width="640" height="360" loading="lazy" decoding="async">
+          <img src="${escapeHtml(project.cover)}" alt="${escapeHtml(coverAlt)}" width="640" height="360" loading="lazy" decoding="async">
         </div>
         ${project.gallery && project.gallery.length > 0 ? createGalleryHTML(project.gallery) : ''}
         <div class="portfolio-info">
           <div class="portfolio-info-body">
             <div class="portfolio-info-text">
-              <h3>${title}</h3>
-              ${shortDesc ? `<p class="portfolio-short">${shortDesc}</p>` : ''}
+              <h3>${escapeHtml(title)}</h3>
+              ${shortDesc ? `<p class="portfolio-short">${escapeHtml(shortDesc)}</p>` : ''}
             </div>
             ${previewHtml}
           </div>
@@ -75,7 +99,7 @@
     
     const galleryImages = gallery.map(img => {
       const alt = img.alt[lang] || img.alt.ar;
-      return `<img data-src="${img.src}" alt="${alt}" width="640" height="360" loading="lazy" decoding="async">`;
+      return `<img data-src="${escapeHtml(img.src)}" alt="${escapeHtml(alt)}" width="640" height="360" loading="lazy" decoding="async">`;
     }).join('\n                    ');
 
     return `

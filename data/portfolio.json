@@ -1,47 +1,6 @@
 {
     "projects": [
         {
-            "id": "face-crypt-cloud-system",
-            "category": "web-project",
-            "title": {
-                "ar": "نظام المصادقة البيومترية السحابي",
-                "en": "Face Crypt Cloud System"
-            },
-            "summary": {
-                "ar": "نظام ذكي للمصادقة عبر التعرف على الوجه (يدعم اللغتين العربية والإنجليزية) يعتمد على تقنيات الحوسبة السحابية، ويستبدل كلمات المرور التقليدية بآلية تسجيل دخول بيومترية آمنة مدعومة بالذكاء الاصطناعي.",
-                "en": "A smart cloud-based facial recognition authentication system (Arabic & English), that replaces traditional passwords with secure, AI-powered biometric login."
-            },
-            "cover": "images/portfolio/face-crypt-cloud-system-mx0nft1i-1.webp",
-            "coverAlt": {
-                "ar": "نظام المصادقة البيومترية السحابي - الواجهة الرئيسية",
-                "en": "Face Crypt Cloud System - Main Interface"
-            },
-            "preview": "https://github.com/Ammar-1993/Face-Crypt-Cloud-Arabic",
-            "gallery": [
-                {
-                    "src": "images/portfolio/face-crypt-cloud-system-mx0nid3i-8.webp",
-                    "alt": {
-                        "ar": "نظام المصادقة البيومترية السحابي - واجهة 1",
-                        "en": "Face Crypt Cloud System - Interface 1"
-                    }
-                },
-                {
-                    "src": "images/portfolio/face-crypt-cloud-system-mx0nioor-9.webp",
-                    "alt": {
-                        "ar": "نظام المصادقة البيومترية السحابي - واجهة 2",
-                        "en": "Face Crypt Cloud System - Interface 2"
-                    }
-                },
-                {
-                    "src": "images/portfolio/face-crypt-cloud-system-mx0nizj8-10.webp",
-                    "alt": {
-                        "ar": "نظام المصادقة البيومترية السحابي - واجهة 3",
-                        "en": "Face Crypt Cloud System - Interface 3"
-                    }
-                }
-            ]
-        },
-        {
             "id": "smart-compliance-platform",
             "category": "web-project",
             "title": {
@@ -123,6 +82,47 @@
                     "alt": {
                         "ar": "منصة الامتثال الذكية - واجهة 10",
                         "en": "Smart Compliance Platform - Interface 10"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "face-crypt-cloud-system",
+            "category": "web-project",
+            "title": {
+                "ar": "نظام المصادقة البيومترية السحابي",
+                "en": "Face Crypt Cloud System"
+            },
+            "summary": {
+                "ar": "نظام ذكي للمصادقة عبر التعرف على الوجه (يدعم اللغتين العربية والإنجليزية) يعتمد على تقنيات الحوسبة السحابية، ويستبدل كلمات المرور التقليدية بآلية تسجيل دخول بيومترية آمنة مدعومة بالذكاء الاصطناعي.",
+                "en": "A smart cloud-based facial recognition authentication system (Arabic & English), that replaces traditional passwords with secure, AI-powered biometric login."
+            },
+            "cover": "images/portfolio/face-crypt-cloud-system-mx0nft1i-1.webp",
+            "coverAlt": {
+                "ar": "نظام المصادقة البيومترية السحابي - الواجهة الرئيسية",
+                "en": "Face Crypt Cloud System - Main Interface"
+            },
+            "preview": "https://github.com/Ammar-1993/Face-Crypt-Cloud-Arabic",
+            "gallery": [
+                {
+                    "src": "images/portfolio/face-crypt-cloud-system-mx0nid3i-8.webp",
+                    "alt": {
+                        "ar": "نظام المصادقة البيومترية السحابي - واجهة 1",
+                        "en": "Face Crypt Cloud System - Interface 1"
+                    }
+                },
+                {
+                    "src": "images/portfolio/face-crypt-cloud-system-mx0nioor-9.webp",
+                    "alt": {
+                        "ar": "نظام المصادقة البيومترية السحابي - واجهة 2",
+                        "en": "Face Crypt Cloud System - Interface 2"
+                    }
+                },
+                {
+                    "src": "images/portfolio/face-crypt-cloud-system-mx0nizj8-10.webp",
+                    "alt": {
+                        "ar": "نظام المصادقة البيومترية السحابي - واجهة 3",
+                        "en": "Face Crypt Cloud System - Interface 3"
                     }
                 }
             ]

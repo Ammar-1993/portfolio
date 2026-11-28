@@ -1,1 +1,33 @@
-lighthouse-desktop.json
+# Environment & secrets
+.env
+.env.*
+.vercel/
+
+# Audit reports
+lighthouse-*.json
+lighthouse-*.html
+
+# Dependencies & logs
+node_modules/
+*.log
+
+# Editor & OS files
+.vscode/
+.DS_Store
+Thumbs.db
+
+.env.*
+.vercel/
+
+# Audit reports
+lighthouse-*.json
+lighthouse-*.html
+
+# Dependencies & logs
+node_modules/
+*.log
+
+# Editor & OS files
+.vscode/
+.DS_Store
+Thumbs.db

@@ -20,6 +20,10 @@
     webpSupported: true,
     busy: false,
     tempCounter: 0,
+    reorderDirty: false,
+    originalOrderSnapshot: null,
+    deletingId: null,
+    deleteTriggerEl: null,
   };
 
   const dom = {
@@ -42,8 +46,25 @@
     btnRefresh: document.getElementById('btn-refresh'),
     btnNewProject: document.getElementById('btn-new-project'),
     dashboardBanner: document.getElementById('dashboard-banner'),
+    reorderBar: document.getElementById('reorder-bar'),
+    btnSaveOrder: document.getElementById('btn-save-order'),
+    btnDryRunOrder: document.getElementById('btn-dry-run-order'),
+    btnCancelOrder: document.getElementById('btn-cancel-order'),
     projectsLoading: document.getElementById('projects-loading'),
     projectsList: document.getElementById('projects-list'),
+
+    deleteModal: document.getElementById('delete-modal'),
+    btnCloseDeleteModal: document.getElementById('btn-close-delete-modal'),
+    deleteProjectName: document.getElementById('delete-project-name'),
+    deleteProjectIdBadge: document.getElementById('delete-project-id-badge'),
+    btnDeleteModalBackup: document.getElementById('btn-delete-modal-backup'),
+    fieldDeleteModalOrphans: document.getElementById('field-delete-modal-orphans'),
+    deleteConfirmInput: document.getElementById('delete-confirm-input'),
+    deleteDryRunResult: document.getElementById('delete-dry-run-result'),
+    deleteModalError: document.getElementById('delete-modal-error'),
+    btnConfirmDelete: document.getElementById('btn-confirm-delete'),
+    btnDryRunDelete: document.getElementById('btn-dry-run-delete'),
+    btnCancelDelete: document.getElementById('btn-cancel-delete'),
 
     editorView: document.getElementById('editor-view'),
     btnBackList: document.getElementById('btn-back-list'),
@@ -376,11 +397,13 @@
       return true;
     }
     if (err.status === 401) {
+      forceCloseDeleteModal();
       setAuthenticatedUI(false);
       showToast('انتهت جلسة تسجيل الدخول، يرجى الدخول مجدداً', 'warning');
       return true;
     }
     if (err.code === 'BASE_SHA_CONFLICT') {
+      forceCloseDeleteModal();
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'btn btn-outline btn-sm';
@@ -394,6 +417,226 @@
       return true;
     }
     return false;
+  }
+
+  function downloadBackupJson() {
+    const blob = new Blob([JSON.stringify({ projects: state.projects }, null, 4)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `portfolio-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  function resetReorderState() {
+    state.reorderDirty = false;
+    state.originalOrderSnapshot = null;
+    dom.reorderBar.hidden = true;
+    dom.btnNewProject.disabled = false;
+  }
+
+  function moveProject(idx, delta) {
+    if (state.busy) return;
+    const targetIdx = idx + delta;
+    if (targetIdx < 0 || targetIdx >= state.projects.length) return;
+
+    if (!state.originalOrderSnapshot) {
+      state.originalOrderSnapshot = state.projects.map((p) => p.id);
+    }
+
+    const tmp = state.projects[idx];
+    state.projects[idx] = state.projects[targetIdx];
+    state.projects[targetIdx] = tmp;
+
+    const isStillDirty = state.projects.some((p, i) => p.id !== state.originalOrderSnapshot[i]);
+    state.reorderDirty = isStillDirty;
+    if (!isStillDirty) {
+      state.originalOrderSnapshot = null;
+    }
+    dom.reorderBar.hidden = !isStillDirty;
+    dom.btnNewProject.disabled = isStillDirty;
+    renderProjectsList();
+  }
+
+  function cancelReorder() {
+    if (state.busy || !state.originalOrderSnapshot) return;
+    const byId = new Map(state.projects.map((p) => [p.id, p]));
+    state.projects = state.originalOrderSnapshot.map((id) => byId.get(id)).filter(Boolean);
+    resetReorderState();
+    renderProjectsList();
+  }
+
+  async function saveReorder({ dryRun = false } = {}) {
+    if (state.busy || !state.reorderDirty) return;
+    state.busy = true;
+    dom.btnSaveOrder.disabled = true;
+    dom.btnDryRunOrder.disabled = true;
+    dom.btnCancelOrder.disabled = true;
+    renderProjectsList();
+
+    try {
+      const order = state.projects.map((p) => p.id);
+      const res = await apiFetch('/api/projects', {
+        method: 'PATCH',
+        body: JSON.stringify({
+          baseSha: state.baseSha,
+          order,
+          dryRun,
+        }),
+      });
+
+      if (dryRun) {
+        setBanner(
+          'info',
+          `معاينة الترتيب (Dry Run): ${res.commitMessage} — المشاريع: ${res.projectCount} — الملفات المحدّثة: ${res.updatedFiles.join('، ')}`
+        );
+        return;
+      }
+
+      state.projects = res.projects;
+      state.baseSha = res.baseSha;
+      resetReorderState();
+
+      const link = document.createElement('a');
+      link.href = res.commitUrl;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.className = 'alert-link';
+      link.textContent = 'عرض التحديث على GitHub';
+
+      const msg = 'تم حفظ ترتيب المشاريع بنجاح! يتجدد النشر على Vercel خلال ~20 ثانية.';
+      setBanner('success', msg, link);
+      showToast(msg, 'success');
+    } catch (err) {
+      if (!handleApiError(err)) {
+        setBanner('danger', err.message || 'تعذر حفظ ترتيب المشاريع');
+      }
+    } finally {
+      state.busy = false;
+      dom.btnSaveOrder.disabled = false;
+      dom.btnDryRunOrder.disabled = false;
+      dom.btnCancelOrder.disabled = false;
+      renderProjectsList();
+    }
+  }
+
+  function updateDeleteConfirmState() {
+    if (!state.deletingId) {
+      dom.btnConfirmDelete.disabled = true;
+      return;
+    }
+    const matches = dom.deleteConfirmInput.value.trim() === state.deletingId;
+    dom.btnConfirmDelete.disabled = state.busy || !matches;
+  }
+
+  function forceCloseDeleteModal() {
+    if (dom.deleteModal.hidden) return;
+    dom.deleteModal.hidden = true;
+    document.body.style.overflow = '';
+    const trigger = state.deleteTriggerEl;
+    state.deletingId = null;
+    state.deleteTriggerEl = null;
+    if (trigger && typeof trigger.focus === 'function' && trigger.isConnected) {
+      trigger.focus();
+    }
+  }
+
+  function closeDeleteModal() {
+    if (state.busy) return;
+    forceCloseDeleteModal();
+  }
+
+  function openDeleteModal(id, triggerEl) {
+    const project = state.projects.find((p) => p.id === id);
+    if (!project) return;
+    state.deletingId = id;
+    state.deleteTriggerEl = triggerEl || null;
+
+    dom.deleteProjectName.textContent = project.title.ar || project.title.en;
+    dom.deleteProjectIdBadge.textContent = project.id;
+    dom.deleteConfirmInput.value = '';
+    dom.fieldDeleteModalOrphans.checked = true;
+    dom.deleteDryRunResult.hidden = true;
+    dom.deleteDryRunResult.textContent = '';
+    dom.deleteModalError.hidden = true;
+    dom.deleteModalError.textContent = '';
+    updateDeleteConfirmState();
+
+    dom.deleteModal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    dom.deleteConfirmInput.focus();
+  }
+
+  async function executeDelete({ dryRun = false } = {}) {
+    if (state.busy || !state.deletingId) return;
+    if (!dryRun && dom.deleteConfirmInput.value.trim() !== state.deletingId) return;
+
+    dom.deleteModalError.hidden = true;
+    dom.deleteDryRunResult.hidden = true;
+
+    state.busy = true;
+    dom.btnConfirmDelete.disabled = true;
+    dom.btnDryRunDelete.disabled = true;
+    dom.btnCancelDelete.disabled = true;
+    dom.btnCloseDeleteModal.disabled = true;
+
+    try {
+      const targetId = state.deletingId;
+      const res = await apiFetch(`/api/projects?id=${encodeURIComponent(targetId)}`, {
+        method: 'DELETE',
+        body: JSON.stringify({
+          baseSha: state.baseSha,
+          deleteOrphanImages: dom.fieldDeleteModalOrphans.checked,
+          dryRun,
+        }),
+      });
+
+      if (dryRun) {
+        const deletedList =
+          res.deletedImages && res.deletedImages.length > 0
+            ? res.deletedImages.join('، ')
+            : 'لا توجد صور يتيمة ستُحذف';
+        dom.deleteDryRunResult.textContent =
+          `معاينة الحذف (Dry Run — لم يتم التنفيذ بعد):\n` +
+          `• رسالة الـ Commit: ${res.commitMessage}\n` +
+          `• المشاريع المتبقية: ${res.projectCount}\n` +
+          `• الصور التي ستُحذف (${res.deletedImages.length}): ${deletedList}`;
+        dom.deleteDryRunResult.hidden = false;
+        return;
+      }
+
+      state.projects = res.projects;
+      state.baseSha = res.baseSha;
+      state.busy = false;
+      forceCloseDeleteModal();
+      renderProjectsList();
+
+      const link = document.createElement('a');
+      link.href = res.commitUrl;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.className = 'alert-link';
+      link.textContent = 'عرض التحديث على GitHub';
+
+      const deletedCount = Array.isArray(res.deletedImages) ? res.deletedImages.length : 0;
+      const msg = `تم حذف المشروع (${deletedCount} صور غير مستخدمة حُذفت). يتجدد النشر على Vercel خلال ~20 ثانية.`;
+      setBanner('success', msg, link);
+      showToast('تم حذف المشروع بنجاح', 'success');
+    } catch (err) {
+      if (!handleApiError(err)) {
+        dom.deleteModalError.textContent = err.message || 'تعذر حذف المشروع';
+        dom.deleteModalError.hidden = false;
+      }
+    } finally {
+      state.busy = false;
+      dom.btnDryRunDelete.disabled = false;
+      dom.btnCancelDelete.disabled = false;
+      dom.btnCloseDeleteModal.disabled = false;
+      updateDeleteConfirmState();
+    }
   }
 
   function renderProjectsList() {
@@ -418,6 +661,7 @@
       const catLabel = project.category === 'mobile-project' ? 'موبايل' : 'ويب';
       const galleryLen = Array.isArray(project.gallery) ? project.gallery.length : 0;
       const hasPreview = project.preview && isSafePreviewUrl(project.preview) && !project.preview.includes('example.com');
+      const lockMsg = state.reorderDirty ? 'احفظ الترتيب أو ألغِه أولاً' : '';
 
       card.innerHTML = `
         <div class="project-card-media">
@@ -425,7 +669,10 @@
         </div>
         <div class="project-card-body">
           <div class="project-card-top">
-            <span class="cat-pill">${escapeHtml(catLabel)}</span>
+            <div class="project-card-top-badges">
+              <span class="project-order-pill">#${idx + 1}</span>
+              <span class="cat-pill">${escapeHtml(catLabel)}</span>
+            </div>
             <span class="cat-pill">${galleryLen} لقطات</span>
           </div>
           <h3>${escapeHtml(project.title.ar)}</h3>
@@ -433,13 +680,21 @@
           <div class="project-id-code">${escapeHtml(project.id)}</div>
         </div>
         <div class="project-card-actions">
-          <button type="button" class="btn btn-outline btn-sm btn-edit-project">تعديل</button>
+          <button type="button" class="btn btn-outline btn-sm btn-edit-project" ${state.reorderDirty || state.busy ? 'disabled' : ''} ${lockMsg ? `title="${lockMsg}"` : ''}>تعديل</button>
+          <button type="button" class="btn btn-danger-ghost btn-sm btn-delete-project" ${state.reorderDirty || state.busy ? 'disabled' : ''} ${lockMsg ? `title="${lockMsg}"` : ''}>حذف</button>
           ${hasPreview ? `<a class="btn btn-ghost btn-sm" href="${escapeHtml(project.preview)}" target="_blank" rel="noopener noreferrer">معاينة ↗</a>` : ''}
+          <div class="project-reorder-group">
+            <button type="button" class="btn btn-ghost btn-sm btn-order-up" aria-label="تقديم المشروع للأعلى" ${idx === 0 || state.busy ? 'disabled' : ''}>▲</button>
+            <button type="button" class="btn btn-ghost btn-sm btn-order-down" aria-label="تأخير المشروع للأسفل" ${idx === state.projects.length - 1 || state.busy ? 'disabled' : ''}>▼</button>
+          </div>
         </div>
       `;
 
-      const editBtn = card.querySelector('.btn-edit-project');
-      editBtn.addEventListener('click', () => openEditEditor(project.id));
+      card.querySelector('.btn-edit-project').addEventListener('click', () => openEditEditor(project.id));
+      const deleteBtn = card.querySelector('.btn-delete-project');
+      deleteBtn.addEventListener('click', () => openDeleteModal(project.id, deleteBtn));
+      card.querySelector('.btn-order-up').addEventListener('click', () => moveProject(idx, -1));
+      card.querySelector('.btn-order-down').addEventListener('click', () => moveProject(idx, 1));
       fragment.appendChild(card);
     });
 
@@ -449,6 +704,7 @@
   async function loadProjects() {
     dom.projectsLoading.hidden = false;
     dom.projectsList.hidden = true;
+    resetReorderState();
     try {
       const data = await apiFetch('/api/projects', { method: 'GET' });
       state.projects = Array.isArray(data.projects) ? data.projects : [];
@@ -1054,17 +1310,24 @@
       setAuthenticatedUI(false);
     });
 
-    dom.btnBackup.addEventListener('click', () => {
-      const blob = new Blob([JSON.stringify({ projects: state.projects }, null, 4)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `portfolio-backup-${new Date().toISOString().slice(0, 10)}.json`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
+    dom.btnBackup.addEventListener('click', downloadBackupJson);
+    dom.btnDeleteModalBackup.addEventListener('click', downloadBackupJson);
+
+    dom.btnSaveOrder.addEventListener('click', () => saveReorder({ dryRun: false }));
+    dom.btnDryRunOrder.addEventListener('click', () => saveReorder({ dryRun: true }));
+    dom.btnCancelOrder.addEventListener('click', cancelReorder);
+
+    dom.btnCloseDeleteModal.addEventListener('click', closeDeleteModal);
+    dom.btnCancelDelete.addEventListener('click', closeDeleteModal);
+    dom.deleteModal.addEventListener('click', (e) => {
+      if (e.target === dom.deleteModal) closeDeleteModal();
     });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !dom.deleteModal.hidden) closeDeleteModal();
+    });
+    dom.deleteConfirmInput.addEventListener('input', updateDeleteConfirmState);
+    dom.btnDryRunDelete.addEventListener('click', () => executeDelete({ dryRun: true }));
+    dom.btnConfirmDelete.addEventListener('click', () => executeDelete({ dryRun: false }));
 
     dom.btnRefresh.addEventListener('click', () => {
       clearBanner();

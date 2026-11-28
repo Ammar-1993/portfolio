@@ -99,6 +99,15 @@
 
       <div id="dashboard-banner" class="alert" role="status" hidden></div>
 
+      <div id="reorder-bar" class="alert alert-warning alert-row reorder-bar" role="region" aria-label="حفظ ترتيب المشاريع" hidden>
+        <span>تم تعديل ترتيب المشاريع (لم يُحفظ بعد).</span>
+        <div class="reorder-bar-actions">
+          <button type="button" id="btn-save-order" class="btn btn-primary btn-sm">حفظ الترتيب</button>
+          <button type="button" id="btn-dry-run-order" class="btn btn-outline btn-sm">معاينة الترتيب (Dry Run)</button>
+          <button type="button" id="btn-cancel-order" class="btn btn-ghost btn-sm">إلغاء التغييرات</button>
+        </div>
+      </div>
+
       <div id="projects-loading" class="loading-box" hidden>
         <span class="spinner" aria-hidden="true"></span>
         <span>جاري جلب المشاريع من المستودع...</span>
@@ -290,6 +299,48 @@
       </div>
     </section>
   </main>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="delete-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title" hidden>
+    <div class="modal-dialog card">
+      <div class="modal-header">
+        <h3 id="delete-modal-title">تأكيد حذف المشروع</h3>
+        <button type="button" id="btn-close-delete-modal" class="icon-btn" aria-label="إغلاق">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-lead">
+          أنت على وشك حذف المشروع: <strong id="delete-project-name"></strong>
+          (<code id="delete-project-id-badge" class="code-pill" dir="ltr"></code>)
+        </p>
+        <p class="field-help">ملاحظة: عملية الحذف تنشئ Commit على GitHub ويمكن التراجع عنها دائماً عبر Revert.</p>
+
+        <div class="modal-backup-row">
+          <span>يُنصح بتنزيل نسخة احتياطية قبل الحذف:</span>
+          <button type="button" id="btn-delete-modal-backup" class="btn btn-outline btn-sm">تنزيل نسخة احتياطية JSON</button>
+        </div>
+
+        <div class="checkbox-row">
+          <label class="checkbox-label">
+            <input id="field-delete-modal-orphans" type="checkbox" checked>
+            <span>حذف صور المشروع غير المستخدمة في أي مشروع آخر من المستودع</span>
+          </label>
+        </div>
+
+        <div class="form-group modal-confirm-group">
+          <label for="delete-confirm-input">اكتب معرّف المشروع للتأكيد:</label>
+          <input id="delete-confirm-input" type="text" dir="ltr" class="form-control" autocomplete="off" placeholder="project-id">
+        </div>
+
+        <div id="delete-dry-run-result" class="alert alert-info dry-run-box" role="status" hidden></div>
+        <div id="delete-modal-error" class="alert alert-danger" role="alert" hidden></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btn-confirm-delete" class="btn btn-danger" disabled>حذف المشروع نهائياً</button>
+        <button type="button" id="btn-dry-run-delete" class="btn btn-outline">معاينة الحذف (Dry Run)</button>
+        <button type="button" id="btn-cancel-delete" class="btn btn-ghost">إلغاء</button>
+      </div>
+    </div>
+  </div>
 
   <script src="js/admin.js" defer></script>
 </body>

@@ -136,6 +136,8 @@ body {
 .btn-ghost:hover:not(:disabled) { background: var(--bg-soft); color: var(--ink); }
 .btn-danger-ghost { background: transparent; color: var(--danger); border-color: var(--danger-border); }
 .btn-danger-ghost:hover:not(:disabled) { background: var(--danger-bg); }
+.btn-danger { background: #dc2626; color: #ffffff; }
+.btn-danger:hover:not(:disabled) { background: #b91c1c; transform: translateY(-1px); }
 
 :focus-visible { outline: 3px solid color-mix(in oklab, var(--main-color), #fff 20%); outline-offset: 2px; }
 
@@ -374,3 +376,55 @@ textarea.form-control { min-height: 76px; resize: vertical; }
   background: #007a68; color: #fff; display: inline-flex; align-items: center; justify-content: center;
 }
 .preview-note { font-size: 12.5px; color: var(--muted); margin-top: 12px; line-height: 1.5; }
+
+/* Reorder Bar & Card Controls */
+.reorder-bar {
+  position: sticky; top: 74px; z-index: 40;
+  box-shadow: var(--shadow);
+}
+.reorder-bar-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.project-order-pill {
+  font-size: 12px; font-weight: 800; padding: 2px 9px; border-radius: 999px;
+  background: color-mix(in oklab, var(--main-color), transparent 86%);
+  color: var(--text-brand);
+}
+.project-card-top-badges { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.project-reorder-group { display: inline-flex; align-items: center; gap: 4px; margin-inline-start: auto; }
+
+/* Delete Confirmation Modal */
+.modal-backdrop {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(2, 6, 23, 0.62);
+  backdrop-filter: blur(3px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+}
+.modal-dialog {
+  width: 100%; max-width: 520px; max-height: calc(100dvh - 32px);
+  overflow-y: auto; border-radius: 18px;
+}
+.modal-header {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 16px 20px; border-bottom: 1px solid var(--border);
+}
+.modal-header h3 { font-size: 18px; font-weight: 800; color: var(--danger); }
+.modal-header .icon-btn { font-size: 22px; line-height: 1; }
+.modal-body { padding: 18px 20px; display: flex; flex-direction: column; gap: 14px; }
+.modal-lead { font-size: 15px; line-height: 1.65; }
+.code-pill {
+  display: inline-block; padding: 2px 8px; border-radius: 6px;
+  background: var(--bg-soft); border: 1px solid var(--border);
+  font-family: monospace; font-size: 13px; color: var(--text-brand);
+}
+.modal-backup-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+  padding: 10px 12px; border-radius: 10px;
+  background: var(--bg-soft); border: 1px solid var(--border);
+  font-size: 13.5px; font-weight: 600;
+}
+.modal-body .checkbox-row { margin-top: 0; padding-top: 0; border-top: none; }
+.modal-confirm-group { margin-top: 2px; }
+.modal-footer {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 14px 20px; border-top: 1px solid var(--border); background: var(--bg-soft);
+}

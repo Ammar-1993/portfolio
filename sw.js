@@ -1,6 +1,6 @@
 /* /portfolio/sw.js */
 const BASE = "./";
-const VERSION = "v1.6.1"; // bump version for cache updates
+const VERSION = "v1.6.6"; // bump version for cache updates
 const STATIC_CACHE = `static-${VERSION}`;
 const RUNTIME_CACHE = `runtime-${VERSION}`;
 const PRECACHE_URLS = [
@@ -55,6 +55,17 @@ self.addEventListener("fetch", (event) => {
 
   // Only handle HTTP/HTTPS GET requests
   if (req.method !== "GET" || !req.url.startsWith("http")) return;
+
+  // Never intercept or cache admin UI or serverless API endpoints
+  const url = new URL(req.url);
+  if (
+    url.pathname.startsWith("/api/") ||
+    url.pathname.endsWith("/admin.html") ||
+    url.pathname.endsWith("/css/admin.css") ||
+    url.pathname.endsWith("/js/admin.js")
+  ) {
+    return;
+  }
 
   event.respondWith(
     (async () => {

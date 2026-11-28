@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>لوحة إدارة المشاريع | م. عمار النجار</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        document.documentElement.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
+      } catch (_) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+  <header class="admin-header">
+    <div class="container admin-header-inner">
+      <div class="admin-brand">
+        <span class="brand-icon" aria-hidden="true">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+          </svg>
+        </span>
+        <div class="brand-text">
+          <h1>لوحة إدارة المشاريع</h1>
+          <span id="branch-badge" class="branch-badge" hidden>main</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <a href="index.html" class="btn btn-ghost btn-sm">عرض الموقع</a>
+        <button type="button" id="btn-backup" class="btn btn-outline btn-sm" hidden>نسخة احتياطية JSON</button>
+        <button type="button" id="theme-toggle" class="icon-btn" aria-label="تبديل الثيم" title="تبديل الثيم">
+          <span class="theme-icon theme-icon-sun" aria-hidden="true">☀️</span>
+          <span class="theme-icon theme-icon-moon" aria-hidden="true">🌙</span>
+        </button>
+        <button type="button" id="btn-logout" class="btn btn-danger-ghost btn-sm" hidden>تسجيل الخروج</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container admin-main">
+    <!-- GitHub Pages Warning -->
+    <div id="gh-pages-warning" class="alert alert-warning" role="alert" hidden>
+      <strong>تنبيه بيئة التشغيل:</strong> دوال الخادم تعمل على <strong>Vercel</strong> فقط ولا تعمل على استضافة GitHub Pages الثابتة.
+      <a href="https://ammar1993.vercel.app/admin.html" class="alert-link">افتح اللوحة على Vercel</a>
+    </div>
+
+    <!-- Live Status Toast Region -->
+    <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- ===== View 1: Login ===== -->
+    <section id="login-view" class="login-section" aria-labelledby="login-heading">
+      <div class="card login-card">
+        <div class="login-icon" aria-hidden="true">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="28" height="28">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+          </svg>
+        </div>
+        <h2 id="login-heading">تسجيل دخول المسؤول</h2>
+        <p class="muted-text">أدخل كلمة مرور الإدارة للوصول إلى إدارة مشاريع المعرض.</p>
+
+        <form id="login-form" novalidate>
+          <div class="form-group">
+            <label for="login-password">كلمة المرور</label>
+            <div class="password-wrap">
+              <input id="login-password" name="password" type="password" class="form-control" autocomplete="current-password" required placeholder="أدخل كلمة المرور">
+              <button type="button" id="btn-toggle-pw" class="pw-toggle-btn" aria-label="إظهار كلمة المرور">إظهار</button>
+            </div>
+          </div>
+          <div id="login-error" class="alert alert-danger" role="alert" hidden></div>
+          <button type="submit" id="btn-login" class="btn btn-primary btn-block">تسجيل الدخول</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== View 2: Dashboard ===== -->
+    <section id="dashboard-view" aria-labelledby="dashboard-heading" hidden>
+      <div class="toolbar">
+        <div class="toolbar-title">
+          <h2 id="dashboard-heading">المشاريع الحالية</h2>
+          <span id="projects-count" class="count-badge">0</span>
+        </div>
+        <div id="dashboard-header-actions" class="toolbar-actions">
+          <button type="button" id="btn-refresh" class="btn btn-outline">تحديث البيانات</button>
+          <button type="button" id="btn-new-project" class="btn btn-primary">+ إضافة مشروع جديد</button>
+        </div>
+      </div>
+
+      <div id="dashboard-banner" class="alert" role="status" hidden></div>
+
+      <div id="reorder-bar" class="alert alert-warning alert-row reorder-bar" role="region" aria-label="حفظ ترتيب المشاريع" hidden>
+        <span>تم تعديل ترتيب المشاريع (لم يُحفظ بعد).</span>
+        <div class="reorder-bar-actions">
+          <button type="button" id="btn-save-order" class="btn btn-primary btn-sm">حفظ الترتيب</button>
+          <button type="button" id="btn-dry-run-order" class="btn btn-outline btn-sm">معاينة الترتيب (Dry Run)</button>
+          <button type="button" id="btn-cancel-order" class="btn btn-ghost btn-sm">إلغاء التغييرات</button>
+        </div>
+      </div>
+
+      <div id="projects-loading" class="loading-box" hidden>
+        <span class="spinner" aria-hidden="true"></span>
+        <span>جاري جلب المشاريع من المستودع...</span>
+      </div>
+
+      <div id="projects-list" class="projects-grid"></div>
+    </section>
+
+    <!-- ===== View 3: Unified Create / Edit Editor ===== -->
+    <section id="editor-view" aria-labelledby="editor-heading" hidden>
+      <div class="toolbar">
+        <div class="toolbar-title">
+          <button type="button" id="btn-back-list" class="btn btn-ghost btn-sm">&rarr; رجوع للقائمة</button>
+          <h2 id="editor-heading">إضافة مشروع جديد</h2>
+        </div>
+      </div>
+
+      <div class="editor-layout">
+        <form id="project-form" class="editor-form" novalidate>
+          <!-- Basic Info Card -->
+          <div class="card form-section">
+            <h3 class="section-heading">بيانات المشروع الأساسية</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="field-title-ar">اسم المشروع (بالعربية) <span class="req">*</span></label>
+                <input id="field-title-ar" type="text" class="form-control" maxlength="120" required placeholder="مثال: منصة الامتثال الذكية">
+              </div>
+
+              <div class="form-group">
+                <label for="field-title-en">اسم المشروع (بالإنجليزية) <span class="req">*</span></label>
+                <input id="field-title-en" type="text" dir="ltr" class="form-control" maxlength="120" required placeholder="e.g. Smart Compliance Platform">
+              </div>
+
+              <div class="form-group">
+                <label for="field-id">المعرّف الفريد (Slug / ID) <span class="req">*</span></label>
+                <input id="field-id" type="text" dir="ltr" class="form-control" maxlength="80" required placeholder="smart-compliance-platform">
+                <small id="id-help-text" class="field-help">يُولَّد تلقائياً من الاسم الإنجليزي (أحرف إنجليزية صغيرة وأرقام وشرطة فقط) ويُثبَّت بعد النشر.</small>
+              </div>
+
+              <div class="form-group">
+                <label for="field-category">التصنيف <span class="req">*</span></label>
+                <select id="field-category" class="form-control" required>
+                  <option value="web-project">مشاريع الويب (web-project)</option>
+                  <option value="mobile-project">مشاريع الموبايل (mobile-project)</option>
+                </select>
+              </div>
+
+              <div id="position-field-wrap" class="form-group">
+                <label for="field-position">موضع الظهور في المعرض</label>
+                <select id="field-position" class="form-control">
+                  <option value="top" selected>أول المعرض (أحدث مشروع — موصى به)</option>
+                  <option value="bottom">آخر المعرض</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="field-preview">رابط المعاينة أو المستودع (اختياري)</label>
+                <input id="field-preview" type="url" dir="ltr" class="form-control" maxlength="500" placeholder="https://example.com أو https://github.com/...">
+              </div>
+
+              <div class="form-group form-group-full">
+                <label for="field-summary-ar">الوصف المختصر بالعربية (اختياري — يُنصح بإدخال اللغتين معاً)</label>
+                <textarea id="field-summary-ar" class="form-control" rows="2" maxlength="350" placeholder="وصف موجز يظهر على بطاقة المشروع..."></textarea>
+              </div>
+
+              <div class="form-group form-group-full">
+                <label for="field-summary-en">الوصف المختصر بالإنجليزية (اختياري)</label>
+                <textarea id="field-summary-en" dir="ltr" class="form-control" rows="2" maxlength="350" placeholder="Short summary shown on the project card..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Images Card -->
+          <div class="card form-section">
+            <h3 class="section-heading">صورة الغلاف ولقطات الشاشات (WebP فقط)</h3>
+
+            <div id="webp-unsupported-banner" class="alert alert-danger" role="alert" hidden>
+              متصفحك لا يدعم ضغط الصور إلى صيغة WebP. يرجى استخدام متصفح <strong>Chrome</strong> أو <strong>Edge</strong> لرفع الصور.
+            </div>
+
+            <div id="duplicate-cover-banner" class="alert alert-warning alert-row" role="status" hidden>
+              <span>تنبيه: صورة الغلاف مكررة داخل لقطات الشاشات، مما يعرض أول صورة مرتين في عارض الصور (Lightbox).</span>
+              <button type="button" id="btn-dedupe-cover" class="btn btn-outline btn-sm">إزالة تكرار الغلاف</button>
+            </div>
+
+            <div id="aspect-ratio-warning" class="alert alert-info" role="status" hidden></div>
+
+            <!-- Cover Upload Slot -->
+            <div class="cover-box">
+              <div class="cover-preview-wrap">
+                <img id="cover-preview-img" src="images/icons.svg" alt="معاينة الغلاف" hidden>
+                <div id="cover-placeholder" class="cover-placeholder">لا توجد صورة غلاف بعد</div>
+                <span id="cover-meta-badge" class="meta-badge" hidden></span>
+              </div>
+
+              <div class="cover-fields">
+                <div class="cover-upload-row">
+                  <label for="cover-file-input" class="btn btn-outline btn-sm file-trigger-label">اختيار / تغيير صورة الغلاف</label>
+                  <input id="cover-file-input" type="file" accept="image/*" class="sr-only">
+                  <small class="field-help">يُضغط تلقائياً إلى WebP (أقصى عرض 1600px، حد 1.5MB).</small>
+                </div>
+
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="field-cover-alt-ar">وصف الغلاف البديل Alt (بالعربية) <span class="req">*</span></label>
+                    <input id="field-cover-alt-ar" type="text" class="form-control" maxlength="200" required placeholder="مثال: منصة الامتثال - الواجهة الرئيسية">
+                  </div>
+                  <div class="form-group">
+                    <label for="field-cover-alt-en">وصف الغلاف البديل Alt (بالإنجليزية) <span class="req">*</span></label>
+                    <input id="field-cover-alt-en" type="text" dir="ltr" class="form-control" maxlength="200" required placeholder="e.g. Compliance Platform - Main View">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Gallery Dropzone -->
+            <div class="gallery-header">
+              <h4>لقطات الشاشات الإضافية</h4>
+              <span id="gallery-counter" class="count-badge">0 / 15</span>
+            </div>
+
+            <div id="gallery-dropzone" class="dropzone" tabindex="0" role="button" aria-label="سحب وإفلات لقطات الشاشات أو النقر لاختيار الصور">
+              <input id="gallery-file-input" type="file" accept="image/*" multiple class="sr-only">
+              <p class="dropzone-title">اسحب لقطات الشاشات وأفلتها هنا أو <strong>انقر للاختيار</strong></p>
+              <p class="dropzone-hint">يمكنك اختيار عدة صور دفعة واحدة (حتى 15 لقطة بصيغة WebP تلقائياً).</p>
+            </div>
+
+            <div id="gallery-list" class="gallery-list"></div>
+
+            <div id="orphan-cleanup-wrap" class="checkbox-row" hidden>
+              <label class="checkbox-label">
+                <input id="field-delete-orphans" type="checkbox" checked>
+                <span>حذف الصور المستبدلة أو المزالة من المستودع تلقائياً (إن لم تكن مستخدمة في مشروع آخر)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Errors, Progress & Submit -->
+          <div class="card form-section">
+            <div id="form-errors" class="alert alert-danger" role="alert" hidden></div>
+
+            <div id="publish-progress" class="progress-box" hidden>
+              <div id="publish-progress-label" class="progress-label">جاري المعالجة...</div>
+              <progress id="publish-progress-bar" class="progress-bar" max="100" value="0"></progress>
+            </div>
+
+            <div id="dry-run-result" class="alert alert-info dry-run-box" role="status" hidden></div>
+
+            <div class="form-actions">
+              <button type="submit" id="btn-submit-project" class="btn btn-primary">نشر المشروع</button>
+              <button type="button" id="btn-dry-run" class="btn btn-outline">معاينة التغييرات (Dry Run)</button>
+              <button type="button" id="btn-cancel-editor" class="btn btn-ghost">إلغاء</button>
+            </div>
+          </div>
+        </form>
+
+        <!-- Sticky Live Card Preview -->
+        <aside class="preview-pane" aria-label="معاينة بطاقة المشروع">
+          <div class="card preview-pane-card">
+            <div class="preview-pane-header">
+              <h3>معاينة حيّة للبطاقة</h3>
+              <div class="lang-switch" role="group" aria-label="لغة المعاينة">
+                <button type="button" id="preview-lang-ar" class="lang-pill active" aria-pressed="true">عربي</button>
+                <button type="button" id="preview-lang-en" class="lang-pill" aria-pressed="false">EN</button>
+              </div>
+            </div>
+
+            <div id="live-preview-card" class="live-preview-card">
+              <div class="live-preview-media">
+                <img id="preview-card-img" src="images/icons.svg" alt="" hidden>
+                <span id="preview-card-empty" class="live-preview-empty">صورة الغلاف ستظهر هنا</span>
+                <span id="preview-card-gallery-count" class="gallery-count-pill" hidden></span>
+              </div>
+              <div class="live-preview-footer">
+                <div class="live-preview-text">
+                  <h4 id="preview-card-title">عنوان المشروع</h4>
+                  <p id="preview-card-summary" hidden></p>
+                </div>
+                <span id="preview-card-link" class="preview-link-badge" title="زر المعاينة" hidden>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 3h7v7M10 14L21 3M21 21H3V3"></path>
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <p class="preview-note">توضح المعاينة الشكل التقريبي للبطاقة على الموقع، ويفتح النقر على البطاقة معرض اللقطات في عارض الصور.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="delete-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title" hidden>
+    <div class="modal-dialog card">
+      <div class="modal-header">
+        <h3 id="delete-modal-title">تأكيد حذف المشروع</h3>
+        <button type="button" id="btn-close-delete-modal" class="icon-btn" aria-label="إغلاق">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-lead">
+          أنت على وشك حذف المشروع: <strong id="delete-project-name"></strong>
+          (<code id="delete-project-id-badge" class="code-pill" dir="ltr"></code>)
+        </p>
+        <p class="field-help">ملاحظة: عملية الحذف تنشئ Commit على GitHub ويمكن التراجع عنها دائماً عبر Revert.</p>
+
+        <div class="modal-backup-row">
+          <span>يُنصح بتنزيل نسخة احتياطية قبل الحذف:</span>
+          <button type="button" id="btn-delete-modal-backup" class="btn btn-outline btn-sm">تنزيل نسخة احتياطية JSON</button>
+        </div>
+
+        <div class="checkbox-row">
+          <label class="checkbox-label">
+            <input id="field-delete-modal-orphans" type="checkbox" checked>
+            <span>حذف صور المشروع غير المستخدمة في أي مشروع آخر من المستودع</span>
+          </label>
+        </div>
+
+        <div class="form-group modal-confirm-group">
+          <label for="delete-confirm-input">اكتب معرّف المشروع للتأكيد:</label>
+          <input id="delete-confirm-input" type="text" dir="ltr" class="form-control" autocomplete="off" placeholder="project-id">
+        </div>
+
+        <div id="delete-dry-run-result" class="alert alert-info dry-run-box" role="status" hidden></div>
+        <div id="delete-modal-error" class="alert alert-danger" role="alert" hidden></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btn-confirm-delete" class="btn btn-danger" disabled>حذف المشروع نهائياً</button>
+        <button type="button" id="btn-dry-run-delete" class="btn btn-outline">معاينة الحذف (Dry Run)</button>
+        <button type="button" id="btn-cancel-delete" class="btn btn-ghost">إلغاء</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/admin.js" defer></script>
+</body>
+
+</html>

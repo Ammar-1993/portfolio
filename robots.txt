@@ -1,19 +1,29 @@
 # robots.txt for https://ammar1993.vercel.app/
 User-agent: *
 Allow: /
+Disallow: /admin.html
+Disallow: /api/
 
-# Allow all AI crawlers explicitly
+# Allow all AI crawlers explicitly on public pages
 User-agent: GPTBot
 Allow: /
+Disallow: /admin.html
+Disallow: /api/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /admin.html
+Disallow: /api/
 
 User-agent: CCBot
 Allow: /
+Disallow: /admin.html
+Disallow: /api/
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /admin.html
+Disallow: /api/
 
 # Sitemap location
 Sitemap: https://ammar1993.vercel.app/sitemap.xml

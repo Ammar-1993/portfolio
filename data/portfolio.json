@@ -93,10 +93,6 @@
                 "ar": "نظام المصادقة البيومترية السحابي",
                 "en": "Face Crypt Cloud System"
             },
-            "summary": {
-                "ar": "نظام ذكي للمصادقة عبر التعرف على الوجه (يدعم اللغتين العربية والإنجليزية) يعتمد على تقنيات الحوسبة السحابية، ويستبدل كلمات المرور التقليدية بآلية تسجيل دخول بيومترية آمنة مدعومة بالذكاء الاصطناعي.",
-                "en": "A smart cloud-based facial recognition authentication system (Arabic & English), that replaces traditional passwords with secure, AI-powered biometric login."
-            },
             "cover": "images/portfolio/face-crypt-cloud-system-mx0nft1i-1.webp",
             "coverAlt": {
                 "ar": "نظام المصادقة البيومترية السحابي - الواجهة الرئيسية",
